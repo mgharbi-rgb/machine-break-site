@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Page d'accueil"
+        name: "index"
+        file: "index.html"
+        fields:
+          - { label: "Titre principal", name: "titre", widget: "string" }
+          - { label: "Sous-titre", name: "sous_titre", widget: "string", required: false }
+          - { label: "Contenu principal", name: "body", widget: "markdown" }
+          - { label: "Image principale", name: "image", widget: "image", required: false }
+          - { label: "Lien/Bouton", name: "lien", widget: "string", required: false }
+      - label: "Contact"
+        name: "contact"
+        file: "contact.html"
+        fields:
+          - { label: "Titre principal", name: "titre", widget: "string" }
+          - { label: "Sous-titre", name: "sous_titre", widget: "string", required: false }
+          - { label: "Contenu principal", name: "body", widget: "markdown" }
+          - label: "Coordonnées"
+            name: "coordonnees"
+            widget: "object"
+            fields:
+              - { label: "Adresse", name: "adresse", widget: "text" }
+              - { label: "Téléphone", name: "telephone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Lien Google Maps", name: "map_link", widget: "string", required: false }
+          - { label: "Image principale", name: "image", widget: "image", required: false }
+          - { label: "Lien/Bouton", name: "lien", widget: "string", required: false }
