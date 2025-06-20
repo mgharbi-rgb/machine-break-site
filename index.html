@@ -47,112 +47,71 @@
 </head>
 
 <body>
-<!--
-  <!-- NAVBAR
-    ================================================== 
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-
-      <!-- Brand 
-      <a class="navbar-brand" href="index.html">
-        <img src="assets/img/logo.jpg" class="navbar-brand-img" alt="...">
-      </a>
-
-      <!-- Toggler 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Collapse
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-
-        <!-- Toggler 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fe fe-x"></i>
-        </button>
-
-        <!-- Navigation 
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              Accueil
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="boissons-chaudes-snacks.html">
-              Nos Solutions
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="location-distributeurs-automatiques-boissons.html">
-              Nos Produits 
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="entreprise-location-distributeur-automatique-boisson.html">
-              Nos Valeurs
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">
-              Contact
-            </a>
-          </li>
-        </ul>
-
-      </div>
-
-    </div>
-  </nav>
--->
+  
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container">
 
     <!-- Logo -->
     <a class="navbar-brand" href="index.html">
-      <img src="assets/img/logo.jpg" class="navbar-brand-img" alt="Machine Break">
+      <img src="assets/img/logo.webp" class="navbar-brand-img" alt="Logo Machine Break">
     </a>
 
-    <!-- Toggler (mobile) -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Menu -->
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
+
+        <!-- Accueil -->
         <li class="nav-item">
           <a class="nav-link" href="index.html">Accueil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="boissons-chaudes-snacks.html">Solutions</a>
+
+        <!-- Solutions (menu déroulant) -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Solutions
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarSolutions">
+            <a class="dropdown-item" href="boissons-chaudes-snacks.html">Distributeurs & Suivi intelligent</a>
+            <a class="dropdown-item" href="solution-par-secteur.html">Solution par secteur</a>
+          </div>
         </li>
+
+        <!-- Fonctionnement -->
         <li class="nav-item">
           <a class="nav-link" href="fonctionnement.html">Fonctionnement</a>
         </li>
+
+        <!-- Pourquoi nous ? -->
         <li class="nav-item">
-          <a class="nav-link" href="pourquoi-nous.html">Pourquoi nous ?</a>
+          <a class="nav-link" href="valeurs.html">Pourquoi nous ?</a>
         </li>
+
+        <!-- FAQ -->
         <li class="nav-item">
           <a class="nav-link" href="faq.html">F.A.Q.</a>
         </li>
+
+        <!-- Contact -->
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact</a>
         </li>
-      </ul>
 
-      <!-- Call to Action -->
-      <a class="btn btn-sm btn-primary ml-lg-3 mt-3 mt-lg-0" href="contact.html">
-        Demander un devis
-      </a>
+        <!-- CTA -->
+        <li class="nav-item ml-lg-3">
+          <a class="btn btn-sm btn-success" href="contact.html">Demander un devis</a>
+        </li>
+      </ul>
     </div>
 
   </div>
 </nav>
-
   <!-- VIDEO
     ================================================== -->
   <section class="pt-10 pt-md-14 pb-12 pb-md-12 overlay overlay-black">
