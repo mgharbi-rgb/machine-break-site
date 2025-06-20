@@ -90,7 +90,7 @@
 
         <!-- Pourquoi nous ? -->
         <li class="nav-item">
-          <a class="nav-link" href="valeurs.html">Pourquoi nous ?</a>
+          <a class="nav-link" href="valeurs.html">Avantages</a>
         </li>
 
         <!-- FAQ -->
@@ -705,7 +705,33 @@ Tous les produits que nous intégrons dans nos distributeurs sont choisis avec a
 
   <!-- Theme JS -->
   <script src="assets/js/theme.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Active les dropdowns Bootstrap
+    var dropdowns = document.querySelectorAll('.dropdown-toggle');
 
+    dropdowns.forEach(function (dropdown) {
+      dropdown.addEventListener('click', function (e) {
+        e.preventDefault();
+        var parent = this.closest('.dropdown');
+        parent.classList.toggle('show');
+
+        var menu = parent.querySelector('.dropdown-menu');
+        menu.classList.toggle('show');
+      });
+    });
+
+    // Ferme les dropdowns si on clique ailleurs
+    document.addEventListener('click', function (e) {
+      document.querySelectorAll('.dropdown.show').forEach(function (dropdown) {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('show');
+          dropdown.querySelector('.dropdown-menu').classList.remove('show');
+        }
+      });
+    });
+  });
+</script>
 
 </body>
 
