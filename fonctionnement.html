@@ -26,33 +26,52 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Menu -->
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
+
+        <!-- Accueil -->
         <li class="nav-item">
           <a class="nav-link" href="index.html">Accueil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="boissons-chaudes-snacks.html">Solutions</a>
+
+        <!-- Solutions (menu déroulant) -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Solutions
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarSolutions">
+            <a class="dropdown-item" href="boissons-chaudes-snacks.html">Distributeurs & Suivi intelligent</a>
+            <a class="dropdown-item" href="solution-par-secteur.html">Solution par secteur</a>
+          </div>
         </li>
+
+        <!-- Fonctionnement -->
         <li class="nav-item">
           <a class="nav-link" href="fonctionnement.html">Fonctionnement</a>
         </li>
+
+        <!-- Pourquoi nous ?
         <li class="nav-item">
           <a class="nav-link" href="avantages.html">Avantages</a>
-        </li>
+        </li>-->
+
+        <!-- FAQ -->
         <li class="nav-item">
           <a class="nav-link" href="faq.html">F.A.Q.</a>
         </li>
+
+        <!-- Contact -->
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact</a>
         </li>
-      </ul>
 
-      <!-- Call to Action -->
-      <a class="btn btn-sm btn-primary ml-lg-3 mt-3 mt-lg-0" href="contact.html">
-        Demander un devis
-      </a>
+        <!-- CTA -->
+        <li class="nav-item ml-lg-3">
+          <a class="btn btn-sm btn-success btn-single-line" href="contact.html">Et si on s’occupait de vos pauses ?</a>
+        </li>
+      </ul>
     </div>
 
   </div>
