@@ -47,64 +47,56 @@
 
 <body class="pt-10 bg-light">
 
-  <!-- NAVBAR
-    ================================================== -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white border-bottom">
-    <div class="container-fluid">
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
 
-      <!-- Brand -->
-      <a class="navbar-brand" href="index.html">
-        <img src="assets/img/logo.jpg" class="navbar-brand-img" alt="...">
-      </a>
+        <!-- Accueil -->
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Accueil</a>
+        </li>
 
-      <!-- Toggler -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <!-- Solutions (menu déroulant) -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Solutions
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarSolutions">
+            <a class="dropdown-item" href="boissons-chaudes-snacks.html">Distributeurs & Suivi intelligent</a>
+            <a class="dropdown-item" href="solution-par-secteur.html">Solution par secteur</a>
+          </div>
+        </li>
 
-      <!-- Collapse -->
-      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <!-- Fonctionnement -->
+        <li class="nav-item">
+          <a class="nav-link" href="fonctionnement.html">Fonctionnement</a>
+        </li>
 
-        <!-- Toggler -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fe fe-x"></i>
-        </button>
+        <!-- Pourquoi nous ?
+        <li class="nav-item">
+          <a class="nav-link" href="avantages.html">Avantages</a>
+        </li>-->
 
-        <!-- Navigation -->
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              Accueil
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="boissons-chaudes-snacks.html">
-              Produits
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="location-distributeurs-automatiques-boissons.html">
-              Distributeurs
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="entreprise-location-distributeur-automatique-boisson.html">
-              Valeurs
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">
-              Contact
-            </a>
-          </li>
-        </ul>
+        <!-- FAQ -->
+        <li class="nav-item">
+          <a class="nav-link" href="faq.html">F.A.Q.</a>
+        </li>
 
-      </div>
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
 
+        <!-- CTA -->
+        <li class="nav-item ml-lg-3">
+          <a class="btn btn-sm btn-success btn-single-line" href="contact.html">Et si on s’occupait de vos pauses ?</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+
+  </div>
+</nav>
 
 
   <!-- WELCOME
