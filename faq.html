@@ -8,27 +8,54 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <img src="assets/img/logo.jpg" class="navbar-brand-img" alt="Machine Break">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+  <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="boissons-chaudes-snacks.html">Solutions</a></li>
-        <li class="nav-item"><a class="nav-link" href="fonctionnement.html">Fonctionnement</a></li>
-        <li class="nav-item"><a class="nav-link" href="pourquoi-nous.html">Pourquoi nous ?</a></li>
-        <li class="nav-item"><a class="nav-link" href="faq.html">F.A.Q.</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+        <!-- Accueil -->
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Accueil</a>
+        </li>
+
+        <!-- Solutions (menu déroulant) -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Solutions
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarSolutions">
+            <a class="dropdown-item" href="boissons-chaudes-snacks.html">Distributeurs & Suivi intelligent</a>
+            <a class="dropdown-item" href="solution-par-secteur.html">Solution par secteur</a>
+          </div>
+        </li>
+
+        <!-- Fonctionnement -->
+        <li class="nav-item">
+          <a class="nav-link" href="fonctionnement.html">Fonctionnement</a>
+        </li>
+
+        <!-- Pourquoi nous ?
+        <li class="nav-item">
+          <a class="nav-link" href="avantages.html">Avantages</a>
+        </li>-->
+
+        <!-- FAQ -->
+        <li class="nav-item">
+          <a class="nav-link" href="faq.html">F.A.Q.</a>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+
+        <!-- CTA -->
+        <li class="nav-item ml-lg-3">
+          <a class="btn btn-sm btn-success btn-single-line" href="contact.html">Et si on s’occupait de vos pauses ?</a>
+        </li>
       </ul>
-      <a class="btn btn-sm btn-primary ml-lg-3 mt-3 mt-lg-0" href="contact.html">Demander un devis</a>
     </div>
+
   </div>
 </nav>
 
