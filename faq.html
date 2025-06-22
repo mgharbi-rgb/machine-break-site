@@ -1,101 +1,253 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>Foire aux questions – Machine Break</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ – Machine Break</title>
+  <meta name="description" content="Questions fréquentes sur les distributeurs automatiques, le service Machine Break, la maintenance, l’installation et le fonctionnement.">
+  
+  <!-- Styles CSS -->
   <link rel="stylesheet" href="assets/css/theme.min.css">
+  <link rel="stylesheet" href="assets/fonts/Feather/feather.css">
 </head>
 <body>
 
-  <!-- Menu -->
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/img/logo.webp" class="navbar-brand-img" alt="Logo Machine Break">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-
-        <!-- Accueil -->
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Accueil</a>
-        </li>
-
-        <!-- Solutions (menu déroulant) -->
+        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Solutions
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarSolutions">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown">Solutions</a>
+          <div class="dropdown-menu">
             <a class="dropdown-item" href="boissons-chaudes-snacks.html">Distributeurs & Suivi intelligent</a>
             <a class="dropdown-item" href="solution-par-secteur.html">Solution par secteur</a>
           </div>
         </li>
-
-        <!-- Fonctionnement -->
-        <li class="nav-item">
-          <a class="nav-link" href="fonctionnement.html">Fonctionnement</a>
-        </li>
-
-        <!-- Pourquoi nous ?
-        <li class="nav-item">
-          <a class="nav-link" href="avantages.html">Avantages</a>
-        </li>-->
-
-        <!-- FAQ -->
-        <li class="nav-item">
-          <a class="nav-link" href="faq.html">F.A.Q.</a>
-        </li>
-
-        <!-- Contact -->
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
-
-        <!-- CTA -->
+        <li class="nav-item"><a class="nav-link" href="fonctionnement.html">Fonctionnement</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">F.A.Q.</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         <li class="nav-item ml-lg-3">
-          <a class="btn btn-sm btn-success btn-single-line" href="contact.html">Et si on s’occupait de vos pauses ?</a>
+          <a class="btn btn-sm btn-success btn-single-line" href="contact.html">Et si on s’occupe de vos pauses ?</a>
         </li>
       </ul>
     </div>
-
   </div>
 </nav>
 
-<!-- CONTENU PRINCIPAL -->
-<section class="pt-10 pb-8 bg-light">
+<!-- FAQ -->
+<section class="pt-10 pb-8">
   <div class="container">
-    
-        <h2 class="mb-4">Foire aux questions</h2>
+    <div class="row justify-content-center mb-6">
+      <div class="col-md-8 text-center">
+        <h1 class="display-4">Foire aux questions</h1>
+        <p class="text-muted">Trouvez ici toutes les réponses aux questions les plus fréquentes sur nos services et distributeurs automatiques.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+
         <div class="accordion" id="faqAccordion">
-          <div class="card">
-            <div class="card-header" id="q1">
-              <h5 class="mb-0"><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#a1">Qui s’occupe du réassort ?</button></h5>
+          <!-- FAQ 1 -->
+          <div class="card mb-3">
+            <div class="card-header" id="faq1">
+              <h2 class="mb-0">
+                <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#answer1">
+                  Qui peut bénéficier d’un distributeur Machine Break ?
+                </button>
+              </h2>
             </div>
-            <div id="a1" class="collapse" data-parent="#faqAccordion">
-              <div class="card-body">Nous le faisons automatiquement, grâce à la télémétrie.</div>
+            <div id="answer1" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Toutes les entreprises, collectivités, établissements de santé ou écoles souhaitant améliorer leur espace de pause peuvent bénéficier de notre solution.
+              </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-header" id="q2">
-              <h5 class="mb-0"><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#a2">Quel type de boissons/snacks proposez-vous ?</button></h5>
+
+          <!-- FAQ 2 -->
+          <div class="card mb-3">
+            <div class="card-header" id="faq2">
+              <h2 class="mb-0">
+                <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#answer2">
+                  Est-ce que l’installation est gratuite ?
+                </button>
+              </h2>
             </div>
-            <div id="a2" class="collapse" data-parent="#faqAccordion">
-              <div class="card-body">Une sélection de cafés, thés, boissons fraîches et snacks de qualité.</div>
+            <div id="answer2" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Oui. L’installation, la mise en service, la maintenance et le réapprovisionnement sont inclus dans notre service clé en main.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="card mb-3">
+            <div class="card-header" id="faq3">
+              <h2 class="mb-0">
+                <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#answer3">
+                  Quels types de produits proposez-vous ?
+                </button>
+              </h2>
+            </div>
+            <div id="answer3" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Nous proposons des cafés de qualité, des snacks sains et gourmands, ainsi que des boissons fraîches. Tous nos produits sont rigoureusement sélectionnés.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="card mb-3">
+            <div class="card-header" id="faq4">
+              <h2 class="mb-0">
+                <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#answer4">
+                  À quelle fréquence les machines sont-elles réapprovisionnées ?
+                </button>
+              </h2>
+            </div>
+            <div id="answer4" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Grâce à notre système de télémétrie, nous suivons les consommations en temps réel pour planifier les réapprovisionnements de façon optimale.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="card mb-3">
+            <div class="card-header" id="faq5">
+              <h2 class="mb-0">
+                <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#answer5">
+                  Que faire en cas de panne ?
+                </button>
+              </h2>
+            </div>
+            <div id="answer5" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Nos équipes sont alertées automatiquement en cas d’anomalie et interviennent dans les plus brefs délais, souvent avant que vous ne constatiez le problème.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="card mb-3">
+            <div class="card-header" id="faq6">
+              <h2 class="mb-0">
+                <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#answer6">
+                  Peut-on personnaliser l’habillage des distributeurs ?
+                </button>
+              </h2>
+            </div>
+            <div id="answer6" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Oui, nous proposons un service de personnalisation visuelle pour intégrer les distributeurs dans votre environnement ou aux couleurs de votre entreprise.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="card mb-3">
+            <div class="card-header" id="faq7">
+              <h2 class="mb-0">
+                <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#answer7">
+                  Proposez-vous des produits bio ou sans allergènes ?
+                </button>
+              </h2>
+            </div>
+            <div id="answer7" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Oui, notre offre inclut des références bio, sans gluten et à faible teneur en sucre. Nous nous adaptons aux besoins spécifiques de vos collaborateurs.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="card mb-3">
+            <div class="card-header" id="faq8">
+              <h2 class="mb-0">
+                <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#answer8">
+                  Quel est le délai pour installer une machine ?
+                </button>
+              </h2>
+            </div>
+            <div id="answer8" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Une fois le besoin validé, l’installation peut être effectuée sous quelques jours selon votre région et les équipements choisis.
+              </div>
             </div>
           </div>
         </div>
-        
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-8 py-md-11 bg-primary text-white text-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <h2 class="display-4">Une question sans réponse ? Parlons-en !</h2>
+        <p class="lead mb-6">Notre équipe vous accompagne dans la mise en place de votre solution sur mesure.</p>
+        <a href="contact.html" class="btn btn-light btn-lg lift">Nous contacter <i class="fe fe-arrow-right ml-2"></i></a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="py-8 py-md-11 bg-gray-200">
-  <div class="container text-center">
-    <img src="assets/img/logo.jpg" class="footer-brand img-fluid mb-4" style="width: 120px;" alt="Logo">
-    <p class="text-muted">© 2025 Machine Break. Tous droits réservés.</p>
+<footer class="py-8 bg-gray-200">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="./assets/img/logo.webp" alt="Logo Machine Break" class="footer-brand img-fluid mb-3" style="width: 50%;">
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="https://www.instagram.com/machine.break/"><img src="assets/img/icons/social/instagram.svg" alt="Instagram" class="list-social-icon"></a></li>
+          <li class="list-inline-item"><a href="https://www.facebook.com/MachineBreak"><img src="assets/img/icons/social/facebook.svg" alt="Facebook" class="list-social-icon"></a></li>
+          <li class="list-inline-item"><a href="https://www.linkedin.com/company/machinebreak/"><img src="assets/img/icons/social/linkedin.svg" alt="LinkedIn" class="list-social-icon"></a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h6 class="text-uppercase text-gray-700">Navigation</h6>
+        <ul class="list-unstyled">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="boissons-chaudes-snacks.html">Nos offres</a></li>
+          <li><a href="fonctionnement.html">Fonctionnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h6 class="text-uppercase text-gray-700">Légal</h6>
+        <ul class="list-unstyled">
+          <li><a href="terms-of-service.html">Conditions d’utilisation</a></li>
+          <li><a href="careers.html">Carrière</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-uppercase text-gray-700">Contact</h6>
+        <p>28 Avenue Christian Doppler<br>77700 Bailly Romainvilliers</p>
+        <p><a href="tel:0174810952">01 74 81 09 52</a><br><a href="mailto:contact@machinebreak.com">contact@machinebreak.com</a></p>
+      </div>
+      <div class="col-md-2 text-center">
+        <a href="https://www.valdeurope-attractivite.fr" target="_blank">
+          <img src="assets/img/VEA.webp" alt="Partenaire Val d’Europe" class="img-fluid" style="max-height: 50px;">
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
 
-<!-- JS -->
+<!-- Scripts -->
 <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/theme.min.js"></script>
+
 </body>
 </html>
