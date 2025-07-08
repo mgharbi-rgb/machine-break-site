@@ -45,11 +45,19 @@
 
   <!-- Uniformisation des images-->
   <style>
-  .img-uniforme {
+  .bloc-image-unifiee {
     width: 100%;
-    height: 250px; 
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bloc-image-unifiee img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 8px; 
   }
 </style>
 
@@ -179,10 +187,11 @@
         <div class="col-12 col-md-5 col-lg-6 order-md-2">
 
           <!-- Image -->
-          <img src="assets/img/covers/machine_cafe.webp"
-            class="img-fluid img-unifome rounded shadow-lg mw-md-150 mw-lg-130 mb-6 mb-md-0" alt="Distributeur automatique Machine Break" data-aos="fade-up"
+          <div class="bloc-image-unifiee img-fluid rounded shadow-lg mw-md-150 mw-lg-130 mb-6 mb-md-0">
+            <img src="assets/img/covers/machine_cafe.webp" alt="Distributeur automatique Machine Break" data-aos="fade-up"
             data-aos-delay="100">
-
+          </div>
+          
         </div>
         <div class="col-12 col-md-7 col-lg-6 order-md-1" data-aos="fade-up">
 
@@ -471,7 +480,9 @@ Tous les produits que nous intégrons dans nos distributeurs sont choisis avec a
         <div class="col-12 col-md-5 col-lg-6 order-md-2">
 
           <!-- Image -->
-          <img src="assets/img/covers/entretient_cafe.webp" alt="Distributeur automatique Machine Break" class="img-fluid img-uniforme rounded shadow-lg mb-6 mb-md-0">
+          <div class="bloc-image-unifiee img-fluid rounded shadow-lg mb-6 mb-md-0">
+            <img src="assets/img/covers/entretient_cafe.webp" alt="Distributeur automatique Machine Break">
+           </div>
 
         </div>
         <div class="col-12 col-md-7 col-lg-6 order-md-1">
