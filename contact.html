@@ -8,6 +8,13 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Contactez Machine Break pour installer une solution de distributeur automatique sur mesure dans votre entreprise.">
+  <title>Contact | Machine Break</title>
+
+ 
 
   <!-- Libs CSS -->
   <link rel="stylesheet" href="assets/fonts/Feather/feather.css">
@@ -25,8 +32,6 @@
 
   <!-- Theme CSS -->
   <link rel="stylesheet" href="assets/css/theme.min.css">
-
-  <title>Contact Machine Break : location distributeurs machines à café</title>
   <meta name="description" content="Besoins d'informations sur nos offres commerciales ? Faites appel à notre entreprise Machine Break pour des solutions sur mesures.">
 
   <!-- Open Graph / Facebook -->
@@ -234,119 +239,66 @@
         <div class="col-12 col-md-12 col-lg-10">
 
           <!-- Form -->
-          <form method='POST' name='contact'><input type='hidden' name='form-name' value='contact' />
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <div class="form-group mb-5">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="contact" />
+  
+  <!-- Champ anti-bot caché -->
+  <p hidden>
+    <label>Ne pas remplir si humain : <input name="bot-field" /></label>
+  </p>
 
-                  <!-- Label -->
-                  <label for="contactLastName">
-                    Nom
-                  </label>
-
-                  <!-- Input -->
-                  <input type="text" class="form-control" id="contactLastName" placeholder="Nom" name="lastname">
-
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="form-group mb-5">
-
-                  <!-- Label -->
-                  <label for="contactFirstName">
-                    Prénom
-                  </label>
-
-                  <!-- Input -->
-                  <input type="text" class="form-control" id="contactFirstName" placeholder="Prénom" name="firstname">
-
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="form-group mb-5">
-
-                  <!-- Label -->
-                  <label for="contactEmail">
-                    Adresse email <span style="color:red">*</span>
-                  </label>
-
-                  <!-- Input -->
-                  <input type="email" class="form-control" id="contactEmail" placeholder="Email" name="email" required>
-
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="form-group mb-5">
-
-                  <!-- Label -->
-                  <label for="contactPhone">
-                    Numéro de téléphone
-                  </label>
-
-                  <!-- Input -->
-                  <input type="tel" class="form-control" id="contactPhone" placeholder="Téléphone" name="phone">
-
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="form-group mb-5">
-
-                  <!-- Label -->
-                  <label for="contactCompany">
-                    Entreprise
-                  </label>
-
-                  <!-- Input -->
-                  <input type="text" class="form-control" id="contactCompany" placeholder="Nom de votre société"
-                    name="company">
-
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="form-group mb-5">
-
-                  <!-- Label -->
-                  <label for="contactCompanySize">
-                    Effectif
-                  </label>
-
-                  <!-- Input -->
-                  <select class="form-control" id="contactCompanySize" name="companySize[]">
-                    <option value="Moins de 19 collaborateurs">Moins de 19 collaborateurs</option>
-                    <option value="de 20 à 49 collaborateurs">de 20 à 49 collaborateurs</option>
-                    <option value="de 50 à 99 collaborateurs">de 50 à 99 collaborateurs</option>
-                    <option value="Plus de 100 collaborateurs">Plus de 100 collaborateurs</option>
-                  </select>
-
-                </div>
-              </div>
-            </div> <!-- / .row -->
-            <div class="row">
-              <div class="col-12">
-                <div class="form-group mb-7 mb-md-9">
-
-                  <!-- Label -->
-                  <label for="contactMessage">
-                    Comment pouvons-nous vous aider ? <span style="color:red">*</span>
-                  </label>
-
-                  <!-- Input -->
-                  <textarea class="form-control" id="contactMessage" rows="5" placeholder="Votre message" name="message"
-                    required></textarea>
-
-                </div>
-              </div>
-            </div> <!-- / .row -->
-            <div class="row justify-content-center">
-              <div class="col-auto">
-
-                <!-- Submit -->
-                <button type="submit" class="btn btn-primary lift">
-                  Envoyer
-                </button>
-
-              </div>
-            </div> <!-- / .row -->
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="form-group mb-5">
+        <label for="lastname">Nom</label>
+        <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Nom" required>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group mb-5">
+        <label for="firstname">Prénom</label>
+        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Prénom" required>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group mb-5">
+        <label for="email">Adresse email <span style="color:red">*</span></label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group mb-5">
+        <label for="phone">Numéro de téléphone</label>
+        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Téléphone">
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group mb-5">
+        <label for="company">Entreprise</label>
+        <input type="text" class="form-control" name="company" id="company" placeholder="Nom de votre société">
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group mb-5">
+        <label for="companySize">Effectif</label>
+        <select class="form-control" name="companySize" id="companySize">
+          <option value="Moins de 19 collaborateurs">Moins de 49 collaborateurs</option>
+          <option value="de 20 à 49 collaborateurs">de 50 à 99 collaborateurs</option>
+          <option value="de 50 à 99 collaborateurs">de 100 à 499 collaborateurs</option>
+          <option value="Plus de 100 collaborateurs">Plus de 500 collaborateurs</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group mb-7 mb-md-9">
+        <label for="message">Comment pouvons-nous vous aider ? <span style="color:red">*</span></label>
+        <textarea class="form-control" name="message" id="message" rows="5" placeholder="Votre message" required></textarea>
+      </div>
+    </div>
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary lift">Envoyer</button>
+    </div>
+  </div>
           </form>
 
         </div>
@@ -372,7 +324,7 @@
           <span class="text-success">Val d'Europe</span>
         </h2>
         <p class="font-size-lg text-gray-700 mb-6">
-          Nos bureaux sont idéalement situés à Val d'Europe, dans un environnement moderne, facilement accessible.  
+          Nos bureaux sont idéalement situés au Val d'Europe, dans un environnement moderne, facilement accessible.  
           Un emplacement stratégique pour rester proches de nos clients franciliens.
         </p>
       </div>
