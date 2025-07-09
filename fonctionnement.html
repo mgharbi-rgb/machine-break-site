@@ -236,8 +236,38 @@
   AOS.init();
 </script>
 
+  <!-- Scripts Bootstrap, AOS, etc. -->
 <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/theme.min.js"></script>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Active les dropdowns Bootstrap
+    var dropdowns = document.querySelectorAll('.dropdown-toggle');
+
+    dropdowns.forEach(function (dropdown) {
+      dropdown.addEventListener('click', function (e) {
+        e.preventDefault();
+        var parent = this.closest('.dropdown');
+        parent.classList.toggle('show');
+
+        var menu = parent.querySelector('.dropdown-menu');
+        menu.classList.toggle('show');
+      });
+    });
+
+    // Ferme les dropdowns si on clique ailleurs
+    document.addEventListener('click', function (e) {
+      document.querySelectorAll('.dropdown.show').forEach(function (dropdown) {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('show');
+          dropdown.querySelector('.dropdown-menu').classList.remove('show');
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
