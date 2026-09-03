@@ -78,9 +78,25 @@
 
 <body class="pt-10 bg-light">
   
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <!-- TOPBAR : téléphone + espace client (brief §4.1) -->
+<div id="topbar" class="bg-dark py-2 font-size-sm">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center">
+    <div class="text-white-75">
+      <a href="tel:0174810952" class="text-white font-weight-bold js-tel">01 74 81 09 52</a>
+      <!-- TODO:MB — valeur à fournir : horaires d'ouverture à afficher à côté du numéro (ex. « du lundi au vendredi, 8h–18h »). Décommenter :
+      <span class="ml-3 d-none d-sm-inline">· …</span>
+      -->
+    </div>
+    <div>
+      <!-- TODO:MB — valeur à fournir : URL de l'espace client (plateforme de suivi). Décommenter une fois l'URL connue, ne jamais publier un lien mort :
+      <a href="URL_ESPACE_CLIENT" class="text-white" target="_blank" rel="noopener noreferrer">Espace client <i class="fe fe-log-in ml-1"></i></a>
+      -->
+    </div>
+  </div>
+</div>
+<!-- TODO:MB — URL du formulaire de diagnostic (Typeform ou Tally) à fournir : remplacer /contact#contact-form dans tous les liens .cta-diagnostic -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container">
-
 
     <!-- Logo -->
     <a class="navbar-brand" href="/">
@@ -97,12 +113,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
 
-        <!-- Accueil -->
         <li class="nav-item">
           <a class="nav-link" href="/">Accueil</a>
         </li>
 
-        <!-- Solutions (menu déroulant) -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -114,25 +128,25 @@
           </div>
         </li>
 
-        <!-- Fonctionnement -->
         <li class="nav-item">
           <a class="nav-link" href="fonctionnement.html">Fonctionnement</a>
         </li>
 
-
-        <!-- FAQ -->
         <li class="nav-item">
           <a class="nav-link" href="faq.html">F.A.Q.</a>
         </li>
 
-        <!-- Contact -->
         <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="/contact">Contact</a>
         </li>
 
-        <!-- CTA -->
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" href="tel:0174810952">01 74 81 09 52</a>
+        </li>
+
+        <!-- CTA principal -->
         <li class="nav-item ml-lg-3">
-          <a class="btn btn-sm btn-success btn-single-line" href="contact.html">Et si on s’occupait de vos pauses ?</a>
+          <a class="btn btn-sm btn-success text-nowrap cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a>
         </li>
       </ul>
     </div>
@@ -246,13 +260,12 @@
 
           <!-- Heading -->
           <h2 class="font-weight-bold">
-            Envoyez-nous un message !
+            Mon diagnostic pause en 1 minute
           </h2>
 
           <!-- Text -->
           <p class="font-size-lg text-muted mb-7 mb-md-9">
-            Demande d'informations complémentaires ou de rappel ? Vous avez aussi la possibilité de remplir le
-            formulaire ci-après.
+            Trois champs suffisent. Nous vous rappelons pour comprendre votre site et vous dire, concrètement, ce que Machine Break y changerait.
           </p>
 
         </div>
@@ -261,78 +274,99 @@
         <div class="col-12 col-md-12 col-lg-10">
 
           <!-- Form -->
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <input type="hidden" name="form-name" value="contact" />
-  
-  <!-- Champ anti-bot caché -->
-  <p hidden>
-    <label>Ne pas remplir si humain : <input name="bot-field" /></label>
-  </p>
+          <form name="contact" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p hidden>
+              <label>Ne pas remplir si humain : <input name="bot-field"></label>
+            </p>
 
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <div class="form-group mb-5">
-        <label for="lastname">Nom</label>
-        <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Nom" required>
-      </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="form-group mb-5">
-        <label for="firstname">Prénom</label>
-        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Prénom" required>
-      </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="form-group mb-5">
-        <label for="email">Adresse email <span style="color:red">*</span></label>
-        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-      </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="form-group mb-5">
-        <label for="phone">Numéro de téléphone</label>
-        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Téléphone">
-      </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="form-group mb-5">
-        <label for="company">Entreprise</label>
-        <input type="text" class="form-control" name="company" id="company" placeholder="Nom de votre société">
-      </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="form-group mb-5">
-        <label for="companySize">Effectif</label>
-        <select class="form-control" name="companySize" id="companySize">
-          <option value="Moins de 19 collaborateurs">Moins de 49 collaborateurs</option>
-          <option value="de 20 à 49 collaborateurs">de 50 à 99 collaborateurs</option>
-          <option value="de 50 à 99 collaborateurs">de 100 à 499 collaborateurs</option>
-          <option value="Plus de 100 collaborateurs">Plus de 500 collaborateurs</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-12">
-      <div class="form-group mb-7 mb-md-9">
-        <label for="message">Comment pouvons-nous vous aider ? <span style="color:red">*</span></label>
-        <textarea class="form-control" name="message" id="message" rows="5" placeholder="Votre message" required></textarea>
-      </div>
-    </div>
-    <div class="col-12">
-      <div class="form-group mb-6">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" name="consent" id="consent" value="oui" required>
-          <label class="custom-control-label font-size-sm text-muted" for="consent">
-            J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la
-            <a href="/politique-de-confidentialite">politique de confidentialité</a>. <span style="color:red">*</span>
-          </label>
-        </div>
-      </div>
-    </div>
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <div class="form-group mb-5">
+                  <label for="email">Email professionnel <span style="color:red">*</span></label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="prenom@entreprise.fr" required autocomplete="email">
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="form-group mb-5">
+                  <label for="phone">Téléphone <span style="color:red">*</span></label>
+                  <input type="tel" class="form-control" name="phone" id="phone" placeholder="Votre ligne directe" required autocomplete="tel">
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="form-group mb-5">
+                  <label for="companySize">Effectif du site <span style="color:red">*</span></label>
+                  <select class="form-control" name="companySize" id="companySize" required>
+                    <option value="" disabled selected>Choisir…</option>
+                    <option value="Moins de 50 collaborateurs">Moins de 50 collaborateurs</option>
+                    <option value="50 à 99 collaborateurs">50 à 99 collaborateurs</option>
+                    <option value="100 à 499 collaborateurs">100 à 499 collaborateurs</option>
+                    <option value="500 collaborateurs et plus">500 collaborateurs et plus</option>
+                  </select>
+                </div>
+              </div>
 
-    <div class="col-12 text-center">
-      <button type="submit" class="btn btn-primary lift">Envoyer</button>
-    </div>
-  </div>
+              <!-- Seconde étape, facultative -->
+              <div class="col-12 mb-5">
+                <a class="font-size-sm" data-toggle="collapse" href="#contactDetails" role="button" aria-expanded="false" aria-controls="contactDetails">
+                  Ajouter des précisions (facultatif) <i class="fe fe-chevron-down"></i>
+                </a>
+              </div>
+              <div class="col-12 collapse" id="contactDetails">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group mb-5">
+                      <label for="lastname">Nom</label>
+                      <input type="text" class="form-control" name="lastname" id="lastname" autocomplete="family-name">
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group mb-5">
+                      <label for="firstname">Prénom</label>
+                      <input type="text" class="form-control" name="firstname" id="firstname" autocomplete="given-name">
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group mb-5">
+                      <label for="company">Entreprise</label>
+                      <input type="text" class="form-control" name="company" id="company" autocomplete="organization">
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group mb-5">
+                      <label for="city">Commune du site</label>
+                      <input type="text" class="form-control" name="city" id="city" placeholder="ex. Marne-la-Vallée">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group mb-5">
+                      <label for="message">Votre situation actuelle, vos attentes</label>
+                      <textarea class="form-control" name="message" id="message" rows="4" placeholder="Machines en place aujourd'hui, horaires, contraintes du site…"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group mb-6">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="consent" id="consent" value="oui" required>
+                    <label class="custom-control-label font-size-sm text-muted" for="consent">
+                      J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la
+                      <a href="/politique-de-confidentialite">politique de confidentialité</a>. <span style="color:red">*</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 text-center">
+                <button type="submit" class="btn btn-success lift">Lancer mon diagnostic <i class="fe fe-arrow-right ml-2"></i></button>
+                <p class="font-size-sm text-muted mt-4 mb-0">
+                  Un membre de l'équipe vous rappelle pour cadrer votre besoin.
+                  <!-- TODO:MB — valeur à fournir : délai de réponse annoncé (ex. « sous 24 h ouvrées »). Décommenter : <strong>Réponse sous …</strong> -->
+                </p>
+              </div>
+            </div>
           </form>
 
         </div>
@@ -433,7 +467,7 @@
               </a>
             </li>
             <li class="mb-3">
-              <a class='text-reset' href='contact.html'>
+              <a class='text-reset' href="/contact">
                 Contact
               </a>
             </li>

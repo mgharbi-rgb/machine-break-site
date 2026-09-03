@@ -29,32 +29,79 @@
 <body>
 
 <!-- NAVBAR -->
+<!-- TOPBAR : téléphone + espace client (brief §4.1) -->
+<div id="topbar" class="bg-dark py-2 font-size-sm">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center">
+    <div class="text-white-75">
+      <a href="tel:0174810952" class="text-white font-weight-bold js-tel">01 74 81 09 52</a>
+      <!-- TODO:MB — valeur à fournir : horaires d'ouverture à afficher à côté du numéro (ex. « du lundi au vendredi, 8h–18h »). Décommenter :
+      <span class="ml-3 d-none d-sm-inline">· …</span>
+      -->
+    </div>
+    <div>
+      <!-- TODO:MB — valeur à fournir : URL de l'espace client (plateforme de suivi). Décommenter une fois l'URL connue, ne jamais publier un lien mort :
+      <a href="URL_ESPACE_CLIENT" class="text-white" target="_blank" rel="noopener noreferrer">Espace client <i class="fe fe-log-in ml-1"></i></a>
+      -->
+    </div>
+  </div>
+</div>
+<!-- TODO:MB — URL du formulaire de diagnostic (Typeform ou Tally) à fournir : remplacer /contact#contact-form dans tous les liens .cta-diagnostic -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container">
+
+    <!-- Logo -->
     <a class="navbar-brand" href="/">
       <img src="assets/img/logo.webp" class="navbar-brand-img" alt="Logo Machine Break">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Menu -->
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/">Accueil</a>
+        </li>
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown">Solutions</a>
-          <div class="dropdown-menu">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Solutions
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarSolutions">
             <a class="dropdown-item" href="boissons-chaudes-snacks.html">Distributeurs & Suivi intelligent</a>
             <a class="dropdown-item" href="solution-par-secteur.html">Solution par secteur</a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="fonctionnement.html">Fonctionnement</a></li>
-        <li class="nav-item"><a class="nav-link" href="faq.html">F.A.Q.</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="fonctionnement.html">Fonctionnement</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="faq.html">F.A.Q.</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" href="tel:0174810952">01 74 81 09 52</a>
+        </li>
+
+        <!-- CTA principal -->
         <li class="nav-item ml-lg-3">
-          <a class="btn btn-sm btn-success btn-single-line" href="contact.html">Et si on s’occupe de vos pauses ?</a>
+          <a class="btn btn-sm btn-success text-nowrap cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a>
         </li>
       </ul>
     </div>
+
   </div>
 </nav>
 
@@ -212,7 +259,7 @@
       <div class="col-md-10 col-lg-8">
         <h2 class="display-4">Une question sans réponse ? Parlons-en !</h2>
         <p class="lead mb-6">Notre équipe vous accompagne dans la mise en place de votre solution sur mesure.</p>
-        <a href="contact.html" class="btn btn-light btn-lg lift">Nous contacter <i class="fe fe-arrow-right ml-2"></i></a>
+        <a class="btn btn-success btn-lg lift cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i class="fe fe-arrow-right ml-2"></i></a>
       </div>
     </div>
   </div>
@@ -236,7 +283,7 @@
           <li><a href="/">Accueil</a></li>
           <li><a href="boissons-chaudes-snacks.html">Nos offres</a></li>
           <li><a href="fonctionnement.html">Fonctionnement</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div class="col-md-2">

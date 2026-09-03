@@ -86,52 +86,49 @@ Décisions client du 2026-09-03 : suppression d'`admin/`, suppression de `career
 - **`sitemap.xml`** régénéré : 9 URL, sans extension.
 - Fins de ligne normalisées en LF sur `index.html`, `contact.html`, `terms-of-service.html` (étaient en CRLF).
 
-Reste hors périmètre Phase 1 : titres au format `[Besoin] + [Zone]`, canonical, redirections `*.html → /page`, JSON-LD LocalBusiness (Phase 4) ; CTA, en-tête téléphone, formulaire réduit, `/merci` (Phase 2).
+### Phase 2 — conversion (2026-09-03) ✅
+
+- **En-tête unique sur toutes les pages** : bandeau sombre avec le téléphone en `tel:` cliquable (horaires en `TODO:MB`), emplacement « Espace client » commenté avec `TODO:MB` (aucun lien mort), CTA principal en bouton contrasté. Les 6 variantes de nav qui coexistaient sont remplacées par un seul bloc.
+- **CTA unique « Mon diagnostic pause en 1 minute »** (classe `cta-diagnostic`, cible `/contact#contact-form` en attendant l'URL Typeform/Tally) : en-tête, fin de chaque section de l'accueil, bas de chaque page intérieure. Les 12 libellés précédents (« Et si on s'occupait de vos pauses ? », « Et maintenant, on installe ? », « Parlons café… », etc.) ont disparu.
+- **Formulaire de contact** : 3 champs visibles (email, téléphone, effectif), seconde étape repliable (nom, prénom, entreprise, commune, message), consentement RGPD, `action="/merci"`. Les `value` du sélecteur d'effectif sont alignées sur les libellés (bug corrigé). Délai de réponse en `TODO:MB`.
+- **`/merci`** créée (`noindex`, exclue du robots.txt), base du suivi de conversion GA4 en Phase 3.1. Elle n'a volontairement aucun lien entrant.
+- **Bloc « Nos engagements »** sur l'accueil et la page secteurs : 5 lignes qualitatives (fréquence de passage, délai d'intervention, remplissage, pannes résolues au passage, interlocuteur unique) ; les valeurs chiffrées sont en `TODO:MB`, y compris la « demi-journée » de l'ancienne page, non validée.
+- **Section « Plateforme client »** sur l'accueil, au même niveau que l'offre : liste de ce que le client voit (ventes par machine et par site, historique horodaté, délais constatés, alertes et suites, réassorts, consolidation multi-sites), emplacement de captures d'écran en `TODO:MB`.
+- **Reformulations** appliquées (accueil, offre, fonctionnement, secteurs) : « vous suivez vos machines en temps réel », « sans aucune zone d'ombre », « chaque intervention tracée, horodatée, consultable » ; plus de « nous supervisons », « sans aucune intervention de votre part », « maintenance proactive ».
+
+Reste hors périmètre Phases 1-2 : titres au format `[Besoin] + [Zone]`, canonical, redirections `*.html → /page`, JSON-LD LocalBusiness (Phase 4) ; CTA, en-tête téléphone, formulaire réduit, `/merci` (Phase 2).
 
 ## F. Registre `TODO:MB`
 
-| Fichier | Ligne | Valeur attendue |
-|---|---|---|
-| `index.html` | 520 | valeur à fournir : bloc statistiques retiré (satisfaction, support 24/7 non sourcés) ; à réintroduire uniquement avec des valeurs validées par le client |
-| `mentions-legales.html` | 76 | valeur à fournir : Forme juridique : … |
-| `mentions-legales.html` | 77 | valeur à fournir : Capital social : … |
-| `mentions-legales.html` | 79 | valeur à fournir : SIREN / SIRET : … |
-| `mentions-legales.html` | 80 | valeur à fournir : RCS : … |
-| `mentions-legales.html` | 81 | valeur à fournir : Numéro de TVA intracommunautaire : … |
-| `mentions-legales.html` | 86 | valeur à fournir : Directeur de la publication |
-| `mentions-legales.html` | 96 | hébergeur à confirmer par le client (§8 du brief) |
-| `mentions-legales.html` | 115 | valeur à fournir : date de mise à jour |
-| `politique-de-confidentialite.html` | 104 | valeur à fournir : durée de conservation (recommandation CNIL prospects : 3 ans après le dernier contact) |
-| `politique-de-confidentialite.html` | 124 | valeur à fournir : date de mise à jour |
-| `terms-of-service.html` | 125 | le corps de cette page est un texte de gabarit (Landkit) non adapté : CGU réelles à fournir ou page à rediriger vers /mentions-legales |
-
-12 emplacements en attente (mis à jour 2026-09-03, fin de Phase 1). Les emplacements sont **masqués en commentaire HTML** : rien de vide n'est visible en production.
+Voir la section **G.7**, régénérée automatiquement par `tools/audit_site.py` (critère d'acceptation n° 12).
 
 ---
 
 ## G. Relevé automatique (`tools/audit_site.py`)
 
-Fichiers HTML : 9 · Fichiers total (hors .git, .netlify, hts-cache, node_modules) : 116
+Fichiers HTML : 10 · Fichiers total (hors .git, .netlify, hts-cache, node_modules) : 117
 
 ## 1. Inventaire des pages HTML
 
 | Fichier | `<title>` | `meta description` | Dans la nav | Liens entrants | H1 |
 |---|---|---|---|---|---|
-| `boissons-chaudes-snacks.html` | Distributeurs automatiques modernes et intelligents | Machine Break | Distributeurs de boissons chaudes, froides et snacks pour entreprises en Île-de-France. Machines connectées, réassort et maintenance assurés par Machine Break. | oui | contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 2 ⚠ |
-| `contact.html` | Contactez Machine Break | Installation de distributeurs automatiques | Contactez Machine Break à Bailly-Romainvilliers (77) pour installer un distributeur automatique dans vos locaux en Île-de-France, par téléphone ou par email. | oui | boissons-chaudes-snacks.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
-| `faq.html` | FAQ - Vos questions sur nos distributeurs automatiques | Machine Break | Vos questions sur l'installation, le coût, l'entretien et le suivi des distributeurs automatiques Machine Break en Île-de-France. Les réponses de l'équipe. | oui | boissons-chaudes-snacks.html, contact.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
-| `fonctionnement.html` | Fonctionnement de nos distributeurs automatiques | Machine Break | Le service Machine Break en Île-de-France : installation, approvisionnement, maintenance et suivi télémétrique de vos distributeurs, sans charge de gestion. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
-| `index.html` | Distributeurs automatiques connectés pour entreprises | Machine Break | Machine Break installe et gère vos distributeurs automatiques connectés (café, boissons, snacks) en Île-de-France : réassort, entretien et suivi inclus. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 3 ⚠ |
-| `mentions-legales.html` | Mentions légales | Machine Break | Mentions légales du site machinebreak.com : éditeur Machine Break à Bailly-Romainvilliers (77), directeur de publication, hébergeur et propriété intellectuelle. | **non** | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
-| `politique-de-confidentialite.html` | Politique de confidentialité | Machine Break | Politique de confidentialité de Machine Break : données collectées via le formulaire de contact, finalités, durée de conservation, droits RGPD et contact. | **non** | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, solution-par-secteur.html, terms-of-service.html | 1 |
-| `solution-par-secteur.html` | Solutions distributeurs automatiques par secteur | Machine Break | Distributeurs automatiques adaptés à votre secteur en Île-de-France : bureaux et PME, résidences et hôtels, sites industriels et logistiques. Sur mesure. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, terms-of-service.html | 1 |
-| `terms-of-service.html` | Conditions générales d'utilisation du site | Machine Break | Conditions générales d'utilisation du site machinebreak.com, opérateur de distribution automatique en Île-de-France, basé à Bailly-Romainvilliers (77). | **non** | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html | 1 |
+| `boissons-chaudes-snacks.html` | Distributeurs automatiques modernes et intelligents | Machine Break | Distributeurs de boissons chaudes, froides et snacks pour entreprises en Île-de-France. Machines connectées, réassort et maintenance assurés par Machine Break. | oui | contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, merci.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 2 ⚠ |
+| `contact.html` | Contactez Machine Break | Installation de distributeurs automatiques | Contactez Machine Break à Bailly-Romainvilliers (77) pour installer un distributeur automatique dans vos locaux en Île-de-France, par téléphone ou par email. | oui | boissons-chaudes-snacks.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, merci.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `faq.html` | FAQ - Vos questions sur nos distributeurs automatiques | Machine Break | Vos questions sur l'installation, le coût, l'entretien et le suivi des distributeurs automatiques Machine Break en Île-de-France. Les réponses de l'équipe. | oui | boissons-chaudes-snacks.html, contact.html, fonctionnement.html, index.html, mentions-legales.html, merci.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `fonctionnement.html` | Fonctionnement de nos distributeurs automatiques | Machine Break | Le service Machine Break en Île-de-France : installation, approvisionnement, maintenance et suivi télémétrique de vos distributeurs, sans charge de gestion. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, index.html, mentions-legales.html, merci.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `index.html` | Distributeurs automatiques connectés pour entreprises | Machine Break | Machine Break installe et gère vos distributeurs automatiques connectés (café, boissons, snacks) en Île-de-France : réassort, entretien et suivi inclus. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, mentions-legales.html, merci.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 2 ⚠ |
+| `mentions-legales.html` | Mentions légales | Machine Break | Mentions légales du site machinebreak.com : éditeur Machine Break à Bailly-Romainvilliers (77), directeur de publication, hébergeur et propriété intellectuelle. | **non** | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, merci.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `merci.html` | Merci, votre demande est bien reçue | Machine Break | Votre demande de diagnostic pause a bien été transmise à l'équipe Machine Break (Île-de-France). Nous vous rappelons pour cadrer votre besoin. | **non** | **aucun** | 1 |
+| `politique-de-confidentialite.html` | Politique de confidentialité | Machine Break | Politique de confidentialité de Machine Break : données collectées via le formulaire de contact, finalités, durée de conservation, droits RGPD et contact. | **non** | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, merci.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `solution-par-secteur.html` | Solutions distributeurs automatiques par secteur | Machine Break | Distributeurs automatiques adaptés à votre secteur en Île-de-France : bureaux et PME, résidences et hôtels, sites industriels et logistiques. Sur mesure. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, merci.html, politique-de-confidentialite.html, terms-of-service.html | 1 |
+| `terms-of-service.html` | Conditions générales d'utilisation du site | Machine Break | Conditions générales d'utilisation du site machinebreak.com, opérateur de distribution automatique en Île-de-France, basé à Bailly-Romainvilliers (77). | **non** | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, merci.html, politique-de-confidentialite.html, solution-par-secteur.html | 1 |
 
 ## 2. Pages orphelines (hors navigation principale)
 
-- `mentions-legales.html` — atteignable via : boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html
-- `politique-de-confidentialite.html` — atteignable via : boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, solution-par-secteur.html, terms-of-service.html
-- `terms-of-service.html` — atteignable via : boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html
+- `mentions-legales.html` — atteignable via : boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, merci.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html
+- `merci.html` — **aucun lien entrant**
+- `politique-de-confidentialite.html` — atteignable via : boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, merci.html, solution-par-secteur.html, terms-of-service.html
+- `terms-of-service.html` — atteignable via : boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, merci.html, politique-de-confidentialite.html, solution-par-secteur.html
 
 ## 3. Coordonnées (téléphones, adresses, emails)
 
@@ -139,25 +136,26 @@ Fichiers HTML : 9 · Fichiers total (hors .git, .netlify, hts-cache, node_module
 
 | Valeur | Pages (occurrences) |
 |---|---|
-| `01 74 81 09 52` | `boissons-chaudes-snacks.html` (2), `contact.html` (4), `faq.html` (2), `fonctionnement.html` (2), `index.html` (2), `mentions-legales.html` (6), `politique-de-confidentialite.html` (4), `solution-par-secteur.html` (2), `terms-of-service.html` (4) |
+| `01 74 81 09 52` | `boissons-chaudes-snacks.html` (6), `contact.html` (8), `faq.html` (6), `fonctionnement.html` (6), `index.html` (6), `mentions-legales.html` (10), `merci.html` (8), `politique-de-confidentialite.html` (8), `solution-par-secteur.html` (6), `terms-of-service.html` (8) |
 
 ### Adresses postales (voie)
 
 | Valeur | Pages (occurrences) |
 |---|---|
-| `28 Avenue Christian Doppler` | `boissons-chaudes-snacks.html` (1), `contact.html` (1), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `mentions-legales.html` (2), `politique-de-confidentialite.html` (2), `solution-par-secteur.html` (1), `terms-of-service.html` (1) |
+| `28 Avenue Christian Doppler` | `boissons-chaudes-snacks.html` (1), `contact.html` (1), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `mentions-legales.html` (2), `merci.html` (1), `politique-de-confidentialite.html` (2), `solution-par-secteur.html` (1), `terms-of-service.html` (1) |
 
 ### Codes postaux + ville
 
 | Valeur | Pages (occurrences) |
 |---|---|
-| `77700 Bailly-Romainvilliers` | `boissons-chaudes-snacks.html` (1), `contact.html` (1), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `mentions-legales.html` (2), `politique-de-confidentialite.html` (2), `solution-par-secteur.html` (1), `terms-of-service.html` (1) |
+| `77700 Bailly-Romainvilliers` | `boissons-chaudes-snacks.html` (1), `contact.html` (1), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `mentions-legales.html` (2), `merci.html` (1), `politique-de-confidentialite.html` (2), `solution-par-secteur.html` (1), `terms-of-service.html` (1) |
 
 ### Emails
 
 | Valeur | Pages (occurrences) |
 |---|---|
-| `contact@machinebreak.com` | `boissons-chaudes-snacks.html` (2), `contact.html` (4), `faq.html` (2), `fonctionnement.html` (2), `index.html` (2), `mentions-legales.html` (6), `politique-de-confidentialite.html` (6), `solution-par-secteur.html` (2), `terms-of-service.html` (4) |
+| `contact@machinebreak.com` | `boissons-chaudes-snacks.html` (2), `contact.html` (4), `faq.html` (2), `fonctionnement.html` (2), `index.html` (2), `mentions-legales.html` (6), `merci.html` (2), `politique-de-confidentialite.html` (6), `solution-par-secteur.html` (2), `terms-of-service.html` (4) |
+| `prenom@entreprise.fr` | `contact.html` (1) |
 
 ## 4. `meta description` dupliquées
 
@@ -177,6 +175,7 @@ Aucun.
 | `fonctionnement.html` | — | https://machinebreak.com/fonctionnement | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
 | `index.html` | — | https://machinebreak.com/ | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
 | `mentions-legales.html` | — | https://machinebreak.com/mentions-legales | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
+| `merci.html` | — | https://machinebreak.com/merci | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
 | `politique-de-confidentialite.html` | — | https://machinebreak.com/politique-de-confidentialite | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
 | `solution-par-secteur.html` | — | https://machinebreak.com/solution-par-secteur | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
 | `terms-of-service.html` | — | https://machinebreak.com/terms-of-service | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
@@ -207,6 +206,34 @@ Aucune.
 - `.htaccess` : **absent**
 - `404.html` : **absent**
 - JSON-LD : `index.html` (1)
+
+## 7. Registre `TODO:MB` (valeurs à fournir par le client)
+
+| Valeur attendue | Emplacements |
+|---|---|
+| valeur à fournir : horaires d'ouverture à afficher à côté du numéro (ex. « du lundi au vendredi, 8h–18h »). | `boissons-chaudes-snacks.html`:88, `contact.html`:86, `faq.html`:37, `fonctionnement.html`:38, `index.html`:103, `mentions-legales.html`:37, `merci.html`:38, `politique-de-confidentialite.html`:37, `solution-par-secteur.html`:36, `terms-of-service.html`:57 |
+| valeur à fournir : URL de l'espace client (plateforme de suivi). | `boissons-chaudes-snacks.html`:93, `contact.html`:91, `faq.html`:42, `fonctionnement.html`:43, `index.html`:108, `mentions-legales.html`:42, `merci.html`:43, `politique-de-confidentialite.html`:42, `solution-par-secteur.html`:41, `terms-of-service.html`:62 |
+| URL du formulaire de diagnostic (Typeform ou Tally) à fournir : remplacer /contact#contact-form dans tous les liens .cta-diagnostic | `boissons-chaudes-snacks.html`:99, `contact.html`:97, `faq.html`:48, `fonctionnement.html`:49, `index.html`:114, `mentions-legales.html`:48, `merci.html`:49, `politique-de-confidentialite.html`:48, `solution-par-secteur.html`:47, `terms-of-service.html`:68 |
+| valeur à fournir : délai de réponse annoncé (ex. « sous 24 h ouvrées »). | `contact.html`:366 |
+| valeur à fournir : captures d'écran anonymisées de la plateforme client. | `index.html`:559 |
+| valeur à fournir : fréquence de passage garantie (ex. « chaque semaine »). | `index.html`:604, `solution-par-secteur.html`:256 |
+| valeur à fournir : délai d'intervention garanti (base ancienne page : technicien envoyé dans la demi-journée — à confirmer). | `index.html`:612, `solution-par-secteur.html`:264 |
+| valeur à fournir : taux de remplissage à chaque visite (en %). | `index.html`:620, `solution-par-secteur.html`:272 |
+| valeur à fournir : part des pannes résolues pendant le passage (en %). | `index.html`:628, `solution-par-secteur.html`:280 |
+| valeur à fournir : bloc statistiques retiré (satisfaction, support 24/7 non sourcés) ; à réintroduire uniquement avec des valeurs validées p | `index.html`:677 |
+| valeur à fournir : Forme juridique : … | `mentions-legales.html`:123 |
+| valeur à fournir : Capital social : … | `mentions-legales.html`:124 |
+| valeur à fournir : SIREN / SIRET : … | `mentions-legales.html`:126 |
+| valeur à fournir : RCS : … | `mentions-legales.html`:127 |
+| valeur à fournir : Numéro de TVA intracommunautaire : … | `mentions-legales.html`:128 |
+| valeur à fournir : Directeur de la publication | `mentions-legales.html`:133 |
+| hébergeur à confirmer par le client (§8 du brief) | `mentions-legales.html`:143 |
+| valeur à fournir : date de mise à jour | `mentions-legales.html`:162, `politique-de-confidentialite.html`:171 |
+| valeur à fournir : délai de réponse annoncé (ex. « sous 24 h ouvrées ») | `merci.html`:118 |
+| valeur à fournir : durée de conservation (recommandation CNIL prospects : 3 ans après le dernier contact) | `politique-de-confidentialite.html`:151 |
+| le corps de cette page est un texte de gabarit (Landkit) non adapté : CGU réelles à fournir ou page à rediriger vers /mentions-legales | `terms-of-service.html`:140 |
+
+21 valeurs distinctes attendues, 53 emplacements au total. Tous sont masqués dans un commentaire HTML : rien de vide n'est visible en production.
 
 ### Autres fichiers à la racine
 

@@ -49,7 +49,24 @@
 
   <!-- NAVBAR
     ================================================== -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <!-- TOPBAR : téléphone + espace client (brief §4.1) -->
+<div id="topbar" class="bg-dark py-2 font-size-sm">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center">
+    <div class="text-white-75">
+      <a href="tel:0174810952" class="text-white font-weight-bold js-tel">01 74 81 09 52</a>
+      <!-- TODO:MB — valeur à fournir : horaires d'ouverture à afficher à côté du numéro (ex. « du lundi au vendredi, 8h–18h »). Décommenter :
+      <span class="ml-3 d-none d-sm-inline">· …</span>
+      -->
+    </div>
+    <div>
+      <!-- TODO:MB — valeur à fournir : URL de l'espace client (plateforme de suivi). Décommenter une fois l'URL connue, ne jamais publier un lien mort :
+      <a href="URL_ESPACE_CLIENT" class="text-white" target="_blank" rel="noopener noreferrer">Espace client <i class="fe fe-log-in ml-1"></i></a>
+      -->
+    </div>
+  </div>
+</div>
+<!-- TODO:MB — URL du formulaire de diagnostic (Typeform ou Tally) à fournir : remplacer /contact#contact-form dans tous les liens .cta-diagnostic -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container">
 
     <!-- Logo -->
@@ -67,12 +84,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
 
-        <!-- Accueil -->
         <li class="nav-item">
           <a class="nav-link" href="/">Accueil</a>
         </li>
 
-        <!-- Solutions (menu déroulant) -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -84,25 +99,25 @@
           </div>
         </li>
 
-        <!-- Fonctionnement -->
         <li class="nav-item">
           <a class="nav-link" href="fonctionnement.html">Fonctionnement</a>
         </li>
 
-
-        <!-- FAQ -->
         <li class="nav-item">
           <a class="nav-link" href="faq.html">F.A.Q.</a>
         </li>
 
-        <!-- Contact -->
         <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="/contact">Contact</a>
         </li>
 
-        <!-- CTA -->
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" href="tel:0174810952">01 74 81 09 52</a>
+        </li>
+
+        <!-- CTA principal -->
         <li class="nav-item ml-lg-3">
-         <a class="btn btn-sm btn-success text-nowrap" href="contact.html">Et si on s’occupait de vos pauses ?</a>
+          <a class="btn btn-sm btn-success text-nowrap cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a>
         </li>
       </ul>
     </div>
@@ -369,6 +384,20 @@
     </div>
   </div>
 
+<!-- CTA DIAGNOSTIC
+    ================================================== -->
+  <section class="py-8 py-md-10 bg-dark text-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+          <h2 class="text-white mb-3">Et vos pauses, elles ressemblent à quoi aujourd'hui ?</h2>
+          <p class="font-size-lg text-muted mb-6">Trois questions, une minute : nous vous disons ce que Machine Break changerait sur votre site.</p>
+          <a class="btn btn-success lift cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i class="fe fe-arrow-right ml-2"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER
     ================================================== -->
   <footer class="py-8 py-md-11 bg-dark">
@@ -427,7 +456,7 @@
               </a>
             </li>
             <li class="mb-3">
-              <a class='text-reset' href='contact.html'>
+              <a class='text-reset' href="/contact">
                 Contact
               </a>
             </li>

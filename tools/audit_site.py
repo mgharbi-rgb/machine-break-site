@@ -348,6 +348,29 @@ ld = {f: pg.jsonld for f, pg in pages.items() if pg.jsonld}
 w(f"- JSON-LD : " + (", ".join(f"`{f}` ({n})" for f, n in sorted(ld.items())) if ld else "**absent sur toutes les pages**"))
 w("")
 
+# ---------------------------------------------------------------- TODO:MB (critère d'acceptation n° 12)
+w("## 7. Registre `TODO:MB` (valeurs à fournir par le client)\n")
+todos = []
+for f in html_files:
+    for i, line in enumerate(pages[f].raw.splitlines(), 1):
+        if "TODO:MB" in line:
+            txt = re.sub(r"\s+", " ", line).strip()
+            txt = re.sub(r"^.*?TODO:MB\s*[—-]*\s*", "", txt)
+            txt = re.sub(r"\s*(?:-->|Décommenter.*)$", "", txt).strip()
+            todos.append((f, i, txt[:140]))
+if todos:
+    grouped = {}
+    for f, i, txt in todos:
+        grouped.setdefault(txt, []).append(f"`{f}`:{i}")
+    w("| Valeur attendue | Emplacements |")
+    w("|---|---|")
+    for txt, locs in grouped.items():
+        w(f"| {txt} | {', '.join(locs)} |")
+    w(f"\n{len(grouped)} valeurs distinctes attendues, {len(todos)} emplacements au total. Tous sont masqués dans un commentaire HTML : rien de vide n'est visible en production.")
+else:
+    w("Aucun.")
+w("")
+
 # Fichiers non-HTML notables
 others = [x for x in all_files if not x.endswith((".html", ".htm")) and not x.startswith("assets/")]
 if others:
