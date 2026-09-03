@@ -96,7 +96,15 @@ Décisions client du 2026-09-03 : suppression d'`admin/`, suppression de `career
 - **Section « Plateforme client »** sur l'accueil, au même niveau que l'offre : liste de ce que le client voit (ventes par machine et par site, historique horodaté, délais constatés, alertes et suites, réassorts, consolidation multi-sites), emplacement de captures d'écran en `TODO:MB`.
 - **Reformulations** appliquées (accueil, offre, fonctionnement, secteurs) : « vous suivez vos machines en temps réel », « sans aucune zone d'ombre », « chaque intervention tracée, horodatée, consultable » ; plus de « nous supervisons », « sans aucune intervention de votre part », « maintenance proactive ».
 
-Reste hors périmètre Phases 1-2 : titres au format `[Besoin] + [Zone]`, canonical, redirections `*.html → /page`, JSON-LD LocalBusiness (Phase 4) ; CTA, en-tête téléphone, formulaire réduit, `/merci` (Phase 2).
+### Phase 3.1 — mesure (2026-09-03) ✅ (identifiant GA4 en attente)
+
+- **`assets/js/mb-consent.js`** (sans dépendance) : bandeau cookies Accepter / Refuser, choix conservé 6 mois en `localStorage`, lien « Gérer les cookies » en pied de page pour rouvrir. **Rien n'est chargé avant le consentement.**
+- **GA4** : configuré dans le script, identifiant en `TODO:MB` (`CONFIG.ga4Id`). **Google Ads** (`AW-10786145165`) conservé et généralisé aux 10 pages, chargé uniquement après accord (avant : 3 pages, sans consentement).
+- **Événements de conversion** : `generate_lead` + conversion Ads « Form rempli » sur `/merci` (auparavant la conversion Ads se déclenchait à chaque affichage de `/contact`, donc fausse), `tel_click` sur tout lien `tel:`, `cta_diagnostic_click` sur `.cta-diagnostic`.
+- **Search Console** : emplacement de la balise `google-site-verification` en `TODO:MB` dans le `<head>` de l'accueil (alternative : vérification DNS via Cloudflare).
+- Les trois snippets Google inline (dont un helper `gtagSendEvent` jamais appelé) ont été retirés.
+
+Reste hors périmètre Phases 1-3.1 : titres au format `[Besoin] + [Zone]`, canonical, redirections `*.html → /page`, JSON-LD LocalBusiness (Phase 4) ; CTA, en-tête téléphone, formulaire réduit, `/merci` (Phase 2).
 
 ## F. Registre `TODO:MB`
 
@@ -106,7 +114,7 @@ Voir la section **G.7**, régénérée automatiquement par `tools/audit_site.py`
 
 ## G. Relevé automatique (`tools/audit_site.py`)
 
-Fichiers HTML : 10 · Fichiers total (hors .git, .netlify, hts-cache, node_modules) : 117
+Fichiers HTML : 10 · Fichiers total (hors .git, .netlify, hts-cache, node_modules) : 118
 
 ## 1. Inventaire des pages HTML
 
@@ -211,16 +219,17 @@ Aucune.
 
 | Valeur attendue | Emplacements |
 |---|---|
-| valeur à fournir : horaires d'ouverture à afficher à côté du numéro (ex. « du lundi au vendredi, 8h–18h »). | `boissons-chaudes-snacks.html`:88, `contact.html`:86, `faq.html`:37, `fonctionnement.html`:38, `index.html`:103, `mentions-legales.html`:37, `merci.html`:38, `politique-de-confidentialite.html`:37, `solution-par-secteur.html`:36, `terms-of-service.html`:57 |
-| valeur à fournir : URL de l'espace client (plateforme de suivi). | `boissons-chaudes-snacks.html`:93, `contact.html`:91, `faq.html`:42, `fonctionnement.html`:43, `index.html`:108, `mentions-legales.html`:42, `merci.html`:43, `politique-de-confidentialite.html`:42, `solution-par-secteur.html`:41, `terms-of-service.html`:62 |
-| URL du formulaire de diagnostic (Typeform ou Tally) à fournir : remplacer /contact#contact-form dans tous les liens .cta-diagnostic | `boissons-chaudes-snacks.html`:99, `contact.html`:97, `faq.html`:48, `fonctionnement.html`:49, `index.html`:114, `mentions-legales.html`:48, `merci.html`:49, `politique-de-confidentialite.html`:48, `solution-par-secteur.html`:47, `terms-of-service.html`:68 |
-| valeur à fournir : délai de réponse annoncé (ex. « sous 24 h ouvrées »). | `contact.html`:366 |
-| valeur à fournir : captures d'écran anonymisées de la plateforme client. | `index.html`:559 |
-| valeur à fournir : fréquence de passage garantie (ex. « chaque semaine »). | `index.html`:604, `solution-par-secteur.html`:256 |
-| valeur à fournir : délai d'intervention garanti (base ancienne page : technicien envoyé dans la demi-journée — à confirmer). | `index.html`:612, `solution-par-secteur.html`:264 |
-| valeur à fournir : taux de remplissage à chaque visite (en %). | `index.html`:620, `solution-par-secteur.html`:272 |
-| valeur à fournir : part des pannes résolues pendant le passage (en %). | `index.html`:628, `solution-par-secteur.html`:280 |
-| valeur à fournir : bloc statistiques retiré (satisfaction, support 24/7 non sourcés) ; à réintroduire uniquement avec des valeurs validées p | `index.html`:677 |
+| valeur à fournir : horaires d'ouverture à afficher à côté du numéro (ex. « du lundi au vendredi, 8h–18h »). | `boissons-chaudes-snacks.html`:60, `contact.html`:77, `faq.html`:37, `fonctionnement.html`:38, `index.html`:76, `mentions-legales.html`:37, `merci.html`:38, `politique-de-confidentialite.html`:37, `solution-par-secteur.html`:36, `terms-of-service.html`:57 |
+| valeur à fournir : URL de l'espace client (plateforme de suivi). | `boissons-chaudes-snacks.html`:65, `contact.html`:82, `faq.html`:42, `fonctionnement.html`:43, `index.html`:81, `mentions-legales.html`:42, `merci.html`:43, `politique-de-confidentialite.html`:42, `solution-par-secteur.html`:41, `terms-of-service.html`:62 |
+| URL du formulaire de diagnostic (Typeform ou Tally) à fournir : remplacer /contact#contact-form dans tous les liens .cta-diagnostic | `boissons-chaudes-snacks.html`:71, `contact.html`:88, `faq.html`:48, `fonctionnement.html`:49, `index.html`:87, `mentions-legales.html`:48, `merci.html`:49, `politique-de-confidentialite.html`:48, `solution-par-secteur.html`:47, `terms-of-service.html`:68 |
+| valeur à fournir : délai de réponse annoncé (ex. « sous 24 h ouvrées »). | `contact.html`:357 |
+| Google Search Console : balise de vérification à fournir. | `index.html`:27 |
+| valeur à fournir : captures d'écran anonymisées de la plateforme client. | `index.html`:532 |
+| valeur à fournir : fréquence de passage garantie (ex. « chaque semaine »). | `index.html`:577, `solution-par-secteur.html`:256 |
+| valeur à fournir : délai d'intervention garanti (base ancienne page : technicien envoyé dans la demi-journée — à confirmer). | `index.html`:585, `solution-par-secteur.html`:264 |
+| valeur à fournir : taux de remplissage à chaque visite (en %). | `index.html`:593, `solution-par-secteur.html`:272 |
+| valeur à fournir : part des pannes résolues pendant le passage (en %). | `index.html`:601, `solution-par-secteur.html`:280 |
+| valeur à fournir : bloc statistiques retiré (satisfaction, support 24/7 non sourcés) ; à réintroduire uniquement avec des valeurs validées p | `index.html`:650 |
 | valeur à fournir : Forme juridique : … | `mentions-legales.html`:123 |
 | valeur à fournir : Capital social : … | `mentions-legales.html`:124 |
 | valeur à fournir : SIREN / SIRET : … | `mentions-legales.html`:126 |
@@ -233,7 +242,7 @@ Aucune.
 | valeur à fournir : durée de conservation (recommandation CNIL prospects : 3 ans après le dernier contact) | `politique-de-confidentialite.html`:151 |
 | le corps de cette page est un texte de gabarit (Landkit) non adapté : CGU réelles à fournir ou page à rediriger vers /mentions-legales | `terms-of-service.html`:140 |
 
-21 valeurs distinctes attendues, 53 emplacements au total. Tous sont masqués dans un commentaire HTML : rien de vide n'est visible en production.
+22 valeurs distinctes attendues, 54 emplacements au total. Tous sont masqués dans un commentaire HTML : rien de vide n'est visible en production.
 
 ### Autres fichiers à la racine
 

@@ -24,6 +24,7 @@
 
   <title>Distributeurs automatiques connectés pour entreprises | Machine Break</title>
   <meta name="description" content="Machine Break installe et gère vos distributeurs automatiques connectés (café, boissons, snacks) en Île-de-France : réassort, entretien et suivi inclus.">
+  <!-- TODO:MB — Google Search Console : balise de vérification à fournir. Décommenter : <meta name="google-site-verification" content="…"> (alternative : vérification par DNS chez Cloudflare) -->
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
@@ -59,35 +60,7 @@
 }
 </script>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10786145165">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'AW-10786145165');
-</script>
-
-  <!-- Google tag (gtag.js) event - delayed navigation helper -->
-<script>
-  // Helper function to delay opening a URL until a gtag event is sent.
-  // Call it in response to an action that should navigate to a URL.
-  function gtagSendEvent(url) {
-    var callback = function () {
-      if (typeof url === 'string') {
-        window.location = url;
-      }
-    };
-    gtag('event', 'ads_conversion_Envoi_de_formulaire_pou_1', {
-      'event_callback': callback,
-      'event_timeout': 2000,
-      // <event_parameters>
-    });
-    return false;
-  }
-</script>
 
 
 
@@ -768,6 +741,7 @@ Tous les produits que nous intégrons dans nos distributeurs sont choisis avec a
           <li class="mb-2"><a href="terms-of-service.html" class="text-reset">Conditions générales</a></li>
           <li class="mb-2"><a href="/mentions-legales" class="text-reset">Mentions légales</a></li>
           <li class="mb-2"><a href="/politique-de-confidentialite" class="text-reset">Politique de confidentialité</a></li>
+          <li class="mb-2"><a href="#" class="text-reset js-cookie-settings">Gérer les cookies</a></li>
         </ul>
       </div>
 
@@ -863,6 +837,8 @@ Tous les produits que nous intégrons dans nos distributeurs sont choisis avec a
   });
 </script>
 
+  <!-- Consentement cookies + mesure (GA4 / Google Ads), chargés uniquement après accord -->
+  <script src="assets/js/mb-consent.js" defer></script>
 </body>
 
 </html>

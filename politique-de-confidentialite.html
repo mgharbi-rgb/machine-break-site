@@ -160,7 +160,7 @@
 
         <h2 class="h3 mt-6 mb-3">Cookies</h2>
         <p>
-          Le site n'utilise aucun cookie de mesure d'audience ou de publicité sans votre accord préalable. Les cookies strictement nécessaires au fonctionnement du site sont exemptés de consentement. Vous pouvez modifier votre choix à tout moment via le bandeau cookies.
+          Le site n'utilise aucun cookie de mesure d'audience ou de publicité sans votre accord préalable. Avec votre accord, deux services sont activés : Google Analytics 4 (mesure d'audience) et Google Ads (mesure de l'efficacité de nos campagnes). Les cookies strictement nécessaires au fonctionnement du site sont exemptés de consentement. Votre choix est conservé six mois dans votre navigateur ; vous pouvez le modifier à tout moment via le lien « Gérer les cookies » en pied de page.
         </p>
 
         <h2 class="h3 mt-6 mb-3">Sécurité</h2>
@@ -218,6 +218,7 @@
           <li><a href="terms-of-service.html">Conditions d’utilisation</a></li>
           <li><a href="/mentions-legales">Mentions légales</a></li>
           <li><a href="/politique-de-confidentialite">Politique de confidentialité</a></li>
+          <li><a href="#" class="js-cookie-settings">Gérer les cookies</a></li>
         </ul>
       </div>
       <div class="col-md-3">
@@ -239,5 +240,7 @@
 <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/theme.min.js"></script>
 
+  <!-- Consentement cookies + mesure (GA4 / Google Ads), chargés uniquement après accord -->
+  <script src="assets/js/mb-consent.js" defer></script>
 </body>
 </html>
