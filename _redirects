@@ -4,26 +4,27 @@
 
 # Ancienne génération du site (contenu extrait dans CONTENU-RECUPERE.md)
 /location-distributeurs-automatiques-boissons                 /fonctionnement            301
-/location-distributeurs-automatiques-boissons.html            /fonctionnement            301
+/location-distributeurs-automatiques-boissons.html            /fonctionnement            301!
 /entreprise-location-distributeur-automatique-boisson         /boissons-chaudes-snacks   301
-/entreprise-location-distributeur-automatique-boisson.html    /boissons-chaudes-snacks   301
+/entreprise-location-distributeur-automatique-boisson.html    /boissons-chaudes-snacks   301!
 
 # Pages supprimées (décision client 2026-09-03)
 /careers                                                      /contact                   301
-/careers.html                                                 /contact                   301
+/careers.html                                                 /contact                   301!
 /career-single                                                /contact                   301
-/career-single.html                                           /contact                   301
+/career-single.html                                           /contact                   301!
 /avantages                                                    /fonctionnement            301
-/avantages.html                                               /fonctionnement            301
+/avantages.html                                               /fonctionnement            301!
 /admin/*                                                      /                          301
 
-# URL propres : la version .html de chaque page redirige vers l'URL canonique (Phase 4)
-/boissons-chaudes-snacks.html                                 /boissons-chaudes-snacks   301
-/solution-par-secteur.html                                    /solution-par-secteur      301
-/fonctionnement.html                                          /fonctionnement            301
-/faq.html                                                     /faq                       301
-/contact.html                                                 /contact                   301
-/terms-of-service.html                                        /terms-of-service          301
-/mentions-legales.html                                        /mentions-legales          301
+# URL propres : la version .html de chaque page redirige vers l'URL canonique (Phase 4).
+# Le « ! » force la règle bien que le fichier existe (sinon Netlify sert le fichier).
+/boissons-chaudes-snacks.html                                 /boissons-chaudes-snacks   301!
+/solution-par-secteur.html                                    /solution-par-secteur      301!
+/fonctionnement.html                                          /fonctionnement            301!
+/faq.html                                                     /faq                       301!
+/contact.html                                                 /contact                   301!
+/terms-of-service.html                                        /terms-of-service          301!
+/mentions-legales.html                                        /mentions-legales          301!
 /politique-de-confidentialite.html                            /politique-de-confidentialite301
-/merci.html                                                   /merci                     301
+/merci.html                                                   /merci                     301!
