@@ -178,16 +178,25 @@ def strip_tags(s):
     s = re.sub(r"<style.*?</style>", " ", s, flags=re.S | re.I)
     return s
 
-def occurrences(regex, text):
+def occurrences(regex, text, normalize=None):
     found = defaultdict(int)
     for m in regex.finditer(text):
-        found[re.sub(r"\s+", " ", m.group(0)).strip(" ,.")] += 1
+        v = re.sub(r"\s+", " ", m.group(0)).strip(" ,.")
+        if normalize:
+            v = normalize(v)
+        found[v] += 1
     return found
+
+def norm_phone(v):
+    d = re.sub(r"\D", "", v)
+    if d.startswith("33"):
+        d = "0" + d[2:]
+    return " ".join(d[i:i + 2] for i in range(0, len(d), 2))
 
 phones, emails, addrs, cps = {}, {}, {}, {}
 for f, pg in pages.items():
     txt = pg.raw  # inclure tel: et JSON-LD volontairement
-    phones[f] = occurrences(PHONE_RE, txt)
+    phones[f] = occurrences(PHONE_RE, txt, norm_phone)
     emails[f] = occurrences(EMAIL_RE, txt)
     addrs[f] = occurrences(ADDR_RE, strip_tags(txt))
     cps[f] = occurrences(CP_RE, strip_tags(txt))

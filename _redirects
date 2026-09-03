@@ -1,0 +1,18 @@
+# Redirections 301 — Phase 1 (brief §3.1). Syntaxe Netlify.
+# Doublon de la racine ("!" force la règle bien que le fichier existe)
+/index.html                                                   /                          301!
+
+# Ancienne génération du site (contenu extrait dans CONTENU-RECUPERE.md)
+/location-distributeurs-automatiques-boissons                 /fonctionnement            301
+/location-distributeurs-automatiques-boissons.html            /fonctionnement            301
+/entreprise-location-distributeur-automatique-boisson         /boissons-chaudes-snacks   301
+/entreprise-location-distributeur-automatique-boisson.html    /boissons-chaudes-snacks   301
+
+# Pages supprimées (décision client 2026-09-03)
+/careers                                                      /contact                   301
+/careers.html                                                 /contact                   301
+/career-single                                                /contact                   301
+/career-single.html                                           /contact                   301
+/avantages                                                    /fonctionnement            301
+/avantages.html                                               /fonctionnement            301
+/admin/*                                                      /                          301

@@ -9,7 +9,7 @@ Régénérer la partie automatique : `python3 tools/audit_site.py . > /tmp/auto.
 ## A. Synthèse — ce qu'il faut retenir
 
 1. **Deux générations du site coexistent**, confirmé. L'ancienne génération représente **5 fichiers**, pas 2 : les deux orphelines connues, mais aussi `careers.html`, `career-single.html` et `terms-of-service.html`, qui portent encore l'adresse de La Garenne-Colombes, le 01 70 82 31 32 et le logo `.jpg`. `terms-of-service.html` contient en plus un **troisième numéro** (01 85 65 81 51).
-2. **Trois pages supplémentaires hors brief** ont été découvertes : `avantages.html` (brouillon inachevé, sans H1 ni meta, lien cassé vers `pourquoi-nous.html`, encore lié depuis la nav de 4 pages), `career-single.html` (gabarit Landkit brut : « UX Design Lead », `hello@domain.com`) et `admin/` (interface Netlify CMS chargée depuis unpkg.com, publiquement accessible en ligne, backend git-gateway pointant sur `main`).
+2. **Trois pages supplémentaires hors brief** ont été découvertes : `avantages.html` (brouillon inachevé, sans H1 ni meta, lien cassé vers `pourquoi-nous.html`, lien de nav présent mais commenté sur 4 pages), `career-single.html` (gabarit Landkit brut : « UX Design Lead », `hello@domain.com`) et `admin/` (interface Netlify CMS chargée depuis unpkg.com, publiquement accessible en ligne, backend git-gateway pointant sur `main`).
 3. **Aucun mécanisme de redirection** n'existe (`_redirects`, `netlify.toml` absents). Toutes les URL, orphelines comprises, répondent 200 en production, et chaque page est servie **en double** (`/contact` et `/contact.html`) sans canonical.
 4. **Le bloc statistiques** de l'accueil n'est pas un bug d'affichage mais un bug de fond : les valeurs `100 %` satisfaction et `24/7` support sont codées en dur via countup.js, sans source. À supprimer ou à remplacer par des valeurs client (§ 7 du brief).
 5. **La bibliothèque fancybox est cassée sur toutes les pages** : le chemin est écrit `assets/libs/%40fancyapps/…` (l'« @ » encodé) alors que le dossier s'appelle `@fancyapps`. 404 silencieux en production.
@@ -29,10 +29,10 @@ Régénérer la partie automatique : `python3 tools/audit_site.py . > /tmp/auto.
 | `contact.html` | actuelle | conserver, refondre le formulaire (Phase 2) |
 | `careers.html` | **ancienne** (adresse 92, tél. 01 70, logo .jpg, title « Landkit ») | mettre à jour coordonnées + title/meta, ou supprimer si le recrutement ne passe pas par le site |
 | `career-single.html` | **ancienne**, gabarit brut non personnalisé | supprimer + 301 vers `/careers` |
-| `terms-of-service.html` | **ancienne** (3 numéros différents dans la page) | réécrire coordonnées ; devient la base des CGU, à côté de `/mentions-legales` |
+| `terms-of-service.html` | **ancienne** (3 numéros différents dans la page, nav de l'ancienne génération) | réécrire coordonnées et nav ; **le corps est un texte de gabarit Landkit** (« Licensing Terms », « vendeur sur notre plateforme ») : CGU réelles à fournir ou redirection vers `/mentions-legales` |
 | `location-distributeurs-automatiques-boissons.html` | **ancienne**, orpheline | 301 → `/fonctionnement` (contenu extrait dans `CONTENU-RECUPERE.md`) |
 | `entreprise-location-distributeur-automatique-boisson.html` | **ancienne**, orpheline | 301 → `/boissons-chaudes-snacks` |
-| `avantages.html` | brouillon (hors brief) | supprimer + 301 → `/fonctionnement`, retirer le lien de nav sur 4 pages |
+| `avantages.html` | brouillon (hors brief) | supprimer + 301 → `/fonctionnement`, retirer le lien de nav commenté sur 4 pages |
 | `admin/index.html` + `admin/config.yml` | Netlify CMS (hors brief) | **décision client requise** : le brief interdit le CMS ; recommandation = supprimer le dossier (dépendance externe unpkg, surface d'attaque, backend sur `main`) |
 
 Fichiers parasites à la racine : `backblue.gif`, `fade.gif` (résidus HTTrack), `assets/img/partenaires/test`, `assets/img/secteurs/test` (fichiers vides).
@@ -70,112 +70,116 @@ Adresse et numéro retenus comme uniques : **ceux de la version actuelle** (Bail
 - [ ] Confirmation de l'adresse et du numéro uniques (Bailly-Romainvilliers / 01 74 81 09 52).
 - [ ] Valeurs juridiques (§ 8 du brief) pour `/mentions-legales`.
 
+## E-bis. État d'avancement
+
+### Phase 1 — corrections critiques (2026-09-03) ✅
+
+Décisions client du 2026-09-03 : suppression d'`admin/`, suppression de `careers.html` et `career-single.html`, tag Google Ads conservé (généralisation avec consentement en Phase 3.1), coordonnées uniques confirmées.
+
+- **Supprimé** : 2 pages orphelines, `careers.html`, `career-single.html`, `avantages.html`, dossier `admin/`, résidus HTTrack (`backblue.gif`, `fade.gif`, commentaires « Mirrored from »), fichiers vides `test`.
+- **`_redirects`** créé : 301 pour `/index.html`, les 5 pages supprimées (avec et sans `.html`) et `/admin/*`. Liens internes `index.html` → `/` pour ne pas déclencher la redirection.
+- **`CONTENU-RECUPERE.md`** : engagement de service, catalogue Necta (archivé, périmé), title/meta d'origine, table des redirections.
+- **Coordonnées** : une seule adresse (28 Avenue Christian Doppler, 77700 Bailly-Romainvilliers), un seul numéro (01 74 81 09 52), un seul email. Nav et pied de page des CGU alignés sur la version actuelle.
+- **Bugs visibles** : bloc statistiques retiré (remplacé par un `TODO:MB`), `og:image`/`twitter:image` → `assets/img/og-image.jpg` (1200×630, 100 Ko, généré depuis la photo du hero), `og:url`/`twitter:url` absolus par page, blocs OG ajoutés sur les 3 pages qui n'en avaient pas, « séléctionnés » corrigé, chemin fancybox `%40fancyapps` → `@fancyapps`.
+- **Meta descriptions** : réécrites sur les 9 pages, uniques, 150–160 caractères, zone géographique incluse.
+- **Légal** : `/mentions-legales` et `/politique-de-confidentialite` créés (gabarit FAQ, valeurs juridiques en `TODO:MB`), liés depuis le pied de page de toutes les pages ; « Carrière » retiré de la rubrique Légal ; case de consentement obligatoire ajoutée au formulaire. Bandeau cookies reporté à la Phase 3.1 (avec GA4), conformément au brief.
+- **`sitemap.xml`** régénéré : 9 URL, sans extension.
+- Fins de ligne normalisées en LF sur `index.html`, `contact.html`, `terms-of-service.html` (étaient en CRLF).
+
+Reste hors périmètre Phase 1 : titres au format `[Besoin] + [Zone]`, canonical, redirections `*.html → /page`, JSON-LD LocalBusiness (Phase 4) ; CTA, en-tête téléphone, formulaire réduit, `/merci` (Phase 2).
+
 ## F. Registre `TODO:MB`
 
-Aucun marqueur `TODO:MB` dans le dépôt à ce stade. Cette section sera mise à jour à chaque phase et listera tous les emplacements en attente de valeur client (critère d'acceptation n° 12).
+| Fichier | Ligne | Valeur attendue |
+|---|---|---|
+| `index.html` | 520 | valeur à fournir : bloc statistiques retiré (satisfaction, support 24/7 non sourcés) ; à réintroduire uniquement avec des valeurs validées par le client |
+| `mentions-legales.html` | 76 | valeur à fournir : Forme juridique : … |
+| `mentions-legales.html` | 77 | valeur à fournir : Capital social : … |
+| `mentions-legales.html` | 79 | valeur à fournir : SIREN / SIRET : … |
+| `mentions-legales.html` | 80 | valeur à fournir : RCS : … |
+| `mentions-legales.html` | 81 | valeur à fournir : Numéro de TVA intracommunautaire : … |
+| `mentions-legales.html` | 86 | valeur à fournir : Directeur de la publication |
+| `mentions-legales.html` | 96 | hébergeur à confirmer par le client (§8 du brief) |
+| `mentions-legales.html` | 115 | valeur à fournir : date de mise à jour |
+| `politique-de-confidentialite.html` | 104 | valeur à fournir : durée de conservation (recommandation CNIL prospects : 3 ans après le dernier contact) |
+| `politique-de-confidentialite.html` | 124 | valeur à fournir : date de mise à jour |
+| `terms-of-service.html` | 125 | le corps de cette page est un texte de gabarit (Landkit) non adapté : CGU réelles à fournir ou page à rediriger vers /mentions-legales |
+
+12 emplacements en attente (mis à jour 2026-09-03, fin de Phase 1). Les emplacements sont **masqués en commentaire HTML** : rien de vide n'est visible en production.
 
 ---
 
 ## G. Relevé automatique (`tools/audit_site.py`)
 
-Fichiers HTML : 13 · Fichiers total (hors .git, .netlify, hts-cache, node_modules) : 121
+Fichiers HTML : 9 · Fichiers total (hors .git, .netlify, hts-cache, node_modules) : 116
 
 ## 1. Inventaire des pages HTML
 
 | Fichier | `<title>` | `meta description` | Dans la nav | Liens entrants | H1 |
 |---|---|---|---|---|---|
-| `admin/index.html` | Admin | *(absente)* | **non** | **aucun** | 0 ⚠ |
-| `avantages.html` | Pourquoi nous ? – Machine Break | *(absente)* | **non** | **aucun** | 0 ⚠ |
-| `boissons-chaudes-snacks.html` | Distributeurs automatiques modernes et intelligents | Machine Break | Découvrez les distributeurs Machine Break : boissons chaudes, snacks et suivi intelligent par télémétrie. Sans coût ni contrainte pour votre entreprise. | oui | avantages.html, career-single.html, careers.html, contact.html, entreprise-location-distributeur-automatique-boisson.html, faq.html, fonctionnement.html, index.html, location-distributeurs-automatiques-boissons.html, solution-par-secteur.html, terms-of-service.html | 2 ⚠ |
-| `career-single.html` | Landkit | @@pageDescription | **non** | careers.html | 1 |
-| `careers.html` | Landkit | @@pageDescription | **non** | boissons-chaudes-snacks.html, career-single.html, contact.html, entreprise-location-distributeur-automatique-boisson.html, faq.html, fonctionnement.html, index.html, location-distributeurs-automatiques-boissons.html, solution-par-secteur.html, terms-of-service.html | 1 |
-| `contact.html` | Contactez Machine Break | Installation de distributeurs automatiques | Besoins d'informations sur nos offres commerciales ? Faites appel à notre entreprise Machine Break pour des solutions sur mesures. | oui | avantages.html, boissons-chaudes-snacks.html, career-single.html, careers.html, entreprise-location-distributeur-automatique-boisson.html, faq.html, fonctionnement.html, index.html, location-distributeurs-automatiques-boissons.html, solution-par-secteur.html, terms-of-service.html | 1 |
-| `entreprise-location-distributeur-automatique-boisson.html` | Entreprise location distributeurs boissons automatiques Paris | Besoin de solutions pour proposer à vos clients, collaborateurs un distributeur de boissons : cafés, thés, snacks. Faites appel à Machine Break. | oui | career-single.html, careers.html, contact.html, location-distributeurs-automatiques-boissons.html, terms-of-service.html | 0 ⚠ |
-| `faq.html` | FAQ - Vos questions sur nos distributeurs automatiques | Machine Break | Trouvez les réponses à vos questions sur l'installation, la maintenance et l’utilisation de nos distributeurs automatiques. | oui | avantages.html, boissons-chaudes-snacks.html, contact.html, fonctionnement.html, index.html, solution-par-secteur.html | 1 |
-| `fonctionnement.html` | Fonctionnement de nos distributeurs automatiques | Machine Break | Machine Break prend en charge l'installation, l’approvisionnement et la maintenance de vos distributeurs automatiques connectés. | oui | avantages.html, boissons-chaudes-snacks.html, contact.html, faq.html, index.html, solution-par-secteur.html | 1 |
-| `index.html` | Distributeurs automatiques connectés pour entreprises | Machine Break | Machine Break propose des distributeurs automatiques connectés avec un suivi intelligent et sans contrainte pour les entreprises. | oui | avantages.html, boissons-chaudes-snacks.html, career-single.html, careers.html, contact.html, entreprise-location-distributeur-automatique-boisson.html, faq.html, fonctionnement.html, location-distributeurs-automatiques-boissons.html, solution-par-secteur.html, terms-of-service.html | 3 ⚠ |
-| `location-distributeurs-automatiques-boissons.html` | Location distributeurs boissons chaudes Paris | Besoin d'une machine à café pour vos clients ? Faites appel à Machine Break pour des solutions sur mesures à Paris en distribution automatique de boissons. | oui | career-single.html, careers.html, entreprise-location-distributeur-automatique-boisson.html, terms-of-service.html | 1 |
-| `solution-par-secteur.html` | Solutions distributeurs automatiques par secteur | Machine Break | Une solution de distributeur pour chaque secteur : écoles, bureaux, hôpitaux ou espaces publics. Installez un service café moderne avec Machine Break. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html | 1 |
-| `terms-of-service.html` | MACHINE BREAK - Café - Boissons - Friandises | @@pageDescription | **non** | boissons-chaudes-snacks.html, career-single.html, careers.html, contact.html, entreprise-location-distributeur-automatique-boisson.html, faq.html, fonctionnement.html, index.html, location-distributeurs-automatiques-boissons.html, solution-par-secteur.html | 1 |
+| `boissons-chaudes-snacks.html` | Distributeurs automatiques modernes et intelligents | Machine Break | Distributeurs de boissons chaudes, froides et snacks pour entreprises en Île-de-France. Machines connectées, réassort et maintenance assurés par Machine Break. | oui | contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 2 ⚠ |
+| `contact.html` | Contactez Machine Break | Installation de distributeurs automatiques | Contactez Machine Break à Bailly-Romainvilliers (77) pour installer un distributeur automatique dans vos locaux en Île-de-France, par téléphone ou par email. | oui | boissons-chaudes-snacks.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `faq.html` | FAQ - Vos questions sur nos distributeurs automatiques | Machine Break | Vos questions sur l'installation, le coût, l'entretien et le suivi des distributeurs automatiques Machine Break en Île-de-France. Les réponses de l'équipe. | oui | boissons-chaudes-snacks.html, contact.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `fonctionnement.html` | Fonctionnement de nos distributeurs automatiques | Machine Break | Le service Machine Break en Île-de-France : installation, approvisionnement, maintenance et suivi télémétrique de vos distributeurs, sans charge de gestion. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `index.html` | Distributeurs automatiques connectés pour entreprises | Machine Break | Machine Break installe et gère vos distributeurs automatiques connectés (café, boissons, snacks) en Île-de-France : réassort, entretien et suivi inclus. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 3 ⚠ |
+| `mentions-legales.html` | Mentions légales | Machine Break | Mentions légales du site machinebreak.com : éditeur Machine Break à Bailly-Romainvilliers (77), directeur de publication, hébergeur et propriété intellectuelle. | **non** | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `politique-de-confidentialite.html` | Politique de confidentialité | Machine Break | Politique de confidentialité de Machine Break : données collectées via le formulaire de contact, finalités, durée de conservation, droits RGPD et contact. | **non** | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, solution-par-secteur.html, terms-of-service.html | 1 |
+| `solution-par-secteur.html` | Solutions distributeurs automatiques par secteur | Machine Break | Distributeurs automatiques adaptés à votre secteur en Île-de-France : bureaux et PME, résidences et hôtels, sites industriels et logistiques. Sur mesure. | oui | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, terms-of-service.html | 1 |
+| `terms-of-service.html` | Conditions générales d'utilisation du site | Machine Break | Conditions générales d'utilisation du site machinebreak.com, opérateur de distribution automatique en Île-de-France, basé à Bailly-Romainvilliers (77). | **non** | boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html | 1 |
 
 ## 2. Pages orphelines (hors navigation principale)
 
-- `admin/index.html` — **aucun lien entrant**
-- `avantages.html` — **aucun lien entrant**
-- `career-single.html` — atteignable via : careers.html
-- `careers.html` — atteignable via : boissons-chaudes-snacks.html, career-single.html, contact.html, entreprise-location-distributeur-automatique-boisson.html, faq.html, fonctionnement.html, index.html, location-distributeurs-automatiques-boissons.html, solution-par-secteur.html, terms-of-service.html
-- `terms-of-service.html` — atteignable via : boissons-chaudes-snacks.html, career-single.html, careers.html, contact.html, entreprise-location-distributeur-automatique-boisson.html, faq.html, fonctionnement.html, index.html, location-distributeurs-automatiques-boissons.html, solution-par-secteur.html
-
-### Liens internes cassés
-
-- `avantages.html` → `pourquoi-nous.html`
+- `mentions-legales.html` — atteignable via : boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, politique-de-confidentialite.html, solution-par-secteur.html, terms-of-service.html
+- `politique-de-confidentialite.html` — atteignable via : boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, solution-par-secteur.html, terms-of-service.html
+- `terms-of-service.html` — atteignable via : boissons-chaudes-snacks.html, contact.html, faq.html, fonctionnement.html, index.html, mentions-legales.html, politique-de-confidentialite.html, solution-par-secteur.html
 
 ## 3. Coordonnées (téléphones, adresses, emails)
 
 ### Téléphones
 
-> ⚠ **Divergence : 5 valeurs distinctes.**
-
 | Valeur | Pages (occurrences) |
 |---|---|
-| `0174810952` | `boissons-chaudes-snacks.html` (1), `contact.html` (2), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `solution-par-secteur.html` (1) |
-| `01 74 81 09 52` | `boissons-chaudes-snacks.html` (1), `contact.html` (2), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `solution-par-secteur.html` (1) |
-| `0170823132` | `career-single.html` (1), `careers.html` (1), `entreprise-location-distributeur-automatique-boisson.html` (1), `location-distributeurs-automatiques-boissons.html` (1), `terms-of-service.html` (1) |
-| `01 70 82 31 32` | `career-single.html` (1), `careers.html` (1), `entreprise-location-distributeur-automatique-boisson.html` (1), `location-distributeurs-automatiques-boissons.html` (1), `terms-of-service.html` (1) |
-| `01 85 65 81 51` | `terms-of-service.html` (2) |
+| `01 74 81 09 52` | `boissons-chaudes-snacks.html` (2), `contact.html` (4), `faq.html` (2), `fonctionnement.html` (2), `index.html` (2), `mentions-legales.html` (6), `politique-de-confidentialite.html` (4), `solution-par-secteur.html` (2), `terms-of-service.html` (4) |
 
 ### Adresses postales (voie)
 
-> ⚠ **Divergence : 2 valeurs distinctes.**
-
 | Valeur | Pages (occurrences) |
 |---|---|
-| `28 Avenue Christian Doppler` | `boissons-chaudes-snacks.html` (1), `contact.html` (1), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `solution-par-secteur.html` (1) |
-| `71 Boulevard National` | `career-single.html` (1), `careers.html` (1), `entreprise-location-distributeur-automatique-boisson.html` (1), `location-distributeurs-automatiques-boissons.html` (1), `terms-of-service.html` (1) |
+| `28 Avenue Christian Doppler` | `boissons-chaudes-snacks.html` (1), `contact.html` (1), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `mentions-legales.html` (2), `politique-de-confidentialite.html` (2), `solution-par-secteur.html` (1), `terms-of-service.html` (1) |
 
 ### Codes postaux + ville
 
-> ⚠ **Divergence : 2 valeurs distinctes.**
-
 | Valeur | Pages (occurrences) |
 |---|---|
-| `77700 Bailly Romainvilliers` | `boissons-chaudes-snacks.html` (1), `contact.html` (1), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `solution-par-secteur.html` (1) |
-| `92250 La Garenne Colombes` | `career-single.html` (1), `careers.html` (1), `entreprise-location-distributeur-automatique-boisson.html` (1), `location-distributeurs-automatiques-boissons.html` (1), `terms-of-service.html` (1) |
+| `77700 Bailly-Romainvilliers` | `boissons-chaudes-snacks.html` (1), `contact.html` (1), `faq.html` (1), `fonctionnement.html` (1), `index.html` (1), `mentions-legales.html` (2), `politique-de-confidentialite.html` (2), `solution-par-secteur.html` (1), `terms-of-service.html` (1) |
 
 ### Emails
 
 | Valeur | Pages (occurrences) |
 |---|---|
-| `contact@machinebreak.com` | `boissons-chaudes-snacks.html` (2), `career-single.html` (2), `careers.html` (2), `contact.html` (4), `entreprise-location-distributeur-automatique-boisson.html` (2), `faq.html` (2), `fonctionnement.html` (2), `index.html` (2), `location-distributeurs-automatiques-boissons.html` (2), `solution-par-secteur.html` (2), `terms-of-service.html` (4) |
-| `hello@domain.com` | `career-single.html` (1) |
+| `contact@machinebreak.com` | `boissons-chaudes-snacks.html` (2), `contact.html` (4), `faq.html` (2), `fonctionnement.html` (2), `index.html` (2), `mentions-legales.html` (6), `politique-de-confidentialite.html` (6), `solution-par-secteur.html` (2), `terms-of-service.html` (4) |
 
 ## 4. `meta description` dupliquées
 
-- « @@pageDescription » (17 car.) — `career-single.html`, `careers.html`, `terms-of-service.html`
-
-Sans meta description : `admin/index.html`, `avantages.html`
+Aucune duplication.
 
 ### `<title>` dupliqués
 
-- « Landkit » — `career-single.html`, `careers.html`
+Aucun.
 
 ### Open Graph / Twitter / canonical
 
 | Fichier | canonical | og:url | og:image | twitter:image |
 |---|---|---|---|---|
-| `admin/index.html` | — | — | — | — |
-| `avantages.html` | — | — | — | — |
-| `boissons-chaudes-snacks.html` | — | index.html | https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg | — |
-| `career-single.html` | — | index.html | https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg | — |
-| `careers.html` | — | index.html | https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg | — |
-| `contact.html` | — | index.html | https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg | — |
-| `entreprise-location-distributeur-automatique-boisson.html` | — | index.html | https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg | — |
-| `faq.html` | — | — | — | — |
-| `fonctionnement.html` | — | — | — | — |
-| `index.html` | — | index.html | https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg | — |
-| `location-distributeurs-automatiques-boissons.html` | — | index.html | https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg | — |
-| `solution-par-secteur.html` | — | — | — | — |
-| `terms-of-service.html` | — | index.html | https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg | — |
+| `boissons-chaudes-snacks.html` | — | https://machinebreak.com/boissons-chaudes-snacks | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
+| `contact.html` | — | https://machinebreak.com/contact | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
+| `faq.html` | — | https://machinebreak.com/faq | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
+| `fonctionnement.html` | — | https://machinebreak.com/fonctionnement | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
+| `index.html` | — | https://machinebreak.com/ | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
+| `mentions-legales.html` | — | https://machinebreak.com/mentions-legales | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
+| `politique-de-confidentialite.html` | — | https://machinebreak.com/politique-de-confidentialite | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
+| `solution-par-secteur.html` | — | https://machinebreak.com/solution-par-secteur | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
+| `terms-of-service.html` | — | https://machinebreak.com/terms-of-service | https://machinebreak.com/assets/img/og-image.jpg | https://machinebreak.com/assets/img/og-image.jpg |
 
 ## 5. Images
 
@@ -189,16 +193,6 @@ Images avec `alt=""` (vide, décoratif) : 0
 
 Aucune balise `<img>` externe.
 
-Meta images externes (og/twitter) :
-- `boissons-chaudes-snacks.html` `og:image` → `https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg`
-- `career-single.html` `og:image` → `https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg`
-- `careers.html` `og:image` → `https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg`
-- `contact.html` `og:image` → `https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg`
-- `entreprise-location-distributeur-automatique-boisson.html` `og:image` → `https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg`
-- `index.html` `og:image` → `https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg`
-- `location-distributeurs-automatiques-boissons.html` `og:image` → `https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg`
-- `terms-of-service.html` `og:image` → `https://socialbrew.dk/wp-content/uploads/2020/06/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-760w-1.jpg`
-
 ### Images référencées mais absentes du dépôt
 
 Aucune.
@@ -207,7 +201,7 @@ Aucune.
 
 - `sitemap.xml` : présent
 - `robots.txt` : présent
-- `_redirects` : **absent**
+- `_redirects` : présent
 - `_headers` : **absent**
 - `netlify.toml` : **absent**
 - `.htaccess` : **absent**
@@ -216,10 +210,11 @@ Aucune.
 
 ### Autres fichiers à la racine
 
+- `AUDIT.md`
+- `CONTENU-RECUPERE.md`
 - `README.md`
-- `admin/config.yml`
-- `backblue.gif`
-- `fade.gif`
+- `_redirects`
 - `robots.txt`
 - `sitemap.xml`
 - `tools/audit_site.py`
+

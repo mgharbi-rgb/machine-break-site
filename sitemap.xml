@@ -1,67 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://machinebreak.com/</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/boissons-chaudes-snacks</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/solution-par-secteur</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/fonctionnement</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/faq</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/contact</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/terms-of-service</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/careers</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/entreprise-location-distributeur-automatique-boisson</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/location-distributeurs-automatiques-boissons</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://machinebreak.com/career-single</loc>
-  <lastmod>2025-07-08T17:22:22+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://machinebreak.com/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://machinebreak.com/boissons-chaudes-snacks</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://machinebreak.com/solution-par-secteur</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://machinebreak.com/fonctionnement</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://machinebreak.com/faq</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://machinebreak.com/contact</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://machinebreak.com/mentions-legales</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://machinebreak.com/politique-de-confidentialite</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://machinebreak.com/terms-of-service</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>0.3</priority>
+  </url>
 </urlset>
