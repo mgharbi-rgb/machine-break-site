@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /merci
-Disallow: /merci-dossier
 Sitemap: https://machinebreak.com/sitemap.xml

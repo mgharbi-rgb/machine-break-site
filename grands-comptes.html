@@ -194,38 +194,36 @@
           <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
             <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
             <div>
-              <h4 class="mb-1">Réassort piloté par la télémétrie</h4>
-              <p class="text-muted mb-0">Nous ne passons pas à date fixe : chaque machine remonte son remplissage et ses ventes, et c'est elle qui déclenche le passage, avant la rupture, en fonction des habitudes de consommation de votre site.</p>
+              <h4 class="mb-1">Réassort déclenché par la télémétrie</h4>
+              <p class="text-muted mb-0">Chaque machine remonte ses ventes et son remplissage ; c'est elle qui déclenche le passage, avant la rupture, selon les habitudes de consommation de votre site. Et chaque passage la remplit entièrement : pas de tournée à date fixe qui remplit une machine déjà pleine.</p>
             </div>
           </div>
           <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
             <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
             <div>
-              <h4 class="mb-1">Délai d'intervention en cas de panne</h4>
-              <p class="text-muted mb-0">Un délai maximal garanti entre le signalement (par vous ou par la machine) et l'arrivée du technicien.</p>
-            </div>
-            <!-- TODO:MB — valeur à fournir : délai d'intervention garanti. Décommenter : <span class="badge badge-pill badge-success-soft ml-auto">…</span> -->
-          </div>
-          <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
-            <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
-            <div>
-              <h4 class="mb-1">Diagnostic à distance avant déplacement</h4>
-              <p class="text-muted mb-0">L'alerte technique est analysée à distance : quand le défaut est identifié, le technicien part avec la pièce. Si une pièce doit être commandée, vous êtes informé du délai et la machine n'est pas laissée sans suivi.</p>
+              <h4 class="mb-1">Alerte analysée à distance avant tout déplacement</h4>
+              <p class="text-muted mb-0">Chaque défaut remonté par la machine ou signalé par vous est diagnostiqué à distance. Panne identifiée : le technicien part avec la pièce. Pièce à commander : vous êtes informé du délai, et la machine reste suivie jusqu'à la réparation.</p>
             </div>
           </div>
           <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
             <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
             <div>
-              <h4 class="mb-1">Machines pleines à chaque passage</h4>
-              <p class="text-muted mb-0">Un passage, c'est un remplissage complet et un contrôle de la machine, pas un simple réapprovisionnement partiel.</p>
+              <h4 class="mb-1">Un délai d'intervention écrit au contrat</h4>
+              <p class="text-muted mb-0">Le délai maximal entre le signalement et l'arrivée du technicien est fixé pour votre site, selon sa zone, et inscrit au contrat. Pas une promesse générique : un engagement propre à votre adresse.</p>
             </div>
-            <!-- TODO:MB — valeur à fournir : taux de remplissage constaté à chaque passage (en %). Décommenter : <span class="badge badge-pill badge-success-soft ml-auto">…</span> -->
           </div>
           <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
             <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
             <div>
-              <h4 class="mb-1">Interlocuteur unique</h4>
-              <p class="text-muted mb-0">Une personne nommée, joignable directement, qui connaît votre site et vos machines.</p>
+              <h4 class="mb-1">Chaque intervention tracée dans votre espace client</h4>
+              <p class="text-muted mb-0">Réassort, nettoyage, dépannage : chaque passage est horodaté et consultable, avec le délai constaté face au délai promis. Vous vérifiez, vous ne nous croyez pas sur parole.</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
+            <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
+            <div>
+              <h4 class="mb-1">Un interlocuteur nommé, joignable directement</h4>
+              <p class="text-muted mb-0">Une personne identifiée, qui connaît vos sites et vos machines, avec sa ligne directe. Pas de standard, pas de ticket anonyme.</p>
             </div>
           </div>
         </div>
@@ -233,49 +231,17 @@
     </div>
   </section>
 
-<!-- DOUBLE CTA -->
-  <section class="py-8 py-md-11" id="dossier">
+<!-- RENDEZ-VOUS -->
+  <section class="py-8 py-md-11" id="rendez-vous">
     <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-6 mb-6 mb-lg-0">
-          <div class="card shadow-light-lg h-100">
-            <div class="card-body">
-              <h2 class="h3 mb-3">Recevoir le dossier de capacité</h2>
-              <p class="text-muted mb-5">Présentation de Machine Break, organisation du service, engagements et dispositif de suivi, en un document à transmettre à vos achats.</p>
-              <!-- TODO:MB — valeur à fournir : dossier de capacité au format PDF. Tant qu'il n'est pas déposé dans /assets/docs/, l'envoi est assuré manuellement par l'équipe après réception du formulaire (voir AUDIT.md). -->
-              <form name="dossier-capacite" method="POST" action="/merci-dossier" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="dossier-capacite">
-                <p hidden><label>Ne pas remplir si humain : <input name="bot-field"></label></p>
-                <div class="form-group mb-4">
-                  <label for="dc-email">Email professionnel <span style="color:red">*</span></label>
-                  <input type="email" class="form-control" name="email" id="dc-email" placeholder="prenom@entreprise.fr" required autocomplete="email">
-                </div>
-                <div class="form-group mb-4">
-                  <label for="dc-company">Entreprise / organisation <span style="color:red">*</span></label>
-                  <input type="text" class="form-control" name="company" id="dc-company" autocomplete="organization" required>
-                </div>
-                <div class="form-group mb-5">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="consent" id="dc-consent" value="oui" required>
-                    <label class="custom-control-label font-size-sm text-muted" for="dc-consent">
-                      J'accepte d'être recontacté au sujet de cette demande, conformément à la <a href="/politique-de-confidentialite">politique de confidentialité</a>. <span style="color:red">*</span>
-                    </label>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary lift">Recevoir le dossier de capacité <i class="fe fe-download ml-2"></i></button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <div class="card shadow-light-lg h-100 bg-dark text-white">
-            <div class="card-body d-flex flex-column">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div class="card shadow-light-lg bg-dark text-white">
+            <div class="card-body p-6 text-center">
               <h2 class="h3 mb-3 text-white">Demander un rendez-vous</h2>
-              <p class="text-muted mb-5">Un échange pour cadrer votre périmètre, vos sites et vos contraintes, puis une proposition construite site par site.</p>
-              <div class="mt-auto">
-                <a class="btn btn-success lift mb-3" href="/contact#contact-form">Demander un rendez-vous <i class="fe fe-arrow-right ml-2"></i></a>
-                <p class="font-size-sm text-muted mb-0">Ou directement : <a href="tel:0174810952" class="text-white js-tel">01 74 81 09 52</a></p>
-              </div>
+              <p class="text-muted mb-5">Un échange pour cadrer votre périmètre, vos sites et vos contraintes, puis une proposition construite site par site, avec les engagements écrits pour chaque adresse.</p>
+              <a class="btn btn-success lift mb-3" href="/contact#contact-form">Demander un rendez-vous <i class="fe fe-arrow-right ml-2"></i></a>
+              <p class="font-size-sm text-muted mb-0">Ou directement : <a href="tel:0174810952" class="text-white js-tel">01 74 81 09 52</a></p>
             </div>
           </div>
         </div>

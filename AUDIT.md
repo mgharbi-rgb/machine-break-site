@@ -157,6 +157,11 @@ Arborescence cible du brief posée, en fichiers `.html` dans des sous-dossiers s
 
 Le client a mis à disposition ses deux shootings (agence VZ, 220 photos JPG, 2,3 Go sur le Mac du client, dossier « 10 - Mediatheque/Shootings »). 22 photos ont été choisies, converties en WebP (largeur 1920 px, qualité 80, 2,7 Mo au total dans `assets/img/shooting/`) et placées sur les pages secteurs, équipements et zones avec des descriptions fidèles : atelier industriel et allée d'usine (industrie-logistique), salon de résidence (résidences-hôtels), espace de pause et comptoir de bureau (bureaux-PME), machines, rayons de boissons, snacks et écrans (équipements), salle de pause et hall (zones). Les `TODO:MB` « photo réelle à fournir » des pages secteurs sont levés. Reste possible : renouveler le slider de l'accueil et l'image Open Graph avec cette série.
 
+### Engagements validés et dossier de capacité retiré (2026-09-04) ✅
+
+- **Engagements définitifs** (décision client : « des choses réalisables ») : réassort déclenché par la télémétrie avec remplissage complet à chaque passage ; alerte analysée à distance avant tout déplacement (pièce embarquée ou commandée avec information du client) ; délai d'intervention écrit au contrat, fixé par site selon sa zone ; chaque intervention tracée dans l'espace client avec délai constaté face au délai promis ; interlocuteur nommé joignable directement. Aucune valeur chiffrée à fournir : les `TODO:MB` liés aux engagements sont levés. Propagé sur l'accueil, la page secteurs, les trois pages sectorielles et la page grands comptes.
+- **Dossier de capacité supprimé** (décision client) : formulaire Netlify `dossier-capacite`, page `/merci-dossier`, redirection et exclusion robots retirés. La page grands comptes se termine par un seul appel à l'action : demander un rendez-vous, avec le téléphone.
+
 Toutes les phases du brief sont livrées. Reste : les données client (registre `TODO:MB`, section G.7), la validation sur l'aperçu Netlify, puis la fusion dans `main`.
 
 ## F. Registre `TODO:MB`
@@ -167,7 +172,7 @@ Voir la section **G.7**, régénérée automatiquement par `tools/audit_site.py`
 
 ## G. Relevé automatique (`tools/audit_site.py`, exécuté sur le site construit `_site/`)
 
-Fichiers HTML : 24 · Fichiers total (hors .git, .netlify, hts-cache, node_modules) : 104
+Fichiers HTML : 24 · Fichiers total (hors .git, .netlify, hts-cache, node_modules) : 129
 
 ## 1. Inventaire des pages HTML
 
@@ -237,7 +242,7 @@ Fichiers HTML : 24 · Fichiers total (hors .git, .netlify, hts-cache, node_modul
 | Valeur | Pages (occurrences) |
 |---|---|
 | `contact@machinebreak.com` | `blog.html` (2), `blog/distributeur-automatique-entreprise-ce-qu-il-faut-verifier-avant-de-signer.html` (2), `blog/organiser-la-pause-sur-un-site-en-3x8.html` (2), `boissons-chaudes-snacks.html` (2), `contact.html` (4), `faq.html` (2), `fonctionnement.html` (2), `grands-comptes.html` (2), `index.html` (3), `mentions-legales.html` (6), `merci-dossier.html` (2), `merci.html` (2), `politique-de-confidentialite.html` (6), `solution-par-secteur.html` (2), `solutions/bureaux-pme.html` (2), `solutions/equipements.html` (2), `solutions/industrie-logistique.html` (2), `solutions/residences-hotels.html` (2), `terms-of-service.html` (4), `zones/est-parisien.html` (2), `zones/ile-de-france.html` (2), `zones/marne-la-vallee.html` (2), `zones/seine-et-marne.html` (2) |
-| `prenom@entreprise.fr` | `contact.html` (1), `grands-comptes.html` (1) |
+| `prenom@entreprise.fr` | `contact.html` (1) |
 
 ## 4. `meta description` dupliquées
 
@@ -313,17 +318,12 @@ Aucune.
 | valeur à fournir : URL de l'espace client (plateforme de suivi). | `blog.html`:37, `blog/distributeur-automatique-entreprise-ce-qu-il-faut-verifier-avant-de-signer.html`:37, `blog/organiser-la-pause-sur-un-site-en-3x8.html`:37, `boissons-chaudes-snacks.html`:58, `contact.html`:74, `faq.html`:116, `fonctionnement.html`:43, `grands-comptes.html`:42, `index.html`:127, `mentions-legales.html`:43, `merci-dossier.html`:43, `merci.html`:44, `politique-de-confidentialite.html`:43, `solution-par-secteur.html`:42, `solutions/bureaux-pme.html`:83, `solutions/equipements.html`:42, `solutions/industrie-logistique.html`:91, `solutions/residences-hotels.html`:83, `terms-of-service.html`:54, `zones/est-parisien.html`:42, `zones/ile-de-france.html`:42, `zones/marne-la-vallee.html`:42, `zones/seine-et-marne.html`:42 |
 | URL du formulaire de diagnostic (Typeform ou Tally) à fournir : remplacer /contact#contact-form dans tous les liens .cta-diagnostic | `blog.html`:43, `blog/distributeur-automatique-entreprise-ce-qu-il-faut-verifier-avant-de-signer.html`:43, `blog/organiser-la-pause-sur-un-site-en-3x8.html`:43, `boissons-chaudes-snacks.html`:64, `contact.html`:80, `faq.html`:122, `fonctionnement.html`:49, `grands-comptes.html`:48, `index.html`:133, `mentions-legales.html`:49, `merci-dossier.html`:49, `merci.html`:50, `politique-de-confidentialite.html`:49, `solution-par-secteur.html`:48, `solutions/bureaux-pme.html`:89, `solutions/equipements.html`:48, `solutions/industrie-logistique.html`:97, `solutions/residences-hotels.html`:89, `terms-of-service.html`:60, `zones/est-parisien.html`:48, `zones/ile-de-france.html`:48, `zones/marne-la-vallee.html`:48, `zones/seine-et-marne.html`:48 |
 | valeur à fournir : délai de réponse annoncé (ex. « sous 24 h ouvrées »). | `contact.html`:359 |
-| photo réelle de ce type de site / de cette zone à fournir (les visuels actuels sont des photos d'ambiance Machine Break) | `grands-comptes.html`:129, `solutions/bureaux-pme.html`:170, `solutions/equipements.html`:129, `solutions/industrie-logistique.html`:178, `solutions/residences-hotels.html`:170, `zones/est-parisien.html`:129, `zones/ile-de-france.html`:129, `zones/marne-la-vallee.html`:129, `zones/seine-et-marne.html`:129 |
+| photo réelle de ce type de site / de cette zone à fournir (les visuels actuels sont des photos d'ambiance Machine Break) | `grands-comptes.html`:129, `zones/est-parisien.html`:129, `zones/ile-de-france.html`:129, `zones/marne-la-vallee.html`:129, `zones/seine-et-marne.html`:129 |
 | valeur à fournir : chiffres de capacité à afficher ici une fois validés — nombre de sites équipés, nombre de machines en parc, délai moyen d | `grands-comptes.html`:170 |
-| valeur à fournir : délai d'intervention garanti. | `grands-comptes.html`:207, `solutions/bureaux-pme.html`:272, `solutions/industrie-logistique.html`:278, `solutions/residences-hotels.html`:270 |
-| valeur à fournir : taux de remplissage constaté à chaque passage (en %). | `grands-comptes.html`:222, `index.html`:624, `solution-par-secteur.html`:282, `solutions/bureaux-pme.html`:287, `solutions/industrie-logistique.html`:293, `solutions/residences-hotels.html`:285 |
-| valeur à fournir : dossier de capacité au format PDF. Tant qu'il n'est pas déposé dans /assets/docs/, l'envoi est assuré manuellement par l' | `grands-comptes.html`:245 |
 | Google Search Console : balise de vérification à fournir. | `index.html`:21 |
 | horaires d'ouverture à fournir pour ajouter "openingHoursSpecification" ; forme juridique / SIREN pour "legalName" et "taxID" | `index.html`:42 |
 | valeur à fournir : captures d'écran anonymisées de la plateforme client. | `index.html`:569 |
-| liste à revoir avec le client (2026-09-04), formulations et valeurs à valider | `index.html`:589, `solution-par-secteur.html`:247 |
-| valeur à fournir : délai d'intervention garanti (base ancienne page : technicien envoyé dans la demi-journée — à confirmer). | `index.html`:616, `solution-par-secteur.html`:274 |
-| valeur à fournir : bloc statistiques retiré (satisfaction, support 24/7 non sourcés) ; à réintroduire uniquement avec des valeurs validées p | `index.html`:680 |
+| valeur à fournir : bloc statistiques retiré (satisfaction, support 24/7 non sourcés) ; à réintroduire uniquement avec des valeurs validées p | `index.html`:678 |
 | valeur à fournir : Forme juridique : … | `mentions-legales.html`:134 |
 | valeur à fournir : Capital social : … | `mentions-legales.html`:135 |
 | valeur à fournir : SIREN / SIRET : … | `mentions-legales.html`:137 |
@@ -335,16 +335,16 @@ Aucune.
 | valeur à fournir : une fois le PDF déposé, remplacer ce paragraphe par un bouton de téléchargement direct : <a class="btn btn-primary lift"  | `merci-dossier.html`:128 |
 | valeur à fournir : délai de réponse annoncé (ex. « sous 24 h ouvrées ») | `merci.html`:129 |
 | valeur à fournir : durée de conservation (recommandation CNIL prospects : 3 ans après le dernier contact) | `politique-de-confidentialite.html`:162 |
-| valeur à fournir : référence client bureaux / PME (nommée ou anonymisée) validée par le client. | `solutions/bureaux-pme.html`:301 |
-| valeur à fournir : seuil d'effectif à partir duquel l'installation est offerte, par zone | `solutions/bureaux-pme.html`:338 |
-| valeur à fournir : parc actuel (marques, modèles, capacités, photos). L'ancien catalogue Necta (Krea Touch, Melodia, Kalea, Tango, Orchestra | `solutions/equipements.html`:214 |
-| valeur à fournir : référence client industrie / logistique (nommée ou anonymisée) validée par le client. | `solutions/industrie-logistique.html`:307 |
-| valeur à fournir : référence client résidence / hôtel (nommée ou anonymisée) validée par le client. | `solutions/residences-hotels.html`:299 |
+| valeur à fournir : référence client bureaux / PME (nommée ou anonymisée) validée par le client. | `solutions/bureaux-pme.html`:298 |
+| valeur à fournir : seuil d'effectif à partir duquel l'installation est offerte, par zone | `solutions/bureaux-pme.html`:335 |
+| valeur à fournir : parc actuel (marques, modèles, capacités, photos). L'ancien catalogue Necta (Krea Touch, Melodia, Kalea, Tango, Orchestra | `solutions/equipements.html`:213 |
+| valeur à fournir : référence client industrie / logistique (nommée ou anonymisée) validée par le client. | `solutions/industrie-logistique.html`:306 |
+| valeur à fournir : référence client résidence / hôtel (nommée ou anonymisée) validée par le client. | `solutions/residences-hotels.html`:298 |
 | le corps de cette page est un texte de gabarit (Landkit) non adapté : CGU réelles à fournir ou page à rediriger vers /mentions-legales | `terms-of-service.html`:142 |
 | valeur à fournir : délai d'intervention réel constaté sur cette zone (moyenne 12 mois) et délai garanti au contrat. | `zones/est-parisien.html`:173, `zones/marne-la-vallee.html`:173, `zones/seine-et-marne.html`:173 |
 | valeur à fournir : références clients sur cette zone (nommées ou anonymisées), validées par le client. | `zones/est-parisien.html`:202, `zones/marne-la-vallee.html`:202, `zones/seine-et-marne.html`:202 |
 
-34 valeurs distinctes attendues, 123 emplacements au total. Tous sont masqués dans un commentaire HTML : rien de vide n'est visible en production.
+29 valeurs distinctes attendues, 104 emplacements au total. Tous sont masqués dans un commentaire HTML : rien de vide n'est visible en production.
 
 ### Autres fichiers à la racine
 
