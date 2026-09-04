@@ -153,6 +153,10 @@ Arborescence cible du brief posée, en fichiers `.html` dans des sous-dossiers s
 2. Identity → *Invite users* : inviter les emails de l'équipe com. Chaque personne accepte l'invitation (le lien la conduit sur l'accueil puis vers `/admin/`) et choisit un mot de passe.
 3. Vérifier après fusion que le déploiement de `main` utilise bien `npm run build` et publie `_site` (lu depuis `netlify.toml`).
 
+### Médiathèque client intégrée (2026-09-04) ✅
+
+Le client a mis à disposition ses deux shootings (agence VZ, 220 photos JPG, 2,3 Go sur le Mac du client, dossier « 10 - Mediatheque/Shootings »). 22 photos ont été choisies, converties en WebP (largeur 1920 px, qualité 80, 2,7 Mo au total dans `assets/img/shooting/`) et placées sur les pages secteurs, équipements et zones avec des descriptions fidèles : atelier industriel et allée d'usine (industrie-logistique), salon de résidence (résidences-hôtels), espace de pause et comptoir de bureau (bureaux-PME), machines, rayons de boissons, snacks et écrans (équipements), salle de pause et hall (zones). Les `TODO:MB` « photo réelle à fournir » des pages secteurs sont levés. Reste possible : renouveler le slider de l'accueil et l'image Open Graph avec cette série.
+
 Toutes les phases du brief sont livrées. Reste : les données client (registre `TODO:MB`, section G.7), la validation sur l'aperçu Netlify, puis la fusion dans `main`.
 
 ## F. Registre `TODO:MB`
