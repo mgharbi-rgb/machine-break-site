@@ -93,6 +93,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/faq">F.A.Q.</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog">Conseils</a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/contact">Contact</a>
@@ -104,7 +107,7 @@
 
         <!-- CTA principal -->
         <li class="nav-item ml-lg-3">
-          <a class="btn btn-sm btn-success text-nowrap cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a>
+          <a class="btn btn-sm btn-success text-nowrap cta-diagnostic" href="/contact#contact-form"><span class="d-none d-xl-inline">Mon diagnostic pause en 1 minute</span><span class="d-xl-none">Mon diagnostic en 1 min</span></a>
         </li>
       </ul>
     </div>
@@ -113,14 +116,18 @@
 </nav>
 
 <!-- HERO -->
-  <section class="pt-10 pb-8 bg-light">
+  <section class="pt-8 pt-md-10 pb-8 bg-light">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-9 text-center">
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-6 mb-6 mb-lg-0">
           <p class="text-uppercase text-success font-weight-bold mb-3">Île-de-France</p>
           <h1 class="display-4 mb-4">Distributeurs automatiques en Île-de-France : installation et service sur toute la région</h1>
-          <p class="lead text-muted mb-6">Basés à Bailly-Romainvilliers en Seine-et-Marne, nous équipons et entretenons des sites dans les huit départements franciliens, avec des tournées organisées par zone.</p>
+          <p class="lead text-muted mb-6">Basés à Bailly-Romainvilliers en Seine-et-Marne, nous équipons et entretenons des sites dans les huit départements franciliens, de La Défense à Marne-la-Vallée, de Roissy à Évry.</p>
           <a class="btn btn-success lift cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i class="fe fe-arrow-right ml-2"></i></a>
+        </div>
+        <div class="col-12 col-lg-6">
+          <!-- TODO:MB — photo réelle de ce type de site / de cette zone à fournir (les visuels actuels sont des photos d'ambiance Machine Break) -->
+          <img src="/assets/img/covers/cover-21.webp" class="img-fluid rounded shadow-lg" alt="Espace de pause équipé de deux distributeurs Machine Break, tables hautes et canapé">
         </div>
       </div>
     </div>
@@ -129,11 +136,14 @@
 <!-- UNE COUVERTURE RÉGIONALE, UN SERVICE DE  -->
   <section class="py-8 py-md-10 " id="couverture">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-9">
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-5 mb-6 mb-lg-0 order-lg-2">
+          <img src="/assets/img/covers/valdeurope.webp" class="img-fluid rounded shadow" alt="Vue aérienne du quartier d'affaires du Val d'Europe, où sont installés les bureaux Machine Break" loading="lazy">
+        </div>
+        <div class="col-12 col-lg-7 order-lg-1">
           <h2 class="mb-4">Une couverture régionale, un service de proximité</h2>
           <p class="text-muted">L'Île-de-France est notre seul territoire. Cela nous permet d'organiser des tournées denses par zone, de connaître les sites, les accès, les horaires, et d'intervenir vite quand une machine le demande. Nous ne sous-traitons pas le service : les personnes qui réapprovisionnent et dépannent vos machines sont nos équipes.</p>
-          <p class="text-muted">La carte ci-dessous se lit comme notre organisation : un cœur historique en Seine-et-Marne et sur Marne-la-Vallée, l'Est parisien en continuité, et le reste de la région desservi depuis ces bases.</p>
+          <p class="text-muted">Notre organisation : un cœur historique en Seine-et-Marne et sur Marne-la-Vallée, l'Est parisien en continuité, et l'ensemble des autres départements, ouest et sud compris, desservis depuis ces bases avec les mêmes engagements.</p>
         </div>
       </div>
     </div>
@@ -145,7 +155,7 @@
       <div class="row justify-content-center mb-6">
         <div class="col-12 col-md-10 col-lg-8 text-center">
           <h2>Nos zones d'intervention détaillées</h2>
-          <p class="font-size-lg text-muted">Communes, zones d'activité, délais et types de sites, zone par zone.</p>
+          <p class="font-size-lg text-muted">Communes, zones d'activité, délais et types de sites pour nos zones les plus denses. Les autres départements sont détaillés juste en dessous.</p>
         </div>
       </div>
       <div class="row">
@@ -153,7 +163,29 @@
         <div class="col-12 col-md-4 d-flex"><a class="card card-border border-success shadow-light-lg lift mb-6 mb-md-0 w-100" href="/zones/marne-la-vallee"><div class="card-body"><h3 class="h4 mb-2">Marne-la-Vallée</h3><p class="text-muted mb-0">Val d'Europe, Val de Bussy, Val Maubuée, Cité Descartes, Porte de Paris.</p></div></a></div>
         <div class="col-12 col-md-4 d-flex"><a class="card card-border border-success shadow-light-lg lift w-100" href="/zones/est-parisien"><div class="card-body"><h3 class="h4 mb-2">Est parisien</h3><p class="text-muted mb-0">Val de Fontenay, Noisy-le-Grand, Montreuil, Créteil, Paris Est.</p></div></a></div>
       </div>
-      <p class="text-center text-muted mt-6 mb-0">Roissy, l'Ouest et le Sud de l'Île-de-France sont également desservis ; leurs pages détaillées arrivent prochainement.</p>
+    </div>
+  </section>
+
+<!-- RESTE DE L'ÎLE-DE-FRANCE : Ouest, Sud, Nord, Paris -->
+  <section class="py-8 py-md-10" id="toute-ile-de-france">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-6 mb-6 mb-lg-0">
+          <h2 class="mb-4">Hauts-de-Seine, Yvelines, Essonne, Val-d'Oise, Paris : nous y allons aussi, et volontiers</h2>
+          <p class="text-muted">Notre densité de tournées est plus forte à l'est, mais notre périmètre, c'est l'Île-de-France entière. Un siège à La Défense, un parc d'activités à Vélizy ou à Saint-Quentin-en-Yvelines, un entrepôt à Gennevilliers ou à Roissy, un campus à Massy ou à Saclay : nous étudions le dossier exactement comme un site de Seine-et-Marne, avec les mêmes engagements.</p>
+          <p class="text-muted mb-0">Concrètement, pour un site à l'ouest ou au sud, nous précisons dès le diagnostic le rythme de réassort attendu et le délai d'intervention que nous pouvons tenir à cette adresse, et nous les écrivons au contrat.</p>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="row">
+            <div class="col-6 mb-4"><h3 class="h5 mb-2">Hauts-de-Seine (92)</h3><p class="text-muted font-size-sm mb-0">La Défense, Nanterre, Boulogne-Billancourt, Issy-les-Moulineaux, Gennevilliers, Rueil-Malmaison, Levallois, Montrouge</p></div>
+            <div class="col-6 mb-4"><h3 class="h5 mb-2">Yvelines (78)</h3><p class="text-muted font-size-sm mb-0">Versailles, Saint-Quentin-en-Yvelines, Vélizy-Villacoublay, Poissy, Les Mureaux, Mantes-la-Jolie, Plaisir</p></div>
+            <div class="col-6 mb-4"><h3 class="h5 mb-2">Essonne (91)</h3><p class="text-muted font-size-sm mb-0">Massy, Saclay, Évry-Courcouronnes, Les Ulis, Corbeil-Essonnes, Orly, Wissous</p></div>
+            <div class="col-6 mb-4"><h3 class="h5 mb-2">Val-d'Oise (95)</h3><p class="text-muted font-size-sm mb-0">Roissy-en-France, Cergy, Argenteuil, Gonesse, Saint-Ouen-l'Aumône, Sarcelles</p></div>
+            <div class="col-6"><h3 class="h5 mb-2">Seine-Saint-Denis (93)</h3><p class="text-muted font-size-sm mb-0">Saint-Denis, Aubervilliers, Bobigny, Montreuil, Aulnay-sous-Bois, Tremblay-en-France</p></div>
+            <div class="col-6"><h3 class="h5 mb-2">Paris (75)</h3><p class="text-muted font-size-sm mb-0">Tous les arrondissements, bureaux, hôtels, établissements et lieux de passage</p></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -163,7 +195,7 @@
       <div class="row justify-content-center">
         <div class="col-12 col-lg-9">
           <h2 class="mb-4">Les mêmes engagements partout, mesurés zone par zone</h2>
-          <p class="text-muted">Fréquence de passage, délai d'intervention, remplissage, résolution des pannes au premier passage : ces engagements sont les mêmes sur toute la région, et votre espace client vous montre ce qui a été réellement tenu sur vos sites.</p>
+          <p class="text-muted">Réassort piloté par la télémétrie, délai d'intervention, diagnostic à distance, remplissage complet : ces engagements sont les mêmes sur toute la région, et votre espace client vous montre ce qui a été réellement tenu sur vos sites.</p>
           <div class="mt-5">
             <div class="d-flex mb-3">
               <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
@@ -190,7 +222,7 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8">
           <h2 class="text-white mb-3">Et vos pauses, elles ressemblent à quoi aujourd'hui ?</h2>
-          <p class="font-size-lg text-muted mb-6">Trois questions, une minute : nous vous disons ce que Machine Break changerait sur votre site.</p>
+          <p class="font-size-lg text-muted mb-6">Quelques questions, une minute : nous vous disons ce que Machine Break changerait sur votre site.</p>
           <a class="btn btn-success lift cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i class="fe fe-arrow-right ml-2"></i></a>
         </div>
       </div>
@@ -216,6 +248,7 @@
           <li><a href="/boissons-chaudes-snacks">Nos offres</a></li>
           <li><a href="/grands-comptes">Grands comptes</a></li>
           <li><a href="/zones/ile-de-france">Île-de-France</a></li>
+          <li><a href="/blog">Conseils</a></li>
           <li><a href="/fonctionnement">Fonctionnement</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>

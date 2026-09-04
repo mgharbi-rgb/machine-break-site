@@ -134,6 +134,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/faq">F.A.Q.</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog">Conseils</a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/contact">Contact</a>
@@ -145,7 +148,7 @@
 
         <!-- CTA principal -->
         <li class="nav-item ml-lg-3">
-          <a class="btn btn-sm btn-success text-nowrap cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a>
+          <a class="btn btn-sm btn-success text-nowrap cta-diagnostic" href="/contact#contact-form"><span class="d-none d-xl-inline">Mon diagnostic pause en 1 minute</span><span class="d-xl-none">Mon diagnostic en 1 min</span></a>
         </li>
       </ul>
     </div>
@@ -154,14 +157,18 @@
 </nav>
 
 <!-- HERO -->
-  <section class="pt-10 pb-8 bg-light">
+  <section class="pt-8 pt-md-10 pb-8 bg-light">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-9 text-center">
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-6 mb-6 mb-lg-0">
           <p class="text-uppercase text-success font-weight-bold mb-3">Résidences & hôtels</p>
           <h1 class="display-4 mb-4">Distributeurs automatiques pour résidences, hôtels et hébergements en Île-de-France</h1>
           <p class="lead text-muted mb-6">Un service disponible à toute heure sans personnel dédié, un paiement sans contact, une intégration discrète dans vos espaces communs.</p>
           <a class="btn btn-success lift cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i class="fe fe-arrow-right ml-2"></i></a>
+        </div>
+        <div class="col-12 col-lg-6">
+          <!-- TODO:MB — photo réelle de ce type de site / de cette zone à fournir (les visuels actuels sont des photos d'ambiance Machine Break) -->
+          <img src="/assets/img/covers/cover-20.webp" class="img-fluid rounded shadow-lg" alt="Distributeur Machine Break à écran tactile invitant à toucher l'écran">
         </div>
       </div>
     </div>
@@ -170,8 +177,11 @@
 <!-- UN SERVICE ATTENDU À TOUTE HEURE, SANS M -->
   <section class="py-8 py-md-10 " id="probleme">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-9">
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-5 mb-6 mb-lg-0 order-lg-1">
+          <img src="/assets/img/covers/coffee-6.webp" class="img-fluid rounded shadow" alt="Tasses de café, cappuccino et expresso vues de dessus" loading="lazy">
+        </div>
+        <div class="col-12 col-lg-7 order-lg-2">
           <h2 class="mb-4">Un service attendu à toute heure, sans mobiliser vos équipes</h2>
           <p class="text-muted">Résidence étudiante, résidence seniors, hôtel, appart'hôtel, foyer : vos résidents et vos clients ont des rythmes de vie décalés. Le besoin d'un café, d'une boisson fraîche ou d'un en-cas arrive à minuit, à l'aube, le dimanche. Vous ne pouvez ni ouvrir une boutique, ni immobiliser votre réception pour cela.</p>
           <p class="text-muted">Le distributeur automatique répond à cette attente à condition d'être fiable, propre, approvisionné et discret. Une machine vide ou en panne dans un hall d'accueil fait plus de mal qu'une absence de service.</p>
@@ -206,6 +216,7 @@
       <div class="row">
         <div class="col-12 col-md-4 d-flex">
           <div class="card shadow-light-lg mb-6 mb-md-0 w-100">
+            <img src="/assets/img/covers/cover-22.webp" class="card-img-top" alt="Distributeur de boissons fraîches Machine Break avec canettes en façade" loading="lazy">
             <div class="card-body">
               <h3 class="h4 mb-3">Distributeur combiné boissons chaudes, fraîches et snacks</h3>
               <p class="text-muted mb-0">Un seul meuble pour l'essentiel : café, boissons fraîches, en-cas sucrés et salés, avec une gamme ajustée à votre clientèle.</p>
@@ -246,34 +257,32 @@
           <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
             <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
             <div>
-              <h4 class="mb-1">Fréquence de passage garantie</h4>
-              <p class="text-muted mb-0">Un rythme de visite fixé au contrat, calé sur la consommation réelle de votre site.</p>
+              <h4 class="mb-1">Réassort piloté par la télémétrie</h4>
+              <p class="text-muted mb-0">Nous ne passons pas à date fixe : chaque machine remonte son remplissage et ses ventes, et c'est elle qui déclenche le passage, avant la rupture, en fonction des habitudes de consommation de votre site.</p>
             </div>
-            <!-- TODO:MB — valeur à fournir : fréquence de passage garantie. Décommenter : <span class="badge badge-pill badge-success-soft ml-auto">…</span> -->
           </div>
           <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
             <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
             <div>
               <h4 class="mb-1">Délai d'intervention en cas de panne</h4>
-              <p class="text-muted mb-0">Un délai maximal garanti entre votre signalement et l'arrivée du technicien.</p>
+              <p class="text-muted mb-0">Un délai maximal garanti entre le signalement (par vous ou par la machine) et l'arrivée du technicien.</p>
             </div>
-            <!-- TODO:MB — valeur à fournir : délai d'intervention garanti sur ce type de site. Décommenter : <span class="badge badge-pill badge-success-soft ml-auto">…</span> -->
+            <!-- TODO:MB — valeur à fournir : délai d'intervention garanti. Décommenter : <span class="badge badge-pill badge-success-soft ml-auto">…</span> -->
           </div>
           <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
             <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
             <div>
-              <h4 class="mb-1">Taux de remplissage à chaque visite</h4>
-              <p class="text-muted mb-0">Des machines pleines après chaque passage, pas seulement réapprovisionnées.</p>
+              <h4 class="mb-1">Diagnostic à distance avant déplacement</h4>
+              <p class="text-muted mb-0">L'alerte technique est analysée à distance : quand le défaut est identifié, le technicien part avec la pièce. Si une pièce doit être commandée, vous êtes informé du délai et la machine n'est pas laissée sans suivi.</p>
             </div>
-            <!-- TODO:MB — valeur à fournir : taux de remplissage à chaque visite (en %). Décommenter : <span class="badge badge-pill badge-success-soft ml-auto">…</span> -->
           </div>
           <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
             <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
             <div>
-              <h4 class="mb-1">Pannes résolues pendant le passage</h4>
-              <p class="text-muted mb-0">L'objectif : régler l'incident sur place, sans seconde visite.</p>
+              <h4 class="mb-1">Machines pleines à chaque passage</h4>
+              <p class="text-muted mb-0">Un passage, c'est un remplissage complet et un contrôle de la machine, pas un simple réapprovisionnement partiel.</p>
             </div>
-            <!-- TODO:MB — valeur à fournir : part des pannes résolues pendant le passage (en %). Décommenter : <span class="badge badge-pill badge-success-soft ml-auto">…</span> -->
+            <!-- TODO:MB — valeur à fournir : taux de remplissage constaté à chaque passage (en %). Décommenter : <span class="badge badge-pill badge-success-soft ml-auto">…</span> -->
           </div>
           <div class="d-flex align-items-start py-4 border-bottom border-gray-300">
             <div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div>
@@ -383,7 +392,7 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8">
           <h2 class="text-white mb-3">Et vos pauses, elles ressemblent à quoi aujourd'hui ?</h2>
-          <p class="font-size-lg text-muted mb-6">Trois questions, une minute : nous vous disons ce que Machine Break changerait sur votre site.</p>
+          <p class="font-size-lg text-muted mb-6">Quelques questions, une minute : nous vous disons ce que Machine Break changerait sur votre site.</p>
           <a class="btn btn-success lift cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i class="fe fe-arrow-right ml-2"></i></a>
         </div>
       </div>
@@ -409,6 +418,7 @@
           <li><a href="/boissons-chaudes-snacks">Nos offres</a></li>
           <li><a href="/grands-comptes">Grands comptes</a></li>
           <li><a href="/zones/ile-de-france">Île-de-France</a></li>
+          <li><a href="/blog">Conseils</a></li>
           <li><a href="/fonctionnement">Fonctionnement</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>

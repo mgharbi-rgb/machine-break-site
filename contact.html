@@ -59,7 +59,7 @@
 
 </head>
 
-<body class="pt-10 bg-light">
+<body class="bg-light">
   
   <!-- TOPBAR : téléphone + espace client (brief §4.1) -->
 <div id="topbar" class="bg-dark py-2 font-size-sm">
@@ -125,6 +125,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/faq">F.A.Q.</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog">Conseils</a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/contact">Contact</a>
@@ -136,7 +139,7 @@
 
         <!-- CTA principal -->
         <li class="nav-item ml-lg-3">
-          <a class="btn btn-sm btn-success text-nowrap cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a>
+          <a class="btn btn-sm btn-success text-nowrap cta-diagnostic" href="/contact#contact-form"><span class="d-none d-xl-inline">Mon diagnostic pause en 1 minute</span><span class="d-xl-none">Mon diagnostic en 1 min</span></a>
         </li>
       </ul>
     </div>
@@ -255,7 +258,7 @@
 
           <!-- Text -->
           <p class="font-size-lg text-muted mb-7 mb-md-9">
-            Trois champs suffisent. Nous vous rappelons pour comprendre votre site et vous dire, concrètement, ce que Machine Break y changerait.
+            Cinq informations suffisent pour que nous préparions votre rappel : nous identifions votre entité et votre site, et nous vous disons concrètement ce que Machine Break y changerait.
           </p>
 
         </div>
@@ -271,16 +274,28 @@
             </p>
 
             <div class="row">
-              <div class="col-12 col-md-4">
+              <div class="col-12 col-md-6">
                 <div class="form-group mb-5">
                   <label for="email">Email professionnel <span style="color:red">*</span></label>
                   <input type="email" class="form-control" name="email" id="email" placeholder="prenom@entreprise.fr" required autocomplete="email">
                 </div>
               </div>
-              <div class="col-12 col-md-4">
+              <div class="col-12 col-md-6">
                 <div class="form-group mb-5">
                   <label for="phone">Téléphone <span style="color:red">*</span></label>
                   <input type="tel" class="form-control" name="phone" id="phone" placeholder="Votre ligne directe" required autocomplete="tel">
+                </div>
+              </div>
+              <div class="col-12 col-md-5">
+                <div class="form-group mb-5">
+                  <label for="company">Entreprise ou entité <span style="color:red">*</span></label>
+                  <input type="text" class="form-control" name="company" id="company" placeholder="Raison sociale, site ou filiale" required autocomplete="organization">
+                </div>
+              </div>
+              <div class="col-12 col-md-3">
+                <div class="form-group mb-5">
+                  <label for="postalCode">Code postal du site <span style="color:red">*</span></label>
+                  <input type="text" class="form-control" name="postalCode" id="postalCode" placeholder="77700" required inputmode="numeric" pattern="[0-9]{5}" title="Cinq chiffres" autocomplete="postal-code">
                 </div>
               </div>
               <div class="col-12 col-md-4">
@@ -314,18 +329,6 @@
                     <div class="form-group mb-5">
                       <label for="firstname">Prénom</label>
                       <input type="text" class="form-control" name="firstname" id="firstname" autocomplete="given-name">
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group mb-5">
-                      <label for="company">Entreprise</label>
-                      <input type="text" class="form-control" name="company" id="company" autocomplete="organization">
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group mb-5">
-                      <label for="city">Commune du site</label>
-                      <input type="text" class="form-control" name="city" id="city" placeholder="ex. Marne-la-Vallée">
                     </div>
                   </div>
                   <div class="col-12">
@@ -459,6 +462,11 @@
             <li class="mb-3">
               <a href="/zones/ile-de-france" class="text-reset">
                 Île-de-France
+              </a>
+            </li>
+            <li class="mb-3">
+              <a href="/blog" class="text-reset">
+                Conseils
               </a>
             </li>
             <li class="mb-3">
