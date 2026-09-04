@@ -1,0 +1,24 @@
+{
+  "url": "https://machinebreak.com",
+  "staticPages": [
+    "/",
+    "/boissons-chaudes-snacks",
+    "/solution-par-secteur",
+    "/fonctionnement",
+    "/faq",
+    "/contact",
+    "/solutions/bureaux-pme",
+    "/solutions/residences-hotels",
+    "/solutions/industrie-logistique",
+    "/solutions/equipements",
+    "/grands-comptes",
+    "/zones/ile-de-france",
+    "/zones/seine-et-marne",
+    "/zones/marne-la-vallee",
+    "/zones/est-parisien",
+    "/blog",
+    "/mentions-legales",
+    "/politique-de-confidentialite",
+    "/terms-of-service"
+  ]
+}

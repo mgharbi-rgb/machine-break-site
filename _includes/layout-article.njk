@@ -1,0 +1,30 @@
+---
+layout: layout-base.njk
+ogType: article
+---
+<article>
+  <section class="pt-8 pt-md-10 pb-6 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-9 text-center">
+          <p class="text-uppercase text-success font-weight-bold mb-3">{{ kicker or "Article" }} · <time datetime="{{ date | isoDate }}">{{ date | frDate }}</time></p>
+          <h1 class="display-4 mb-4">{{ title }}</h1>
+          <p class="lead text-muted mb-0">{{ description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-8">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 article-body">
+          {% if image %}<img src="{{ image }}" class="img-fluid rounded shadow mb-7" alt="{{ image_alt }}">{% endif %}
+          {{ content | safe }}
+          <p class="mt-7"><a href="/blog"><i class="fe fe-arrow-left mr-1"></i> Tous les articles</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">{{ page | articleLd(title, description, image, date, updated) | safe }}</script>
+</article>
+{% include "cta.html" %}

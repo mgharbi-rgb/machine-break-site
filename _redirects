@@ -15,7 +15,6 @@
 /career-single.html                                           /contact                   301!
 /avantages                                                    /fonctionnement            301
 /avantages.html                                               /fonctionnement            301!
-/admin/*                                                      /                          301
 
 # URL propres : la version .html de chaque page redirige vers l'URL canonique (Phase 4).
 # Le « ! » force la règle bien que le fichier existe (sinon Netlify sert le fichier).

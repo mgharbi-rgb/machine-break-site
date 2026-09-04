@@ -692,6 +692,21 @@ Tous les produits que nous intégrons dans nos distributeurs sont choisis avec a
     </div>
   </div>
 
+<!-- RÉSEAUX SOCIAUX : cartes chargées depuis /social.json (éditable dans /admin/), section masquée tant que le fichier est vide -->
+  <section class="py-8 py-md-10 bg-light" id="reseaux" hidden>
+    <div class="container">
+      <div class="row justify-content-center mb-6">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          <h2>Sur les réseaux</h2>
+          <p class="font-size-lg text-muted mb-4">Installations, coulisses, nouveautés produit : suivez Machine Break au quotidien.</p>
+          <a class="btn btn-sm btn-outline-primary mr-2 mb-2" href="https://www.linkedin.com/company/machinebreak/" target="_blank" rel="noopener noreferrer"><i class="fe fe-linkedin mr-1"></i> Suivre sur LinkedIn</a>
+          <a class="btn btn-sm btn-outline-primary mb-2" href="https://www.instagram.com/machine.break/" target="_blank" rel="noopener noreferrer"><i class="fe fe-instagram mr-1"></i> Suivre sur Instagram</a>
+        </div>
+      </div>
+      <div class="row" id="reseaux-cartes"></div>
+    </div>
+  </section>
+
   <!-- CTA
     ================================================== -->
   <section class="py-8 py-md-11 bg-dark">
@@ -855,6 +870,15 @@ Tous les produits que nous intégrons dans nos distributeurs sont choisis avec a
 
   <!-- Consentement cookies + mesure (GA4 / Google Ads), chargés uniquement après accord -->
   <script src="assets/js/mb-consent.js" defer></script>
+  <script src="assets/js/mb-social.js" defer></script>
+  <!-- Invitations à l'éditeur (/admin/) : le widget Netlify Identity n'est chargé que si l'URL contient un jeton d'invitation -->
+  <script>
+    if (/(invite|recovery|confirmation|email_change)_token=/.test(window.location.hash)) {
+      var s = document.createElement('script'); s.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+      s.onload = function () { window.netlifyIdentity && window.netlifyIdentity.on('init', function (u) { if (!u) window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; }); }); };
+      document.body.appendChild(s);
+    }
+  </script>
 </body>
 
 </html>
