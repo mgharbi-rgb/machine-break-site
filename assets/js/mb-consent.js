@@ -14,7 +14,7 @@
   'use strict';
 
   var CONFIG = {
-    ga4Id: '',                         // TODO:MB — identifiant GA4 (format G-XXXXXXXXXX) à fournir par le client
+    ga4Id: 'G-YK9MDPBNX3',             // GA4 (fourni par le client le 2026-09-04)
     adsId: 'AW-10786145165',           // tag Google Ads déjà en place sur le site
     adsLeadLabel: '7cy0COidpO0aEI2Hnpco', // conversion Ads « Form rempli » (déplacée de /contact vers /merci)
     storageKey: 'mb_consent',

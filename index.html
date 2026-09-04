@@ -39,7 +39,6 @@
 
 
   <!-- Données structurées LocalBusiness (brief §6) -->
-  <!-- TODO:MB — horaires d'ouverture à fournir pour ajouter "openingHoursSpecification" ; forme juridique / SIREN pour "legalName" et "taxID" -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,6 +101,23 @@
     "https://www.linkedin.com/company/machinebreak/",
     "https://www.instagram.com/machine.break/",
     "https://www.facebook.com/MachineBreak"
+  ],
+  "legalName": "MACHINE BREAK",
+  "vatID": "FR22839728292",
+  "taxID": "839728292",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:30",
+      "closes": "18:00"
+    }
   ]
 }
   </script>
@@ -119,18 +135,13 @@
   <div class="container d-flex flex-wrap justify-content-between align-items-center">
     <div class="text-white-75">
       <a href="tel:0174810952" class="text-white font-weight-bold js-tel">01 74 81 09 52</a>
-      <!-- TODO:MB — valeur à fournir : horaires d'ouverture à afficher à côté du numéro (ex. « du lundi au vendredi, 8h–18h »). Décommenter :
-      <span class="ml-3 d-none d-sm-inline">· …</span>
-      -->
+      <span class="ml-3 d-none d-sm-inline">· du lundi au vendredi, 8h30 – 18h</span>
     </div>
     <div>
-      <!-- TODO:MB — valeur à fournir : URL de l'espace client (plateforme de suivi). Décommenter une fois l'URL connue, ne jamais publier un lien mort :
-      <a href="URL_ESPACE_CLIENT" class="text-white" target="_blank" rel="noopener noreferrer">Espace client <i class="fe fe-log-in ml-1"></i></a>
-      -->
+      <a href="https://clients.machinebreak.com" class="text-white" target="_blank" rel="noopener noreferrer">Espace client <i class="fe fe-log-in ml-1"></i></a>
     </div>
   </div>
 </div>
-<!-- TODO:MB — URL du formulaire de diagnostic (Typeform ou Tally) à fournir : remplacer /contact#contact-form dans tous les liens .cta-diagnostic -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container">
 
@@ -168,6 +179,8 @@
             <a class="dropdown-item" href="/boissons-chaudes-snacks">Boissons &amp; snacks</a>
             <a class="dropdown-item" href="/grands-comptes">Grands comptes</a>
             <a class="dropdown-item" href="/zones/ile-de-france">Zones d'intervention</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://tazza.fr" target="_blank" rel="noopener">Cafés &amp; restaurants : Tazza <i class="fe fe-external-link ml-1"></i></a>
           </div>
         </li>
 
@@ -566,9 +579,10 @@ Tous les produits que nous intégrons dans nos distributeurs sont choisis avec a
           </div>
         </div>
         <div class="col-12 col-md-6 mt-6 mt-md-0">
-          <!-- TODO:MB — valeur à fournir : captures d'écran anonymisées de la plateforme client. Décommenter et déposer les fichiers dans assets/img/plateforme/ :
-          <img loading="lazy" src="assets/img/plateforme/vue-machine.webp" class="img-fluid rounded shadow-lg" alt="Espace client Machine Break : suivi d'une machine (ventes, interventions, alertes)">
-          -->
+          <figure class="mb-4">
+            <img src="assets/img/plateforme/espace-client-apercu.webp" class="img-fluid rounded shadow-lg" alt="Espace client Machine Break : tableau de bord avec sites, tickets ouverts, prochaine intervention et fil d'activité" loading="lazy">
+            <figcaption class="font-size-sm text-muted mt-2 text-center">Aperçu de l'espace client (données de démonstration).</figcaption>
+          </figure>
           <div class="card shadow-light-lg">
             <div class="card-body">
               <h4 class="mb-3">Pourquoi c'est différent</h4>
@@ -675,8 +689,6 @@ Tous les produits que nous intégrons dans nos distributeurs sont choisis avec a
             <span class="text-primary">Sans aucune charge de gestion</span>.
           </h2>
 
-          <!-- TODO:MB — valeur à fournir : bloc statistiques retiré (satisfaction, support 24/7 non sourcés) ; à réintroduire uniquement avec des valeurs validées par le client -->
-
         </div>
       </div> <!-- / .row -->
     </div> <!-- / .container -->
@@ -777,6 +789,11 @@ Tous les produits que nous intégrons dans nos distributeurs sont choisis avec a
             <li class="mb-3">
               <a href="/blog" class="text-reset">
                 Conseils
+              </a>
+            </li>
+            <li class="mb-3">
+              <a href="https://tazza.fr" class="text-reset" target="_blank" rel="noopener">
+                Tazza (CHR)
               </a>
             </li>
           <li class="mb-2"><a href="/contact" class="text-reset">Contact</a></li>
