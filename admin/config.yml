@@ -1,37 +1,57 @@
+# Éditeur du site machinebreak.com (Decap CMS). Ne concerne que le blog et la section « Sur les réseaux ».
 backend:
   name: git-gateway
   branch: main
+  commit_messages:
+    create: "Blog : nouvel article « {{slug}} »"
+    update: "Blog : mise à jour « {{slug}} »"
+    delete: "Blog : suppression « {{slug}} »"
+    uploadMedia: "Média : {{path}}"
+    deleteMedia: "Média supprimé : {{path}}"
+
+locale: fr
+site_url: https://machinebreak.com
+display_url: https://machinebreak.com
+logo_url: https://machinebreak.com/assets/img/logo.webp
 
 media_folder: "assets/img/uploads"
 public_folder: "/assets/img/uploads"
 
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: "articles"
+    label: "Articles du blog"
+    label_singular: "Article"
+    folder: "blog"
+    extension: "md"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date | date('DD/MM/YYYY')}}"
+    sortable_fields: ["date", "title"]
+    editor:
+      preview: false
+    fields:
+      - { label: "Titre", name: "title", widget: "string", hint: "Une phrase claire, idéalement la question ou le besoin du lecteur." }
+      - { label: "Résumé (150 à 160 caractères)", name: "description", widget: "text", pattern: ["^.{150,160}$", "Le résumé doit faire entre 150 et 160 caractères : il sert de description dans Google et sur les réseaux."] }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Rubrique", name: "kicker", widget: "select", options: ["Guide", "Actualité", "Coulisses", "Produit"], default: "Guide" }
+      - { label: "Image principale", name: "image", widget: "image", hint: "Format paysage, 1200 px de large environ, moins de 300 Ko (JPG ou WebP)." }
+      - { label: "Description de l'image", name: "image_alt", widget: "string", hint: "Décrivez ce que montre la photo, pour l'accessibilité et le référencement." }
+      - { label: "Corps de l'article", name: "body", widget: "markdown", hint: "Utilisez les titres de niveau 2 pour structurer. Pas de chiffre ni de délai qui n'a pas été validé." }
+
+  - name: "reseaux"
+    label: "Sur les réseaux"
     files:
-      - label: "Page d'accueil"
-        name: "index"
-        file: "index.html"
+      - name: "social"
+        label: "Derniers posts LinkedIn / Instagram"
+        file: "social.json"
         fields:
-          - { label: "Titre principal", name: "titre", widget: "string" }
-          - { label: "Sous-titre", name: "sous_titre", widget: "string", required: false }
-          - { label: "Contenu principal", name: "body", widget: "markdown" }
-          - { label: "Image principale", name: "image", widget: "image", required: false }
-          - { label: "Lien/Bouton", name: "lien", widget: "string", required: false }
-      - label: "Contact"
-        name: "contact"
-        file: "contact.html"
-        fields:
-          - { label: "Titre principal", name: "titre", widget: "string" }
-          - { label: "Sous-titre", name: "sous_titre", widget: "string", required: false }
-          - { label: "Contenu principal", name: "body", widget: "markdown" }
-          - label: "Coordonnées"
-            name: "coordonnees"
-            widget: "object"
+          - label: "Posts affichés sur le site (les 3 premiers)"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.reseau}} — {{fields.texte}}"
             fields:
-              - { label: "Adresse", name: "adresse", widget: "text" }
-              - { label: "Téléphone", name: "telephone", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Lien Google Maps", name: "map_link", widget: "string", required: false }
-          - { label: "Image principale", name: "image", widget: "image", required: false }
-          - { label: "Lien/Bouton", name: "lien", widget: "string", required: false }
+              - { label: "Réseau", name: "reseau", widget: "select", options: ["LinkedIn", "Instagram"] }
+              - { label: "Lien du post", name: "url", widget: "string", hint: "Adresse complète du post (commence par https://)." }
+              - { label: "Visuel", name: "image", widget: "image", hint: "Capture ou visuel du post, format carré ou paysage." }
+              - { label: "Texte court", name: "texte", widget: "string", hint: "Une phrase, comme la première ligne du post." }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }

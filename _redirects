@@ -1,0 +1,39 @@
+# Redirections 301 — Phase 1 (brief §3.1). Syntaxe Netlify.
+# Doublon de la racine ("!" force la règle bien que le fichier existe)
+/index.html                                                   /                          301!
+
+# Ancienne génération du site (contenu extrait dans CONTENU-RECUPERE.md)
+/location-distributeurs-automatiques-boissons                 /fonctionnement            301
+/location-distributeurs-automatiques-boissons.html            /fonctionnement            301!
+/entreprise-location-distributeur-automatique-boisson         /boissons-chaudes-snacks   301
+/entreprise-location-distributeur-automatique-boisson.html    /boissons-chaudes-snacks   301!
+
+# Pages supprimées (décision client 2026-09-03)
+/careers                                                      /contact                   301
+/careers.html                                                 /contact                   301!
+/career-single                                                /contact                   301
+/career-single.html                                           /contact                   301!
+/avantages                                                    /fonctionnement            301
+/avantages.html                                               /fonctionnement            301!
+
+# URL propres : la version .html de chaque page redirige vers l'URL canonique (Phase 4).
+# Le « ! » force la règle bien que le fichier existe (sinon Netlify sert le fichier).
+/boissons-chaudes-snacks.html                                 /boissons-chaudes-snacks   301!
+/solution-par-secteur.html                                    /solution-par-secteur      301!
+/fonctionnement.html                                          /fonctionnement            301!
+/faq.html                                                     /faq                       301!
+/contact.html                                                 /contact                   301!
+/terms-of-service.html                                        /terms-of-service          301!
+/mentions-legales.html                                        /mentions-legales          301!
+/politique-de-confidentialite.html                            /politique-de-confidentialite301
+/merci.html                                                   /merci                     301!
+/solutions/bureaux-pme.html                                   /solutions/bureaux-pme     301!
+/solutions/residences-hotels.html                             /solutions/residences-hotels301!
+/solutions/industrie-logistique.html                          /solutions/industrie-logistique301!
+/solutions/equipements.html                                   /solutions/equipements     301!
+/grands-comptes.html                                          /grands-comptes            301!
+/zones/ile-de-france.html                                     /zones/ile-de-france       301!
+/zones/seine-et-marne.html                                    /zones/seine-et-marne      301!
+/zones/marne-la-vallee.html                                   /zones/marne-la-vallee     301!
+/zones/est-parisien.html                                      /zones/est-parisien        301!
+/blog.html                                                    /blog                      301!

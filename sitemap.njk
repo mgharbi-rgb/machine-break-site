@@ -1,0 +1,21 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for p in site.staticPages %}
+  <url>
+    <loc>{{ site.url }}{{ p }}</loc>
+    <lastmod>{{ site.buildDate }}</lastmod>
+    <priority>{{ "1.0" if p == "/" else ("0.3" if p in ["/mentions-legales", "/politique-de-confidentialite", "/terms-of-service"] else "0.8") }}</priority>
+  </url>
+{%- endfor %}
+{%- for post in collections.articles %}
+  <url>
+    <loc>{{ site.url }}{{ post.url | url }}</loc>
+    <lastmod>{{ (post.data.updated or post.date) | isoDate }}</lastmod>
+    <priority>0.7</priority>
+  </url>
+{%- endfor %}
+</urlset>

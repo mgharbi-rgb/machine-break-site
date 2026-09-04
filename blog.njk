@@ -1,0 +1,37 @@
+---
+layout: layout-base.njk
+title: Conseils distribution automatique et pause en entreprise
+description: "Guides Machine Break : choisir un prestataire de distribution automatique, organiser la pause sur un site en 3×8, comprendre le service. Île-de-France."
+permalink: /blog.html
+---
+  <section class="pt-10 pb-8 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          <p class="text-uppercase text-success font-weight-bold mb-3">Conseils</p>
+          <h1 class="display-4 mb-4">Bien choisir, bien organiser la pause</h1>
+          <p class="lead text-muted mb-0">Des guides courts et concrets, écrits depuis le terrain, pour les personnes qui ont un espace de pause à équiper ou un prestataire à choisir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-8 py-md-10">
+    <div class="container">
+      <div class="row">
+      {%- for post in collections.articles | reverse %}
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <a class="card shadow-light-lg lift mb-6 w-100" href="{{ post.url | url }}">
+            {% if post.data.image %}<img src="{{ post.data.image }}" class="card-img-top" alt="{{ post.data.image_alt }}" loading="lazy">{% endif %}
+            <div class="card-body">
+              <p class="text-uppercase text-success font-weight-bold font-size-sm mb-2">{{ post.data.kicker or "Article" }} · <time datetime="{{ post.date | isoDate }}">{{ post.date | frDate }}</time></p>
+              <h2 class="h4 mb-3">{{ post.data.title }}</h2>
+              <p class="text-muted mb-0">{{ post.data.description }}</p>
+            </div>
+          </a>
+        </div>
+      {%- endfor %}
+      </div>
+    </div>
+  </section>
+{% include "reseaux.html" %}
+{% include "cta.html" %}

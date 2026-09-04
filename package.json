@@ -1,0 +1,22 @@
+{
+  "name": "machine-break-site",
+  "version": "2.0.0",
+  "description": "Site machinebreak.com — HTML statique + Eleventy pour le blog (éditeur Decap CMS dans /admin/)",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgharbi-rgb/machine-break-site.git"
+  },
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/mgharbi-rgb/machine-break-site/issues"
+  },
+  "homepage": "https://github.com/mgharbi-rgb/machine-break-site#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  },
+  "private": true
+}
