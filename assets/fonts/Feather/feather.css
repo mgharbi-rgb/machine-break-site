@@ -1,4 +1,5 @@
 @font-face {
+  font-display: swap;
   font-family: 'Feather';
   src:
     url('fonts/Feather144f.ttf?sdxovp') format('truetype'),
