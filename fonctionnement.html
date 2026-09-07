@@ -28,6 +28,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="assets/css/theme.min.css">
   <link rel="stylesheet" href="assets/fonts/Feather/feather.css">
+  <link rel="stylesheet" href="assets/css/mb-story.css">
+  <style>.mb-story-panne .mb-dot{left:60%;top:21.5%}.mb-story-panne .mb-screen{left:40.5%;top:22.5%;width:19.5%;height:21%}</style>
+  <script src="assets/js/mb-story.js"></script>
   <link rel="stylesheet" href="assets/libs/aos/dist/aos.css">
 </head>
 <body>
@@ -128,6 +131,47 @@
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- HISTOIRE « PANNE » : machine à café animée au défilement (composant mb-story) -->
+<section class="mb-story mb-story-panne bg-white" id="panne">
+  <div class="mb-story-pin">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-lg-6 mb-7 mb-lg-0">
+        <p class="text-uppercase text-success font-weight-bold mb-3">Et quand ça tombe en panne ?</p>
+        <h2 class="display-4 mb-4">Vous le savez avant vos équipes. Nous aussi.</h2>
+        <p class="lead text-muted mb-5">La machine signale elle-même son défaut. Le diagnostic se fait à distance, le technicien part avec la bonne pièce, et chaque étape apparaît horodatée dans votre espace client. Aucun appel à passer, aucune relance à faire.</p>
+        <div class="d-flex flex-wrap font-size-sm text-muted">
+          <span class="mr-5 mb-2"><i class="fe fe-check-circle text-success mr-1"></i> Alerte remontée par la machine</span>
+          <span class="mr-5 mb-2"><i class="fe fe-check-circle text-success mr-1"></i> Diagnostic à distance</span>
+          <span class="mb-2"><i class="fe fe-check-circle text-success mr-1"></i> Délai d'intervention écrit au contrat</span>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="mb-machine-col">
+        <div class="mb-machine" aria-hidden="true">
+          <img src="assets/img/machines/optibean-x.webp" width="483" height="900" alt="" class="mb-photo" decoding="async" loading="lazy">
+          <img src="assets/img/machines/optibean-x-ouverte.webp" width="657" height="900" alt="" class="mb-photo-open mb-anim" decoding="async" loading="lazy">
+          <span class="mb-screen mb-anim"></span>
+          <span class="mb-dot mb-anim"></span>
+          <div class="mb-card">
+            <p class="mb-card-title">Télémétrie · Machine à café, accueil</p>
+            <div class="mb-gauge"><i class="mb-anim"></i></div>
+            <div class="mb-state">
+              <span class="mb-anim"><b>Fonctionnement normal</b><br>Ventes et état remontés en continu</span>
+              <span class="mb-anim"><b>Défaut détecté</b><br>Alerte remontée par la machine, diagnostic à distance en cours</span>
+              <span class="mb-anim"><b>Pièce identifiée</b><br>Le technicien part avec la pièce, intervention planifiée</span>
+              <span class="mb-anim"><b>Réparée</b><br>Intervention horodatée dans votre espace client</span>
+            </div>
+            <img class="mb-van mb-anim" src="assets/img/machines/camion-machine-break.webp" width="520" height="213" alt="" decoding="async" loading="lazy">
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </section>
 
