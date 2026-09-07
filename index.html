@@ -164,7 +164,7 @@
     html.mb-scroll .mb-dot{animation-name:mb-dot}
     html.mb-scroll .mb-van{animation-name:mb-van}
     html.mb-scroll.mb-native .mb-anim{animation-play-state:running;animation-timeline:scroll(root);animation-range:0 85vh}
-    @media (max-width:991.98px){html.mb-scroll.mb-native .mb-anim{animation-timeline:view();animation-range:entry 70% exit 30%}}
+    @media (max-width:991.98px){html.mb-scroll.mb-native .mb-anim{animation-timeline:view();animation-range:entry 25% entry 100%}}
     @keyframes mb-p0{0%,13.2%{opacity:0}14.4%,65.2%{opacity:1}66.4%,100%{opacity:0}}
     @keyframes mb-p1{0%,24.3%{opacity:0}25.5%,72.4%{opacity:1}73.6%,100%{opacity:0}}
     @keyframes mb-p2{0%,23.7%{opacity:0}24.9%,79.6%{opacity:1}80.8%,100%{opacity:0}}
@@ -227,7 +227,7 @@
         function update(){
           var vh=window.innerHeight, p;
           if(window.innerWidth>=992){ p=window.scrollY/(0.85*vh); }
-          else { var r=m.getBoundingClientRect(); p=(vh*0.9-r.top)/(r.height+vh*0.5); }
+          else { var r=m.getBoundingClientRect(); p=(vh-r.top-0.25*r.height)/(0.75*r.height); }
           p=Math.max(0,Math.min(1,p));
           for(var i=0;i<els.length;i++){ els[i].style.animationDelay=(-p)+'s'; }
         }
