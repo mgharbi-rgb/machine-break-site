@@ -153,7 +153,11 @@
     .mb-state span:last-child{opacity:1}
     .mb-dot{position:absolute;right:6.5%;top:23.5%;width:14px;height:14px;border-radius:50%;background:#e53e3e;box-shadow:0 0 0 0 rgba(229,62,62,.6);opacity:0}
     .mb-van{position:absolute;left:-2%;bottom:-2.6rem;width:150px;height:auto;opacity:0;filter:drop-shadow(0 .5rem .75rem rgba(22,28,45,.3))}
-    @media (max-width:991.98px){.mb-machine{max-width:260px}.mb-card{left:2%;width:78%;bottom:9%}.mb-van{left:4%;width:110px;bottom:-2.2rem;--mb-van-travel:120px}}
+    @media (max-width:991.98px){
+      .mb-machine{max-width:230px}.mb-card{left:2%;width:78%;bottom:9%}.mb-van{left:4%;width:110px;bottom:-2.2rem;--mb-van-travel:120px}
+      html.mb-scroll .mb-machine-col{height:160vh}
+      html.mb-scroll .mb-machine{position:sticky;top:12vh}
+    }
     /* animation active (natif ou script) */
     html.mb-scroll .mb-anim{animation-duration:1s;animation-timing-function:linear;animation-fill-mode:both;animation-play-state:paused}
     html.mb-scroll .mb-gauge > i{animation-name:mb-gauge}
@@ -164,7 +168,7 @@
     html.mb-scroll .mb-dot{animation-name:mb-dot}
     html.mb-scroll .mb-van{animation-name:mb-van}
     html.mb-scroll.mb-native .mb-anim{animation-play-state:running;animation-timeline:scroll(root);animation-range:0 85vh}
-    @media (max-width:991.98px){html.mb-scroll.mb-native .mb-anim{animation-timeline:view();animation-range:entry 25% entry 100%}}
+    @media (max-width:991.98px){html.mb-scroll.mb-native .mb-anim{animation-timeline:scroll(root);animation-range:var(--mb-a,0px) var(--mb-b,85vh)}}
     @keyframes mb-p0{0%,17.7%{opacity:0}18.9%,70.2%{opacity:1}71.4%,100%{opacity:0}}
     @keyframes mb-p1{0%,25.1%{opacity:0}26.3%,91.1%{opacity:1}92.3%,100%{opacity:0}}
     @keyframes mb-p2{0%,24.2%{opacity:0}25.4%,75.1%{opacity:1}76.3%,100%{opacity:0}}
@@ -220,19 +224,26 @@
       var d=document.documentElement, rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
       if(rm) return;
       var native=window.CSS&&CSS.supports&&CSS.supports('animation-timeline: scroll()')&&location.hash!=='#mbjs';
-      d.classList.add('mb-scroll'); if(native){d.classList.add('mb-native');return;}
-      d.classList.add('mb-js');
+      d.classList.add('mb-scroll'); d.classList.add(native?'mb-native':'mb-js');
       function run(){
-        var els=document.querySelectorAll('.mb-anim'), m=document.querySelector('.mb-machine'); if(!els.length||!m) return;
+        var els=document.querySelectorAll('.mb-anim'), col=document.querySelector('.mb-machine-col'); if(!els.length||!col) return;
+        var a=0,b=1;
+        function range(){ /* mobile : l'histoire se joue pendant l'épinglage de la machine (top 12vh), sur 85vh de défilement */
+          var vh=window.innerHeight;
+          if(window.innerWidth>=992){ a=0; b=0.85*vh; }
+          else { a=col.getBoundingClientRect().top+window.scrollY-0.12*vh; b=a+0.85*vh; }
+          d.style.setProperty('--mb-a',Math.round(a)+'px'); d.style.setProperty('--mb-b',Math.round(b)+'px');
+        }
         function update(){
-          var vh=window.innerHeight, p;
-          if(window.innerWidth>=992){ p=window.scrollY/(0.85*vh); }
-          else { var r=m.getBoundingClientRect(); p=(vh-r.top-0.25*r.height)/(0.75*r.height); }
-          p=Math.max(0,Math.min(1,p));
+          if(native) return;
+          var p=(window.scrollY-a)/(b-a); p=Math.max(0,Math.min(1,p));
           for(var i=0;i<els.length;i++){ els[i].style.animationDelay=(-p)+'s'; }
         }
+        range(); update();
         window.addEventListener('scroll',update,{passive:true});
-        window.addEventListener('resize',update); window.__mbUpdate=update; update();
+        window.addEventListener('resize',function(){range();update();});
+        window.addEventListener('load',function(){range();update();});
+        window.__mbUpdate=update;
       }
       if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
     })();
@@ -344,6 +355,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-6">
+          <div class="mb-machine-col">
           <div class="mb-machine mb-machine-photo" aria-hidden="true">
             <img src="assets/img/machines/siline-combi-m.webp" width="536" height="940" alt="" class="mb-photo" decoding="async" fetchpriority="high">
             <i class="mb-slot mb-anim" data-anim="1" style="left:12.29%;top:6.30%;width:11.62%;height:9.92%;animation-name:mb-p0"></i>
@@ -399,6 +411,7 @@
               </div>
               <img class="mb-van mb-anim" src="assets/img/machines/camion-machine-break.webp" width="520" height="230" alt="" decoding="async">
             </div>
+          </div>
           </div>
         </div>
       </div>
