@@ -150,7 +150,7 @@
     .mb-state span b{color:#753F48}
     .mb-state span:last-child{opacity:1}
     .mb-dot{position:absolute;right:6.5%;top:23.5%;width:14px;height:14px;border-radius:50%;background:#e53e3e;box-shadow:0 0 0 0 rgba(229,62,62,.6);opacity:0}
-    .mb-van{position:absolute;left:1rem;bottom:-2rem;font-size:2rem;color:#753F48;opacity:0}
+    .mb-van{position:absolute;left:-2%;bottom:-2.6rem;width:150px;height:auto;opacity:0;filter:drop-shadow(0 .5rem .75rem rgba(22,28,45,.3))}
     /* animation active (natif ou script) */
     html.mb-scroll .mb-anim{animation-duration:1s;animation-timing-function:linear;animation-fill-mode:both;animation-play-state:paused}
     html.mb-scroll .mb-gauge > i{animation-name:mb-gauge}
@@ -209,7 +209,7 @@
     @keyframes mb-s3{0%{opacity:0}62%{opacity:0}66%{opacity:1}86%{opacity:1}92%{opacity:0}100%{opacity:0}}
     @keyframes mb-s4{0%{opacity:0}92%{opacity:0}100%{opacity:1}}
     @keyframes mb-dot{0%{opacity:0}30%{opacity:0}33%{opacity:1;box-shadow:0 0 0 0 rgba(229,62,62,.6)}45%{box-shadow:0 0 0 12px rgba(229,62,62,0)}60%{opacity:1}66%{opacity:0}100%{opacity:0}}
-    @keyframes mb-van{0%{opacity:0;transform:translateX(0)}60%{opacity:0;transform:translateX(0)}64%{opacity:1}92%{opacity:1;transform:translateX(220px)}100%{opacity:0;transform:translateX(240px)}}
+    @keyframes mb-van{0%{opacity:0;transform:translateX(-60px)}60%{opacity:0;transform:translateX(-60px)}64%{opacity:1}90%{opacity:1;transform:translateX(230px)}100%{opacity:0;transform:translateX(250px)}}
   </style>
   <script>
     /* Active l'animation du hero : natif si le navigateur sait lier une animation au défilement, sinon script léger ; rien si « réduire les animations ». */
@@ -394,7 +394,7 @@
                 <span class="mb-anim"><b>Passage en cours</b><br>Produits embarqués, remplissage complet</span>
                 <span class="mb-anim"><b>Machine remplie</b><br>Sans intervention de votre part, tout est tracé</span>
               </div>
-              <i class="fe fe-truck mb-van mb-anim"></i>
+              <img class="mb-van mb-anim" src="assets/img/machines/camion-machine-break.webp" width="520" height="230" alt="" decoding="async">
             </div>
           </div>
         </div>
