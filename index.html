@@ -132,6 +132,8 @@
     /* ── Hero « machine télémétrie » : animation pilotée par le défilement.
        Natif (animation-timeline) sur Chrome/Edge/Safari 26+, script de secours ailleurs (classe html.mb-js),
        état final fixe si « réduire les animations ». L'épinglage n'est actif que si l'animation l'est. ── */
+    /* Le thème pose overflow-x:hidden sur html/body, ce qui empêche position:sticky dans Safari : clip coupe le débordement sans casser l'épinglage */
+    html.mb-scroll,html.mb-scroll body{overflow-x:clip}
     .mb-hero{min-height:640px}
     .mb-hero-pin{padding:2.5rem 0}
     @media (min-width:992px){
