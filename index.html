@@ -153,6 +153,7 @@
     .mb-state span:last-child{opacity:1}
     .mb-dot{position:absolute;right:6.5%;top:23.5%;width:14px;height:14px;border-radius:50%;background:#e53e3e;box-shadow:0 0 0 0 rgba(229,62,62,.6);opacity:0}
     .mb-van{position:absolute;left:-2%;bottom:-2.6rem;width:150px;height:auto;opacity:0;filter:drop-shadow(0 .5rem .75rem rgba(22,28,45,.3))}
+    @media (max-width:991.98px){.mb-machine{max-width:260px}.mb-card{left:2%;width:78%;bottom:9%}.mb-van{left:4%;width:110px;bottom:-2.2rem;--mb-van-travel:120px}}
     /* animation active (natif ou script) */
     html.mb-scroll .mb-anim{animation-duration:1s;animation-timing-function:linear;animation-fill-mode:both;animation-play-state:paused}
     html.mb-scroll .mb-gauge > i{animation-name:mb-gauge}
@@ -211,7 +212,7 @@
     @keyframes mb-s3{0%{opacity:0}62%{opacity:0}66%{opacity:1}86%{opacity:1}92%{opacity:0}100%{opacity:0}}
     @keyframes mb-s4{0%{opacity:0}92%{opacity:0}100%{opacity:1}}
     @keyframes mb-dot{0%{opacity:0}30%{opacity:0}33%{opacity:1;box-shadow:0 0 0 0 rgba(229,62,62,.6)}45%{box-shadow:0 0 0 12px rgba(229,62,62,0)}60%{opacity:1}66%{opacity:0}100%{opacity:0}}
-    @keyframes mb-van{0%{opacity:0;transform:translateX(-60px)}60%{opacity:0;transform:translateX(-60px)}64%{opacity:1}90%{opacity:1;transform:translateX(230px)}100%{opacity:0;transform:translateX(250px)}}
+    @keyframes mb-van{0%{opacity:0;transform:translateX(-60px)}60%{opacity:0;transform:translateX(-60px)}64%{opacity:1}90%{opacity:1;transform:translateX(var(--mb-van-travel,230px))}100%{opacity:0;transform:translateX(calc(var(--mb-van-travel,230px) + 20px))}}
   </style>
   <script>
     /* Active l'animation du hero : natif si le navigateur sait lier une animation au défilement, sinon script léger ; rien si « réduire les animations ». */
