@@ -18,7 +18,10 @@ html.mb-scroll, html.mb-scroll body { overflow-x: clip; } /* le thème pose over
 .mb-photo { width: 100%; height: auto; display: block; filter: drop-shadow(0 1.5rem 2rem rgba(22, 28, 45, .25)); }
 .mb-photo-open { position: absolute; right: 0; top: 0; height: 100%; width: auto; max-width: none; opacity: 0; filter: drop-shadow(0 1.5rem 2rem rgba(22, 28, 45, .25)); }
 .mb-slot { position: absolute; display: block; border-radius: 2px; background: rgb(38, 37, 37); opacity: 0; box-shadow: inset 0 -2px 3px rgba(255, 255, 255, .06); }
-.mb-screen { position: absolute; border-radius: 6px; background: rgba(229, 62, 62, .55); box-shadow: 0 0 18px 6px rgba(229, 62, 62, .45); opacity: 0; }
+.mb-screen { position: absolute; border-radius: 6px; background: rgba(229, 62, 62, .62); box-shadow: 0 0 18px 6px rgba(229, 62, 62, .45); opacity: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 1.6rem; }
+.mb-screen-ok { position: absolute; border-radius: 6px; background: rgba(47, 178, 119, .55); box-shadow: 0 0 18px 6px rgba(47, 178, 119, .45); opacity: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.6rem; }
+.mb-photo-final { position: absolute; left: 50%; top: 0; height: 100%; width: auto; max-width: none; transform: translateX(-50%); opacity: 0; filter: drop-shadow(0 1.5rem 2rem rgba(22, 28, 45, .25)); }
+.mb-badge-ok { position: absolute; left: 50%; transform: translate(-50%, 8px); top: 52%; white-space: nowrap; background: #2fb277; color: #fff; font-weight: 700; font-size: .8rem; letter-spacing: .02em; padding: .35rem .8rem; border-radius: 2rem; box-shadow: 0 .5rem 1rem rgba(22, 28, 45, .25); opacity: 0; }
 .mb-dot { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #e53e3e; box-shadow: 0 0 0 0 rgba(229, 62, 62, .6); opacity: 0; }
 .mb-van { position: absolute; left: -2%; bottom: -2.6rem; width: 150px; height: auto; opacity: 0; filter: drop-shadow(0 .5rem .75rem rgba(22, 28, 45, .3)); }
 
@@ -52,6 +55,9 @@ html.mb-scroll .mb-dot { animation-name: mb-dot; }
 html.mb-scroll .mb-screen { animation-name: mb-screen; }
 html.mb-scroll .mb-van { animation-name: mb-van; }
 html.mb-scroll .mb-photo-open { animation-name: mb-open; }
+html.mb-scroll .mb-photo-final { animation-name: mb-final; }
+html.mb-scroll .mb-screen-ok { animation-name: mb-screen-ok; }
+html.mb-scroll .mb-badge-ok { animation-name: mb-badge; }
 html.mb-scroll.mb-native .mb-anim { animation-play-state: running; animation-timeline: scroll(root); animation-range: var(--mb-a, 0px) var(--mb-b, 85vh); }
 
 @keyframes mb-gauge { 0% { transform: scaleX(1); background: #2fb277; } 24% { background: #2fb277; } 32% { transform: scaleX(.34); background: #e53e3e; } 62% { transform: scaleX(.34); background: #e53e3e; } 75% { background: #f6ad55; } 100% { transform: scaleX(1); background: #2fb277; } }
@@ -62,4 +68,7 @@ html.mb-scroll.mb-native .mb-anim { animation-play-state: running; animation-tim
 @keyframes mb-dot { 0% { opacity: 0; } 30% { opacity: 0; } 33% { opacity: 1; box-shadow: 0 0 0 0 rgba(229, 62, 62, .6); } 45% { box-shadow: 0 0 0 12px rgba(229, 62, 62, 0); } 60% { opacity: 1; } 66% { opacity: 0; } 100% { opacity: 0; } }
 @keyframes mb-screen { 0% { opacity: 0; } 30% { opacity: 0; } 34% { opacity: 1; } 62% { opacity: 1; } 68% { opacity: 0; } 100% { opacity: 0; } }
 @keyframes mb-van { 0% { opacity: 0; transform: translateX(-60px); } 60% { opacity: 0; transform: translateX(-60px); } 64% { opacity: 1; } 90% { opacity: 1; transform: translateX(var(--mb-van-travel, 230px)); } 100% { opacity: 0; transform: translateX(calc(var(--mb-van-travel, 230px) + 20px)); } }
-@keyframes mb-open { 0% { opacity: 0; } 64% { opacity: 0; } 69% { opacity: 1; } 88% { opacity: 1; } 94% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes mb-final { 0% { opacity: 0; } 90% { opacity: 0; } 96% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes mb-screen-ok { 0% { opacity: 0; } 92% { opacity: 0; } 97% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes mb-badge { 0% { opacity: 0; transform: translate(-50%, 8px); } 93% { opacity: 0; transform: translate(-50%, 8px); } 100% { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes mb-open { 0% { opacity: 0; } 64% { opacity: 0; } 69% { opacity: 1; } 86% { opacity: 1; } 91% { opacity: 0; } 100% { opacity: 0; } }
