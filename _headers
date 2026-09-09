@@ -7,5 +7,12 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Feuilles de style et scripts : revalidation à chaque visite (ETag), sinon les mises à jour restent bloquées un an dans les navigateurs
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
 /favicon.ico
   Cache-Control: public, max-age=604800
