@@ -1,0 +1,84 @@
+/* ── Machine Break · couche d'interface (maquette 2026-09) ──
+   Surcouche du thème : typographie plus affirmée, palette chaude autour du bordeaux de la marque,
+   composants arrondis, produits mis en scène sur aplats. Aucun changement de structure ni de technologie. */
+:root {
+  --mb: #753F48; --mb-dark: #4e2930; --mb-ink: #1f1517; --mb-text: #3a2f31; --mb-muted: #6b5d60;
+  --mb-cream: #faf5f1; --mb-sand: #f1e8e2; --mb-line: #eadfd8; --mb-radius: 22px;
+}
+body { color: var(--mb-text); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, .h1, .h2, .h3, .h4, .display-3, .display-4 { color: var(--mb-ink); letter-spacing: -.02em; font-weight: 600; }
+h1.display-4, .display-4 { font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1.08; }
+h2 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); line-height: 1.15; }
+.lead { font-size: 1.2rem; line-height: 1.55; }
+.text-muted { color: var(--mb-muted) !important; }
+a { color: var(--mb); }
+
+/* fonds */
+.bg-light { background-color: var(--mb-cream) !important; }
+.bg-gray-200, .bg-gray-100 { background-color: var(--mb-sand) !important; }
+.bg-dark, #topbar { background-color: var(--mb-ink) !important; }
+.bg-dark .text-muted, .bg-dark p { color: rgba(255, 255, 255, .74) !important; }
+.bg-gradient-light { background-image: linear-gradient(to bottom, var(--mb-cream), #fff) !important; }
+.border-bottom, .border-top, .border-gray-300 { border-color: var(--mb-line) !important; }
+
+/* navigation */
+.navbar { border-bottom: 1px solid var(--mb-line); padding-top: .9rem; padding-bottom: .9rem; }
+.navbar .nav-link { font-weight: 600; color: var(--mb-ink) !important; }
+.navbar .nav-link:hover { color: var(--mb) !important; }
+.dropdown-menu { border-radius: 16px; border: 1px solid var(--mb-line); box-shadow: 0 24px 60px -30px rgba(31, 21, 23, .35); }
+
+/* boutons */
+.btn { border-radius: 999px; font-weight: 600; padding: .8rem 1.6rem; }
+.btn-sm { padding: .55rem 1.15rem; }
+.btn-success, .btn-primary { background-color: var(--mb); border-color: var(--mb); box-shadow: 0 10px 24px -10px rgba(117, 63, 72, .6); }
+.btn-success:hover, .btn-primary:hover, .btn-success:focus, .btn-primary:focus { background-color: var(--mb-dark); border-color: var(--mb-dark); }
+.btn-outline-primary { border: 1.5px solid var(--mb); color: var(--mb); background: transparent; }
+.btn-outline-primary:hover { background: var(--mb); border-color: var(--mb); color: #fff; }
+
+/* étiquette au-dessus des titres */
+p.text-uppercase.text-success { display: inline-block; font-size: .72rem; letter-spacing: .14em; background: rgba(117, 63, 72, .09); color: var(--mb) !important; padding: .4rem .85rem; border-radius: 999px; }
+
+/* cartes, images, ombres */
+.card { border-radius: var(--mb-radius); border: 1px solid var(--mb-line); box-shadow: none !important; overflow: hidden; }
+a.card.lift:hover, .card.lift:hover { box-shadow: 0 22px 48px -24px rgba(31, 21, 23, .3) !important; transform: translateY(-4px); }
+.card-border.border-success { border-top: 3px solid var(--mb) !important; }
+img.rounded, .rounded { border-radius: var(--mb-radius) !important; }
+.shadow, .shadow-lg, .shadow-light-lg { box-shadow: 0 28px 64px -34px rgba(31, 21, 23, .4) !important; }
+.badge-success-soft { background-color: rgba(117, 63, 72, .1); color: var(--mb); }
+.badge-secondary-soft { background-color: var(--mb-sand); color: var(--mb-text); }
+.accordion .card { border-radius: 16px; }
+
+/* accueil : la machine animée posée sur un aplat bordeaux */
+.mb-story-home .mb-machine { isolation: isolate; }
+.mb-story-home .mb-machine::before { content: ""; position: absolute; z-index: -1; inset: -9% -34% -7% -34%; border-radius: 36px; background: linear-gradient(155deg, #8a4b56 0%, var(--mb) 45%, var(--mb-dark) 100%); }
+.mb-story-home .mb-photo { filter: drop-shadow(0 1.5rem 2rem rgba(0, 0, 0, .45)); }
+@media (max-width: 991.98px) { .mb-story-home .mb-machine::before { inset: -7% -16% -6% -16%; border-radius: 28px; } }
+
+/* fiches machines */
+.mb-stage { background: linear-gradient(160deg, var(--mb-sand), var(--mb-cream)); border-radius: 36px; padding: 3rem 2rem; text-align: center; }
+.mb-stage img { mix-blend-mode: multiply; max-height: 480px; width: auto; max-width: 100%; height: auto; }
+.mb-kpis { margin-top: -2.5rem; position: relative; z-index: 2; }
+.mb-kpi { background: #fff; border: 1px solid var(--mb-line); border-radius: 18px; padding: 1.25rem 1rem; text-align: center; height: 100%; }
+.mb-kpi b { display: block; white-space: nowrap; font-size: clamp(1.45rem, 5.2vw, 1.9rem); line-height: 1.1; color: var(--mb); letter-spacing: -.02em; }
+.mb-kpi span { display: block; margin-top: .35rem; font-size: .9rem; line-height: 1.35; color: var(--mb-text); }
+.mb-subnav { position: sticky; top: 0; z-index: 1020; background: rgba(255, 255, 255, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--mb-line); }
+.mb-subnav .container { display: flex; align-items: center; gap: 1.5rem; padding-top: .7rem; padding-bottom: .7rem; overflow-x: auto; white-space: nowrap; }
+.mb-subnav a:not(.btn) { font-weight: 600; font-size: .9rem; color: var(--mb-muted); }
+.mb-subnav a:not(.btn):hover { color: var(--mb); text-decoration: none; }
+.mb-subnav .btn { margin-left: auto; color: #fff; flex-shrink: 0; }
+.mb-specs th, .mb-specs td { padding: .8rem .5rem; border-color: var(--mb-line) !important; }
+.mb-offer { border: 1px solid var(--mb-line); border-radius: var(--mb-radius); padding: 1.75rem; height: 100%; background: #fff; display: flex; flex-direction: column; }
+.mb-offer.is-main { background: var(--mb-ink); border-color: var(--mb-ink); }
+.mb-offer.is-main h3, .mb-offer.is-main .mb-offer-tag { color: #fff; }
+.mb-offer.is-main p { color: rgba(255, 255, 255, .72) !important; }
+.mb-offer-tag { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--mb); margin-bottom: .6rem; }
+.mb-offer .btn { margin-top: auto; align-self: flex-start; }
+.mb-offer.is-main .btn { background: #fff; border-color: #fff; color: var(--mb-ink); box-shadow: none; }
+
+/* pied de page */
+footer.bg-gray-200, footer.bg-dark, footer { background-color: var(--mb-ink) !important; color: rgba(255, 255, 255, .72); }
+footer a, footer .text-reset, footer p { color: rgba(255, 255, 255, .72) !important; }
+footer a:hover { color: #fff !important; }
+footer .h6, footer h6 { color: #fff !important; letter-spacing: .12em; }
+footer .footer-brand { filter: brightness(0) invert(1); }
+footer .list-social-icon { filter: brightness(0) invert(1); opacity: .8; }

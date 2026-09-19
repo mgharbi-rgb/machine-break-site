@@ -65,7 +65,7 @@ def page(m):
     h=re.sub(r'(<meta property="og:image" content=")[^"]*',lambda mm:mm.group(1)+f"https://machinebreak.com/assets/img/machines/{m['slug']}.webp",h)
     ld={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://machinebreak.com/"},{"@type":"ListItem","position":2,"name":"Nos machines","item":"https://machinebreak.com/solutions/equipements"},{"@type":"ListItem","position":3,"name":f"{m['fab']} {m['nom']}","item":url}]}
     h=h.replace('</head>','  <script type="application/ld+json">\n'+json.dumps(ld,ensure_ascii=False,indent=2)+'\n  </script>\n</head>',1)
-    chif=''.join(f'<div class="col-6 col-md-3 text-center mb-5 mb-md-0"><p class="display-4 text-primary mb-1" style="font-size:2.2rem">{v}</p><p class="text-muted font-size-sm mb-0">{l}</p></div>' for v,l in m["chiffres"])
+    chif=''.join(f'<div class="col-6 col-md-3 mb-4 mb-md-0"><div class="mb-kpi"><b>{v}</b><span>{l}</span></div></div>' for v,l in m["chiffres"])
     rows=''.join(f'<tr><th scope="row" class="font-weight-normal text-muted" style="width:38%">{k}</th><td>{v}</td></tr>' for k,v in m["specs"])
     pour=''.join(f'<div class="d-flex mb-3"><div class="badge badge-rounded-circle badge-success-soft mt-1 mr-4 flex-shrink-0"><i class="fe fe-check"></i></div><p class="mb-0">{x}</p></div>' for x in m["pour"])
     autres=''.join(f'<a class="btn btn-sm btn-outline-primary mr-2 mb-2" href="/machines/{o["slug"]}">{o["fab"]} {o["nom"]}</a>' for o in M if o is not m)
@@ -80,35 +80,44 @@ def page(m):
         <a class="btn btn-success lift cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i class="fe fe-arrow-right ml-2"></i></a>
       </div>
       <div class="col-12 col-lg-5 text-center">
-        <div class="bg-white rounded shadow-lg p-5 d-inline-block"><img src="/assets/img/machines/{m["slug"]}.webp" srcset="/assets/img/machines/{m["slug"]}-640.webp 640w, /assets/img/machines/{m["slug"]}.webp {m["w"]}w" sizes="(max-width: 991px) 80vw, 35vw" width="{m["w"]}" height="{m["h"]}" alt="{m["fab"]} {m["nom"]}, {m["type"].lower()}" style="max-height:460px;width:auto;max-width:100%;height:auto"></div>
+        <div class="mb-stage"><img src="/assets/img/machines/{m["slug"]}.webp" srcset="/assets/img/machines/{m["slug"]}-640.webp 640w, /assets/img/machines/{m["slug"]}.webp {m["w"]}w" sizes="(max-width: 991px) 80vw, 35vw" width="{m["w"]}" height="{m["h"]}" alt="{m["fab"]} {m["nom"]}, {m["type"].lower()}"></div>
       </div>
     </div></div>
   </section>
 
 <!-- EN BREF -->
-  <section class="py-7 border-bottom"><div class="container"><div class="row">{chif}</div></div></section>
+  <section class="pb-6"><div class="container"><div class="row mb-kpis">{chif}</div></div></section>
+  <div class="mb-subnav"><div class="container"><a href="#caracteristiques">Caractéristiques</a><a href="#sites">Pour quels sites</a><a href="#formules">Dépôt, location, achat</a><a class="btn btn-sm btn-success cta-diagnostic d-none d-md-inline-block" href="/contact#contact-form">Mon diagnostic en 1 min</a></div></div>
 
 <!-- CARACTÉRISTIQUES -->
-  <section class="py-8 py-md-10">
+  <section class="py-8 py-md-10" id="caracteristiques">
     <div class="container"><div class="row">
       <div class="col-12 col-lg-7 mb-7 mb-lg-0">
         <h2 class="mb-5">Caractéristiques</h2>
-        <div class="table-responsive"><table class="table table-sm font-size-sm mb-3"><tbody>{rows}</tbody></table></div>
+        <div class="table-responsive"><table class="table font-size-sm mb-3 mb-specs"><tbody>{rows}</tbody></table></div>
         <p class="font-size-sm text-muted mb-0">Données constructeur ({m["source"]}), indicatives et variables selon la configuration retenue.</p>
       </div>
       <div class="col-12 col-lg-5">
-        <h2 class="h3 mb-4">Pour quels sites</h2>{pour}
-        <div class="card shadow-light-lg mt-6"><div class="card-body">
-          <h3 class="h4 mb-3">En dépôt, en location ou à l'achat</h3>
-          <p class="text-muted font-size-sm mb-3">Dans les trois cas, la machine est connectée, entretenue par nos équipes, et vous suivez chaque intervention dans votre espace client. Nous venons voir votre site avant de recommander un modèle.</p>
-          <a href="{LOC}" class="font-weight-bold font-size-sm">Comparer les trois formules <i class="fe fe-arrow-right"></i></a>
-        </div></div>
+        <h2 class="h3 mb-4" id="sites">Pour quels sites</h2>{pour}
       </div>
     </div></div>
   </section>
 
+<!-- TROIS FORMULES -->
+  <section class="py-8 py-md-10 bg-light" id="formules">
+    <div class="container">
+      <div class="row justify-content-center"><div class="col-12 col-md-10 col-lg-8 text-center"><h2>Trois façons de l'installer chez vous</h2><p class="font-size-lg text-muted mb-7">Dans les trois cas, la machine est connectée, entretenue par nos équipes, et chaque intervention est tracée dans votre espace client.</p></div></div>
+      <div class="row">
+        <div class="col-12 col-md-4 mb-5 mb-md-0"><div class="mb-offer is-main"><p class="mb-offer-tag">En dépôt</p><h3 class="h4 mb-3">Machine mise à disposition, vous ne payez que les consommations</h3><p class="font-size-sm mb-5">Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs sur le site.</p><a class="btn btn-sm cta-diagnostic" href="/contact#contact-form">Choisir le dépôt</a></div></div>
+        <div class="col-12 col-md-4 mb-5 mb-md-0"><div class="mb-offer"><p class="mb-offer-tag">En location</p><h3 class="h4 mb-3">Un loyer mensuel fixe, entretien et dépannage compris</h3><p class="text-muted font-size-sm mb-5">Les consommations sont réglées par vos collaborateurs à la machine, ou prises en charge par l'entreprise.</p><a class="btn btn-sm btn-outline-primary cta-diagnostic" href="/contact#contact-form">Choisir la location</a></div></div>
+        <div class="col-12 col-md-4"><div class="mb-offer"><p class="mb-offer-tag">À l'achat</p><h3 class="h4 mb-3">La machine vous appartient, nous l'entretenons</h3><p class="text-muted font-size-sm mb-5">Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-sm btn-outline-primary cta-diagnostic" href="/contact#contact-form">Choisir l'achat</a></div></div>
+      </div>
+      <p class="text-center mt-6 mb-0"><a href="{LOC}" class="font-weight-bold">Comparer les trois formules en détail <i class="fe fe-arrow-right"></i></a></p>
+    </div>
+  </section>
+
 <!-- AUTRES MACHINES -->
-  <section class="py-7 bg-light"><div class="container text-center"><h2 class="h4 mb-4">Les autres machines que nous installons</h2>{autres}</div></section>
+  <section class="py-7"><div class="container text-center"><h2 class="h4 mb-4">Les autres machines que nous installons</h2>{autres}</div></section>
 
 '''
     open(f"machines/{m['slug']}.html","w",encoding="utf-8").write(h+body+TAIL)
