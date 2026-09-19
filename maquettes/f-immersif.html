@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Maquette F · Immersif | Machine Break</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/maquettes/m.css">
+<style>
+body { background: var(--cream); }
+h1, h2, h3, .sy { font-family: "Syne", sans-serif; font-weight: 700; letter-spacing: -.04em; color: var(--ink); }
+.nav { position: fixed; color: #fff; mix-blend-mode: difference; }
+.nav .btn { background: #fff; color: #000; padding: .6rem 1.1rem; font-size: .9rem; } .nav .btn i { background: #000; color: #fff; }
+.bar { position: fixed; z-index: 50; left: 0; top: 0; height: 4px; width: 100%; background: linear-gradient(90deg, var(--rose), var(--mb)); transform-origin: 0 50%; transform: scaleX(0); }
+
+/* panneaux plein écran qui se recouvrent comme des rideaux */
+.panel { position: sticky; top: 0; height: 100svh; min-height: 620px; display: flex; align-items: flex-end; color: #fff; isolation: isolate; overflow: hidden; border-radius: 0 0 0 0; }
+.panel + .panel { border-radius: 36px 36px 0 0; box-shadow: 0 -30px 80px -20px rgba(0, 0, 0, .6); }
+.panel .bg { position: absolute; inset: 0; z-index: -2; background: center / cover; animation: kb 22s ease-in-out infinite alternate; }
+@keyframes kb { from { transform: scale(1); } to { transform: scale(1.14) translate(-1.5%, 1%); } }
+.panel::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(23, 14, 16, .92) 0%, rgba(23, 14, 16, .35) 55%, rgba(23, 14, 16, .45) 100%); }
+.panel .wrap { padding-bottom: clamp(3rem, 7vh, 5.5rem); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
+.panel h1, .panel h2 { color: #fff; }
+.panel h1 { font-size: clamp(2.45rem, 9vw, 9rem); line-height: .92; font-weight: 800; max-width: 11ch; }
+.panel h1 .kicker { font-family: "HK Grotesk", sans-serif; color: var(--rose); letter-spacing: .16em; margin-bottom: 1.4rem; line-height: 1.6; max-width: 36rem; font-weight: 600; }
+.panel h1 em, .panel h2 em { font-style: normal; color: var(--rose); }
+.panel h2 { font-size: clamp(2.6rem, 7vw, 6.6rem); line-height: .94; max-width: 12ch; }
+.panel p { font-size: 1.2rem; max-width: 30rem; color: rgba(255, 255, 255, .86); margin-top: 1.4rem; }
+.idx { font-size: clamp(4rem, 12vw, 11rem); line-height: .8; color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, .7); font-weight: 800; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
+.scrollhint { writing-mode: vertical-rl; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; display: flex; align-items: center; gap: 1rem; }
+.scrollhint::after { content: ""; width: 1px; height: 70px; background: #fff; transform-origin: 50% 0; animation: hint 2.2s ease-in-out infinite; }
+@keyframes hint { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1) translateY(70px); opacity: 0; } }
+@media (max-width: 800px) { .panel h1 { max-width: none; } .panel h2 { font-size: 2.5rem; } .panel .wrap { grid-template-columns: 1fr; } .idx, .scrollhint { display: none; } }
+
+.after { position: relative; z-index: 2; background: var(--cream); border-radius: 36px 36px 0 0; margin-top: -36px; }
+section.s { padding: clamp(5rem, 9vw, 8rem) 0 0; }
+.s h2 { font-size: clamp(2.4rem, 5.6vw, 4.8rem); line-height: .98; max-width: 14ch; }
+.s h2 em { font-style: normal; color: var(--mb); }
+
+/* engagements : lignes qui s'allument */
+.lines { list-style: none; padding: 0; margin: 3rem 0 0; }
+.lines li { font-size: clamp(1.7rem, 4.4vw, 4rem); line-height: 1.12; padding: .5rem 0; color: var(--ink); }
+.lines li.rv { opacity: .14; transform: none; transition: opacity .9s; } .lines li.rv.in { opacity: 1; }
+.lines li span { color: var(--mb); }
+
+/* formules : carrousel horizontal */
+.rail { margin-top: 3rem; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 max(20px, calc(50vw - 620px)) 2rem; scrollbar-width: none; cursor: grab; }
+.rail::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 min(760px, 84vw); scroll-snap-align: center; border-radius: 36px; min-height: 460px; padding: clamp(2rem, 4vw, 3.2rem); display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; position: relative; overflow: hidden; isolation: isolate; color: #fff; }
+.slide .bg { position: absolute; inset: 0; z-index: -2; background: center / cover; transition: transform 1.4s cubic-bezier(.2, .8, .2, 1); } .slide:hover .bg { transform: scale(1.06); }
+.slide::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(200deg, rgba(117, 63, 72, .55), rgba(23, 14, 16, .93) 70%); }
+.slide .big { font-size: clamp(3.4rem, 8vw, 6.5rem); line-height: .9; color: #fff; }
+.slide h3 { color: #fff; font-family: "HK Grotesk", sans-serif; font-weight: 600; letter-spacing: -.01em; font-size: 1.5rem; line-height: 1.2; max-width: 26rem; margin-bottom: .7rem; }
+.slide p { max-width: 30rem; color: rgba(255, 255, 255, .82); margin-bottom: 1.5rem; }
+.hint { margin-top: .5rem; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--mb); font-weight: 600; }
+
+/* secteurs : colonnes qui s'ouvrent */
+.acc { margin-top: 3rem; display: flex; gap: 12px; height: min(70vh, 600px); }
+.acc a { flex: 1; border-radius: 28px; position: relative; overflow: hidden; isolation: isolate; color: #fff; transition: flex .7s cubic-bezier(.2, .8, .2, 1); display: flex; align-items: flex-end; padding: 1.6rem; min-width: 0; }
+.acc a:hover, .acc a:focus-visible { flex: 3.2; }
+.acc a .bg { position: absolute; inset: 0; z-index: -2; background: center / cover; }
+.acc a::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(23, 14, 16, .9), rgba(23, 14, 16, .1) 60%); }
+.acc h3 { color: #fff; font-size: clamp(1.15rem, 1.7vw, 1.7rem); line-height: 1.02; }
+.acc small { display: block; font-family: "HK Grotesk", sans-serif; font-weight: 400; letter-spacing: 0; font-size: .95rem; margin-top: .6rem; opacity: 0; max-width: 24rem; white-space: normal; transition: opacity .4s .15s; color: rgba(255, 255, 255, .85); }
+.acc a:hover small { opacity: 1; }
+@media (max-width: 900px) { .acc { flex-direction: column; height: auto; } .acc a { min-height: 170px; } .acc a:hover { flex: 1; } .acc small { opacity: 1; } .acc h3 { white-space: normal; } }
+
+.final { margin-top: clamp(5rem, 9vw, 8rem); position: relative; isolation: isolate; min-height: 90svh; display: grid; place-items: center; text-align: center; color: #fff; border-radius: 36px 36px 0 0; overflow: hidden; }
+.final .bg { position: absolute; inset: 0; z-index: -2; background: url("/assets/img/maquette/logo-grains.webp") center / cover; animation: kb 22s ease-in-out infinite alternate; }
+.final::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(23, 14, 16, .8); }
+.final h2 { color: #fff; font-size: clamp(2.8rem, 8vw, 7.5rem); line-height: .94; max-width: 12ch; margin: 0 auto 2.4rem; } .final h2 em { font-style: normal; color: var(--rose); }
+footer { background: var(--ink); color: rgba(255, 255, 255, .6); padding: 2rem 0 5.5rem; font-size: .88rem; }
+@media (prefers-reduced-motion: reduce) { .panel .bg, .final .bg, .scrollhint::after { animation: none; } }
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<header class="nav"><div class="wrap">
+  <a href="/"><img src="/assets/img/logoblanc.webp" alt="Machine Break"></a>
+  <ul><li><a href="#">Solutions</a></li><li><a href="#">Fonctionnement</a></li><li><a href="#">F.A.Q.</a></li><li><a href="#">Conseils</a></li><li><a href="#">Contact</a></li></ul>
+  <a class="btn" href="/contact#contact-form">Mon diagnostic <i>→</i></a>
+</div></header>
+
+<main>
+<section class="panel"><div class="bg" style="background-image:url(/assets/img/maquette/cup-white.webp);background-position:60% 50%"></div><div class="wrap">
+  <div><h1><span class="kicker">Distributeurs automatiques et machines à café pour entreprises · Paris et Île-de-France</span>La pause qui se gère <em>toute seule.</em></h1>
+  <p>Café en grains, boissons et snacks pour vos équipes. Toute l'Île-de-France, réponse sous 24 h.</p>
+  <div class="hero-cta"><a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a></div></div>
+  <span class="scrollhint">Faites défiler</span>
+</div></section>
+<section class="panel"><div class="bg" style="background-image:url(/assets/img/maquette/beans-tank.webp)"></div><div class="wrap">
+  <div><h2>La machine <em>nous prévient.</em></h2><p>Ventes, remplissage, alertes techniques : tout remonte en temps réel. Pas de tournée à date fixe.</p></div><span class="idx sy">01</span>
+</div></section>
+<section class="panel"><div class="bg" style="background-image:url(/assets/img/maquette/refill.webp)"></div><div class="wrap">
+  <div><h2>Nous passons <em>avant la rupture.</em></h2><p>Le réassort est déclenché par la télémétrie, selon les habitudes de consommation de votre site.</p></div><span class="idx sy">02</span>
+</div></section>
+<section class="panel"><div class="bg" style="background-image:url(/assets/img/maquette/people.webp)"></div><div class="wrap">
+  <div><h2>Vous ne gérez rien. <em>Vous voyez tout.</em></h2><p>Chaque intervention est tracée et horodatée dans votre espace client.</p></div><span class="idx sy">03</span>
+</div></section>
+</main>
+
+<div class="after">
+<section class="s"><div class="wrap">
+  <h2>Cinq engagements, <em>écrits au contrat.</em></h2>
+  <ul class="lines sy">
+    <li class="rv">Réassort déclenché <span>par la télémétrie.</span></li>
+    <li class="rv">Alerte analysée à distance <span>avant tout déplacement.</span></li>
+    <li class="rv">Un délai d'intervention <span>écrit au contrat.</span></li>
+    <li class="rv">Chaque intervention tracée <span>dans votre espace client.</span></li>
+    <li class="rv">Un interlocuteur nommé, <span>joignable directement.</span></li>
+  </ul>
+</div></section>
+
+<section class="s">
+  <div class="wrap"><h2 class="rv">Trois façons <em>de s'équiper.</em></h2><p class="hint">Faites glisser →</p></div>
+  <div class="rail" id="rail">
+    <article class="slide"><div class="bg" style="background-image:url(/assets/img/maquette/duo.webp)"></div><span class="big sy">Dépôt</span><div><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-light" href="#">Choisir le dépôt <i>→</i></a></div></article>
+    <article class="slide"><div class="bg" style="background-image:url(/assets/img/maquette/cup-white.webp)"></div><span class="big sy">Location</span><div><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées à la machine ou prises en charge par l'entreprise.</p><a class="btn btn-light" href="#">Choisir la location <i>→</i></a></div></article>
+    <article class="slide"><div class="bg" style="background-image:url(/assets/img/maquette/blue.webp)"></div><span class="big sy">Achat</span><div><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-light" href="#">Choisir l'achat <i>→</i></a></div></article>
+  </div>
+</section>
+
+<section class="s"><div class="wrap">
+  <h2 class="rv">Pensé pour <em>votre site.</em></h2>
+  <div class="acc">
+    <a href="/solutions/bureaux-pme"><div class="bg" style="background-image:url(/assets/img/maquette/duo.webp)"></div><h3>Bureaux et PME<small>Accueils, salles de pause, open spaces.</small></h3></a>
+    <a href="/solutions/residences-hotels"><div class="bg" style="background-image:url(/assets/img/shooting/distributeur-salon-residence-1024.webp)"></div><h3>Résidences et hôtels<small>Un service disponible à toute heure, sans personnel dédié.</small></h3></a>
+    <a href="/solutions/industrie-logistique"><div class="bg" style="background-image:url(/assets/img/shooting/allee-usine-1024.webp)"></div><h3>Industrie et logistique<small>Grande capacité, réassort calé sur les rotations d'équipe.</small></h3></a>
+    <a href="/grands-comptes"><div class="bg" style="background-image:url(/assets/img/maquette/salle.webp)"></div><h3>Grands comptes<small>Multi-sites, interlocuteur nommé, reporting consolidé.</small></h3></a>
+  </div>
+</div></section>
+
+<section class="final"><div class="bg"></div><div class="wrap">
+  <h2 class="rv">Et vos pauses, elles ressemblent <em>à quoi ?</em></h2>
+  <a class="btn btn-mb rv" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a>
+</div></section>
+<footer><div class="wrap">Maquette de démonstration · Direction F « Immersif » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · 01 74 81 09 52</div></footer>
+</div>
+
+<script>
+(function () {
+  var bar = document.getElementById('bar');
+  function p() { var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')'; }
+  addEventListener('scroll', p, { passive: true }); p();
+  var rail = document.getElementById('rail'), down = false, sx = 0, sl = 0;
+  rail.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; down = true; sx = e.clientX; sl = rail.scrollLeft; rail.style.scrollSnapType = 'none'; rail.style.cursor = 'grabbing'; });
+  addEventListener('pointerup', function () { if (!down) return; down = false; rail.style.scrollSnapType = ''; rail.style.cursor = ''; });
+  addEventListener('pointermove', function (e) { if (down) rail.scrollLeft = sl - (e.clientX - sx); });
+})();
+</script>
+<script src="/maquettes/m.js"></script>
+</body>
+</html>

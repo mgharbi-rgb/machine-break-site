@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Maquette D · Connecté | Machine Break</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/maquettes/m.css">
+<style>
+body { background: #fff; font-family: "Inter Tight", system-ui, sans-serif; }
+h1, h2, h3 { color: var(--ink); font-weight: 600; letter-spacing: -.04em; }
+.mono { font-family: "JetBrains Mono", monospace; font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; }
+.nav { position: sticky; top: 0; background: rgba(255, 255, 255, .78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(23, 14, 16, .07); }
+.nav .wrap { padding: .7rem 0; } .nav img { height: 40px; } .nav .btn { padding: .6rem 1.1rem; font-size: .9rem; }
+
+/* ouverture : grille technique + halos de couleur */
+.hero { position: relative; isolation: isolate; text-align: center; padding: clamp(4rem, 8vw, 7rem) 0 0; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(rgba(117, 63, 72, .09) 1px, transparent 1px), linear-gradient(90deg, rgba(117, 63, 72, .09) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 30%, transparent 78%); mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 30%, transparent 78%); }
+.blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(80px); opacity: .55; animation: drift 16s ease-in-out infinite alternate; }
+.blob.b1 { width: 520px; height: 520px; background: #f2a7b1; left: -8%; top: 8%; } .blob.b2 { width: 460px; height: 460px; background: #e6b98c; right: -6%; top: 0; animation-delay: -6s; } .blob.b3 { width: 560px; height: 380px; background: var(--mb); opacity: .3; left: 32%; top: 46%; animation-delay: -11s; }
+@keyframes drift { to { transform: translate(40px, -30px) scale(1.1); } }
+.badge { display: inline-flex; align-items: center; gap: .6rem; padding: .4rem .9rem .4rem .45rem; border-radius: 999px; background: #fff; border: 1px solid rgba(117, 63, 72, .2); box-shadow: 0 6px 20px -10px rgba(117, 63, 72, .5); color: var(--mb); margin-bottom: 1.8rem; }
+.badge i { width: 8px; height: 8px; border-radius: 50%; background: #2fb277; box-shadow: 0 0 0 0 rgba(47, 178, 119, .6); animation: ping 2s infinite; margin-left: .4rem; }
+@keyframes ping { 70% { box-shadow: 0 0 0 9px rgba(47, 178, 119, 0); } 100% { box-shadow: 0 0 0 0 rgba(47, 178, 119, 0); } }
+.hero h1 { font-size: clamp(2.8rem, 7.2vw, 6.4rem); line-height: .98; max-width: 13ch; margin: 0 auto; }
+.hero h1 .kicker { color: var(--muted); margin-bottom: 1.4rem; font-family: "JetBrains Mono", monospace; font-weight: 400; letter-spacing: .06em; font-size: .72rem; line-height: 1.7; max-width: none; }
+.grad { background: linear-gradient(100deg, var(--mb) 10%, #c2606f 55%, #e0a06d); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p.lead { font-size: 1.2rem; max-width: 38rem; margin: 1.6rem auto 2rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; }
+.screen { margin: clamp(3rem, 6vw, 5rem) auto 0; max-width: 1080px; perspective: 1800px; }
+.screen > div { border-radius: 18px 18px 0 0; overflow: hidden; border: 1px solid rgba(23, 14, 16, .12); border-bottom: 0; box-shadow: 0 -30px 120px -30px rgba(117, 63, 72, .55); transform: rotateX(14deg) scale(.96); transform-origin: 50% 100%; background: #fff; }
+@supports (animation-timeline: view()) { .screen > div { animation: flat linear both; animation-timeline: view(); animation-range: entry 10% cover 45%; } @keyframes flat { to { transform: none; } } }
+.chrome { display: flex; align-items: center; gap: 6px; padding: .6rem .9rem; background: #f4efec; border-bottom: 1px solid rgba(23, 14, 16, .08); }
+.chrome i { width: 10px; height: 10px; border-radius: 50%; background: #d9cfca; } .chrome span { margin-left: .8rem; color: var(--muted); text-transform: none; }
+.screen img { width: 100%; max-height: 560px; object-fit: cover; object-position: top; }
+.cap { text-align: center; color: var(--muted); margin-top: 1rem; }
+
+section { padding: clamp(5rem, 9vw, 8rem) 0 0; }
+.eyebrow { color: var(--mb); margin-bottom: 1rem; display: block; }
+h2 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); line-height: 1.02; max-width: 17ch; }
+.sub { max-width: 34rem; margin-top: 1rem; font-size: 1.1rem; }
+
+/* fil du temps */
+.flow { margin-top: 3.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+.flow::before { content: ""; position: absolute; left: 0; right: 0; top: 21px; height: 2px; background: linear-gradient(90deg, var(--mb), #e0a06d); transform-origin: 0 50%; }
+.flow div { padding: 0 2rem 0 0; position: relative; }
+.flow b { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 2px solid var(--mb); color: var(--mb); font-family: "JetBrains Mono", monospace; font-weight: 500; position: relative; margin-bottom: 1.4rem; }
+.flow h3 { font-size: 1.4rem; margin-bottom: .5rem; }
+@media (max-width: 800px) { .flow { grid-template-columns: 1fr; gap: 2rem; } .flow::before { left: 21px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; } .flow div { padding-left: 4rem; } .flow b { position: absolute; left: 0; top: 0; } }
+
+/* grille de fonctions */
+.feat { margin-top: 3rem; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; }
+.feat > div { padding: 2rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; transition: background .3s; }
+.feat > div:hover { background: var(--cream); }
+.feat .mono { color: var(--mb); display: block; margin-bottom: 2.2rem; }
+.feat h3 { font-size: 1.25rem; line-height: 1.15; margin-bottom: .5rem; letter-spacing: -.02em; }
+.feat p { font-size: .96rem; }
+.feat .pic { padding: 0; min-height: 240px; background: url("/assets/img/maquette/blue.webp") center / cover; }
+@media (max-width: 900px) { .feat { grid-template-columns: 1fr; } }
+
+/* formules en onglets */
+.tabs { margin-top: 2.5rem; display: inline-flex; padding: 5px; border-radius: 999px; background: var(--sand); gap: 4px; }
+.tabs button { font: inherit; font-weight: 600; border: 0; background: transparent; padding: .7rem 1.4rem; border-radius: 999px; cursor: pointer; color: var(--muted); transition: background .25s, color .25s; }
+.tabs button[aria-selected="true"] { background: var(--mb); color: #fff; box-shadow: 0 8px 20px -10px rgba(117, 63, 72, .9); }
+.panel { margin-top: 1.5rem; border-radius: 28px; padding: clamp(2rem, 4vw, 3.5rem); display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; background: linear-gradient(135deg, var(--ink) 0%, #3a1f25 100%); color: rgba(255, 255, 255, .8); position: relative; overflow: hidden; }
+.panel::after { content: ""; position: absolute; width: 420px; height: 420px; right: -120px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(242, 167, 177, .35), transparent 65%); }
+.panel[hidden] { display: none; }
+.panel h3 { color: #fff; font-size: clamp(1.7rem, 3.2vw, 2.6rem); line-height: 1.05; margin-bottom: 1rem; }
+.panel ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem; position: relative; z-index: 1; }
+.panel li { display: flex; gap: .7rem; padding: .9rem 1rem; border-radius: 14px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .1); color: #fff; font-size: .96rem; }
+.panel li::before { content: "✓"; color: #7fe0ae; }
+.panel .btn { margin-top: 1.6rem; }
+@media (max-width: 800px) { .panel { grid-template-columns: 1fr; gap: 1.5rem; } .tabs button { padding: .6rem .9rem; font-size: .9rem; } }
+
+/* secteurs */
+.sect { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.sect a { border: 1px solid var(--line); border-radius: 22px; padding: 8px 8px 1.3rem; transition: transform .3s, box-shadow .3s, border-color .3s; }
+.sect a:hover { transform: translateY(-6px); border-color: var(--mb); box-shadow: 0 26px 50px -30px rgba(117, 63, 72, .7); }
+.sect img { width: 100%; height: 170px; object-fit: cover; border-radius: 16px; margin-bottom: 1rem; }
+.sect h3 { font-size: 1.12rem; padding: 0 .7rem; letter-spacing: -.02em; } .sect span { display: block; padding: .3rem .7rem 0; color: var(--mb); }
+@media (max-width: 900px) { .sect { grid-template-columns: 1fr 1fr; } }
+
+.final { margin-top: clamp(5rem, 9vw, 8rem); border-radius: 32px; padding: clamp(3.5rem, 8vw, 6.5rem) 1.5rem; text-align: center; position: relative; isolation: isolate; overflow: hidden; background: var(--ink); }
+.final::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 20% 110%, rgba(117, 63, 72, .95), transparent 50%), radial-gradient(circle at 85% -10%, rgba(224, 160, 109, .5), transparent 45%); }
+.final h2 { color: #fff; margin: 0 auto 2rem; max-width: 15ch; font-size: clamp(2.4rem, 5.6vw, 4.6rem); }
+footer { padding: 2.5rem 0 5.5rem; font-size: .88rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a href="/"><img src="/assets/img/logo.webp" alt="Machine Break"></a>
+  <ul><li><a href="#">Solutions</a></li><li><a href="#">Fonctionnement</a></li><li><a href="#">F.A.Q.</a></li><li><a href="#">Conseils</a></li><li><a href="#">Contact</a></li></ul>
+  <a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic <i>→</i></a>
+</div></header>
+
+<section class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <div class="wrap">
+    <span class="badge mono"><i></i>Machines connectées · télémétrie en temps réel</span>
+    <h1><span class="kicker">Distributeurs automatiques et machines à café pour entreprises · Paris et Île-de-France</span>La pause qui se gère <span class="grad">toute seule.</span></h1>
+    <p class="lead">Café en grains, boissons et snacks pour vos équipes. La machine remonte son remplissage, déclenche elle-même le passage, et vous voyez tout dans votre espace client.</p>
+    <div class="hero-cta"><a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a><a class="btn btn-ghost" href="#comment">Comment ça marche</a></div>
+    <div class="screen"><div>
+      <div class="chrome"><i></i><i></i><i></i><span class="mono">Espace client Machine Break</span></div>
+      <img src="/assets/img/plateforme/espace-client-apercu.webp" alt="Aperçu de l'espace client : sites, tickets, interventions planifiées, activité récente">
+    </div></div>
+  </div>
+</section>
+<p class="cap mono">Aperçu de démonstration, données fictives</p>
+
+<section id="comment"><div class="wrap">
+  <span class="eyebrow mono">01 — Fonctionnement</span>
+  <h2 class="rv">Vous ne gérez rien. Vous voyez tout.</h2>
+  <p class="sub rv">Pas de tournée à date fixe : chaque machine est connectée et c'est elle qui déclenche nos passages.</p>
+  <div class="flow">
+    <div class="rv"><b>1</b><h3>La machine nous prévient</h3><p>Ventes, remplissage, alertes techniques : tout remonte en temps réel.</p></div>
+    <div class="rv" style="--d:.12s"><b>2</b><h3>Nous passons avant la rupture</h3><p>Le réassort est déclenché par la télémétrie, selon les habitudes de votre site.</p></div>
+    <div class="rv" style="--d:.24s"><b>3</b><h3>Vous suivez tout</h3><p>Chaque intervention est tracée et horodatée dans votre espace client.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow mono">02 — Engagements</span>
+  <h2 class="rv">Cinq engagements, écrits au contrat.</h2>
+  <div class="feat">
+    <div class="rv"><span class="mono">/ réassort</span><h3>Déclenché par la télémétrie</h3><p>Le passage suit la consommation réelle, pas un calendrier.</p></div>
+    <div class="rv"><span class="mono">/ diagnostic</span><h3>Alerte analysée à distance</h3><p>Avant tout déplacement, pour partir avec la bonne pièce.</p></div>
+    <div class="pic rv"></div>
+    <div class="rv"><span class="mono">/ délai</span><h3>Un délai d'intervention écrit au contrat</h3><p>Défini pour chaque site.</p></div>
+    <div class="rv"><span class="mono">/ traçabilité</span><h3>Chaque intervention tracée</h3><p>Horodatée, consultable dans votre espace client.</p></div>
+    <div class="rv"><span class="mono">/ contact</span><h3>Un interlocuteur nommé</h3><p>Joignable directement, sans plateforme téléphonique.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow mono">03 — Formules</span>
+  <h2 class="rv">Trois façons de s'équiper.</h2>
+  <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-p="p1">Dépôt</button><button role="tab" aria-selected="false" data-p="p2">Location</button><button role="tab" aria-selected="false" data-p="p3">Achat</button></div>
+  <div class="panel" id="p1"><div><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-light" href="#">Choisir le dépôt <i>→</i></a></div><ul><li>Installation, réassort et entretien par nos équipes</li><li>Machine connectée, réassort déclenché par la télémétrie</li><li>Interventions tracées dans l'espace client</li></ul></div>
+  <div class="panel" id="p2" hidden><div><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées par vos collaborateurs à la machine, ou prises en charge par l'entreprise.</p><a class="btn btn-light" href="#">Choisir la location <i>→</i></a></div><ul><li>Loyer fixe, sans surprise</li><li>Entretien et dépannage compris</li><li>Interventions tracées dans l'espace client</li></ul></div>
+  <div class="panel" id="p3" hidden><div><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-light" href="#">Choisir l'achat <i>→</i></a></div><ul><li>Installation et mise en service comprises</li><li>Contrat de maintenance</li><li>Consommables livrés sur votre site</li></ul></div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow mono">04 — Secteurs</span>
+  <h2 class="rv">Pensé pour votre site.</h2>
+  <div class="sect">
+    <a class="rv" href="/solutions/bureaux-pme"><img src="/assets/img/maquette/duo.webp" alt="" loading="lazy"><h3>Bureaux et PME</h3><span class="mono">voir →</span></a>
+    <a class="rv" style="--d:.08s" href="/solutions/residences-hotels"><img src="/assets/img/shooting/distributeur-salon-residence-640.webp" alt="" loading="lazy"><h3>Résidences et hôtels</h3><span class="mono">voir →</span></a>
+    <a class="rv" style="--d:.16s" href="/solutions/industrie-logistique"><img src="/assets/img/shooting/allee-usine-640.webp" alt="" loading="lazy"><h3>Industrie et logistique</h3><span class="mono">voir →</span></a>
+    <a class="rv" style="--d:.24s" href="/grands-comptes"><img src="/assets/img/maquette/salle.webp" alt="" loading="lazy"><h3>Grands comptes multi-sites</h3><span class="mono">voir →</span></a>
+  </div>
+</div></section>
+
+<div class="wrap"><div class="final rv"><h2>Et vos pauses, elles ressemblent à quoi ?</h2><a class="btn btn-light" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a></div></div>
+<footer><div class="wrap">Maquette de démonstration · Direction D « Connecté » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · 01 74 81 09 52</div></footer>
+
+<script>
+[].forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.addEventListener('click', function () {
+  [].forEach.call(document.querySelectorAll('.tabs button'), function (x) { x.setAttribute('aria-selected', x === b); });
+  [].forEach.call(document.querySelectorAll('.panel'), function (p) { p.hidden = p.id !== b.getAttribute('data-p'); });
+}); });
+</script>
+<script src="/maquettes/m.js"></script>
+</body>
+</html>

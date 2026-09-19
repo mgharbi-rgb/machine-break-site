@@ -2,6 +2,12 @@
 (function () {
   var d = document, reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   d.documentElement.classList.remove('no-js');
+
+  // sélecteur de direction, commun à toutes les maquettes
+  var pages = [['a-nuit-cafe', 'A', 'Nuit café'], ['b-bento', 'B', 'Bento'], ['c-editorial', 'C', 'Éditorial'], ['d-connecte', 'D', 'Connecté'], ['e-affiche', 'E', 'Affiche'], ['f-immersif', 'F', 'Immersif']];
+  var sw = d.createElement('nav'); sw.className = 'switch';
+  pages.forEach(function (p) { var a = d.createElement('a'), on = location.pathname.indexOf(p[0]) > -1; a.href = '/maquettes/' + p[0]; a.textContent = on ? p[1] + ' · ' + p[2] : p[1]; a.title = p[2]; if (on) a.className = 'on'; sw.appendChild(a); });
+  d.body.appendChild(sw);
   var els = [].slice.call(d.querySelectorAll('.rv'));
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
