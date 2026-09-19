@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Maquette A · Nuit café | Machine Break</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/maquettes/m.css">
+<style>
+body { background: var(--ink); color: rgba(255, 255, 255, .78); }
+h1, h2, h3 { color: #fff; font-weight: 500; letter-spacing: -.03em; }
+em { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--rose); letter-spacing: -.01em; }
+.nav { color: #fff; }
+
+/* ouverture */
+.hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 8rem 0 4.5rem; isolation: isolate; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; z-index: -2; background: url("/assets/img/maquette/pour-wide.webp") 72% 40% / cover no-repeat; animation: zoom 18s ease-out both; }
+@keyframes zoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--ink) 0%, rgba(23, 14, 16, .88) 34%, rgba(23, 14, 16, .15) 70%), linear-gradient(0deg, var(--ink) 0%, transparent 34%); }
+.hero::after { content: ""; position: absolute; z-index: -1; width: 620px; height: 620px; left: var(--gx, 20%); top: var(--gy, 60%); transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(117, 63, 72, .55), transparent 62%); pointer-events: none; transition: left .25s ease-out, top .25s ease-out; }
+.hero .kicker { color: var(--rose); margin-bottom: 1.4rem; max-width: 34rem; line-height: 1.6; }
+.hero h1 { font-size: clamp(3rem, 8.6vw, 8rem); line-height: .95; max-width: 11ch; }
+.hero h1 span { display: block; overflow: hidden; }
+.hero h1 span > b { display: inline-block; font-weight: inherit; transform: translateY(105%); animation: up 1s cubic-bezier(.2, .8, .2, 1) forwards; animation-delay: calc(var(--i) * .13s + .15s); }
+@keyframes up { to { transform: none; } }
+.hero p.lead { font-size: 1.2rem; max-width: 33rem; margin: 1.8rem 0 2.2rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+.proof { display: flex; flex-wrap: wrap; gap: .6rem 2rem; margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid rgba(255, 255, 255, .14); font-size: .92rem; max-width: 46rem; }
+.proof b { color: #fff; font-weight: 600; }
+.glass { background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-radius: 22px; color: #fff; }
+.hero .tele { position: absolute; right: max(20px, calc(50% - 620px)); bottom: 4.5rem; width: 300px; padding: 1.2rem 1.3rem; animation: float 7s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-10px); } }
+@media (max-width: 1100px) { .hero .tele { position: relative; right: auto; bottom: auto; margin-top: 2.4rem; width: min(340px, 100%); } .hero::before { background: linear-gradient(0deg, var(--ink) 8%, rgba(23, 14, 16, .72) 55%, rgba(23, 14, 16, .35) 100%); } .hero-bg { background-position: 60% 30%; } }
+@media (max-width: 700px) { .hero-bg { background-image: url("/assets/img/maquette/pour.webp"); background-position: 50% 0; background-size: 135% auto; } .hero { padding-top: 46vh; } .hero h1 { font-size: 3.3rem; } }
+
+.band { border-block: 1px solid rgba(255, 255, 255, .12); padding: 1.4rem 0; font-size: clamp(1.6rem, 3.4vw, 2.8rem); letter-spacing: -.02em; color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, .5); font-weight: 600; }
+
+section { padding: clamp(5rem, 10vw, 9rem) 0; }
+.head { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; margin-bottom: 3.5rem; }
+.head h2 { font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1; }
+.head p { max-width: 30rem; justify-self: end; }
+@media (max-width: 800px) { .head { grid-template-columns: 1fr; } .head p { justify-self: start; } }
+
+/* étapes */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.step { position: relative; border-radius: var(--r); overflow: hidden; min-height: 520px; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.8rem; isolation: isolate; }
+.step img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s cubic-bezier(.2, .8, .2, 1); }
+.step:hover img { transform: scale(1.06); }
+.step::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(23, 14, 16, .95) 8%, rgba(23, 14, 16, .1) 62%); }
+.step .n { position: absolute; top: 1.4rem; left: 1.6rem; font-family: "Instrument Serif", serif; font-style: italic; font-size: 3.4rem; line-height: 1; color: #fff; }
+.step h3 { font-size: 1.6rem; line-height: 1.1; margin-bottom: .6rem; }
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr; } .step { min-height: 400px; } }
+
+/* engagements en mosaïque */
+.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+.tile { border-radius: var(--r); padding: 1.8rem; background: var(--ink-2); border: 1px solid rgba(255, 255, 255, .08); min-height: 230px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; transition: border-color .3s, transform .3s; }
+.tile:hover { border-color: rgba(242, 167, 177, .5); transform: translateY(-4px); }
+.tile h3 { font-size: 1.35rem; line-height: 1.15; margin-bottom: .5rem; }
+.tile p { font-size: .95rem; }
+.tile .ico { position: absolute; top: 1.5rem; left: 1.8rem; width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: rgba(117, 63, 72, .5); color: var(--rose); font-size: 1.2rem; }
+.t3 { grid-column: span 3; } .t2 { grid-column: span 2; } .t4 { grid-column: span 4; }
+.tile.photo { padding: 0; min-height: 300px; } .tile.photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.tile.mb { background: linear-gradient(150deg, var(--mb-2), var(--mb) 45%, var(--mb-dark)); border: 0; }
+@media (max-width: 900px) { .bento { grid-template-columns: 1fr; } .t2, .t3, .t4 { grid-column: auto; } }
+
+/* formules */
+.offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.offer { border-radius: var(--r); padding: 2.2rem; border: 1px solid rgba(255, 255, 255, .12); display: flex; flex-direction: column; gap: 1rem; min-height: 380px; }
+.offer .kicker { color: var(--rose); }
+.offer h3 { font-size: 1.7rem; line-height: 1.12; }
+.offer .btn { margin-top: auto; align-self: flex-start; }
+.offer.main { background: linear-gradient(160deg, var(--mb-2), var(--mb) 50%, var(--mb-dark)); border: 0; box-shadow: 0 40px 90px -40px rgba(117, 63, 72, .9); }
+.offer.main .kicker { color: #fff; }
+@media (max-width: 900px) { .offers { grid-template-columns: 1fr; } .offer { min-height: 0; } }
+
+/* secteurs */
+.sectors a { display: flex; align-items: baseline; gap: 1.5rem; padding: 1.6rem 0; border-top: 1px solid rgba(255, 255, 255, .14); font-size: clamp(1.8rem, 4.6vw, 3.8rem); letter-spacing: -.03em; color: rgba(255, 255, 255, .55); font-weight: 500; transition: color .3s, padding-left .4s cubic-bezier(.2, .8, .2, 1); }
+.sectors a:last-child { border-bottom: 1px solid rgba(255, 255, 255, .14); }
+.sectors a small { font-size: .85rem; letter-spacing: .1em; color: var(--rose); }
+.sectors a::after { content: "↗"; margin-left: auto; opacity: 0; transition: opacity .3s; }
+.sectors a:hover { color: #fff; padding-left: 1.2rem; } .sectors a:hover::after { opacity: 1; }
+.hoverpic { position: fixed; z-index: 40; left: 0; top: 0; width: 300px; height: 210px; border-radius: 20px; background: center / cover; pointer-events: none; opacity: 0; scale: .85; transition: opacity .25s, scale .25s; }
+.hoverpic.on { opacity: 1; scale: 1; }
+
+/* final */
+.final { position: relative; isolation: isolate; text-align: center; padding: clamp(6rem, 14vw, 12rem) 0; overflow: hidden; }
+.final::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(23, 14, 16, .78), rgba(23, 14, 16, .9)), url("/assets/img/maquette/logo-grains.webp") center / cover; }
+.final h2 { font-size: clamp(2.6rem, 7vw, 6.4rem); line-height: .98; max-width: 14ch; margin: 0 auto 2.4rem; }
+footer { padding: 2.5rem 0 5.5rem; font-size: .88rem; border-top: 1px solid rgba(255, 255, 255, .12); }
+@media (prefers-reduced-motion: reduce) { .hero h1 span > b { transform: none; animation: none; } .hero-bg, .hero .tele { animation: none; } }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a href="/"><img src="/assets/img/logoblanc.webp" alt="Machine Break"></a>
+  <ul><li><a href="#">Solutions</a></li><li><a href="#">Fonctionnement</a></li><li><a href="#">F.A.Q.</a></li><li><a href="#">Conseils</a></li><li><a href="#">Contact</a></li></ul>
+  <a class="btn btn-light" href="/contact#contact-form">Mon diagnostic <i>→</i></a>
+</div></header>
+
+<section class="hero" data-glow>
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <h1><span class="kicker">Distributeurs automatiques et machines à café pour entreprises · Paris et Île-de-France</span>
+      <span><b style="--i:0">La pause</b></span><span><b style="--i:1">qui se gère</b></span><span><b style="--i:2"><em>toute seule.</em></b></span></h1>
+    <p class="lead">Café en grains, boissons et snacks pour vos équipes. La machine remonte son remplissage, déclenche elle-même le passage, et vous voyez tout dans votre espace client.</p>
+    <div class="hero-cta"><a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a><a class="btn btn-ghost" href="#comment" style="color:#fff">Voir comment ça marche</a></div>
+    <div class="proof"><span><b>Toute l'Île-de-France</b>, depuis la Seine-et-Marne</span><span><b>Réponse sous 24 h</b></span><span><b>Dépôt, location ou achat</b></span></div>
+    <div class="tele glass">
+      <div class="tele-title">Télémétrie · votre salle de pause</div>
+      <div class="tele-bar"><b></b></div>
+      <div class="tele-states"><span><strong>Machine remplie</strong>Rien à faire de votre côté</span><span><strong>Seuil atteint</strong>Le passage est déclenché</span><span><strong>Réassort en cours</strong>Tout est tracé</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee band" aria-hidden="true"><div><span>Café en grains</span><span>Boissons fraîches</span><span>Snacks</span><span>Paiement sans contact</span><span>Télémétrie</span><span>Espace client</span><span>Café en grains</span><span>Boissons fraîches</span><span>Snacks</span><span>Paiement sans contact</span><span>Télémétrie</span><span>Espace client</span></div></div>
+
+<section id="comment"><div class="wrap">
+  <div class="head"><h2 class="rv">Vous ne gérez rien.<br><em>Vous voyez tout.</em></h2><p class="rv" style="--d:.1s">Pas de tournée à date fixe : chaque machine est connectée et c'est elle qui déclenche nos passages.</p></div>
+  <div class="steps">
+    <article class="step rv"><img src="/assets/img/maquette/beans-tank.webp" alt="" loading="lazy"><span class="n">01</span><h3>La machine nous prévient</h3><p>Ventes, remplissage, alertes techniques : tout remonte en temps réel.</p></article>
+    <article class="step rv" style="--d:.12s"><img src="/assets/img/maquette/refill.webp" alt="" loading="lazy"><span class="n">02</span><h3>Nous passons avant la rupture</h3><p>Le réassort est déclenché par la télémétrie, selon les habitudes de votre site.</p></article>
+    <article class="step rv" style="--d:.24s"><img src="/assets/img/maquette/cup-hand.webp" alt="" loading="lazy"><span class="n">03</span><h3>Vos équipes profitent</h3><p>Chaque intervention est tracée et horodatée dans votre espace client.</p></article>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="head"><h2 class="rv">Cinq engagements,<br><em>écrits au contrat.</em></h2><p class="rv" style="--d:.1s">Des promesses que nous tenons parce qu'elles reposent sur notre façon de travailler.</p></div>
+  <div class="bento">
+    <div class="tile t3 rv"><span class="ico">◔</span><h3>Réassort déclenché par la télémétrie</h3><p>Le passage suit la consommation réelle, pas un calendrier.</p></div>
+    <div class="tile photo t3 rv" style="--d:.08s"><img src="/assets/img/maquette/people.webp" alt="Deux collaborateurs devant les machines à café" loading="lazy"></div>
+    <div class="tile t2 rv"><span class="ico">⌁</span><h3>Alerte analysée à distance</h3><p>Avant tout déplacement, pour partir avec la bonne pièce.</p></div>
+    <div class="tile t2 mb rv" style="--d:.08s"><span class="ico" style="background:rgba(255,255,255,.18);color:#fff">✓</span><h3>Un délai d'intervention écrit au contrat</h3><p style="color:rgba(255,255,255,.8)">Défini pour chaque site.</p></div>
+    <div class="tile t2 rv" style="--d:.16s"><span class="ico">≡</span><h3>Chaque intervention tracée</h3><p>Horodatée, consultable dans votre espace client.</p></div>
+    <div class="tile photo t2 rv"><img src="/assets/img/maquette/logo-glow.webp" alt="Logo Machine Break lumineux sur une machine" loading="lazy"></div>
+    <div class="tile t4 rv" style="--d:.08s"><span class="ico">☺</span><h3>Un interlocuteur nommé, joignable directement</h3><p>Pas de plateforme téléphonique : une personne qui connaît votre site.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="head"><h2 class="rv">Trois façons<br>de <em>s'équiper.</em></h2><p class="rv" style="--d:.1s">Dans les trois cas, la machine est connectée, entretenue par nos équipes, et chaque intervention est tracée.</p></div>
+  <div class="offers">
+    <div class="offer main rv"><span class="kicker">En dépôt</span><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p style="color:rgba(255,255,255,.82)">Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-light" href="#">Choisir le dépôt <i>→</i></a></div>
+    <div class="offer rv" style="--d:.1s"><span class="kicker">En location</span><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées par vos collaborateurs à la machine, ou prises en charge par l'entreprise.</p><a class="btn btn-ghost" href="#" style="color:#fff">Choisir la location <i>→</i></a></div>
+    <div class="offer rv" style="--d:.2s"><span class="kicker">À l'achat</span><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-ghost" href="#" style="color:#fff">Choisir l'achat <i>→</i></a></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="head"><h2 class="rv">Pensé pour <em>votre site.</em></h2><p class="rv" style="--d:.1s">Nous visitons, puis nous définissons avec vous la machine qui convient à l'espace.</p></div>
+  <nav class="sectors" data-hoverlist>
+    <a href="/solutions/bureaux-pme" data-img="/assets/img/maquette/duo.webp"><small>01</small>Bureaux et PME</a>
+    <a href="/solutions/residences-hotels" data-img="/assets/img/shooting/distributeur-salon-residence-640.webp"><small>02</small>Résidences et hôtels</a>
+    <a href="/solutions/industrie-logistique" data-img="/assets/img/shooting/allee-usine-640.webp"><small>03</small>Industrie et logistique</a>
+    <a href="/grands-comptes" data-img="/assets/img/maquette/salle.webp"><small>04</small>Grands comptes multi-sites</a>
+  </nav>
+</div></section>
+<div class="hoverpic" data-hoverpic></div>
+
+<section class="final"><div class="wrap">
+  <h2 class="rv">Et vos pauses, elles ressemblent <em>à quoi ?</em></h2>
+  <a class="btn btn-mb rv" style="--d:.1s" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a>
+</div></section>
+<footer><div class="wrap">Maquette de démonstration · Direction A « Nuit café » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · 01 74 81 09 52</div></footer>
+
+<nav class="switch"><a class="on" href="/maquettes/a-nuit-cafe">A · Nuit café</a><a href="/maquettes/b-bento">B · Bento</a><a href="/maquettes/c-editorial">C · Éditorial</a></nav>
+<script src="/maquettes/m.js"></script>
+</body>
+</html>

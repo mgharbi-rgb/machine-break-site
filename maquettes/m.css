@@ -1,0 +1,67 @@
+/* Maquettes d'interface Machine Break : socle commun aux trois directions (pages de démonstration, non indexées) */
+@font-face { font-family: "HK Grotesk"; src: url("/assets/fonts/HK Grotesk Pro/HKGroteskPro-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "HK Grotesk"; src: url("/assets/fonts/HK Grotesk Pro/HKGroteskPro-Medium.woff2") format("woff2"); font-weight: 500 700; font-display: swap; }
+:root {
+  --mb: #753F48; --mb-2: #8f4f5a; --mb-dark: #4e2930; --ink: #170e10; --ink-2: #231619;
+  --cream: #faf5f1; --sand: #f1e8e2; --line: #eadfd8; --rose: #f2a7b1; --crema: #e6b98c;
+  --text: #3a2f31; --muted: #6b5d60; --r: 28px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: "HK Grotesk", system-ui, sans-serif; font-size: 17px; line-height: 1.55; color: var(--text); background: var(--cream); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p { margin: 0; }
+.wrap { width: min(1240px, 100% - 40px); margin-inline: auto; }
+.kicker { display: block; font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+
+/* navigation */
+.nav { position: absolute; inset: 0 0 auto 0; z-index: 30; }
+.nav .wrap { display: flex; align-items: center; gap: 2rem; padding: 1.1rem 0; }
+.nav img { height: 46px; width: auto; }
+.nav ul { display: flex; gap: 1.8rem; list-style: none; margin: 0 0 0 auto; padding: 0; font-weight: 600; font-size: .95rem; }
+.nav li a { opacity: .85; transition: opacity .2s; }
+.nav li a:hover { opacity: 1; }
+@media (max-width: 900px) { .nav ul { display: none; } .nav .btn { margin-left: auto; padding: .6rem 1rem; font-size: .85rem; } }
+
+/* boutons */
+.btn { display: inline-flex; align-items: center; gap: .6rem; padding: .95rem 1.6rem; border-radius: 999px; font-weight: 600; font-size: 1rem; border: 1.5px solid transparent; cursor: pointer; transition: transform .25s cubic-bezier(.2, .8, .2, 1), box-shadow .25s, background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn i { display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: rgba(255, 255, 255, .18); font-style: normal; transition: transform .25s; }
+.btn:hover i { transform: translateX(3px) rotate(-45deg); }
+.btn-mb { background: var(--mb); color: #fff; box-shadow: 0 14px 34px -14px rgba(117, 63, 72, .9); }
+.btn-mb:hover { background: var(--mb-2); }
+.btn-light { background: #fff; color: var(--ink); }
+.btn-light i { background: var(--mb); color: #fff; }
+.btn-ghost { border-color: currentColor; background: transparent; }
+
+/* bandeau défilant */
+.marquee { overflow: hidden; white-space: nowrap; }
+.marquee > div { display: inline-flex; gap: 3rem; padding-right: 3rem; animation: marquee 32s linear infinite; }
+.marquee span::after { content: "✦"; margin-left: 3rem; opacity: .45; font-size: .6em; vertical-align: middle; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* apparition au défilement */
+.rv { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2, .8, .2, 1), transform .8s cubic-bezier(.2, .8, .2, 1); transition-delay: var(--d, 0s); }
+.rv.in { opacity: 1; transform: none; }
+.no-js .rv { opacity: 1; transform: none; }
+
+/* jauge de télémétrie animée (illustration) */
+.tele-title { font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; opacity: .7; }
+.tele-bar { height: 8px; border-radius: 8px; background: rgba(255, 255, 255, .16); overflow: hidden; margin: .7rem 0 .8rem; }
+.tele-bar b { display: block; height: 100%; border-radius: 8px; transform-origin: 0 50%; animation: tele 9s ease-in-out infinite; background: #5fd39a; }
+.tele-states { position: relative; height: 2.9rem; font-size: .92rem; line-height: 1.3; }
+.tele-states span { position: absolute; inset: 0; opacity: 0; animation: 9s infinite; }
+.tele-states span:nth-child(1) { animation-name: ts1; } .tele-states span:nth-child(2) { animation-name: ts2; } .tele-states span:nth-child(3) { animation-name: ts3; }
+.tele-states strong { display: block; }
+@keyframes tele { 0%, 8% { transform: scaleX(1); background: #5fd39a; } 38%, 52% { transform: scaleX(.3); background: #f08a7b; } 70% { background: var(--crema); } 86%, 100% { transform: scaleX(1); background: #5fd39a; } }
+@keyframes ts1 { 0%, 30% { opacity: 1; } 36%, 84% { opacity: 0; } 90%, 100% { opacity: 1; } }
+@keyframes ts2 { 0%, 34% { opacity: 0; } 40%, 58% { opacity: 1; } 64%, 100% { opacity: 0; } }
+@keyframes ts3 { 0%, 62% { opacity: 0; } 68%, 82% { opacity: 1; } 88%, 100% { opacity: 0; } }
+
+/* sélecteur de direction (présent uniquement sur les maquettes) */
+.switch { position: fixed; z-index: 99; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; gap: 4px; padding: 5px; border-radius: 999px; background: rgba(23, 14, 16, .86); backdrop-filter: blur(10px); box-shadow: 0 16px 40px -12px rgba(0, 0, 0, .6); font-size: .8rem; font-weight: 600; }
+.switch a { color: #fff; padding: .5rem .9rem; border-radius: 999px; opacity: .7; white-space: nowrap; }
+.switch a.on { background: var(--mb); opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) { .marquee > div, .tele-bar b, .tele-states span { animation: none; } .tele-states span:first-child { opacity: 1; } .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }

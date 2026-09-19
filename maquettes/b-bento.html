@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Maquette B · Bento | Machine Break</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/maquettes/m.css">
+<style>
+body { background: var(--sand); }
+h1, h2, h3 { font-family: "Bricolage Grotesque", sans-serif; color: var(--ink); letter-spacing: -.035em; font-weight: 700; }
+.nav { position: sticky; top: 12px; }
+.nav .wrap { background: rgba(255, 255, 255, .82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 999px; padding: .55rem .6rem .55rem 1.4rem; box-shadow: 0 10px 40px -20px rgba(78, 41, 48, .45); }
+.nav img { height: 40px; }
+.nav .btn { padding: .7rem 1.2rem; font-size: .92rem; }
+
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(150px, auto); gap: 16px; }
+.t { border-radius: 32px; padding: 1.8rem; position: relative; overflow: hidden; background: #fff; transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s; will-change: transform; }
+.t:hover { box-shadow: 0 30px 60px -34px rgba(78, 41, 48, .55); }
+.t.photo { padding: 0; min-height: 240px; }
+.t.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2, .8, .2, 1); }
+.t.photo:hover img { transform: scale(1.07); }
+.t.photo .tag { position: absolute; left: 1rem; bottom: 1rem; background: rgba(255, 255, 255, .92); color: var(--ink); border-radius: 999px; padding: .45rem .9rem; font-size: .82rem; font-weight: 600; }
+.t.mb { background: linear-gradient(150deg, var(--mb-2), var(--mb) 45%, var(--mb-dark)); color: rgba(255, 255, 255, .85); }
+.t.mb h3, .t.ink h3, .t.mb h2, .t.ink h2 { color: #fff; }
+.t.ink { background: var(--ink); color: rgba(255, 255, 255, .75); }
+.t.cream { background: var(--cream); }
+.t.rose { background: #f6d9dc; }
+.t.crema { background: #f3dcc3; }
+.c12 { grid-column: span 12; } .c8 { grid-column: span 8; } .c7 { grid-column: span 7; } .c6 { grid-column: span 6; } .c5 { grid-column: span 5; } .c4 { grid-column: span 4; } .c3 { grid-column: span 3; }
+.r2 { grid-row: span 2; } .r3 { grid-row: span 3; }
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } .c12, .c8, .c7, .c6, .c5 { grid-column: span 2; } .c4, .c3 { grid-column: span 1; } .r2, .r3 { grid-row: auto; } .c4.wide-m { grid-column: span 2; } }
+@media (max-width: 560px) { .c4, .c3 { grid-column: span 2; } .hero .title { padding: 1.5rem; min-height: 0; gap: 1.5rem; } .hero-cta .btn { font-size: .92rem; padding: .85rem 1.1rem; white-space: nowrap; } .t.c3 { grid-column: span 1; padding: 1.3rem; } .t.photo.c3 { min-height: 180px; } }
+
+.hero { padding: 1.6rem 0 0; }
+.hero .title { display: flex; flex-direction: column; justify-content: space-between; min-height: 520px; padding: 2.4rem; background: #fff; }
+.hero .kicker { color: var(--mb); margin-bottom: 1.2rem; line-height: 1.6; }
+.hero h1 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); line-height: .94; font-weight: 800; }
+.hero h1 u { text-decoration: none; background: linear-gradient(transparent 62%, #f6d9dc 62%); padding: 0 .08em; }
+.hero p.lead { font-size: 1.15rem; max-width: 34rem; margin: 1.4rem 0 1.8rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: .7rem; }
+.big { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: clamp(2.6rem, 5vw, 4rem); line-height: 1; letter-spacing: -.04em; color: var(--ink); }
+.t.mb .big, .t.ink .big { color: #fff; }
+.sticker { position: absolute; right: 1.2rem; top: 1.2rem; width: 92px; height: 92px; border-radius: 50%; background: var(--mb); color: #fff; display: grid; place-items: center; text-align: center; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1.25; animation: spin 16s linear infinite; }
+@keyframes spin { to { rotate: 360deg; } }
+
+section { padding: clamp(4rem, 8vw, 7rem) 0 0; }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.2rem 3rem; margin-bottom: 2rem; }
+.head h2 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: .98; max-width: 14ch; }
+.head p { max-width: 28rem; }
+.pillrow { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.pill { border-radius: 999px; padding: .4rem .9rem; font-size: .82rem; font-weight: 600; background: rgba(117, 63, 72, .1); color: var(--mb); }
+.t.mb .pill, .t.ink .pill { background: rgba(255, 255, 255, .16); color: #fff; }
+.num { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 700; margin-bottom: 2.4rem; }
+.t h3 { font-size: 1.5rem; line-height: 1.08; margin-bottom: .5rem; }
+.t .btn { margin-top: 1.4rem; }
+.offer { display: flex; flex-direction: column; min-height: 360px; } .offer .btn { margin-top: auto; align-self: flex-start; }
+.offer .kicker { color: var(--mb); margin-bottom: 1rem; } .t.mb .kicker { color: #fff; }
+.sector { min-height: 340px !important; } .sector h3 { position: absolute; left: 1.4rem; right: 1.4rem; bottom: 1.3rem; color: #fff; font-size: 1.6rem; z-index: 2; }
+.sector::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(23, 14, 16, .85), transparent 55%); }
+.sector .go { position: absolute; z-index: 2; top: 1rem; right: 1rem; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; transition: transform .3s, background .3s, color .3s; }
+.sector:hover .go { transform: rotate(-45deg); background: var(--mb); color: #fff; }
+.final { text-align: center; padding: clamp(3.5rem, 8vw, 7rem) 1.5rem !important; }
+.final h2 { font-size: clamp(2.4rem, 6vw, 5rem); line-height: .96; max-width: 15ch; margin: 0 auto 2rem; }
+footer { padding: 2.5rem 0 5.5rem; font-size: .88rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a href="/"><img src="/assets/img/logo.webp" alt="Machine Break"></a>
+  <ul><li><a href="#">Solutions</a></li><li><a href="#">Fonctionnement</a></li><li><a href="#">F.A.Q.</a></li><li><a href="#">Conseils</a></li><li><a href="#">Contact</a></li></ul>
+  <a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic <i>→</i></a>
+</div></header>
+
+<section class="hero"><div class="wrap grid">
+  <div class="t title c7 r3">
+    <div><h1><span class="kicker">Distributeurs automatiques et machines à café pour entreprises · Paris et Île-de-France</span>La pause qui se gère <u>toute seule.</u></h1>
+    <p class="lead">Café en grains, boissons et snacks pour vos équipes. La machine remonte son remplissage, déclenche elle-même le passage, et vous voyez tout dans votre espace client.</p></div>
+    <div class="hero-cta"><a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a><a class="btn btn-ghost" href="#comment">Comment ça marche</a></div>
+  </div>
+  <div class="t photo c5 r2" data-tilt><img src="/assets/img/maquette/people.webp" alt="Deux collaborateurs devant les machines à café"><span class="sticker">Diagnostic<br>gratuit<br>1 minute</span></div>
+  <div class="t mb c5" data-tilt>
+    <div class="tele-title">Télémétrie · votre salle de pause</div>
+    <div class="tele-bar"><b></b></div>
+    <div class="tele-states" style="color:#fff"><span><strong>Machine remplie</strong>Rien à faire de votre côté</span><span><strong>Seuil atteint</strong>Le passage est déclenché</span><span><strong>Réassort en cours</strong>Tout est tracé</span></div>
+  </div>
+  <div class="t crema c3" data-tilt><div class="big">24 h</div><p>Notre délai de réponse à votre demande.</p></div>
+  <div class="t photo c3" data-tilt><img src="/assets/img/maquette/pour.webp" alt="Café qui coule dans un gobelet" loading="lazy"></div>
+  <div class="t rose c3" data-tilt><div class="big">IDF</div><p>Toute l'Île-de-France, depuis la Seine-et-Marne.</p></div>
+  <div class="t ink c3" data-tilt><div class="big">3</div><p>formules : dépôt, location ou achat.</p></div>
+</div></section>
+
+<section id="comment"><div class="wrap">
+  <div class="head"><h2 class="rv">Vous ne gérez rien. Vous voyez tout.</h2><p class="rv" style="--d:.1s">Pas de tournée à date fixe : chaque machine est connectée et c'est elle qui déclenche nos passages.</p></div>
+  <div class="grid">
+    <div class="t c4 wide-m rv" data-tilt><span class="num">1</span><h3>La machine nous prévient</h3><p>Ventes, remplissage, alertes techniques : tout remonte en temps réel.</p></div>
+    <div class="t cream c4 wide-m rv" style="--d:.1s" data-tilt><span class="num">2</span><h3>Nous passons avant la rupture</h3><p>Le réassort est déclenché par la télémétrie, selon les habitudes de votre site.</p></div>
+    <div class="t c4 wide-m rv" style="--d:.2s" data-tilt><span class="num">3</span><h3>Vous suivez tout</h3><p>Chaque intervention est tracée et horodatée dans votre espace client.</p></div>
+    <div class="t photo c8 rv" style="min-height:380px"><img src="/assets/img/maquette/refill.webp" alt="Remplissage du bac à grains" loading="lazy"><span class="tag">Réassort déclenché par la télémétrie</span></div>
+    <div class="t ink c4 wide-m rv" style="--d:.1s"><h3>Cinq engagements écrits au contrat</h3><div class="pillrow"><span class="pill">Réassort par télémétrie</span><span class="pill">Alerte analysée à distance</span><span class="pill">Délai d'intervention contractuel</span><span class="pill">Interventions tracées</span><span class="pill">Interlocuteur nommé</span></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><h2 class="rv">Trois façons de s'équiper</h2><p class="rv" style="--d:.1s">Dans les trois cas, la machine est connectée, entretenue par nos équipes, et chaque intervention est tracée.</p></div>
+  <div class="grid">
+    <div class="t mb offer c4 wide-m rv" data-tilt><span class="kicker">En dépôt</span><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-light" href="#">Choisir le dépôt <i>→</i></a></div>
+    <div class="t offer c4 wide-m rv" style="--d:.1s" data-tilt><span class="kicker">En location</span><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées à la machine ou prises en charge par l'entreprise.</p><a class="btn btn-ghost" href="#">Choisir la location <i style="background:var(--mb);color:#fff">→</i></a></div>
+    <div class="t offer c4 wide-m rv" style="--d:.2s" data-tilt><span class="kicker">À l'achat</span><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-ghost" href="#">Choisir l'achat <i style="background:var(--mb);color:#fff">→</i></a></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><h2 class="rv">Pensé pour votre site</h2><p class="rv" style="--d:.1s">Nous visitons, puis nous définissons avec vous la machine qui convient à l'espace.</p></div>
+  <div class="grid">
+    <a class="t photo sector c3 rv" href="/solutions/bureaux-pme"><img src="/assets/img/maquette/duo.webp" alt="" loading="lazy"><span class="go">→</span><h3>Bureaux et PME</h3></a>
+    <a class="t photo sector c3 rv" style="--d:.08s" href="/solutions/residences-hotels"><img src="/assets/img/shooting/distributeur-salon-residence-1024.webp" alt="" loading="lazy"><span class="go">→</span><h3>Résidences et hôtels</h3></a>
+    <a class="t photo sector c3 rv" style="--d:.16s" href="/solutions/industrie-logistique"><img src="/assets/img/shooting/allee-usine-1024.webp" alt="" loading="lazy"><span class="go">→</span><h3>Industrie et logistique</h3></a>
+    <a class="t photo sector c3 rv" style="--d:.24s" href="/grands-comptes"><img src="/assets/img/maquette/salle.webp" alt="" loading="lazy"><span class="go">→</span><h3>Grands comptes multi-sites</h3></a>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="t mb final rv">
+  <h2>Et vos pauses, elles ressemblent à quoi ?</h2>
+  <a class="btn btn-light" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a>
+</div></div></section>
+<footer><div class="wrap">Maquette de démonstration · Direction B « Bento » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · 01 74 81 09 52</div></footer>
+
+<nav class="switch"><a href="/maquettes/a-nuit-cafe">A · Nuit café</a><a class="on" href="/maquettes/b-bento">B · Bento</a><a href="/maquettes/c-editorial">C · Éditorial</a></nav>
+<script src="/maquettes/m.js"></script>
+</body>
+</html>
