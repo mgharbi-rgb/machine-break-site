@@ -3,10 +3,10 @@
 /index.html                                                   /                          301!
 
 # Ancienne génération du site (contenu extrait dans CONTENU-RECUPERE.md)
-/location-distributeurs-automatiques-boissons                 /fonctionnement            301
-/location-distributeurs-automatiques-boissons.html            /fonctionnement            301!
-/entreprise-location-distributeur-automatique-boisson         /boissons-chaudes-snacks   301
-/entreprise-location-distributeur-automatique-boisson.html    /boissons-chaudes-snacks   301!
+/location-distributeurs-automatiques-boissons                 /zones/paris               301
+/location-distributeurs-automatiques-boissons.html            /zones/paris               301!
+/entreprise-location-distributeur-automatique-boisson         /zones/paris              301
+/entreprise-location-distributeur-automatique-boisson.html    /zones/paris              301!
 
 # Pages supprimées (décision client 2026-09-03)
 /careers                                                      /contact                   301
@@ -37,3 +37,4 @@
 /zones/marne-la-vallee.html                                   /zones/marne-la-vallee     301!
 /zones/est-parisien.html                                      /zones/est-parisien        301!
 /blog.html                                                    /blog                      301!
+/zones/paris.html                                             /zones/paris               301!
