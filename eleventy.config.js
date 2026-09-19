@@ -9,7 +9,7 @@ export default function (eleventyConfig) {
   eleventyConfig.setLayoutResolution(false);
 
   // Copie fidèle de tout le site statique
-  for (const p of ["assets", "admin", "solutions", "zones", "_redirects", "_headers", "robots.txt", "social.json", "favicon.ico"]) {
+  for (const p of ["assets", "admin", "solutions", "zones", "machines", "_redirects", "_headers", "robots.txt", "social.json", "favicon.ico"]) {
     eleventyConfig.addPassthroughCopy(p);
   }
   eleventyConfig.addPassthroughCopy("*.html");
