@@ -33,6 +33,7 @@ h1, h2, h3, .st { font-family: "Big Shoulders Stencil Display", Impact, sans-ser
 @keyframes wob { 50% { rotate: -6deg; scale: 1.05; } }
 .hero-foot { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; align-items: center; padding: 0 0 3rem; }
 .hero-foot p { max-width: 30rem; font-size: 1.12rem; color: rgba(246, 234, 217, .88); }
+.hero-foot .proofrow { margin-top: 1rem; max-width: 34rem; color: rgba(246, 234, 217, .88); } .hero-foot .proofrow b { color: var(--pink); }
 @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero-side { min-height: 420px; order: 2; margin: 0 -20px; } .hero-side img.m { height: 100%; } .hero-side .disc { width: 90%; left: 5%; } .sticker { left: 6%; width: 116px; height: 116px; font-size: 1.2rem; } .hero h1 { padding-bottom: 1.2rem; font-size: 16vw; } .hero-side { overflow: hidden; border-bottom: 2px solid var(--ink); } .hero-foot { padding: 1.6rem 0 2.6rem; } }
 
 .strip { background: var(--ink); color: var(--paper); padding: .9rem 0; font-size: clamp(1.5rem, 3vw, 2.4rem); rotate: -1.6deg; margin: -1.4rem -2% 0; width: 104%; position: relative; z-index: 4; border-block: 2px solid var(--ink); }
@@ -61,6 +62,7 @@ h2 .p { color: var(--mb); }
 .eng li:last-child { border-bottom: 2px solid rgba(246, 234, 217, .25); }
 .eng li::before { content: "0" counter(e); color: var(--pink); font-size: .55em; }
 .eng li:hover { color: var(--pink); padding-left: 1rem; }
+.sect a:focus-visible .ph { border-radius: 26px; transform: rotate(-3deg) scale(1.03); }
 
 /* formules : trois tickets */
 .tickets { margin-top: 3.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
@@ -85,25 +87,28 @@ h2 .p { color: var(--mb); }
 
 .final { background: var(--mb); color: var(--paper); text-align: center; }
 .final h2 { color: var(--paper); margin-bottom: 2.4rem; } .final h2 .p { color: var(--pink); }
-footer { background: var(--mb); color: rgba(246, 234, 217, .7); padding: 2rem 0 5.5rem; font-size: .88rem; border-top: 2px solid rgba(246, 234, 217, .25); }
+footer { background: var(--mb); color: rgba(246, 234, 217, .85); padding: 2rem 0 5.5rem; font-size: .88rem; border-top: 2px solid rgba(246, 234, 217, .25); }
 @media (prefers-reduced-motion: reduce) { .sticker { animation: none; } }
 </style>
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="nav"><div class="wrap">
-  <a href="/"><img src="/assets/img/logoblanc.webp" alt="Machine Break"></a>
-  <ul><li><a href="#">Solutions</a></li><li><a href="#">Fonctionnement</a></li><li><a href="#">F.A.Q.</a></li><li><a href="#">Conseils</a></li><li><a href="#">Contact</a></li></ul>
-  <a class="btn" href="/contact#contact-form">Mon diagnostic <i>→</i></a>
+  <a href="/"><img src="/assets/img/logoblanc.webp" alt="Machine Break" width="632" height="438"></a>
+  <nav id="menu" aria-label="Navigation principale"><ul><li><a href="/solution-par-secteur">Solutions</a></li><li><a href="/fonctionnement">Fonctionnement</a></li><li><a href="/faq">F.A.Q.</a></li><li><a href="/blog">Conseils</a></li><li><a href="/contact">Contact</a></li></ul></nav>
+  <a class="btn" href="/contact#contact-form">Mon diagnostic <i aria-hidden="true">→</i></a>
 </div></header>
 
+<main id="contenu">
 <section class="hero">
   <div class="wrap">
     <h1><span class="kicker">Distributeurs automatiques et machines à café pour entreprises · Paris et Île-de-France</span>La pause<br><span class="o">qui se gère</span><br><span class="p">toute seule.</span></h1>
-    <div class="hero-side"><span class="disc"></span><img class="m" src="/assets/img/machines/siline-combi-m.webp" alt="Distributeur combiné boissons et snacks"><span class="sticker st">Diagnostic<br>gratuit<br>1 min</span></div>
+    <div class="hero-side"><span class="disc"></span><img class="m" src="/assets/img/machines/siline-combi-m.webp" alt="Distributeur combiné boissons et snacks" width="536" height="940" fetchpriority="high"><span class="sticker st">Diagnostic<br>gratuit<br>1 min</span></div>
   </div>
   <div class="wrap hero-foot" style="display:flex">
-    <p>Café en grains, boissons et snacks pour vos équipes. La machine remonte son remplissage, déclenche elle-même le passage, et vous voyez tout dans votre espace client.</p>
-    <a class="btn btn-pink" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a>
+    <div><p>Café en grains, boissons et snacks pour vos équipes. La machine remonte son remplissage, déclenche elle-même le passage, et vous voyez tout dans votre espace client.</p>
+    <div class="proofrow"><span><b>Toute l'Île-de-France</b>, depuis la Seine-et-Marne</span><span><b>Réponse sous 24 h</b></span><span><b>Dépôt, location ou achat</b></span></div></div>
+    <a class="btn btn-pink" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i aria-hidden="true">→</i></a>
   </div>
 </section>
 <div class="marquee strip st" aria-hidden="true"><div><span>Café en grains</span><span>Boissons fraîches</span><span>Snacks</span><span>Sans contact</span><span>Télémétrie</span><span>Espace client</span><span>Café en grains</span><span>Boissons fraîches</span><span>Snacks</span><span>Sans contact</span><span>Télémétrie</span><span>Espace client</span></div></div>
@@ -130,9 +135,9 @@ footer { background: var(--mb); color: rgba(246, 234, 217, .7); padding: 2rem 0 
   <h2 class="rv">Trois façons<br><span class="p">de s'équiper.</span></h2>
   <p class="lead2 rv">Dans les trois cas, la machine est connectée, entretenue par nos équipes, et chaque intervention est tracée.</p>
   <div class="tickets">
-    <div class="ticket main rv"><span class="t st">Dépôt</span><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-pink" href="#">Choisir le dépôt <i>→</i></a></div>
-    <div class="ticket rv" style="--d:.1s"><span class="t st">Location</span><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées à la machine ou prises en charge par l'entreprise.</p><a class="btn btn-ink" href="#">Choisir la location <i>→</i></a></div>
-    <div class="ticket rv" style="--d:.2s"><span class="t st">Achat</span><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-ink" href="#">Choisir l'achat <i>→</i></a></div>
+    <div class="ticket main rv"><span class="t st">Dépôt</span><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-pink" href="/contact#contact-form">Choisir le dépôt <i aria-hidden="true">→</i></a></div>
+    <div class="ticket rv" style="--d:.1s"><span class="t st">Location</span><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées à la machine ou prises en charge par l'entreprise.</p><a class="btn btn-ink" href="/contact#contact-form">Choisir la location <i aria-hidden="true">→</i></a></div>
+    <div class="ticket rv" style="--d:.2s"><span class="t st">Achat</span><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-ink" href="/contact#contact-form">Choisir l'achat <i aria-hidden="true">→</i></a></div>
   </div>
 </div></section>
 
@@ -148,9 +153,10 @@ footer { background: var(--mb); color: rgba(246, 234, 217, .7); padding: 2rem 0 
 
 <section class="final"><div class="wrap">
   <h2 class="rv">Et vos pauses,<br><span class="p">elles ressemblent à quoi ?</span></h2>
-  <a class="btn btn-pink rv" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a>
+  <a class="btn btn-pink rv" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i aria-hidden="true">→</i></a>
 </div></section>
-<footer><div class="wrap">Maquette de démonstration · Direction E « Affiche » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · 01 74 81 09 52</div></footer>
+</main>
+<footer><div class="wrap">Maquette de démonstration · Direction E « Affiche » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · <a href="tel:+33174810952">01 74 81 09 52</a></div></footer>
 <script src="/maquettes/m.js"></script>
 </body>
 </html>

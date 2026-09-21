@@ -16,7 +16,8 @@ h1, h2, h3 { font-family: "Bricolage Grotesque", sans-serif; color: var(--ink); 
 .nav .btn { padding: .7rem 1.2rem; font-size: .92rem; }
 
 .grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(150px, auto); gap: 16px; }
-.t { border-radius: 32px; padding: 1.8rem; position: relative; overflow: hidden; background: #fff; transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s; will-change: transform; }
+.t { border-radius: 32px; padding: 1.8rem; position: relative; overflow: hidden; background: #fff; transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s; }
+[data-tilt]:hover { will-change: transform; }
 .t:hover { box-shadow: 0 30px 60px -34px rgba(78, 41, 48, .55); }
 .t.photo { padding: 0; min-height: 240px; }
 .t.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2, .8, .2, 1); }
@@ -42,7 +43,7 @@ h1, h2, h3 { font-family: "Bricolage Grotesque", sans-serif; color: var(--ink); 
 .hero-cta { display: flex; flex-wrap: wrap; gap: .7rem; }
 .big { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: clamp(2.6rem, 5vw, 4rem); line-height: 1; letter-spacing: -.04em; color: var(--ink); }
 .t.mb .big, .t.ink .big { color: #fff; }
-.sticker { position: absolute; right: 1.2rem; top: 1.2rem; width: 92px; height: 92px; border-radius: 50%; background: var(--mb); color: #fff; display: grid; place-items: center; text-align: center; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1.25; animation: spin 16s linear infinite; }
+.sticker { position: absolute; right: 1.2rem; top: 1.2rem; width: 92px; height: 92px; border-radius: 50%; background: var(--mb); color: #fff; display: grid; place-items: center; text-align: center; font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; line-height: 1.25; animation: spin 16s linear infinite; }
 @keyframes spin { to { rotate: 360deg; } }
 
 section { padding: clamp(4rem, 8vw, 7rem) 0 0; }
@@ -60,26 +61,28 @@ section { padding: clamp(4rem, 8vw, 7rem) 0 0; }
 .sector { min-height: 340px !important; } .sector h3 { position: absolute; left: 1.4rem; right: 1.4rem; bottom: 1.3rem; color: #fff; font-size: 1.6rem; z-index: 2; }
 .sector::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(23, 14, 16, .85), transparent 55%); }
 .sector .go { position: absolute; z-index: 2; top: 1rem; right: 1rem; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; transition: transform .3s, background .3s, color .3s; }
-.sector:hover .go { transform: rotate(-45deg); background: var(--mb); color: #fff; }
+.sector:hover .go, .sector:focus-visible .go { transform: rotate(-45deg); background: var(--mb); color: #fff; }
 .final { text-align: center; padding: clamp(3.5rem, 8vw, 7rem) 1.5rem !important; }
 .final h2 { font-size: clamp(2.4rem, 6vw, 5rem); line-height: .96; max-width: 15ch; margin: 0 auto 2rem; }
 footer { padding: 2.5rem 0 5.5rem; font-size: .88rem; color: var(--muted); }
 </style>
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="nav"><div class="wrap">
-  <a href="/"><img src="/assets/img/logo.webp" alt="Machine Break"></a>
-  <ul><li><a href="#">Solutions</a></li><li><a href="#">Fonctionnement</a></li><li><a href="#">F.A.Q.</a></li><li><a href="#">Conseils</a></li><li><a href="#">Contact</a></li></ul>
-  <a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic <i>→</i></a>
+  <a href="/"><img src="/assets/img/logo.webp" alt="Machine Break" width="616" height="420"></a>
+  <nav id="menu" aria-label="Navigation principale"><ul><li><a href="/solution-par-secteur">Solutions</a></li><li><a href="/fonctionnement">Fonctionnement</a></li><li><a href="/faq">F.A.Q.</a></li><li><a href="/blog">Conseils</a></li><li><a href="/contact">Contact</a></li></ul></nav>
+  <a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic <i aria-hidden="true">→</i></a>
 </div></header>
 
+<main id="contenu">
 <section class="hero"><div class="wrap grid">
   <div class="t title c7 r3">
     <div><h1><span class="kicker">Distributeurs automatiques et machines à café pour entreprises · Paris et Île-de-France</span>La pause qui se gère <u>toute seule.</u></h1>
     <p class="lead">Café en grains, boissons et snacks pour vos équipes. La machine remonte son remplissage, déclenche elle-même le passage, et vous voyez tout dans votre espace client.</p></div>
-    <div class="hero-cta"><a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a><a class="btn btn-ghost" href="#comment">Comment ça marche</a></div>
+    <div class="hero-cta"><a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i aria-hidden="true">→</i></a><a class="btn btn-ghost" href="#comment">Comment ça marche</a></div>
   </div>
-  <div class="t photo c5 r2" data-tilt><img src="/assets/img/maquette/people.webp" alt="Deux collaborateurs devant les machines à café"><span class="sticker">Diagnostic<br>gratuit<br>1 minute</span></div>
+  <div class="t photo c5 r2" data-tilt><img src="/assets/img/maquette/people.webp" alt="Deux collaborateurs devant les machines à café" fetchpriority="high"><span class="sticker">Diagnostic<br>gratuit<br>1 minute</span></div>
   <div class="t mb c5" data-tilt>
     <div class="tele-title">Télémétrie · votre salle de pause</div>
     <div class="tele-bar"><b></b></div>
@@ -105,27 +108,28 @@ footer { padding: 2.5rem 0 5.5rem; font-size: .88rem; color: var(--muted); }
 <section><div class="wrap">
   <div class="head"><h2 class="rv">Trois façons de s'équiper</h2><p class="rv" style="--d:.1s">Dans les trois cas, la machine est connectée, entretenue par nos équipes, et chaque intervention est tracée.</p></div>
   <div class="grid">
-    <div class="t mb offer c4 wide-m rv" data-tilt><span class="kicker">En dépôt</span><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-light" href="#">Choisir le dépôt <i>→</i></a></div>
-    <div class="t offer c4 wide-m rv" style="--d:.1s" data-tilt><span class="kicker">En location</span><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées à la machine ou prises en charge par l'entreprise.</p><a class="btn btn-ghost" href="#">Choisir la location <i style="background:var(--mb);color:#fff">→</i></a></div>
-    <div class="t offer c4 wide-m rv" style="--d:.2s" data-tilt><span class="kicker">À l'achat</span><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-ghost" href="#">Choisir l'achat <i style="background:var(--mb);color:#fff">→</i></a></div>
+    <div class="t mb offer c4 wide-m rv" data-tilt><span class="kicker">En dépôt</span><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-light" href="/contact#contact-form">Choisir le dépôt <i aria-hidden="true">→</i></a></div>
+    <div class="t offer c4 wide-m rv" style="--d:.1s" data-tilt><span class="kicker">En location</span><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées à la machine ou prises en charge par l'entreprise.</p><a class="btn btn-ghost" href="/contact#contact-form">Choisir la location <i aria-hidden="true" style="background:var(--mb);color:#fff">→</i></a></div>
+    <div class="t offer c4 wide-m rv" style="--d:.2s" data-tilt><span class="kicker">À l'achat</span><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-ghost" href="/contact#contact-form">Choisir l'achat <i aria-hidden="true" style="background:var(--mb);color:#fff">→</i></a></div>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="head"><h2 class="rv">Pensé pour votre site</h2><p class="rv" style="--d:.1s">Nous visitons, puis nous définissons avec vous la machine qui convient à l'espace.</p></div>
   <div class="grid">
-    <a class="t photo sector c3 rv" href="/solutions/bureaux-pme"><img src="/assets/img/maquette/duo.webp" alt="" loading="lazy"><span class="go">→</span><h3>Bureaux et PME</h3></a>
-    <a class="t photo sector c3 rv" style="--d:.08s" href="/solutions/residences-hotels"><img src="/assets/img/shooting/distributeur-salon-residence-1024.webp" alt="" loading="lazy"><span class="go">→</span><h3>Résidences et hôtels</h3></a>
-    <a class="t photo sector c3 rv" style="--d:.16s" href="/solutions/industrie-logistique"><img src="/assets/img/shooting/allee-usine-1024.webp" alt="" loading="lazy"><span class="go">→</span><h3>Industrie et logistique</h3></a>
-    <a class="t photo sector c3 rv" style="--d:.24s" href="/grands-comptes"><img src="/assets/img/maquette/salle.webp" alt="" loading="lazy"><span class="go">→</span><h3>Grands comptes multi-sites</h3></a>
+    <a class="t photo sector c3 rv" href="/solutions/bureaux-pme"><img src="/assets/img/maquette/duo.webp" alt="" loading="lazy"><span class="go" aria-hidden="true">→</span><h3>Bureaux et PME</h3></a>
+    <a class="t photo sector c3 rv" style="--d:.08s" href="/solutions/residences-hotels"><img src="/assets/img/shooting/distributeur-salon-residence-1024.webp" alt="" loading="lazy"><span class="go" aria-hidden="true">→</span><h3>Résidences et hôtels</h3></a>
+    <a class="t photo sector c3 rv" style="--d:.16s" href="/solutions/industrie-logistique"><img src="/assets/img/shooting/allee-usine-1024.webp" alt="" loading="lazy"><span class="go" aria-hidden="true">→</span><h3>Industrie et logistique</h3></a>
+    <a class="t photo sector c3 rv" style="--d:.24s" href="/grands-comptes"><img src="/assets/img/maquette/salle.webp" alt="" loading="lazy"><span class="go" aria-hidden="true">→</span><h3>Grands comptes multi-sites</h3></a>
   </div>
 </div></section>
 
 <section><div class="wrap"><div class="t mb final rv">
   <h2>Et vos pauses, elles ressemblent à quoi ?</h2>
-  <a class="btn btn-light" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a>
+  <a class="btn btn-light" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i aria-hidden="true">→</i></a>
 </div></div></section>
-<footer><div class="wrap">Maquette de démonstration · Direction B « Bento » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · 01 74 81 09 52</div></footer>
+</main>
+<footer><div class="wrap">Maquette de démonstration · Direction B « Bento » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · <a href="tel:+33174810952">01 74 81 09 52</a></div></footer>
 
 <script src="/maquettes/m.js"></script>
 </body>

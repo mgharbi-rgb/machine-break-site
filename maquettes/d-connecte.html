@@ -25,15 +25,16 @@ h1, h2, h3 { color: var(--ink); font-weight: 600; letter-spacing: -.04em; }
 @keyframes ping { 70% { box-shadow: 0 0 0 9px rgba(47, 178, 119, 0); } 100% { box-shadow: 0 0 0 0 rgba(47, 178, 119, 0); } }
 .hero h1 { font-size: clamp(2.8rem, 7.2vw, 6.4rem); line-height: .98; max-width: 13ch; margin: 0 auto; }
 .hero h1 .kicker { color: var(--muted); margin-bottom: 1.4rem; font-family: "JetBrains Mono", monospace; font-weight: 400; letter-spacing: .06em; font-size: .72rem; line-height: 1.7; max-width: none; }
-.grad { background: linear-gradient(100deg, var(--mb) 10%, #c2606f 55%, #e0a06d); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.grad { background: linear-gradient(100deg, var(--mb) 10%, #ad4458 55%, #b4632a); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero p.lead { font-size: 1.2rem; max-width: 38rem; margin: 1.6rem auto 2rem; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; }
+.hero .proofrow { justify-content: center; margin-top: 1.6rem; color: var(--muted); } .hero .proofrow b { color: var(--ink); }
 .screen { margin: clamp(3rem, 6vw, 5rem) auto 0; max-width: 1080px; perspective: 1800px; }
 .screen > div { border-radius: 18px 18px 0 0; overflow: hidden; border: 1px solid rgba(23, 14, 16, .12); border-bottom: 0; box-shadow: 0 -30px 120px -30px rgba(117, 63, 72, .55); transform: rotateX(14deg) scale(.96); transform-origin: 50% 100%; background: #fff; }
 @supports (animation-timeline: view()) { .screen > div { animation: flat linear both; animation-timeline: view(); animation-range: entry 10% cover 45%; } @keyframes flat { to { transform: none; } } }
 .chrome { display: flex; align-items: center; gap: 6px; padding: .6rem .9rem; background: #f4efec; border-bottom: 1px solid rgba(23, 14, 16, .08); }
 .chrome i { width: 10px; height: 10px; border-radius: 50%; background: #d9cfca; } .chrome span { margin-left: .8rem; color: var(--muted); text-transform: none; }
-.screen img { width: 100%; max-height: 560px; object-fit: cover; object-position: top; }
+.screen img { width: 100%; height: auto; max-height: 560px; object-fit: cover; object-position: top; }
 .cap { text-align: center; color: var(--muted); margin-top: 1rem; }
 
 section { padding: clamp(5rem, 9vw, 8rem) 0 0; }
@@ -61,7 +62,7 @@ h2 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); line-height: 1.02; max-width: 17ch
 
 /* formules en onglets */
 .tabs { margin-top: 2.5rem; display: inline-flex; padding: 5px; border-radius: 999px; background: var(--sand); gap: 4px; }
-.tabs button { font: inherit; font-weight: 600; border: 0; background: transparent; padding: .7rem 1.4rem; border-radius: 999px; cursor: pointer; color: var(--muted); transition: background .25s, color .25s; }
+.tabs button { font: inherit; font-weight: 600; min-height: 44px; border: 0; background: transparent; padding: .7rem 1.4rem; border-radius: 999px; cursor: pointer; color: var(--muted); transition: background .25s, color .25s; }
 .tabs button[aria-selected="true"] { background: var(--mb); color: #fff; box-shadow: 0 8px 20px -10px rgba(117, 63, 72, .9); }
 .panel { margin-top: 1.5rem; border-radius: 28px; padding: clamp(2rem, 4vw, 3.5rem); display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; background: linear-gradient(135deg, var(--ink) 0%, #3a1f25 100%); color: rgba(255, 255, 255, .8); position: relative; overflow: hidden; }
 .panel::after { content: ""; position: absolute; width: 420px; height: 420px; right: -120px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(242, 167, 177, .35), transparent 65%); }
@@ -69,7 +70,7 @@ h2 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); line-height: 1.02; max-width: 17ch
 .panel h3 { color: #fff; font-size: clamp(1.7rem, 3.2vw, 2.6rem); line-height: 1.05; margin-bottom: 1rem; }
 .panel ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem; position: relative; z-index: 1; }
 .panel li { display: flex; gap: .7rem; padding: .9rem 1rem; border-radius: 14px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .1); color: #fff; font-size: .96rem; }
-.panel li::before { content: "✓"; color: #7fe0ae; }
+.panel li::before { content: "✓"; content: "✓" / ""; color: #7fe0ae; }
 .panel .btn { margin-top: 1.6rem; }
 @media (max-width: 800px) { .panel { grid-template-columns: 1fr; gap: 1.5rem; } .tabs button { padding: .6rem .9rem; font-size: .9rem; } }
 
@@ -85,25 +86,29 @@ h2 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); line-height: 1.02; max-width: 17ch
 .final::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 20% 110%, rgba(117, 63, 72, .95), transparent 50%), radial-gradient(circle at 85% -10%, rgba(224, 160, 109, .5), transparent 45%); }
 .final h2 { color: #fff; margin: 0 auto 2rem; max-width: 15ch; font-size: clamp(2.4rem, 5.6vw, 4.6rem); }
 footer { padding: 2.5rem 0 5.5rem; font-size: .88rem; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .blob, .badge i { animation: none; } .screen > div { animation: none; transform: none; } }
 </style>
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="nav"><div class="wrap">
-  <a href="/"><img src="/assets/img/logo.webp" alt="Machine Break"></a>
-  <ul><li><a href="#">Solutions</a></li><li><a href="#">Fonctionnement</a></li><li><a href="#">F.A.Q.</a></li><li><a href="#">Conseils</a></li><li><a href="#">Contact</a></li></ul>
-  <a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic <i>→</i></a>
+  <a href="/"><img src="/assets/img/logo.webp" alt="Machine Break" width="616" height="420"></a>
+  <nav id="menu" aria-label="Navigation principale"><ul><li><a href="/solution-par-secteur">Solutions</a></li><li><a href="/fonctionnement">Fonctionnement</a></li><li><a href="/faq">F.A.Q.</a></li><li><a href="/blog">Conseils</a></li><li><a href="/contact">Contact</a></li></ul></nav>
+  <a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic <i aria-hidden="true">→</i></a>
 </div></header>
 
+<main id="contenu">
 <section class="hero">
   <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
   <div class="wrap">
     <span class="badge mono"><i></i>Machines connectées · télémétrie en temps réel</span>
     <h1><span class="kicker">Distributeurs automatiques et machines à café pour entreprises · Paris et Île-de-France</span>La pause qui se gère <span class="grad">toute seule.</span></h1>
     <p class="lead">Café en grains, boissons et snacks pour vos équipes. La machine remonte son remplissage, déclenche elle-même le passage, et vous voyez tout dans votre espace client.</p>
-    <div class="hero-cta"><a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a><a class="btn btn-ghost" href="#comment">Comment ça marche</a></div>
+    <div class="hero-cta"><a class="btn btn-mb" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i aria-hidden="true">→</i></a><a class="btn btn-ghost" href="#comment">Comment ça marche</a></div>
+    <div class="proofrow"><span><b>Toute l'Île-de-France</b>, depuis la Seine-et-Marne</span><span><b>Réponse sous 24 h</b></span><span><b>Dépôt, location ou achat</b></span></div>
     <div class="screen"><div>
       <div class="chrome"><i></i><i></i><i></i><span class="mono">Espace client Machine Break</span></div>
-      <img src="/assets/img/plateforme/espace-client-apercu.webp" alt="Aperçu de l'espace client : sites, tickets, interventions planifiées, activité récente">
+      <img src="/assets/img/plateforme/espace-client-apercu.webp" alt="Aperçu de l'espace client : sites, tickets, interventions planifiées, activité récente" width="1280" height="860" fetchpriority="high">
     </div></div>
   </div>
 </section>
@@ -136,10 +141,10 @@ footer { padding: 2.5rem 0 5.5rem; font-size: .88rem; color: var(--muted); }
 <section><div class="wrap">
   <span class="eyebrow mono">03 — Formules</span>
   <h2 class="rv">Trois façons de s'équiper.</h2>
-  <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-p="p1">Dépôt</button><button role="tab" aria-selected="false" data-p="p2">Location</button><button role="tab" aria-selected="false" data-p="p3">Achat</button></div>
-  <div class="panel" id="p1"><div><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-light" href="#">Choisir le dépôt <i>→</i></a></div><ul><li>Installation, réassort et entretien par nos équipes</li><li>Machine connectée, réassort déclenché par la télémétrie</li><li>Interventions tracées dans l'espace client</li></ul></div>
-  <div class="panel" id="p2" hidden><div><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées par vos collaborateurs à la machine, ou prises en charge par l'entreprise.</p><a class="btn btn-light" href="#">Choisir la location <i>→</i></a></div><ul><li>Loyer fixe, sans surprise</li><li>Entretien et dépannage compris</li><li>Interventions tracées dans l'espace client</li></ul></div>
-  <div class="panel" id="p3" hidden><div><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-light" href="#">Choisir l'achat <i>→</i></a></div><ul><li>Installation et mise en service comprises</li><li>Contrat de maintenance</li><li>Consommables livrés sur votre site</li></ul></div>
+  <div class="tabs" role="tablist" aria-label="Formules"><button type="button" role="tab" id="t1" aria-selected="true" aria-controls="p1">Dépôt</button><button type="button" role="tab" id="t2" aria-selected="false" aria-controls="p2" tabindex="-1">Location</button><button type="button" role="tab" id="t3" aria-selected="false" aria-controls="p3" tabindex="-1">Achat</button></div>
+  <div class="panel" id="p1" role="tabpanel" aria-labelledby="t1"><div><h3>Machine mise à disposition, vous ne payez que les consommations</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs.</p><a class="btn btn-light" href="/contact#contact-form">Choisir le dépôt <i aria-hidden="true">→</i></a></div><ul><li>Installation, réassort et entretien par nos équipes</li><li>Machine connectée, réassort déclenché par la télémétrie</li><li>Interventions tracées dans l'espace client</li></ul></div>
+  <div class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden><div><h3>Un loyer mensuel fixe, entretien et dépannage compris</h3><p>Les consommations sont réglées par vos collaborateurs à la machine, ou prises en charge par l'entreprise.</p><a class="btn btn-light" href="/contact#contact-form">Choisir la location <i aria-hidden="true">→</i></a></div><ul><li>Loyer fixe, sans surprise</li><li>Entretien et dépannage compris</li><li>Interventions tracées dans l'espace client</li></ul></div>
+  <div class="panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden><div><h3>La machine vous appartient, nous l'entretenons</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p><a class="btn btn-light" href="/contact#contact-form">Choisir l'achat <i aria-hidden="true">→</i></a></div><ul><li>Installation et mise en service comprises</li><li>Contrat de maintenance</li><li>Consommables livrés sur votre site</li></ul></div>
 </div></section>
 
 <section><div class="wrap">
@@ -153,14 +158,27 @@ footer { padding: 2.5rem 0 5.5rem; font-size: .88rem; color: var(--muted); }
   </div>
 </div></section>
 
-<div class="wrap"><div class="final rv"><h2>Et vos pauses, elles ressemblent à quoi ?</h2><a class="btn btn-light" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i>→</i></a></div></div>
-<footer><div class="wrap">Maquette de démonstration · Direction D « Connecté » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · 01 74 81 09 52</div></footer>
+<div class="wrap"><div class="final rv"><h2>Et vos pauses, elles ressemblent à quoi ?</h2><a class="btn btn-light" href="/contact#contact-form">Mon diagnostic pause en 1 minute <i aria-hidden="true">→</i></a></div></div>
+</main>
+<footer><div class="wrap">Maquette de démonstration · Direction D « Connecté » · Machine Break, 28 avenue Christian Doppler, 77700 Bailly-Romainvilliers · <a href="tel:+33174810952">01 74 81 09 52</a></div></footer>
 
 <script>
-[].forEach.call(document.querySelectorAll('.tabs button'), function (b) { b.addEventListener('click', function () {
-  [].forEach.call(document.querySelectorAll('.tabs button'), function (x) { x.setAttribute('aria-selected', x === b); });
-  [].forEach.call(document.querySelectorAll('.panel'), function (p) { p.hidden = p.id !== b.getAttribute('data-p'); });
-}); });
+(function () {
+  // onglets : un seul onglet dans l'ordre de tabulation, flèches gauche/droite, Début et Fin pour passer de l'un à l'autre
+  var tabs = [].slice.call(document.querySelectorAll('.tabs [role="tab"]'));
+  function select(b, focus) {
+    tabs.forEach(function (x) { var on = x === b; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; });
+    if (focus) b.focus();
+  }
+  tabs.forEach(function (b, i) {
+    b.addEventListener('click', function () { select(b); });
+    b.addEventListener('keydown', function (e) {
+      var k = e.key, n = k === 'ArrowRight' ? i + 1 : k === 'ArrowLeft' ? i - 1 : k === 'Home' ? 0 : k === 'End' ? tabs.length - 1 : null;
+      if (n === null) return;
+      e.preventDefault(); select(tabs[(n + tabs.length) % tabs.length], true);
+    });
+  });
+})();
 </script>
 <script src="/maquettes/m.js"></script>
 </body>
