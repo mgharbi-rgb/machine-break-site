@@ -1,0 +1,4 @@
+Big Shoulders Stencil Display (sous-ensemble latin, graisses 800 à 900)
+Copyright The Big Shoulders Project Authors (https://github.com/xotypeco/big_shoulders)
+Licence : SIL Open Font License 1.1 (https://openfontlicense.org)
+Source du fichier : Google Fonts, téléchargé le 2026-09-21. Utilisée par la maquette J (titres) ; la maquette E la charge depuis Google Fonts.

@@ -134,7 +134,14 @@ section { padding: clamp(4rem, 8vw, 7rem) 0 0; }
 .zones { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
 .zones ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; margin-top: 1.6rem; } .zones li a { display: flex; justify-content: space-between; gap: 1rem; padding: .85rem 0; border-top: 1px solid var(--ink); font-weight: 600; color: var(--ink); text-decoration: none; }
 .zones li a::after { content: "→"; content: "→" / ""; color: var(--mb); } .zones li a:hover { color: var(--mb); }
-.zones figure { background: var(--sand); border: 2px solid var(--ink); padding: 2rem; } .zones figcaption { margin-top: 1rem; }
+.zone-card { background: var(--sand); border: 2px solid var(--ink); padding: clamp(1.4rem, 3vw, 2.2rem); }
+.zone-card .deps { font-family: var(--mono); font-size: clamp(1.5rem, 3vw, 2.3rem); line-height: 1.5; color: var(--ink); margin: .8rem 0 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--ink); }
+
+/* combien ça coûte : la logique de prix de chaque formule, en face de la machine */
+.prix { margin-top: 1.2rem; padding-top: 1rem; border-top: 2px solid var(--ink); }
+.prix dl { margin-top: .5rem; } .prix dl > div { display: grid; grid-template-columns: 5.2rem 1fr; gap: .8rem; padding: .45rem 0; border-top: 1px solid var(--line); font-size: .92rem; }
+.prix dt { font-weight: 600; color: var(--ink); } .prix dd { color: var(--text); }
+.todo { display: inline-block; margin-left: .3rem; padding: 0 .4rem; border: 1px dashed var(--mb); color: var(--mb); font-family: var(--mono); font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; vertical-align: middle; }
 address { font-style: normal; }
 @media (max-width: 860px) { .zones { grid-template-columns: 1fr; gap: 2rem; } }
 .faq details { border-top: 1px solid var(--ink); } .faq details:last-child { border-bottom: 1px solid var(--ink); }
