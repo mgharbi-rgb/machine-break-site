@@ -4,7 +4,7 @@
   root.classList.remove('no-js');
 
   // sélecteur de direction, commun à toutes les maquettes
-  var pages = [['a-nuit-cafe', 'A', 'Nuit café'], ['b-bento', 'B', 'Bento'], ['c-editorial', 'C', 'Éditorial'], ['d-connecte', 'D', 'Connecté'], ['e-affiche', 'E', 'Affiche'], ['f-immersif', 'F', 'Immersif']];
+  var pages = [['a-nuit-cafe', 'A', 'Nuit café'], ['b-bento', 'B', 'Bento'], ['c-editorial', 'C', 'Éditorial'], ['d-connecte', 'D', 'Connecté'], ['e-affiche', 'E', 'Affiche'], ['f-immersif', 'F', 'Immersif'], ['g-distributeur', 'G', 'Distributeur'], ['h-sommaire', 'H', 'Sommaire'], ['i-planche', 'I', 'Planche']];
   var sw = d.createElement('nav'); sw.className = 'switch'; sw.setAttribute('aria-label', 'Directions de maquette');
   pages.forEach(function (p) {
     var a = d.createElement('a'), on = location.pathname.indexOf(p[0]) > -1;
