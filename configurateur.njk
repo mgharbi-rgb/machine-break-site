@@ -38,9 +38,13 @@ noCta: true
       <label style="display:flex;gap:.7rem;align-items:center;font-weight:400"><input type="checkbox" id="c-snacks" style="width:auto;min-height:0;margin:0"><span>Snacks</span></label>
       <label style="display:flex;gap:.7rem;align-items:center;font-weight:400"><input type="checkbox" id="c-multi" style="width:auto;min-height:0;margin:0"><span>Plusieurs sites à équiper</span></label>
     </fieldset>
-    <fieldset><legend class="k">5 · Ce que vous voulez inclure</legend>
-      <label for="c-formule">Votre formule de location</label>
-      <select id="c-formule"><option value="seule">La machine seule, je gère le reste</option><option value="entretien">Machine + entretien et dépannage</option><option value="produits">Machine + produits (à la tasse ou au produit)</option><option value="zen">Formule Zen : tout compris, je ne pense plus à rien</option></select>
+    <fieldset><legend class="k">5 · Votre formule</legend>
+      <label for="c-formule">Dépôt, location ou achat ?</label>
+      <select id="c-formule"><option value="auto">Conseillez-moi selon mon site</option><option value="depot">Dépôt : machine mise à disposition, je ne paie que les consommations</option><option value="location">Location : un loyer mensuel fixe</option><option value="achat">Achat : la machine m'appartient</option></select>
+      <div id="c-inclus-wrap" hidden>
+        <label for="c-inclus">En location, ce que vous voulez inclure</label>
+        <select id="c-inclus"><option value="seule">La machine seule, je gère le reste</option><option value="entretien">Machine + entretien et dépannage</option><option value="produits">Machine + produits (à la tasse ou au produit)</option><option value="zen">Formule Zen : tout compris, je ne pense plus à rien</option></select>
+      </div>
     </fieldset>
   </form>
 
@@ -82,10 +86,11 @@ noCta: true
   var PRIX = {{ prix.location | dump | safe }}, GAMME = {{ gamme.machines | dump | safe }};
   // boissons chaudes par personne et par jour : 2 en bureau et en industrie (études françaises : 2 à 2,3 ; règle du métier : 1,5 à 2), 1 en hébergement et en lieu de passage (hypothèse prudente)
   var PAR_PERSONNE = { bureau: 2, industrie: 2, residence: 1, public: 1 };
-  var FORMULES = { seule: 'la machine seule', entretien: 'la machine avec l\'entretien et le dépannage', produits: 'la machine avec les produits', zen: 'la formule Zen, tout compris' };
+  var INCLUS = { seule: 'la machine seule', entretien: 'la machine avec l\'entretien et le dépannage', produits: 'la machine avec les produits', zen: 'la formule Zen, tout compris' };
+  var SEUIL_BOISSONS = 200; // au-delà, le volume justifie d'étudier le dépôt même sous {{ prix.depot_seuil }} personnes
   var $ = function (id) { return document.getElementById(id); };
   var lead = $('cfg-lead'), leadCfg = $('lead-config'), leadRecap = $('lead-recap'), cta = $('cfg-cta');
-  var type = $('c-type'), people = $('c-people'), rooms = $('c-rooms'), drinks = $('c-drinks'), cafe = $('c-cafe'), boissons = $('c-boissons'), snacks = $('c-snacks'), multi = $('c-multi'), formule = $('c-formule'), touched = false;
+  var type = $('c-type'), people = $('c-people'), rooms = $('c-rooms'), drinks = $('c-drinks'), cafe = $('c-cafe'), boissons = $('c-boissons'), snacks = $('c-snacks'), multi = $('c-multi'), formule = $('c-formule'), inclus = $('c-inclus'), inclusWrap = $('c-inclus-wrap'), touched = false;
   function by(slug) { for (var i = 0; i < GAMME.length; i++) if (GAMME[i].slug === slug) return GAMME[i]; }
   function prix(m) { return PRIX[m.prixDe || m.slug] || 0; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -120,15 +125,19 @@ noCta: true
       html += card(f, r); total += prix(f) * r; list.push(r + ' × ' + f.nom + ' (' + f.modele + ')');
     }
     $('cfg-machines').innerHTML = html;
-    var depot = p >= {{ prix.depot_seuil }};
-    $('cfg-formule').innerHTML = (depot
-      ? '<h3>Formule conseillée : le dépôt</h3><p>Avec ' + p + ' personnes sur le site, l\'installation, la mise en service, le réassort et l\'entretien sont offerts : vous ne payez que les consommations. La location reste possible' + (total ? ', à partir de ' + eur(total) + ' pour la machine seule' : '') + '.</p>'
-      : '<h3>Formule conseillée : la location, ' + FORMULES[formule.value] + '</h3><p>Loyer mensuel fixe' + (total ? ', <b>à partir de ' + eur(total) + '</b> pour la machine seule' : '') + (formule.value !== 'seule' ? ' ; le complément choisi est chiffré sur devis, avec la visite du site' : '') + '. L\'achat est possible sur devis. Le dépôt s\'étudie au cas par cas en dessous de {{ prix.depot_seuil }} personnes.</p>')
-      + note + (multi.checked ? '<p>Plusieurs sites : un interlocuteur nommé et un reporting consolidé, <a href="/grands-comptes">voir grands comptes</a>.</p>' : '');
-    var resume = 'Configurateur : site ' + type.options[type.selectedIndex].text + ', ' + p + ' personnes, ' + r + ' point(s) de service, ' + d + ' boissons chaudes/jour, café ' + cafe.options[cafe.selectedIndex].text + (boissons.checked ? ', boissons fraîches' : '') + (snacks.checked ? ', snacks' : '') + (multi.checked ? ', plusieurs sites' : '') + ', formule de location : ' + FORMULES[formule.value] + '. Recommandation : ' + list.join(' + ') + ', formule ' + (depot ? 'dépôt' : 'location') + (total ? ' (à partir de ' + eur(total) + ' machine seule)' : '') + '.';
-    leadCfg.value = resume; leadRecap.innerHTML = '<b>Votre configuration :</b> ' + esc(list.join(' + ')) + ', formule ' + (depot ? 'dépôt' : 'location, ' + FORMULES[formule.value]) + (total ? ', à partir de ' + eur(total) + ' (machine seule)' : '') + '.';
+    // formule : conseillée d'après l'effectif et le volume, ou choisie par le visiteur ; le dépôt reste étudié au cas par cas
+    var eligible = p >= {{ prix.depot_seuil }} || d >= SEUIL_BOISSONS, f = formule.value, choix = f === 'auto' ? (eligible ? 'depot' : 'location') : f;
+    inclusWrap.hidden = choix !== 'location';
+    var loc = total ? 'à partir de <b>' + eur(total) + '</b> pour la machine seule' : 'loyer sur devis', txt = '';
+    if (choix === 'depot') txt = '<h3>' + (f === 'auto' ? 'Formule conseillée : le dépôt' : 'Votre choix : le dépôt') + '</h3><p>' + (eligible ? 'Avec ' + p + ' personnes et environ ' + d + ' boissons par jour, le dépôt est la formule naturelle : ' : 'Le dépôt est étudié au cas par cas selon le volume ; avec ' + d + ' boissons par jour, nous vous dirons rapidement s\'il est possible. Quand il l\'est, ') + 'nous installons, approvisionnons et entretenons la machine, et vous ne payez que les consommations' + (p >= {{ prix.depot_seuil }} ? ' ; l\'installation est offerte' : '') + '. La location reste possible, ' + loc + '.</p>';
+    else if (choix === 'location') txt = '<h3>' + (f === 'auto' ? 'Formule conseillée : la location, ' : 'Votre choix : la location, ') + INCLUS[inclus.value] + '</h3><p>Loyer mensuel fixe, ' + loc + (inclus.value !== 'seule' ? ' ; le complément choisi est chiffré sur devis, avec la visite du site' : '') + '.' + (eligible ? ' Le dépôt serait aussi envisageable pour ce volume.' : ' Le dépôt s\'étudie au cas par cas selon le volume.') + ' L\'achat est possible sur devis.</p>';
+    else txt = '<h3>Votre choix : l\'achat</h3><p>Sur devis. La machine vous appartient ; nous l\'installons et la mettons en service, avec un contrat d\'entretien en complément si vous le souhaitez. La location reste possible, ' + loc + (eligible ? ', et le dépôt est envisageable pour ce volume' : '') + '.</p>';
+    var depot = choix === 'depot';
+    $('cfg-formule').innerHTML = txt + note + (multi.checked ? '<p>Plusieurs sites : un interlocuteur nommé et un reporting consolidé, <a href="/grands-comptes">voir grands comptes</a>.</p>' : '');
+    var resume = 'Configurateur : site ' + type.options[type.selectedIndex].text + ', ' + p + ' personnes, ' + r + ' point(s) de service, ' + d + ' boissons chaudes/jour, café ' + cafe.options[cafe.selectedIndex].text + (boissons.checked ? ', boissons fraîches' : '') + (snacks.checked ? ', snacks' : '') + (multi.checked ? ', plusieurs sites' : '') + ', formule ' + (f === 'auto' ? 'à conseiller' : formule.options[formule.selectedIndex].text) + (choix === 'location' ? ' (' + INCLUS[inclus.value] + ')' : '') + '. Recommandation : ' + list.join(' + ') + ', formule ' + choix + (total ? ' (location à partir de ' + eur(total) + ' machine seule)' : '') + '.';
+    leadCfg.value = resume; leadRecap.innerHTML = '<b>Votre configuration :</b> ' + esc(list.join(' + ')) + ', formule ' + choix + (choix === 'location' ? ' (' + INCLUS[inclus.value] + ')' : '') + (total ? ', location à partir de ' + eur(total) + ' (machine seule)' : '') + '.';
   }
-  [type, people, rooms, cafe, boissons, snacks, multi, formule].forEach(function (el) { el.addEventListener('input', upd); el.addEventListener('change', upd); });
+  [type, people, rooms, cafe, boissons, snacks, multi, formule, inclus].forEach(function (el) { el.addEventListener('input', upd); el.addEventListener('change', upd); });
   drinks.addEventListener('input', function () { touched = true; upd(); });
   type.addEventListener('change', function () { touched = false; }); people.addEventListener('input', function () { touched = false; });
   upd();
