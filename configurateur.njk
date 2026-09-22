@@ -17,33 +17,52 @@ noCta: true
 <section style="padding-top:2.5rem"><div class="wrap cfg" id="cfg">
   <form class="fform cfg-form" id="cfg-form" onsubmit="return false">
     <fieldset><legend class="k">1 · Votre site</legend>
-      <label for="c-type">Type de site</label>
-      <select id="c-type"><option value="bureau">Bureaux, PME, siège</option><option value="industrie">Industrie, logistique, atelier</option><option value="residence">Résidence, hôtel, hébergement</option><option value="public">Hall, école, établissement de santé, lieu de passage</option></select>
+      <p class="lbl">Type de site</p>
+      <div class="opts" role="radiogroup" aria-label="Type de site">
+        <label><input type="radio" name="type" value="bureau" checked><span>Bureaux, PME, siège</span></label>
+        <label><input type="radio" name="type" value="industrie"><span>Industrie, logistique</span></label>
+        <label><input type="radio" name="type" value="residence"><span>Résidence, hôtel</span></label>
+        <label><input type="radio" name="type" value="public"><span>Hall, école, santé, passage</span></label>
+      </div>
       <label for="c-people">Personnes présentes sur le site un jour normal</label>
-      <input type="number" id="c-people" min="5" max="5000" step="5" value="60" inputmode="numeric">
+      <div class="num"><button type="button" data-step="-10" aria-label="Moins dix personnes">−</button><input type="number" id="c-people" min="5" max="5000" step="5" value="60" inputmode="numeric"><button type="button" data-step="10" aria-label="Plus dix personnes">+</button></div>
     </fieldset>
     <fieldset><legend class="k">2 · Vos pauses</legend>
       <label for="c-rooms">Salles de pause ou points de service à équiper</label>
-      <input type="number" id="c-rooms" min="1" max="20" value="1" inputmode="numeric">
+      <div class="num"><button type="button" data-step="-1" aria-label="Une salle de moins">−</button><input type="number" id="c-rooms" min="1" max="20" value="1" inputmode="numeric"><button type="button" data-step="1" aria-label="Une salle de plus">+</button></div>
       <label for="c-drinks">Boissons chaudes par jour sur le site <small>(calculé, modifiable)</small></label>
-      <input type="number" id="c-drinks" min="10" max="20000" step="10" inputmode="numeric">
+      <div class="num"><button type="button" data-step="-10" aria-label="Dix boissons de moins">−</button><input type="number" id="c-drinks" min="10" max="20000" step="10" inputmode="numeric"><button type="button" data-step="10" aria-label="Dix boissons de plus">+</button></div>
       <p class="note" id="c-hyp" style="margin:-.4rem 0 1rem"></p>
     </fieldset>
     <fieldset><legend class="k">3 · Votre café</legend>
-      <label for="c-cafe">Café en grains ou boissons solubles ?</label>
-      <select id="c-cafe"><option value="grain">Café en grains, moulu à la demande</option><option value="soluble">Boissons solubles (café, chocolat, lait)</option><option value="indifferent">Conseillez-moi</option></select>
+      <div class="opts" role="radiogroup" aria-label="Café en grains ou boissons solubles">
+        <label><input type="radio" name="cafe" value="grain" checked><span>Café en grains</span></label>
+        <label><input type="radio" name="cafe" value="soluble"><span>Boissons solubles</span></label>
+        <label><input type="radio" name="cafe" value="indifferent"><span>Conseillez-moi</span></label>
+      </div>
     </fieldset>
     <fieldset><legend class="k">4 · En plus du café</legend>
-      <label style="display:flex;gap:.7rem;align-items:center;font-weight:400"><input type="checkbox" id="c-boissons" style="width:auto;min-height:0;margin:0"><span>Boissons fraîches</span></label>
-      <label style="display:flex;gap:.7rem;align-items:center;font-weight:400"><input type="checkbox" id="c-snacks" style="width:auto;min-height:0;margin:0"><span>Snacks</span></label>
-      <label style="display:flex;gap:.7rem;align-items:center;font-weight:400"><input type="checkbox" id="c-multi" style="width:auto;min-height:0;margin:0"><span>Plusieurs sites à équiper</span></label>
+      <div class="opts">
+        <label><input type="checkbox" id="c-boissons"><span>Boissons fraîches</span></label>
+        <label><input type="checkbox" id="c-snacks"><span>Snacks</span></label>
+        <label><input type="checkbox" id="c-multi"><span>Plusieurs sites</span></label>
+      </div>
     </fieldset>
     <fieldset><legend class="k">5 · Votre formule</legend>
-      <label for="c-formule">Dépôt, location ou achat ?</label>
-      <select id="c-formule"><option value="auto">Conseillez-moi selon mon site</option><option value="depot">Dépôt : machine mise à disposition, je ne paie que les consommations</option><option value="location">Location : un loyer mensuel fixe</option><option value="achat">Achat : la machine m'appartient</option></select>
+      <div class="opts" role="radiogroup" aria-label="Dépôt, location ou achat">
+        <label><input type="radio" name="formule" value="auto" checked><span>Conseillez-moi</span></label>
+        <label><input type="radio" name="formule" value="depot"><span>Dépôt<small>je ne paie que les consommations</small></span></label>
+        <label><input type="radio" name="formule" value="location"><span>Location<small>un loyer mensuel fixe</small></span></label>
+        <label><input type="radio" name="formule" value="achat"><span>Achat<small>la machine m'appartient</small></span></label>
+      </div>
       <div id="c-inclus-wrap" hidden>
-        <label for="c-inclus">En location, ce que vous voulez inclure</label>
-        <select id="c-inclus"><option value="seule">La machine seule, je gère le reste</option><option value="entretien">Machine + entretien et dépannage</option><option value="produits">Machine + produits (à la tasse ou au produit)</option><option value="zen">Formule Zen : tout compris, je ne pense plus à rien</option></select>
+        <p class="lbl">En location, ce que vous voulez inclure</p>
+        <div class="opts" role="radiogroup" aria-label="Ce que vous voulez inclure en location">
+          <label><input type="radio" name="inclus" value="seule" checked><span>Machine seule</span></label>
+          <label><input type="radio" name="inclus" value="entretien"><span>+ entretien et dépannage</span></label>
+          <label><input type="radio" name="inclus" value="produits"><span>+ produits</span></label>
+          <label><input type="radio" name="inclus" value="zen"><span>Formule Zen<small>tout compris</small></span></label>
+        </div>
       </div>
     </fieldset>
   </form>
@@ -90,7 +109,9 @@ noCta: true
   var SEUIL_BOISSONS = 200; // au-delà, le volume justifie d'étudier le dépôt même sous {{ prix.depot_seuil }} personnes
   var $ = function (id) { return document.getElementById(id); };
   var lead = $('cfg-lead'), leadCfg = $('lead-config'), leadRecap = $('lead-recap'), cta = $('cfg-cta');
-  var type = $('c-type'), people = $('c-people'), rooms = $('c-rooms'), drinks = $('c-drinks'), cafe = $('c-cafe'), boissons = $('c-boissons'), snacks = $('c-snacks'), multi = $('c-multi'), formule = $('c-formule'), inclus = $('c-inclus'), inclusWrap = $('c-inclus-wrap'), touched = false;
+  var form = $('cfg-form'), people = $('c-people'), rooms = $('c-rooms'), drinks = $('c-drinks'), boissons = $('c-boissons'), snacks = $('c-snacks'), multi = $('c-multi'), inclusWrap = $('c-inclus-wrap'), touched = false;
+  function val(name) { var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
+  function lib(name) { var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.nextElementSibling.firstChild.textContent : ''; }
   function by(slug) { for (var i = 0; i < GAMME.length; i++) if (GAMME[i].slug === slug) return GAMME[i]; }
   function prix(m) { return PRIX[m.prixDe || m.slug] || 0; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -113,33 +134,37 @@ noCta: true
     return pool[pool.length - 1];
   }
   function upd() {
-    var t = type.value, p = Math.max(5, +people.value || 0), r = Math.max(1, +rooms.value || 1);
+    var t = val('type'), p = Math.max(5, +people.value || 0), r = Math.max(1, +rooms.value || 1);
     if (!touched) drinks.value = Math.round(p * PAR_PERSONNE[t] / 10) * 10 || 10;
     var d = Math.max(10, +drinks.value || 10), perRoom = Math.ceil(d / r);
     $('c-hyp').textContent = 'Hypothèse : ' + PAR_PERSONNE[t] + ' boisson' + (PAR_PERSONNE[t] > 1 ? 's' : '') + ' chaude' + (PAR_PERSONNE[t] > 1 ? 's' : '') + ' par personne et par jour, réparties sur ' + r + ' point' + (r > 1 ? 's' : '') + ' de service, soit environ ' + perRoom + ' par point.';
-    var m = choixCafe(perRoom, t, cafe.value), html = card(m, r), total = prix(m) * r, list = [r + ' × ' + m.nom + ' (' + m.modele + ')'], note = '';
-    if (cafe.value === 'soluble' && m.sous !== 'soluble') note = '<p>Avec ' + perRoom + ' boissons par jour et par point, une machine à boissons solubles serait trop juste : nous vous proposons la machine ci-dessus, qui sert aussi du chocolat et du lait.</p>';
+    var m = choixCafe(perRoom, t, val('cafe')), html = card(m, r), total = prix(m) * r, list = [r + ' × ' + m.nom + ' (' + m.modele + ')'], note = '';
+    if (val('cafe') === 'soluble' && m.sous !== 'soluble') note = '<p>Avec ' + perRoom + ' boissons par jour et par point, une machine à boissons solubles serait trop juste : nous vous proposons la machine ci-dessus, qui sert aussi du chocolat et du lait.</p>';
     if (boissons.checked || snacks.checked) {
       var f = by(boissons.checked && snacks.checked ? 'sielaff-siline' : (snacks.checked ? 'sielaff-siline-snack' : ((t === 'industrie' || perRoom > 200) ? 'sielaff-robimat' : 'sielaff-siline')));
       if (f.slug === 'sielaff-siline' && !snacks.checked) note += '<p>Boissons fraîches seules sur un site de cette taille : le distributeur combiné laisse la place d\'ajouter des snacks plus tard ; la version grande capacité boissons existe aussi.</p>';
       html += card(f, r); total += prix(f) * r; list.push(r + ' × ' + f.nom + ' (' + f.modele + ')');
     }
-    $('cfg-machines').innerHTML = html;
+    var prev = $('cfg-machines').innerHTML; $('cfg-machines').innerHTML = html;
+    if (prev !== html) [].forEach.call($('cfg-machines').querySelectorAll('.cfg-card'), function (c) { c.classList.add('fresh'); });
     // formule : conseillée d'après l'effectif et le volume, ou choisie par le visiteur ; le dépôt reste étudié au cas par cas
-    var eligible = p >= {{ prix.depot_seuil }} || d >= SEUIL_BOISSONS, f = formule.value, choix = f === 'auto' ? (eligible ? 'depot' : 'location') : f;
+    var eligible = p >= {{ prix.depot_seuil }} || d >= SEUIL_BOISSONS, f = val('formule'), choix = f === 'auto' ? (eligible ? 'depot' : 'location') : f;
     inclusWrap.hidden = choix !== 'location';
     var loc = total ? 'à partir de <b>' + eur(total) + '</b> pour la machine seule' : 'loyer sur devis', txt = '';
     if (choix === 'depot') txt = '<h3>' + (f === 'auto' ? 'Formule conseillée : le dépôt' : 'Votre choix : le dépôt') + '</h3><p>' + (eligible ? 'Avec ' + p + ' personnes et environ ' + d + ' boissons par jour, le dépôt est la formule naturelle : ' : 'Le dépôt est étudié au cas par cas selon le volume ; avec ' + d + ' boissons par jour, nous vous dirons rapidement s\'il est possible. Quand il l\'est, ') + 'nous installons, approvisionnons et entretenons la machine, et vous ne payez que les consommations' + (p >= {{ prix.depot_seuil }} ? ' ; l\'installation est offerte' : '') + '. La location reste possible, ' + loc + '.</p>';
-    else if (choix === 'location') txt = '<h3>' + (f === 'auto' ? 'Formule conseillée : la location, ' : 'Votre choix : la location, ') + INCLUS[inclus.value] + '</h3><p>Loyer mensuel fixe, ' + loc + (inclus.value !== 'seule' ? ' ; le complément choisi est chiffré sur devis, avec la visite du site' : '') + '.' + (eligible ? ' Le dépôt serait aussi envisageable pour ce volume.' : ' Le dépôt s\'étudie au cas par cas selon le volume.') + ' L\'achat est possible sur devis.</p>';
+    else if (choix === 'location') txt = '<h3>' + (f === 'auto' ? 'Formule conseillée : la location, ' : 'Votre choix : la location, ') + INCLUS[val('inclus')] + '</h3><p>Loyer mensuel fixe, ' + loc + (val('inclus') !== 'seule' ? ' ; le complément choisi est chiffré sur devis, avec la visite du site' : '') + '.' + (eligible ? ' Le dépôt serait aussi envisageable pour ce volume.' : ' Le dépôt s\'étudie au cas par cas selon le volume.') + ' L\'achat est possible sur devis.</p>';
     else txt = '<h3>Votre choix : l\'achat</h3><p>Sur devis. La machine vous appartient ; nous l\'installons et la mettons en service, avec un contrat d\'entretien en complément si vous le souhaitez. La location reste possible, ' + loc + (eligible ? ', et le dépôt est envisageable pour ce volume' : '') + '.</p>';
     var depot = choix === 'depot';
+    var fo = $('cfg-formule'), prevF = fo.innerHTML; fo.classList.remove('fresh');
     $('cfg-formule').innerHTML = txt + note + (multi.checked ? '<p>Plusieurs sites : un interlocuteur nommé et un reporting consolidé, <a href="/grands-comptes">voir grands comptes</a>.</p>' : '');
-    var resume = 'Configurateur : site ' + type.options[type.selectedIndex].text + ', ' + p + ' personnes, ' + r + ' point(s) de service, ' + d + ' boissons chaudes/jour, café ' + cafe.options[cafe.selectedIndex].text + (boissons.checked ? ', boissons fraîches' : '') + (snacks.checked ? ', snacks' : '') + (multi.checked ? ', plusieurs sites' : '') + ', formule ' + (f === 'auto' ? 'à conseiller' : formule.options[formule.selectedIndex].text) + (choix === 'location' ? ' (' + INCLUS[inclus.value] + ')' : '') + '. Recommandation : ' + list.join(' + ') + ', formule ' + choix + (total ? ' (location à partir de ' + eur(total) + ' machine seule)' : '') + '.';
-    leadCfg.value = resume; leadRecap.innerHTML = '<b>Votre configuration :</b> ' + esc(list.join(' + ')) + ', formule ' + choix + (choix === 'location' ? ' (' + INCLUS[inclus.value] + ')' : '') + (total ? ', location à partir de ' + eur(total) + ' (machine seule)' : '') + '.';
+    var resume = 'Configurateur : site ' + lib('type') + ', ' + p + ' personnes, ' + r + ' point(s) de service, ' + d + ' boissons chaudes/jour, café ' + lib('cafe') + (boissons.checked ? ', boissons fraîches' : '') + (snacks.checked ? ', snacks' : '') + (multi.checked ? ', plusieurs sites' : '') + ', formule ' + (f === 'auto' ? 'à conseiller' : lib('formule')) + (choix === 'location' ? ' (' + INCLUS[val('inclus')] + ')' : '') + '. Recommandation : ' + list.join(' + ') + ', formule ' + choix + (total ? ' (location à partir de ' + eur(total) + ' machine seule)' : '') + '.';
+    if (prevF !== fo.innerHTML) { void fo.offsetWidth; fo.classList.add('fresh'); }
+    leadCfg.value = resume; leadRecap.innerHTML = '<b>Votre configuration :</b> ' + esc(list.join(' + ')) + ', formule ' + choix + (choix === 'location' ? ' (' + INCLUS[val('inclus')] + ')' : '') + (total ? ', location à partir de ' + eur(total) + ' (machine seule)' : '') + '.';
   }
-  [type, people, rooms, cafe, boissons, snacks, multi, formule, inclus].forEach(function (el) { el.addEventListener('input', upd); el.addEventListener('change', upd); });
-  drinks.addEventListener('input', function () { touched = true; upd(); });
-  type.addEventListener('change', function () { touched = false; }); people.addEventListener('input', function () { touched = false; });
+  form.addEventListener('change', function (e) { if (e.target === drinks) touched = true; if (e.target.name === 'type' || e.target === people) touched = false; upd(); });
+  form.addEventListener('input', function (e) { if (e.target === drinks) touched = true; if (e.target === people) touched = false; upd(); });
+  // boutons − / + des champs numériques
+  [].forEach.call(form.querySelectorAll('.num button'), function (b) { b.addEventListener('click', function () { var i = b.parentNode.querySelector('input'), v = (+i.value || 0) + (+b.getAttribute('data-step')); i.value = Math.min(+i.max, Math.max(+i.min, v)); if (i === drinks) touched = true; if (i === people) touched = false; upd(); }); });
   upd();
   // « Recevoir cette recommandation » : la dernière étape apparaît sous le configurateur, sur la même page
   cta.addEventListener('click', function () {
