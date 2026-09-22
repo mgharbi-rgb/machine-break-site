@@ -3,28 +3,15 @@ layout: layout-base.njk
 ogType: article
 ---
 <article>
-  <section class="pt-8 pt-md-10 pb-6 bg-light">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-9 text-center">
-          <p class="text-uppercase text-success font-weight-bold mb-3">{{ kicker or "Article" }} · <time datetime="{{ date | isoDate }}">{{ date | frDate }}</time></p>
-          <h1 class="display-4 mb-4">{{ title }}</h1>
-          <p class="lead text-muted mb-0">{{ description }}</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="py-8">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-8 article-body">
-          {% if image %}<img src="{{ image }}" class="img-fluid rounded shadow mb-7" alt="{{ image_alt }}">{% endif %}
-          {{ content | safe }}
-          <p class="mt-7"><a href="/blog"><i class="fe fe-arrow-left mr-1"></i> Tous les articles</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="page-hero light"><div class="wrap">
+    <nav class="crumbs" aria-label="Fil d'Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/blog">Conseils</a></li><li>{{ kicker or "Article" }}</li></ol></nav>
+    <h1><span class="k">{{ kicker or "Article" }} · <time datetime="{{ date | isoDate }}">{{ date | frDate }}</time></span>{{ title }}</h1>
+    <p class="intro">{{ description }}</p>
+  </div></div>
+  <div class="wrap"><div class="prose" style="padding-top:2.5rem">
+    {% if image %}<img src="{{ image }}" alt="{{ image_alt }}" loading="lazy">{% endif %}
+    {{ content | safe }}
+    <p style="margin-top:2.5rem"><a class="btn btn-plain" href="/blog">← Tous les conseils</a></p>
+  </div></div>
   <script type="application/ld+json">{{ page | articleLd(title, description, image, date, updated) | safe }}</script>
 </article>
-{% include "cta.html" %}

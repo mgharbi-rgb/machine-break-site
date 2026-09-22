@@ -1,0 +1,82 @@
+{
+  "organisation": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://machinebreak.com/#organisation",
+    "name": "Machine Break",
+    "url": "https://machinebreak.com/",
+    "logo": "https://machinebreak.com/assets/img/logo.webp",
+    "image": "https://machinebreak.com/assets/img/og-image.jpg",
+    "description": "Opérateur de distribution automatique (café, boissons, snacks) pour bureaux et PME, résidences et hôtels, sites industriels et logistiques en Île-de-France. Installation, réassort, entretien et suivi en temps réel.",
+    "telephone": "+33174810952",
+    "email": "contact@machinebreak.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "28 Avenue Christian Doppler",
+      "postalCode": "77700",
+      "addressLocality": "Bailly-Romainvilliers",
+      "addressRegion": "Île-de-France",
+      "addressCountry": "FR"
+    },
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Île-de-France"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Paris"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Seine-et-Marne"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Seine-Saint-Denis"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Val-de-Marne"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Essonne"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Hauts-de-Seine"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Yvelines"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Val-d'Oise"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/machinebreak/",
+      "https://www.instagram.com/machine.break/",
+      "https://www.facebook.com/MachineBreak"
+    ],
+    "legalName": "MACHINE BREAK",
+    "vatID": "FR22839728292",
+    "taxID": "839728292",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:30",
+        "closes": "18:00"
+      }
+    ]
+  }
+}
