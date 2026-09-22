@@ -14,6 +14,7 @@ familles:
     text: "Écran tactile, recettes personnalisables (espresso, cappuccino, chocolat, thé), lait frais ou poudre selon le modèle. Pour les bureaux, les accueils et les salles de pause."
     pour: "Bureaux, accueils, salles de pause."
     machines:
+      - { url: "/contact?interet=cafe#contact-form", name: La petite, d: "boissons solubles, pour les petites équipes", img: "", alt: "", w: 0, h: 0 }
       - { url: /machines/animo-optime-x, name: La compacte, d: "38 cm de large, jusqu'à 125 boissons par jour", img: /assets/img/machines/animo-optime-x-640.webp, alt: Machine à café en grains compacte, w: 408, h: 640 }
       - { url: /machines/animo-optibean-x, name: La grande, d: "jusqu'à 250 boissons par jour", img: /assets/img/machines/animo-optibean-x-640.webp, alt: Machine à café en grains grande capacité, w: 427, h: 640 }
   - id: chaud
@@ -40,6 +41,7 @@ familles:
     {% include "crumbs.html" %}
     <h1><span class="k">Équipements</span>Nos distributeurs automatiques et machines à café</h1>
     <p class="intro">Des équipements connectés, choisis pour la qualité en tasse, la capacité et la fiabilité, et raccordés à la télémétrie pour un suivi en temps réel. Trois familles ; le diagnostic détermine la combinaison adaptée à votre site, toujours après une visite.</p>
+    <p style="margin:1.2rem 0 0"><a class="btn btn-mb" href="/configurateur">Quelle machine pour mon site ? Le configurateur</a></p>
     <nav class="acts" aria-label="Les trois familles"><a class="btn btn-plain" href="#cafe">Café en grains</a><a class="btn btn-plain" href="#chaud">Boissons chaudes</a><a class="btn btn-plain" href="#frais">Fraîches et snacks</a></nav>
   </div>
   <div class="fig"><img src="/assets/img/shooting/machine-cafe-signaletique-1024.webp" alt="Machine à café Machine Break devant la signalétique de l'espace pause" width="1024" height="768" fetchpriority="high"></div>
@@ -53,12 +55,13 @@ familles:
     <p class="rv" style="font-weight:600;color:var(--ink);font-size:1.15rem;margin-bottom:.8rem">{{ f.key }}</p>
     <p class="rv" style="max-width:40rem">{{ f.text }}</p>
     <p class="rv" style="margin-top:.8rem"><b>Pour quels sites :</b> {{ f.pour }}</p>
+    <p class="rv price-line" style="margin-top:.8rem"><b>Location : à partir de {{ prix.familles[f.id] }} {{ prix.unite }}</b>, entretien et dépannage compris, hors consommations. En dépôt, vous ne payez que les consommations (installation offerte à partir de {{ prix.depot_seuil }} collaborateurs sur le site).</p>
     <ul class="zone-list rv" style="max-width:40rem;margin-top:1.4rem">
-    {%- for m in f.machines %}<li><a href="{{ m.url }}"><span>{{ m.name }} <small style="font-weight:400;color:var(--muted)">· {{ m.d }}</small></span></a></li>{% endfor %}
+    {%- for m in f.machines %}{% set slug = m.url | replace("/machines/", "") %}<li><a href="{{ m.url }}"><span>{{ m.name }} <small style="font-weight:400;color:var(--muted)">· {{ m.d }}{% if prix.location[slug] %} · {{ prix.location[slug] }} {{ prix.unite }}{% elif m.name == "La petite" %} · {{ prix.location["animo-optivend-21s"] }} {{ prix.unite }}{% endif %}</small></span></a></li>{% endfor %}
     </ul>
     <div class="act-row rv"><a class="btn btn-mb cta-diagnostic" href="/contact?interet={{ f.id }}#contact-form">Demander conseil sur cette famille</a><span>Un formulaire d'une minute, puis un rappel sous 24 h.</span></div>
   </div>
-  <div class="mk rv" style="grid-template-columns:1fr"><article><div class="pic">{% for m in f.machines %}<a href="{{ m.url }}"><img src="{{ m.img }}" alt="{{ m.alt }}" width="{{ m.w }}" height="{{ m.h }}" loading="lazy"></a>{% endfor %}</div></article></div>
+  <div class="mk rv" style="grid-template-columns:1fr"><article><div class="pic">{% for m in f.machines %}{% if m.img %}<a href="{{ m.url }}"><img src="{{ m.img }}" alt="{{ m.alt }}" width="{{ m.w }}" height="{{ m.h }}" loading="lazy"></a>{% endif %}{% endfor %}</div></article></div>
 </div></section>
 {%- endfor %}
 

@@ -23,6 +23,8 @@
   // formulaire : « Ce qui vous intéresse » présélectionné depuis le lien d'arrivée (?interet=cafe|chaud|frais)
   var sel = d.getElementById('interet'), val = new URLSearchParams(location.search).get('interet');
   if (sel && val && sel.querySelector('option[value="' + val + '"]')) { sel.value = val; var t = d.getElementById('form-t'); if (t) t.textContent = 'Trouver ma machine en 1 minute'; }
+  var cfg = new URLSearchParams(location.search).get('config'), msg = d.getElementById('message'), det = d.getElementById('contactDetails');
+  if (cfg && msg) { msg.value = cfg; if (det) det.open = true; }
 
   // apparitions au défilement
   var els = [].slice.call(d.querySelectorAll('.rv'));

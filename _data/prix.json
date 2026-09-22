@@ -1,0 +1,15 @@
+{
+  "_note": "Loyers de location fournis par Machine Break le 22 septembre 2026, en euros HT par mois, entretien et dépannage compris, consommations non comprises. À mettre à jour ici : toutes les pages lisent ce fichier.",
+  "unite": "€ HT/mois",
+  "location": {
+    "animo-optivend-21s": 70,
+    "animo-optime-x": 160,
+    "animo-optibean-x": 170,
+    "bianchi-agily": 259,
+    "bianchi-intuity": 320,
+    "sielaff-robimat": 233,
+    "sielaff-siline": 250
+  },
+  "familles": { "cafe": 70, "chaud": 259, "frais": 233 },
+  "depot_seuil": 100
+}

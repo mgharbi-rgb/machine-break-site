@@ -13,7 +13,7 @@ layout: layout-base.njk
 
 <section id="cles" aria-labelledby="cles-t" style="padding-top:2.5rem"><div class="wrap">
   <h2 id="cles-t" class="sr">Points clés</h2>
-  <div class="kpis rv">{% for k in kpis %}<div><b>{{ k.v }}</b><span>{{ k.l }}</span></div>{% endfor %}</div>
+  <div class="kpis rv">{% for k in kpis %}<div><b>{{ k.v }}</b><span>{{ k.l }}</span></div>{% endfor %}{% if prix.location[page.fileSlug] %}<div><b>{{ prix.location[page.fileSlug] }} €</b><span>HT par mois en location, entretien compris</span></div>{% endif %}</div>
 </div></section>
 
 <section id="caracteristiques" aria-labelledby="car-t"><div class="wrap two-col">
@@ -33,7 +33,7 @@ layout: layout-base.njk
   <p class="sub rv">Dans les trois cas, la machine est connectée, entretenue par nos équipes, et chaque intervention est tracée dans votre espace client.</p>
   <div class="forms rv">
     <div class="form main"><span class="k">En dépôt</span><h3>Machine mise à disposition, vous ne payez que les consommations.</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs sur le site.</p></div>
-    <div class="form"><span class="k">En location</span><h3>Un loyer mensuel fixe, entretien et dépannage compris.</h3><p>Les consommations sont réglées par vos collaborateurs à la machine, ou prises en charge par l'entreprise.</p></div>
+    <div class="form"><span class="k">En location</span><h3>Un loyer mensuel fixe, entretien et dépannage compris.</h3><p>Les consommations sont réglées par vos collaborateurs à la machine, ou prises en charge par l'entreprise.</p>{% if prix.location[page.fileSlug] %}<p class="price"><b>{{ prix.location[page.fileSlug] }} {{ prix.unite }}</b> pour cette machine, hors consommations.</p>{% endif %}</div>
     <div class="form"><span class="k">À l'achat</span><h3>La machine vous appartient, nous l'entretenons.</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p></div>
   </div>
   <div class="act-row rv"><a class="btn btn-mb cta-diagnostic" href="/contact#contact-form">Demander conseil sur cette machine</a><a href="/solutions/location-machine-a-cafe-distributeur">Comparer les trois formules en détail</a></div>
