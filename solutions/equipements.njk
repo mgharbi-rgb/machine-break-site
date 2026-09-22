@@ -17,6 +17,7 @@ crumbs:
   </div>
   <div class="fig"><img src="/assets/img/shooting/machine-cafe-signaletique-1024.webp" alt="Machine à café Machine Break devant la signalétique de l'espace pause" width="1024" height="768" fetchpriority="high"></div>
 </div></div>
+<div class="wrap">{% include "service-strip.html" %}</div>
 
 {%- for f in gamme.familles %}
 <section id="{{ f.id }}" class="fam" aria-labelledby="{{ f.id }}-t"><div class="wrap">
@@ -34,7 +35,7 @@ crumbs:
         <p>{{ m.resume }}</p>
         <ul class="gm-caps">{% for c in m.capacites %}<li>{{ c }}</li>{% endfor %}</ul>
         <p class="price">{% if p %}<b>À partir de {{ p }} {{ prix.unite }}</b>, machine seule{% else %}<b>Tarif sur demande</b>{% endif %}</p>
-        {%- if m.fiche %}<a class="more" href="{{ m.fiche }}">Voir la fiche complète →</a>{% else %}<a class="more" href="/contact?interet={{ f.id }}#contact-form">Demander la fiche →</a>{% endif %}
+        {%- if m.fiche %}<a class="more" href="{{ m.fiche }}">Voir la fiche de cette machine →</a>{% else %}<a class="more" href="/contact?interet={{ f.id }}#contact-form">Demander la fiche →</a>{% endif %}
       </div>
     </article>
   {%- endif %}{% endfor %}

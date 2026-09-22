@@ -15,6 +15,7 @@ layout: layout-base.njk
 <section id="cles" aria-labelledby="cles-t" style="padding-top:2.5rem"><div class="wrap">
   <h2 id="cles-t" class="sr">Points clés</h2>
   <div class="kpis rv">{% for k in kpis %}<div><b>{{ k.v }}</b><span>{{ k.l }}</span></div>{% endfor %}{% if prix.location[page.fileSlug] %}<div><b>{{ prix.location[page.fileSlug] }} €</b><span>HT par mois en location, à partir de (machine seule)</span></div>{% endif %}</div>
+  {% include "service-strip.html" %}
 </div></section>
 
 <section id="caracteristiques" aria-labelledby="car-t"><div class="wrap two-col">
