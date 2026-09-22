@@ -316,3 +316,9 @@ section, .sec { padding: clamp(4rem, 9vw, 8rem) 0 0; }
 .cfg-card.fresh, .cfg-formule.fresh { animation: refresh .35s ease-out; }
 .num button:active { transform: translate(1px, 1px); }
 @media (prefers-reduced-motion: reduce) { .opts input:checked + span, .cfg-card.fresh, .cfg-formule.fresh { animation: none; } }
+
+/* autocomplétion d'adresse */
+.addr { position: relative; }
+.sugg { position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% - 1rem); margin: 0; background: #fff; border: 2px solid var(--ink); box-shadow: var(--sh); }
+.sugg li { padding: .65rem .9rem; cursor: pointer; font-size: .95rem; border-top: 1px solid var(--line); } .sugg li:first-child { border-top: 0; }
+.sugg li:hover, .sugg li[aria-selected="true"] { background: var(--mb); color: #fff; }

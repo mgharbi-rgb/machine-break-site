@@ -90,7 +90,7 @@ noCta: true
     </div>
     <div class="row">
       <div><label for="l-company">Entreprise ou entité *</label><input type="text" name="company" id="l-company" placeholder="Raison sociale, site ou filiale" required autocomplete="organization"></div>
-      <div><label for="l-address">Adresse du site *</label><input type="text" name="address" id="l-address" placeholder="Rue, code postal, ville" required autocomplete="street-address"></div>
+      <div class="addr"><label for="l-address">Adresse du site *</label><input type="text" name="address" id="l-address" placeholder="Commencez à taper : numéro, rue, ville" required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="l-sugg"><ul class="sugg" id="l-sugg" role="listbox" hidden></ul><input type="hidden" name="postalCode" id="l-cp"><input type="hidden" name="city" id="l-ville"><p class="note" style="margin:-.6rem 0 1rem">Suggestions fournies par la Base Adresse Nationale (service public, sans cookie).</p></div>
     </div>
     <p class="lead-recap" id="lead-recap"></p>
     <label style="display:flex;gap:.7rem;align-items:flex-start;font-weight:400"><input type="checkbox" name="consent" value="oui" required style="width:auto;min-height:0;margin:.3rem 0 0"><span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="/politique-de-confidentialite">politique de confidentialité</a>. *</span></label>
@@ -166,6 +166,32 @@ noCta: true
   // boutons − / + des champs numériques
   [].forEach.call(form.querySelectorAll('.num button'), function (b) { b.addEventListener('click', function () { var i = b.parentNode.querySelector('input'), v = (+i.value || 0) + (+b.getAttribute('data-step')); i.value = Math.min(+i.max, Math.max(+i.min, v)); if (i === drinks) touched = true; if (i === people) touched = false; upd(); }); });
   upd();
+  // autocomplétion de l'adresse : Base Adresse Nationale (api-adresse.data.gouv.fr), gratuite, sans clé ni cookie
+  (function () {
+    var inp = $('l-address'), list = $('l-sugg'), cp = $('l-cp'), ville = $('l-ville'), timer, items = [], active = -1, last = '';
+    function close() { list.hidden = true; list.innerHTML = ''; items = []; active = -1; inp.setAttribute('aria-expanded', 'false'); }
+    function pick(i) { var f = items[i]; if (!f) return; inp.value = f.properties.label; cp.value = f.properties.postcode || ''; ville.value = f.properties.city || ''; close(); }
+    function render() {
+      list.innerHTML = items.map(function (f, i) { return '<li role="option" id="l-sugg-' + i + '" aria-selected="' + (i === active) + '">' + esc(f.properties.label) + '</li>'; }).join('');
+      list.hidden = !items.length; inp.setAttribute('aria-expanded', items.length ? 'true' : 'false');
+    }
+    function search(q) {
+      if (!window.fetch) return;
+      fetch('https://api-adresse.data.gouv.fr/search/?q=' + encodeURIComponent(q) + '&limit=5&autocomplete=1&lat=48.85&lon=2.5').then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+        if (!j || inp.value.trim() !== q) return; items = j.features || []; active = -1; render();
+      }).catch(close);
+    }
+    inp.addEventListener('input', function () { var q = inp.value.trim(); cp.value = ''; ville.value = ''; clearTimeout(timer); if (q.length < 3) { close(); return; } if (q === last) return; last = q; timer = setTimeout(function () { search(q); }, 250); });
+    inp.addEventListener('keydown', function (e) {
+      if (list.hidden) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); active = (active + 1) % items.length; render(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); active = (active - 1 + items.length) % items.length; render(); }
+      else if (e.key === 'Enter' && active > -1) { e.preventDefault(); pick(active); }
+      else if (e.key === 'Escape') close();
+    });
+    list.addEventListener('mousedown', function (e) { var li = e.target.closest('li'); if (li) { e.preventDefault(); pick(+li.id.split('-').pop()); } });
+    inp.addEventListener('blur', function () { setTimeout(close, 120); });
+  })();
   // « Recevoir cette recommandation » : la dernière étape apparaît sous le configurateur, sur la même page
   cta.addEventListener('click', function () {
     lead.hidden = false; cta.setAttribute('aria-expanded', 'true');
