@@ -48,9 +48,32 @@ noCta: true
     <p class="k">Notre recommandation</p>
     <div id="cfg-machines"></div>
     <div class="cfg-formule" id="cfg-formule"></div>
-    <div class="act-row"><a class="btn btn-mb cta-diagnostic" id="cfg-cta" href="/contact#contact-form">Recevoir cette recommandation</a><span>Le formulaire d'une minute reprend votre configuration ; rappel sous 24 h.</span></div>
+    <div class="act-row"><button class="btn btn-mb cta-diagnostic" type="button" id="cfg-cta" aria-expanded="false" aria-controls="cfg-lead">Recevoir cette recommandation</button><span>Vos coordonnées juste en dessous, rien à ressaisir ; rappel sous 24 h.</span></div>
     <p class="note" style="margin-top:1.2rem">Capacités selon les données constructeur de chaque fiche. Loyers en euros HT par mois, à partir de, pour la machine seule ; entretien, produits et formule Zen chiffrés sur devis ; achat sur devis. Ratios de consommation : études françaises (2 à 2,3 tasses par salarié et par jour au travail) et règle du métier (1,5 à 2 tasses, une machine de 200 à 300 tasses pour 100 à 150 personnes). La visite du site précède toute proposition.</p>
   </div>
+</div></section>
+
+<section id="cfg-lead" class="cfg-lead" aria-labelledby="lead-t" hidden><div class="wrap">
+  <form class="fform" name="configurateur" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field" id="lead-form">
+    <p class="k">Dernière étape</p>
+    <h2 id="lead-t" style="font-size:1.7rem;margin-bottom:.6rem">Où vous rappeler ?</h2>
+    <p style="margin-bottom:1.2rem">Votre configuration est déjà jointe à la demande. Un membre de l'équipe vous rappelle sous 24 h pour la confirmer, puis nous venons voir le site.</p>
+    <input type="hidden" name="form-name" value="configurateur">
+    <input type="hidden" name="configuration" id="lead-config" value="">
+    <p hidden><label>Ne pas remplir si humain : <input name="bot-field"></label></p>
+    <div class="row">
+      <div><label for="l-email">Email professionnel *</label><input type="email" name="email" id="l-email" placeholder="prenom@entreprise.fr" required autocomplete="email"></div>
+      <div><label for="l-phone">Téléphone *</label><input type="tel" name="phone" id="l-phone" placeholder="Votre ligne directe" required autocomplete="tel"></div>
+    </div>
+    <div class="row">
+      <div><label for="l-company">Entreprise ou entité *</label><input type="text" name="company" id="l-company" placeholder="Raison sociale, site ou filiale" required autocomplete="organization"></div>
+      <div><label for="l-address">Adresse du site *</label><input type="text" name="address" id="l-address" placeholder="Rue, code postal, ville" required autocomplete="street-address"></div>
+    </div>
+    <p class="lead-recap" id="lead-recap"></p>
+    <label style="display:flex;gap:.7rem;align-items:flex-start;font-weight:400"><input type="checkbox" name="consent" value="oui" required style="width:auto;min-height:0;margin:.3rem 0 0"><span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="/politique-de-confidentialite">politique de confidentialité</a>. *</span></label>
+    <button class="btn btn-mb" type="submit">Envoyer ma configuration</button>
+    <p class="note">Réponse sous 24 h. Aucune obligation : la visite du site précède toute proposition.</p>
+  </form>
 </div></section>
 
 <script>
@@ -61,6 +84,7 @@ noCta: true
   var PAR_PERSONNE = { bureau: 2, industrie: 2, residence: 1, public: 1 };
   var FORMULES = { seule: 'la machine seule', entretien: 'la machine avec l\'entretien et le dépannage', produits: 'la machine avec les produits', zen: 'la formule Zen, tout compris' };
   var $ = function (id) { return document.getElementById(id); };
+  var lead = $('cfg-lead'), leadCfg = $('lead-config'), leadRecap = $('lead-recap'), cta = $('cfg-cta');
   var type = $('c-type'), people = $('c-people'), rooms = $('c-rooms'), drinks = $('c-drinks'), cafe = $('c-cafe'), boissons = $('c-boissons'), snacks = $('c-snacks'), multi = $('c-multi'), formule = $('c-formule'), touched = false;
   function by(slug) { for (var i = 0; i < GAMME.length; i++) if (GAMME[i].slug === slug) return GAMME[i]; }
   function prix(m) { return PRIX[m.prixDe || m.slug] || 0; }
@@ -102,11 +126,18 @@ noCta: true
       : '<h3>Formule conseillée : la location, ' + FORMULES[formule.value] + '</h3><p>Loyer mensuel fixe' + (total ? ', <b>à partir de ' + eur(total) + '</b> pour la machine seule' : '') + (formule.value !== 'seule' ? ' ; le complément choisi est chiffré sur devis, avec la visite du site' : '') + '. L\'achat est possible sur devis. Le dépôt s\'étudie au cas par cas en dessous de {{ prix.depot_seuil }} personnes.</p>')
       + note + (multi.checked ? '<p>Plusieurs sites : un interlocuteur nommé et un reporting consolidé, <a href="/grands-comptes">voir grands comptes</a>.</p>' : '');
     var resume = 'Configurateur : site ' + type.options[type.selectedIndex].text + ', ' + p + ' personnes, ' + r + ' point(s) de service, ' + d + ' boissons chaudes/jour, café ' + cafe.options[cafe.selectedIndex].text + (boissons.checked ? ', boissons fraîches' : '') + (snacks.checked ? ', snacks' : '') + (multi.checked ? ', plusieurs sites' : '') + ', formule de location : ' + FORMULES[formule.value] + '. Recommandation : ' + list.join(' + ') + ', formule ' + (depot ? 'dépôt' : 'location') + (total ? ' (à partir de ' + eur(total) + ' machine seule)' : '') + '.';
-    $('cfg-cta').href = '/contact?interet=' + ((boissons.checked || snacks.checked) ? 'plusieurs' : (m.famille === 'chaud' ? 'chaud' : 'cafe')) + '&config=' + encodeURIComponent(resume) + '#contact-form';
+    leadCfg.value = resume; leadRecap.innerHTML = '<b>Votre configuration :</b> ' + esc(list.join(' + ')) + ', formule ' + (depot ? 'dépôt' : 'location, ' + FORMULES[formule.value]) + (total ? ', à partir de ' + eur(total) + ' (machine seule)' : '') + '.';
   }
   [type, people, rooms, cafe, boissons, snacks, multi, formule].forEach(function (el) { el.addEventListener('input', upd); el.addEventListener('change', upd); });
   drinks.addEventListener('input', function () { touched = true; upd(); });
   type.addEventListener('change', function () { touched = false; }); people.addEventListener('input', function () { touched = false; });
   upd();
+  // « Recevoir cette recommandation » : la dernière étape apparaît sous le configurateur, sur la même page
+  cta.addEventListener('click', function () {
+    lead.hidden = false; cta.setAttribute('aria-expanded', 'true');
+    requestAnimationFrame(function () { lead.classList.add('open'); });
+    setTimeout(function () { lead.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); $('l-email').focus({ preventScroll: true }); }, 60);
+    cta.textContent = 'Modifier ma configuration'; cta.onclick = function () { $('cfg').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  });
 })();
 </script>

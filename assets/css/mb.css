@@ -288,3 +288,9 @@ section, .sec { padding: clamp(4rem, 9vw, 8rem) 0 0; }
 .gm-card { position: relative; transition: transform .15s, box-shadow .15s; } .gm-card:has(.more:hover), .gm-card:has(.gm-pic:hover) { transform: translate(3px, 3px); box-shadow: 4px 4px 0 var(--ink); }
 .gm-card .more { display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; margin-top: .8rem; padding: .5rem 1rem; border: 2px solid var(--ink); text-decoration: none; font-weight: 600; } .gm-card .more:hover { background: var(--ink); color: #fff; }
 .cfg-card .more { display: inline-flex; align-items: center; min-height: 40px; margin-top: .6rem; padding: .3rem .8rem; border: 2px solid var(--ink); text-decoration: none; } .cfg-card .more:hover { background: var(--ink); color: #fff; }
+
+/* configurateur : dernière étape qui apparaît sous la recommandation */
+.cfg-lead { padding-top: 2rem; opacity: 0; transform: translateY(18px); transition: opacity .5s ease-out, transform .5s ease-out; }
+.cfg-lead.open { opacity: 1; transform: none; }
+.cfg-lead .fform { max-width: 820px; margin-inline: auto; background: var(--sand); }
+.lead-recap { font-size: .95rem; padding: .8rem 1rem; margin-bottom: 1rem; background: #fff; border-left: 6px solid var(--mb); } .lead-recap b { color: var(--ink); }
