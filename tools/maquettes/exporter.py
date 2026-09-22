@@ -43,9 +43,10 @@ for a in sorted(assets):
     shutil.copy2(src, out)
 
 (DST / 'LISEZ-MOI.txt').write_text(
-    "Maquettes Machine Break : dix directions d'interface\n\n"
+    "Maquettes Machine Break : onze directions d'interface\n\n"
     "POUR REPRENDRE LE TRAVAIL SUR UN AUTRE ORDINATEUR : lire BRIEF.md (dans ce dossier).\n\n"
     "LA DERNIÈRE, À REGARDER EN PREMIER :\n"
+    "  k-epure.html          la version épurée de J : une idée par bloc, une phrase par idée\n"
     "  j-enseigne.html       le mix : affiche et lettres pochoir de la E, machine annotée,\n"
     "                        vitrine à codes, onglets, mini-machine qui se vide au défilement,\n"
     "                        prix expliqués en face de chaque machine\n\n"
@@ -55,8 +56,8 @@ for a in sorted(assets):
     "  i-planche.html        planche technique, machine annotée, onglets de section\n\n"
     "PRÉCÉDENTES : a-nuit-cafe, b-bento, c-editorial, d-connecte, e-affiche, f-immersif\n\n"
     "Double-cliquez sur un fichier .html, puis passez d'une direction à l'autre\n"
-    "avec la barre en bas de page (A à J).\n\n"
-    "Les maquettes G, H, I, J fonctionnent sans connexion internet. Les maquettes A à F\n"
+    "avec la barre en bas de page (A à K).\n\n"
+    "Les maquettes G à K fonctionnent sans connexion internet. Les maquettes A à F\n"
     "chargent leurs polices de titres en ligne (Google Fonts).\n"
     "Les liens vers le reste du site ouvrent machinebreak.com.\n"
     "Source : branche maquettes-uiux du dépôt machine-break-site.\n", encoding='utf-8')

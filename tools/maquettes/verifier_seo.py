@@ -4,13 +4,13 @@ HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 exec(open(HERE / 'verifier_html.py', encoding='utf-8').read().split("ROOT = pathlib")[0])
 
-for name in ['g-distributeur.html', 'h-sommaire.html', 'i-planche.html', 'j-enseigne.html']:
+for name in ['g-distributeur.html', 'h-sommaire.html', 'i-planche.html', 'j-enseigne.html', 'k-epure.html']:
     s = (ROOT / 'maquettes' / name).read_text(encoding='utf-8')
     p = P(); p.feed(s)
     ld = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', s, re.S).group(1).replace('<\\/', '</'))
     types = [g['@type'] for g in ld['@graph']]
     prods = [g for g in ld['@graph'] if g['@type'] == 'ItemList'][0]['itemListElement']
-    faq = [g for g in ld['@graph'] if g['@type'] == 'FAQPage'][0]['mainEntity']
+    faqs = [g for g in ld['@graph'] if g['@type'] == 'FAQPage']; faq = faqs[0]['mainEntity'] if faqs else []
     title = re.search(r'<title>(.*?)</title>', s).group(1); desc = re.search(r'name="description" content="([^"]+)"', s).group(1)
     h = re.findall(r'<(h[1-4])\b', s); order_ok = all(int(b[1]) - int(a[1]) <= 1 for a, b in zip(h, h[1:]))
     imgs = re.findall(r'<img [^>]+>', s); nodim = [i for i in imgs if 'width=' not in i]; noalt = [i for i in imgs if 'alt=""' in i or 'alt=' not in i]

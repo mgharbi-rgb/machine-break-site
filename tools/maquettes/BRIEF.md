@@ -6,7 +6,7 @@ Rédigé le 21 septembre 2026. Ce document permet de reprendre le travail sur un
 
 ## 1. Où on en est, en cinq lignes
 
-- Dix maquettes de page d'accueil existent, de A à J. **La référence est J « Enseigne »** : c'est le mix demandé entre le style de la E et celui de G, H, I.
+- Onze maquettes de page d'accueil existent, de A à K. **La référence est K « Épure »** : l'esprit de J (le mix E + G/H/I), allégé après le retour « beaucoup trop d'informations, on s'y perd » : 664 mots au lieu de 3 342, aucun tableau, six blocs.
 - Tout est poussé sur GitHub, branche **`maquettes-uiux`**. Rien n'est fusionné, aucune PR n'est ouverte, le site en production n'a pas changé.
 - Les maquettes sont des pages de démonstration **non indexées** (`noindex`). Elles ne remplacent pas encore l'accueil.
 - Les six machines, leurs caractéristiques, les trois formules, le balisage SEO/GEO et la navigation « Tout ce qu'on fait » sont en place dans G, H, I, J.
@@ -24,7 +24,7 @@ npm install
 npm run dev
 ```
 
-Puis ouvrir http://localhost:8080/maquettes/j-enseigne et changer de maquette avec la barre du bas (A à J). Sous Windows, remplacer `python3` par `python` dans toutes les commandes de ce document.
+Puis ouvrir http://localhost:8080/maquettes/k-epure et changer de maquette avec la barre du bas (A à J). Sous Windows, remplacer `python3` par `python` dans toutes les commandes de ce document.
 
 Sans rien installer : le dossier exporté « Maquettes Machine Break » s'ouvre par double-clic sur un fichier `.html`. C'est une copie de consultation, on ne travaille pas dedans.
 
@@ -35,7 +35,7 @@ Particularité du premier ordinateur (le Mac) : la branche `maquettes-uiux` y es
 | Emplacement | Rôle |
 |---|---|
 | `maquettes/a-nuit-cafe.html` … `f-immersif.html` | Les six premières directions. Socle commun `m.css` et `m.js`. |
-| `maquettes/g-distributeur.html`, `h-sommaire.html`, `i-planche.html`, `j-enseigne.html` | Les directions anguleuses. Socle commun `n.css` et `n.js`. **Pages générées**, voir la section 8. |
+| `maquettes/g-distributeur.html`, `h-sommaire.html`, `i-planche.html`, `j-enseigne.html`, `k-epure.html` | Les directions anguleuses. Socle commun `n.css` et `n.js`. **Pages générées**, voir la section 8. |
 | `maquettes/m.js` | Sert aux dix pages : barre de changement de maquette, bouton de pause des animations, apparitions au défilement. Pour ajouter une maquette, l'ajouter à la liste `pages` en haut du fichier. |
 | `tools/maquettes/` | Générateur, extraction des données machines, export, contrôles, et ce brief. Le dossier `tools` est exclu du site par `.eleventyignore`. |
 | `machines/*.html` | Les six fiches machines du site : **seule source** des caractéristiques affichées dans les maquettes. |
@@ -48,7 +48,10 @@ Commits de `maquettes-uiux`, du plus ancien au plus récent :
 1. `fbd8838` passe d'accessibilité et d'ergonomie sur A à F (menu mobile, focus clavier, contrastes, pause des animations, onglets et carrousel au clavier).
 2. `f3aaf7e` directions G, H, I avec les six machines et le balisage SEO/GEO.
 3. `6822a9d` direction J, jauge liée au défilement, bloc prix, camionnette retirée.
-4. Le commit suivant ajoute `tools/maquettes/` et ce brief.
+4. `18aa03b` outils portables dans `tools/maquettes/` et ce brief.
+5. Le commit suivant ajoute K « Épure ».
+
+Règle apprise avec K : **une idée par bloc, une phrase par idée**. La page d'accueil oriente ; les caractéristiques, la F.A.Q., les zones et le comparatif des formules vivent sur leurs pages.
 
 ## 4. La charte et vos préférences (à respecter sans exception)
 
@@ -77,7 +80,8 @@ Commits de `maquettes-uiux`, du plus ancien au plus récent :
 | G | Distributeur | L'accueil est une vitrine de distributeur : douze cases à code, de A1 à C4, écran et clavier | Style aimé |
 | H | Sommaire | Éditorial suisse, index latéral permanent, grand sommaire numéroté | Style aimé |
 | I | Planche | Planche technique, machine annotée à cinq repères, onglets de section | Style aimé |
-| **J** | **Enseigne** | **Le mix : affiche et pochoir de la E, machine annotée et onglets de I, vitrine de G, têtes numérotées de H** | **Référence** |
+| J | Enseigne | Le mix : affiche et pochoir de la E, machine annotée et onglets de I, vitrine de G, têtes numérotées de H | Aimée dans l'esprit, jugée trop chargée |
+| **K** | **Épure** | **J allégée : héros, quatre cases « Ce qu'on fait », trois pas, six machines en une ligne chacune, trois formules, quatre secteurs, appel final. Les détails restent sur les pages intérieures.** | **Référence** |
 
 Ce que J ajoute : une mini-machine fixe à l'écran qui se vide case par case quand on défile, atteint son seuil, déclenche le passage puis se re-remplit, trois fois sur la hauteur de la page ; des onglets de section qui restent cochés une fois parcourus ; un bloc « Combien ça coûte » en face de chaque machine.
 
@@ -119,7 +123,7 @@ python3 tools/maquettes/exporter.py            # dossier autonome sur le Bureau 
 ```
 
 - `generer.py` : textes, données, JSON-LD et sections communes (en bref, fonctionnement, machines, formules, engagements, secteurs, zones, questions, pied de page).
-- `gabarits_ghi.py` : héros, navigation et habillage de G, H, I. `gabarit_j.py` : ceux de J, plus la jauge.
+- `gabarits_ghi.py` : héros, navigation et habillage de G, H, I. `gabarit_j.py` : ceux de J, plus la jauge. `gabarit_k.py` : K, page complète et courte.
 - `maquettes/n.css` et `n.js` : socle commun, modifiables directement.
 - Les pages A à F sont écrites à la main et se modifient directement.
 - Ces scripts n'utilisent que la bibliothèque standard de Python et fonctionnent sur macOS, Windows et Linux. La régénération a été vérifiée : elle redonne exactement les pages committées.
@@ -130,7 +134,7 @@ Ce qui dépend de vous :
 1. **Les prix.** Le site n'en publie aucun. Dans J, les emplacements « montant à renseigner » et « prix à renseigner » attendent vos chiffres : un « à partir de X € par mois » par machine en location, ou deux ou trois cas types (par exemple « 30 personnes, OptiMe X en location »). Recommandation : les afficher.
 2. **La preuve sociale.** Logos de clients, avis Google, nombre de machines installées, ancienneté. Rien n'a été inventé, donc rien n'est affiché. C'est le levier de conviction suivant.
 3. **La police pochoir** de J : la valider, ou revenir à HK Grotesk pour les titres.
-4. **Le choix final** : J telle quelle, ou J avec des éléments à reprendre ailleurs (index latéral de H, planche de I).
+4. **Le choix final** : K telle quelle, ou K avec un élément repris de J (repères sur la machine, vitrine à codes, onglets de section).
 
 Ce qui suit une fois le choix fait :
 5. Intégrer la direction retenue dans les vrais gabarits Eleventy (`_includes/header.html`, `footer.html`, `layout-base.njk`) pour que tout le site partage l'en-tête « Tout ce qu'on fait » et le pied de page, puis décliner les pages intérieures (fiches machines, secteurs, formules, zones, F.A.Q., contact).
@@ -152,7 +156,7 @@ Pour l'autre PC, mêmes règles :
 
 Claude n'aura ni la mémoire ni l'historique du Mac. Ouvrir Claude Code dans le dossier du dépôt et coller :
 
-> Lis `tools/maquettes/BRIEF.md` en entier avant toute chose : il contient l'état du projet, la charte, mes préférences et les règles à respecter. Enregistre en mémoire les sections 4 et 10. Nous travaillons sur la branche `maquettes-uiux`. La maquette de référence est J (`maquettes/j-enseigne.html`), produite par `tools/maquettes/generer.py` : on modifie les gabarits, jamais le HTML généré. N'invente aucun chiffre, prix, client ni avis. Pas d'écriture rose, pas de formes rondes. Vérifie ton travail par un rendu réel à 1440 px et à 375 px, relance `verifier_seo.py`, puis régénère le dossier du Bureau avec `exporter.py`. Commence par me résumer le brief en dix lignes et par me demander ce que je veux faire parmi les points de la section 9.
+> Lis `tools/maquettes/BRIEF.md` en entier avant toute chose : il contient l'état du projet, la charte, mes préférences et les règles à respecter. Enregistre en mémoire les sections 4 et 10. Nous travaillons sur la branche `maquettes-uiux`. La maquette de référence est K (`maquettes/k-epure.html`), produite par `tools/maquettes/generer.py` : on modifie les gabarits, jamais le HTML généré. N'invente aucun chiffre, prix, client ni avis. Pas d'écriture rose, pas de formes rondes. Vérifie ton travail par un rendu réel à 1440 px et à 375 px, relance `verifier_seo.py`, puis régénère le dossier du Bureau avec `exporter.py`. Commence par me résumer le brief en dix lignes et par me demander ce que je veux faire parmi les points de la section 9.
 
 ## 12. Coordonnées utilisées dans les maquettes
 

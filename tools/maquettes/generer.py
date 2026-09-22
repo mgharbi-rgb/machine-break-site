@@ -1,7 +1,7 @@
-"""Génère les maquettes G, H, I, J (HTML statique) à partir des données des fiches machines du dépôt.
+"""Génère les maquettes G, H, I, J, K (HTML statique) à partir des données des fiches machines du dépôt.
 
 Usage, depuis n'importe où :  python3 tools/maquettes/generer.py
-Les gabarits sont dans gabarits_ghi.py et gabarit_j.py, les données machines dans machines.json (voir extraire_machines.py).
+Les gabarits sont dans gabarits_ghi.py, gabarit_j.py et gabarit_k.py, les données machines dans machines.json (voir extraire_machines.py).
 """
 import json, html, pathlib, re
 
@@ -267,3 +267,4 @@ h1 .k { display: block; margin-bottom: 1.4rem; line-height: 1.6; max-width: 36re
 
 exec(open(HERE / 'gabarits_ghi.py', encoding='utf-8').read())
 exec(open(HERE / 'gabarit_j.py', encoding='utf-8').read())
+exec(open(HERE / 'gabarit_k.py', encoding='utf-8').read())
