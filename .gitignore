@@ -1,3 +1,6 @@
 node_modules/
 _site/
 .DS_Store
+
+# dossiers de travail de Claude Code
+.claude/worktrees/
