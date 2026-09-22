@@ -35,6 +35,12 @@
   {%- if jsonld %}
   <script type="application/ld+json">{{ jsonld | safe }}</script>
   {%- endif %}
+  {%- if faq %}
+  <script type="application/ld+json">{{ faq | faqLd | safe }}</script>
+  {%- endif %}
+  {%- if crumbs %}
+  <script type="application/ld+json">{{ crumbs | crumbsLd | safe }}</script>
+  {%- endif %}
 {% block head %}{% endblock %}</head>
 <body>
 {% include "header-mb.html" %}

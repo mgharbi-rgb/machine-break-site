@@ -1,0 +1,51 @@
+---
+layout: layout-base.njk
+permalink: /contact.html
+title: Diagnostic pause et contact distributeur automatique en Île-de-France
+description: "Contactez Machine Break à Bailly-Romainvilliers (77) pour installer un distributeur automatique dans vos locaux en Île-de-France, par téléphone ou par email."
+crumbs:
+  - { name: Accueil, url: / }
+  - { name: Contact, url: /contact }
+noCta: true
+---
+<div class="page-hero light"><div class="wrap">
+  {% include "crumbs.html" %}
+  <h1><span class="k">Contact</span>Mon diagnostic pause en 1 minute</h1>
+  <p class="intro">Cinq champs, une minute : de quoi identifier votre site et préparer votre rappel. Nous vous proposons ensuite une solution adaptée à vos espaces de pause. Réponse sous 24 h.</p>
+</div></div>
+
+<section id="contact-form" aria-labelledby="form-t" style="padding-top:2.5rem"><div class="wrap two-col">
+  <form class="fform" name="contact" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field">
+    <h2 id="form-t" class="sr">Formulaire de diagnostic</h2>
+    <input type="hidden" name="form-name" value="contact">
+    <p hidden><label>Ne pas remplir si humain : <input name="bot-field"></label></p>
+    <div class="row">
+      <div><label for="email">Email professionnel *</label><input type="email" name="email" id="email" placeholder="prenom@entreprise.fr" required autocomplete="email"></div>
+      <div><label for="phone">Téléphone *</label><input type="tel" name="phone" id="phone" placeholder="Votre ligne directe" required autocomplete="tel"></div>
+    </div>
+    <label for="company">Entreprise ou entité *</label><input type="text" name="company" id="company" placeholder="Raison sociale, site ou filiale" required autocomplete="organization">
+    <div class="row">
+      <div><label for="postalCode">Code postal du site *</label><input type="text" name="postalCode" id="postalCode" placeholder="77700" required pattern="[0-9]{5}" inputmode="numeric" autocomplete="postal-code"></div>
+      <div><label for="companySize">Effectif du site *</label><select name="companySize" id="companySize" required><option value="">Choisir…</option><option>Moins de 50 collaborateurs</option><option>50 à 99 collaborateurs</option><option>100 à 499 collaborateurs</option><option>500 collaborateurs et plus</option></select></div>
+    </div>
+    <details id="contactDetails"><summary>Ajouter votre nom et un message (facultatif)</summary>
+      <div class="row">
+        <div><label for="lastname">Nom</label><input type="text" name="lastname" id="lastname" autocomplete="family-name"></div>
+        <div><label for="firstname">Prénom</label><input type="text" name="firstname" id="firstname" autocomplete="given-name"></div>
+      </div>
+      <label for="message">Votre situation actuelle, vos attentes</label><textarea name="message" id="message" rows="4"></textarea>
+    </details>
+    <label style="display:flex;gap:.7rem;align-items:flex-start;font-weight:400"><input type="checkbox" name="consent" id="consent" value="oui" required style="width:auto;min-height:0;margin:.3rem 0 0"><span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="/politique-de-confidentialite">politique de confidentialité</a>. *</span></label>
+    <button class="btn btn-mb" type="submit">Lancer mon diagnostic</button>
+    <p class="note">Réponse sous 24 h : un membre de l'équipe vous rappelle pour cadrer votre besoin.</p>
+  </form>
+  <div id="info">
+    <div class="zone-card rv">
+      <p class="k">Nous joindre</p>
+      <p class="deps" style="font-size:clamp(1.3rem,2.4vw,1.8rem)"><a class="js-tel" href="tel:+33174810952" style="text-decoration:none;color:var(--ink)">01 74 81 09 52</a><br><a href="mailto:contact@machinebreak.com" style="color:var(--ink)">contact@machinebreak.com</a></p>
+      <address><strong>Machine Break</strong><br>28 avenue Christian Doppler<br>77700 Bailly-Romainvilliers<br>Du lundi au vendredi, 8h30 – 18h</address>
+      <p style="margin-top:1rem"><a href="https://www.google.fr/maps/place/28+Av.+Christian+Doppler,+77700+Bailly-Romainvilliers/@48.843985,2.7989501,16z" rel="noopener">Itinéraire</a></p>
+    </div>
+    <figure class="rv" style="margin-top:22px"><img src="/assets/img/covers/valdeurope-1024.webp" alt="Vue aérienne du quartier d'affaires du Val d'Europe, où sont installés les bureaux Machine Break" loading="lazy" width="1024" height="768" style="border:2px solid var(--ink);box-shadow:var(--sh)"><figcaption style="margin-top:.8rem;font-size:.95rem">Nos bureaux sont situés au Val d'Europe, dans un environnement moderne, facilement accessible. Un emplacement stratégique pour rester proches de nos clients franciliens.</figcaption></figure>
+  </div>
+</div></section>

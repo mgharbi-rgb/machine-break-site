@@ -9,7 +9,7 @@ export default function (eleventyConfig) {
   eleventyConfig.setLayoutResolution(false);
 
   // Copie fidèle de tout le site statique
-  for (const p of ["assets", "admin", "solutions", "zones", "machines", "maquettes", "_redirects", "_headers", "robots.txt", "social.json", "favicon.ico"]) {
+  for (const p of ["assets", "admin", "zones/*.html", "machines/*.html", "maquettes", "_redirects", "_headers", "robots.txt", "social.json", "favicon.ico"]) {
     eleventyConfig.addPassthroughCopy(p);
   }
   eleventyConfig.addPassthroughCopy("*.html");
@@ -31,5 +31,14 @@ export default function (eleventyConfig) {
       mainEntityOfPage: url,
     }, null, 2);
   });
+  // données structurées des pages migrées (FAQPage, BreadcrumbList) à partir des données de page
+  eleventyConfig.addFilter("faqLd", (faq) => JSON.stringify({
+    "@context": "https://schema.org", "@type": "FAQPage",
+    mainEntity: (faq || []).map((q) => ({ "@type": "Question", name: q.q, acceptedAnswer: { "@type": "Answer", text: q.a } })),
+  }));
+  eleventyConfig.addFilter("crumbsLd", (crumbs) => JSON.stringify({
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: (crumbs || []).map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, item: "https://machinebreak.com" + c.url })),
+  }));
   eleventyConfig.addCollection("articles", (api) => api.getFilteredByTag("articles").sort((a, b) => a.date - b.date));
 }

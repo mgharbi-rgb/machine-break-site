@@ -1,0 +1,13 @@
+{% if faq %}
+<section id="questions" aria-labelledby="faq-t"><div class="wrap">
+  <h2 id="faq-t" class="rv">{{ faqTitle or "Vos questions." }}</h2>
+  <div class="faq">
+  {%- for q in faq %}
+    <details class="rv"><summary>{{ q.q }}</summary><p>{{ q.a }}</p></details>
+  {%- endfor %}
+  </div>
+  {%- if not faqNoMore %}
+  <p style="margin-top:1.6rem"><a class="btn" href="/faq">Toutes les questions</a></p>
+  {%- endif %}
+</div></section>
+{% endif %}

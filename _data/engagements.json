@@ -1,0 +1,7 @@
+[
+  { "t": "Réassort déclenché par la télémétrie", "d": "Chaque machine remonte ses ventes et son remplissage ; c'est elle qui déclenche le passage, avant la rupture, selon les habitudes de consommation de votre site. Et chaque passage la remplit entièrement : pas de tournée à date fixe qui remplit une machine déjà pleine." },
+  { "t": "Alerte analysée à distance avant tout déplacement", "d": "Chaque défaut remonté par la machine ou signalé par vous est diagnostiqué à distance. Panne identifiée : le technicien part avec la pièce. Pièce à commander : vous êtes informé du délai, et la machine reste suivie jusqu'à la réparation." },
+  { "t": "Un délai d'intervention écrit au contrat", "d": "Le délai maximal entre le signalement et l'arrivée du technicien est fixé pour votre site, selon sa zone, et inscrit au contrat. Pas une promesse générique : un engagement propre à votre adresse." },
+  { "t": "Chaque intervention tracée dans votre espace client", "d": "Réassort, nettoyage, dépannage : chaque passage est horodaté et consultable, avec le délai constaté face au délai promis. Vous vérifiez, vous ne nous croyez pas sur parole." },
+  { "t": "Un interlocuteur nommé, joignable directement", "d": "Une personne identifiée, qui connaît vos sites et vos machines, avec sa ligne directe. Pas de standard, pas de ticket anonyme." }
+]

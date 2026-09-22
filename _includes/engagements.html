@@ -1,0 +1,9 @@
+<section id="engagements" aria-labelledby="eng-t"><div class="wrap">
+  <h2 id="eng-t" class="rv">Cinq engagements, écrits au contrat.</h2>
+  <p class="sub rv">{{ engagementsIntro or "Des engagements tenables, écrits au contrat et vérifiables dans votre espace client." }}</p>
+  <ol class="eng">
+  {%- for e in engagements %}
+    <li class="rv"><span>{{ e.t }}<small>{{ e.d }}</small></span></li>
+  {%- endfor %}
+  </ol>
+</div></section>

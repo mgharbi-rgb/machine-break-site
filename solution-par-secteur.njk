@@ -1,0 +1,47 @@
+---
+layout: layout-base.njk
+permalink: /solution-par-secteur.html
+title: Distributeurs automatiques par secteur d'activité en Île-de-France
+description: "Distributeurs automatiques adaptés à votre secteur en Île-de-France : bureaux et PME, résidences et hôtels, sites industriels et logistiques. Sur mesure."
+image: /assets/img/secteurs/cafe-entreprise.webp
+crumbs:
+  - { name: Accueil, url: / }
+  - { name: Tous les secteurs, url: /solution-par-secteur }
+engagementsIntro: Cinq engagements tenables, écrits au contrat et vérifiables dans votre espace client.
+secteurs:
+  - { id: entreprise, title: Entreprises et bureaux, url: /solutions/bureaux-pme, image: /assets/img/secteurs/cafe-entreprise-640.webp, alt: Distributeur en entreprise, text: "Offrez à vos collaborateurs un véritable espace détente équipé de machines modernes, silencieuses, avec boissons et snacks de qualité.", points: ["Café de qualité pour motiver les équipes", "Snackings adaptés à toutes les pauses (matin, déjeuner, après-midi)", "Distributeurs design, discrets et connectés", "Suivi intelligent pour garantir disponibilité et propreté", "Aucun investissement ni gestion interne"], more: Voir la page Bureaux et PME }
+  - { id: hopital, title: Établissements de santé et hôpitaux, url: "/contact#contact-form", image: /assets/img/secteurs/sante-640.webp, alt: "Salle de pause avec distributeurs Machine Break, tables hautes et fauteuils", text: "Des distributeurs fiables, silencieux et hygiéniques, accessibles 24/7 pour le personnel médical, les patients ou les visiteurs.", points: ["Produits adaptés au rythme hospitalier", "Entretien régulier et désinfection", "Grande autonomie et recharge anticipée"], more: Mon diagnostic pause en 1 minute }
+  - { id: residence, title: Résidences et hôtels, url: /solutions/residences-hotels, image: /assets/img/shooting/distributeur-salon-residence-640.webp, alt: "Distributeur Machine Break installé dans le salon d'une résidence", text: "Un service disponible à toute heure sans personnel dédié, un paiement sans contact, une intégration discrète dans vos espaces communs.", points: ["Disponibilité sans personnel, nuit et week-end", "Paiement sans contact, plus de monnaie à gérer", "Habillage et emplacement choisis avec vous"], more: Voir la page Résidences et hôtels }
+  - { id: ecole, title: Écoles et universités, url: "/contact#contact-form", image: /assets/img/secteurs/cafe-ecole-640.webp, alt: Distributeur en école, text: "Proposer une offre de restauration rapide variée, adaptée aux jeunes.", points: ["Snacks équilibrés ou bio", "Paiement sans contact, Apple Pay et Google Pay", "Distributeurs au design coloré et interactif", "Suivi de consommation possible pour l'établissement"], more: Mon diagnostic pause en 1 minute }
+  - { id: industrie, title: Industrie et sites techniques, url: /solutions/industrie-logistique, image: /assets/img/secteurs/cafe-industrie-640.webp, alt: Distributeur en usine, text: "Des distributeurs robustes, grande capacité, conçus pour les zones à forte affluence ou en conditions techniques exigeantes.", points: ["Haute autonomie", "Alertes techniques suivies dans votre espace client", "Fonctionnement autonome jour, nuit et week-end", "Modes de paiement sans contact, badges"], more: Voir la page Industrie et logistique }
+  - { id: public, title: Espaces publics et lieux de passage, url: "/contact#contact-form", image: /assets/img/secteurs/public-640.webp, alt: Distributeur de snacks et boissons Machine Break dans un lieu de passage, text: "Des machines design, fiables et accessibles, pensées pour un usage urbain, sécurisé et esthétique.", points: ["Machines sécurisées (verre anti-vandale, systèmes anti-piratage)", "Produits abordables, gestion automatisée", "Chaque intervention tracée, horodatée, consultable"], more: Mon diagnostic pause en 1 minute }
+---
+<div class="page-hero"><div class="wrap">
+  {% include "crumbs.html" %}
+  <h1><span class="k">Tous les secteurs</span>Des distributeurs adaptés à chaque environnement professionnel</h1>
+  <p class="intro">Bureaux, santé, résidences, écoles, industrie, lieux de passage : le diagnostic part de votre site, pas d'un catalogue.</p>
+  <div class="acts"><a class="btn cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a></div>
+</div></div>
+
+<section id="secteurs" aria-labelledby="sect-t"><div class="wrap">
+  <h2 id="sect-t" class="rv">Pour qui.</h2>
+  <p class="sub rv">Six environnements, une même exigence : une machine pleine, propre et suivie.</p>
+  <div class="cards">
+  {%- for s in secteurs %}
+    <article class="card rv" id="{{ s.id }}"><img src="{{ s.image }}" alt="{{ s.alt }}" loading="lazy" width="640" height="480" style="aspect-ratio:4/3;object-fit:cover;width:100%;border-bottom:2px solid var(--ink)"><div><h3>{{ s.title }}</h3><p>{{ s.text }}</p><ul class="checks" style="margin-top:.8rem;font-size:.93rem">{% for p in s.points %}<li>{{ p }}</li>{% endfor %}</ul><a class="more" href="{{ s.url }}">{{ s.more }} →</a></div></article>
+  {%- endfor %}
+  </div>
+</div></section>
+
+{% include "engagements.html" %}
+
+<section id="chr" aria-labelledby="chr-t"><div class="wrap">
+  <h2 id="chr-t" class="rv">Cafés, hôtels, restaurants, boulangeries.</h2>
+  <p class="contract rv">Vous cherchez une machine à café professionnelle pour votre établissement ? Pour les CHR, Machine Break exploite une enseigne dédiée, <b>Tazza</b> : machines à café professionnelles, entretien et consommables, coût par tasse tout compris, contrat lisible en une page.</p>
+  <p class="rv" style="margin-top:1.4rem"><a class="btn" href="https://tazza.fr" rel="noopener">Découvrir Tazza</a></p>
+</div></section>
+
+<section id="autre" aria-labelledby="autre-t"><div class="wrap">
+  <h2 id="autre-t" class="rv">Vous ne trouvez pas votre secteur ?</h2>
+  <p class="sub rv">Nous étudions toutes les demandes pour proposer une solution sur mesure, quel que soit votre environnement.</p>
+</div></section>

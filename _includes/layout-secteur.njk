@@ -1,0 +1,41 @@
+---
+layout: layout-base.njk
+---
+<div class="page-hero with-fig"><div class="wrap">
+  <div>
+    {% include "crumbs.html" %}
+    <h1><span class="k">{{ kicker }}</span>{{ h1 }}</h1>
+    <p class="intro">{{ intro }}</p>
+    <div class="acts"><a class="btn cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a><span class="tel"><a class="js-tel" href="tel:+33174810952">01 74 81 09 52</a></span></div>
+  </div>
+  <div class="fig"><img src="{{ heroImage }}" alt="{{ heroAlt }}" width="1024" height="768" fetchpriority="high"></div>
+</div></div>
+
+<section id="probleme" aria-labelledby="pb-t"><div class="wrap two-col">
+  <div>
+    <h2 id="pb-t" class="rv">{{ probleme.title }}</h2>
+    {%- for p in probleme.paragraphs %}
+    <p class="rv" style="margin-bottom:1rem;max-width:40rem">{{ p }}</p>
+    {%- endfor %}
+    <ol class="eng rv" style="grid-template-columns:1fr;margin-top:1.4rem;max-width:40rem">
+    {%- for pt in probleme.points %}
+      <li><span>{{ pt.t }}<small>{{ pt.d }}</small></span></li>
+    {%- endfor %}
+    </ol>
+  </div>
+  <figure class="rv"><img src="{{ probleme.image }}" alt="{{ probleme.alt }}" loading="lazy" width="1024" height="768" style="border:2px solid var(--ink);box-shadow:var(--sh)"></figure>
+</div></section>
+
+<section id="configuration" aria-labelledby="cf-t"><div class="wrap">
+  <h2 id="cf-t" class="rv">{{ config.title }}</h2>
+  <p class="sub rv">{{ config.intro }}</p>
+  <div class="cards">
+  {%- for c in config.items %}
+    <article class="card rv"><img src="{{ c.image }}" alt="{{ c.alt }}" loading="lazy" width="640" height="480" style="aspect-ratio:4/3;object-fit:cover;width:100%;border-bottom:2px solid var(--ink)"><div><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div></article>
+  {%- endfor %}
+  </div>
+</div></section>
+
+{% include "engagements.html" %}
+{% include "faq.html" %}
+{{ content | safe }}
