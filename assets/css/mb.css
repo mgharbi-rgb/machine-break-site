@@ -265,3 +265,14 @@ section, .sec { padding: clamp(4rem, 9vw, 8rem) 0 0; }
 .cfg-card h3 { font-size: 1.3rem; margin: .2rem 0 .3rem; } .cfg-card p { font-size: .95rem; } .cfg-card .price { margin-top: .5rem; color: var(--ink); } .cfg-card .more { display: inline-block; margin-top: .4rem; font-weight: 600; color: var(--ink); text-underline-offset: 4px; }
 .cfg-formule { margin-top: 1.2rem; padding-top: 1rem; border-top: 2px solid var(--ink); } .cfg-formule h3 { font-size: 1.25rem; margin-bottom: .4rem; } .cfg-formule p { font-size: .98rem; margin-bottom: .6rem; }
 @media (max-width: 900px) { .cfg { grid-template-columns: 1fr; } .cfg-result { position: static; } .cfg-card { grid-template-columns: 80px 1fr; } }
+
+/* gamme : cartes machines par famille */
+.gm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+.gm-card { display: grid; grid-template-rows: auto 1fr; background: #fff; border: 2px solid var(--ink); box-shadow: var(--sh); }
+.gm-pic { display: grid; place-items: center; height: 260px; padding: 1.2rem; border-bottom: 2px solid var(--ink); background: #fff; } .gm-pic img { max-height: 220px; width: auto; }
+.gm-nopic { background: var(--sand); color: var(--muted); font-family: var(--mono); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+.gm-card > div { padding: 1.1rem 1.2rem 1.3rem; } .gm-card h3 { font-size: 1.5rem; margin: .2rem 0 .4rem; } .gm-card p { font-size: .95rem; }
+.gm-caps { margin: .8rem 0; display: grid; gap: .3rem; font-size: .92rem; } .gm-caps li { padding-left: 1.2rem; position: relative; } .gm-caps li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 2px; background: var(--mb); }
+.gm-card .price { padding-top: .7rem; border-top: 1px solid var(--line); color: var(--ink); } .gm-card .more { display: inline-block; margin-top: .6rem; font-weight: 600; color: var(--ink); text-underline-offset: 4px; }
+@media (max-width: 960px) { .gm { grid-template-columns: 1fr 1fr; } } @media (max-width: 560px) { .gm { grid-template-columns: 1fr; } }
+.cfg-noimg span { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; text-align: center; padding: .4rem; }

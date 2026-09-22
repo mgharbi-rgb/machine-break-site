@@ -5,6 +5,7 @@ layout: layout-base.njk
   <div>
     {% include "crumbs.html" %}
     <h1><span class="k">{{ kicker }}</span>{{ h1 }}</h1>
+    {%- for g in gamme.machines %}{% if g.slug == page.fileSlug %}<p class="k" style="margin-top:.8rem;color:var(--cream)">Dans notre gamme : {{ g.nom }}</p>{% endif %}{% endfor %}
     <p class="intro">{{ intro }}</p>
     <div class="acts"><a class="btn cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a><span class="tel"><a class="js-tel" href="tel:+33174810952">01 74 81 09 52</a></span></div>
   </div>
@@ -42,7 +43,7 @@ layout: layout-base.njk
 <section id="autres" aria-labelledby="aut-t"><div class="wrap">
   <h2 id="aut-t" class="rv" style="font-size:clamp(2rem,4vw,3.4rem)">Les autres machines que nous installons.</h2>
   <ul class="zone-list rv" style="max-width:44rem">
-  {%- for m in machinesList %}{% if m.slug != page.fileSlug %}<li><a href="/machines/{{ m.slug }}"><span>{{ m.name }} <small style="font-weight:400;color:var(--muted)">· {{ m.type }}</small></span></a></li>{% endif %}{% endfor %}
+  {%- for g in gamme.machines %}{% if g.fiche and g.slug != page.fileSlug and g.fiche != page.url | url %}<li><a href="{{ g.fiche }}"><span>{{ g.nom }} <small style="font-weight:400;color:var(--muted)">· {{ g.type }}</small></span></a></li>{% endif %}{% endfor %}
   </ul>
   <p class="rv" style="margin-top:1.4rem"><a class="btn" href="/solutions/equipements">Toutes les familles de machines</a></p>
 </div></section>

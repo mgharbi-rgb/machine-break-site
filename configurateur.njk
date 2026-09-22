@@ -2,7 +2,7 @@
 layout: layout-base.njk
 permalink: /configurateur.html
 title: Quelle machine pour votre site ? Le configurateur
-description: "Effectif, salles de pause, boissons fraîches ou non : en trois questions, visualisez la machine à café ou le distributeur adapté à votre site en Île-de-France, et le loyer à partir duquel elle se loue."
+description: "Effectif, salles de pause, café en grains ou soluble, boissons fraîches, snacks : en quelques questions, visualisez la machine adaptée à votre site en Île-de-France, et le loyer à partir duquel elle se loue."
 crumbs:
   - { name: Accueil, url: / }
   - { name: Configurateur, url: /configurateur }
@@ -11,7 +11,7 @@ noCta: true
 <div class="page-hero light"><div class="wrap">
   {% include "crumbs.html" %}
   <h1><span class="k">Configurateur</span>Quelle machine pour votre site ?</h1>
-  <p class="intro">Trois questions, et vous visualisez la machine qu'il vous faut, salle par salle, avec la formule et le loyer à partir duquel elle se loue. C'est une première recommandation : la visite de votre site la confirme ou l'ajuste.</p>
+  <p class="intro">Quelques questions, et vous visualisez la machine qu'il vous faut, salle par salle, avec la formule et le loyer à partir duquel elle se loue. C'est une première recommandation : la visite de votre site la confirme ou l'ajuste.</p>
 </div></div>
 
 <section style="padding-top:2.5rem"><div class="wrap cfg" id="cfg">
@@ -29,11 +29,16 @@ noCta: true
       <input type="number" id="c-drinks" min="10" max="20000" step="10" inputmode="numeric">
       <p class="note" id="c-hyp" style="margin:-.4rem 0 1rem"></p>
     </fieldset>
-    <fieldset><legend class="k">3 · En plus du café</legend>
-      <label style="display:flex;gap:.7rem;align-items:center;font-weight:400"><input type="checkbox" id="c-frais" style="width:auto;min-height:0;margin:0"><span>Boissons fraîches et snacks</span></label>
+    <fieldset><legend class="k">3 · Votre café</legend>
+      <label for="c-cafe">Café en grains ou boissons solubles ?</label>
+      <select id="c-cafe"><option value="grain">Café en grains, moulu à la demande</option><option value="soluble">Boissons solubles (café, chocolat, lait)</option><option value="indifferent">Conseillez-moi</option></select>
+    </fieldset>
+    <fieldset><legend class="k">4 · En plus du café</legend>
+      <label style="display:flex;gap:.7rem;align-items:center;font-weight:400"><input type="checkbox" id="c-boissons" style="width:auto;min-height:0;margin:0"><span>Boissons fraîches</span></label>
+      <label style="display:flex;gap:.7rem;align-items:center;font-weight:400"><input type="checkbox" id="c-snacks" style="width:auto;min-height:0;margin:0"><span>Snacks</span></label>
       <label style="display:flex;gap:.7rem;align-items:center;font-weight:400"><input type="checkbox" id="c-multi" style="width:auto;min-height:0;margin:0"><span>Plusieurs sites à équiper</span></label>
     </fieldset>
-    <fieldset><legend class="k">4 · Ce que vous voulez inclure</legend>
+    <fieldset><legend class="k">5 · Ce que vous voulez inclure</legend>
       <label for="c-formule">Votre formule de location</label>
       <select id="c-formule"><option value="seule">La machine seule, je gère le reste</option><option value="entretien">Machine + entretien et dépannage</option><option value="produits">Machine + produits (à la tasse ou au produit)</option><option value="zen">Formule Zen : tout compris, je ne pense plus à rien</option></select>
     </fieldset>
@@ -44,56 +49,62 @@ noCta: true
     <div id="cfg-machines"></div>
     <div class="cfg-formule" id="cfg-formule"></div>
     <div class="act-row"><a class="btn btn-mb cta-diagnostic" id="cfg-cta" href="/contact#contact-form">Recevoir cette recommandation</a><span>Le formulaire d'une minute reprend votre configuration ; rappel sous 24 h.</span></div>
-    <p class="note" style="margin-top:1.2rem">Hypothèses affichées ci-contre, capacités selon les données constructeur de chaque fiche. Loyers en euros HT par mois pour la machine seule ; entretien, produits et formule Zen chiffrés sur devis ; achat sur devis. Ratios de consommation : études françaises (2 à 2,3 tasses par salarié et par jour au travail) et règle du métier (1,5 à 2 tasses, une machine de 200 à 300 tasses pour 100 à 150 personnes). La visite du site précède toute proposition.</p>
+    <p class="note" style="margin-top:1.2rem">Capacités selon les données constructeur de chaque fiche. Loyers en euros HT par mois, à partir de, pour la machine seule ; entretien, produits et formule Zen chiffrés sur devis ; achat sur devis. Ratios de consommation : études françaises (2 à 2,3 tasses par salarié et par jour au travail) et règle du métier (1,5 à 2 tasses, une machine de 200 à 300 tasses pour 100 à 150 personnes). La visite du site précède toute proposition.</p>
   </div>
 </div></section>
 
 <script>
 (function () {
-  // Règles de dimensionnement : capacités constructeur (fiches machines) et loyers (_data/prix.json). Les hypothèses sont visibles et modifiables par le visiteur.
-  var PRIX = {{ prix.location | dump | safe }};
-  // boissons chaudes par personne et par jour : 2 en bureau et en industrie (études françaises : 2 à 2,3 tasses par salarié et par jour au travail ; règle du métier : 1,5 à 2, jusqu'à 3), 1 en hébergement et en lieu de passage (hypothèse prudente, sans source dédiée)
+  // La gamme (_data/gamme.json) et les loyers (_data/prix.json) sont injectés à la construction : une seule source pour la page équipements et le configurateur.
+  var PRIX = {{ prix.location | dump | safe }}, GAMME = {{ gamme.machines | dump | safe }};
+  // boissons chaudes par personne et par jour : 2 en bureau et en industrie (études françaises : 2 à 2,3 ; règle du métier : 1,5 à 2), 1 en hébergement et en lieu de passage (hypothèse prudente)
   var PAR_PERSONNE = { bureau: 2, industrie: 2, residence: 1, public: 1 };
-  var CAFE = [
-    { slug: 'animo-optivend-21s', nom: 'La petite', type: 'Machine à boissons solubles', max: 60, img: '', url: '/contact?interet=cafe#contact-form', d: '2 bacs, pour les petites équipes. Existe en 4 bacs, tarif sur demande.' },
-    { slug: 'animo-optime-x', nom: 'La compacte', type: 'Machine à café en grains', max: 125, img: '/assets/img/machines/animo-optime-x-640.webp', url: '/machines/animo-optime-x', d: '38 cm de large, jusqu\'à 125 boissons par jour.' },
-    { slug: 'animo-optibean-x', nom: 'La grande', type: 'Machine à café en grains', max: 250, img: '/assets/img/machines/animo-optibean-x-640.webp', url: '/machines/animo-optibean-x', d: 'Espresso et café filtre, jusqu\'à 250 boissons par jour.' },
-    { slug: 'bianchi-agily', nom: 'Grand écran', type: 'Distributeur de boissons chaudes', max: 500, img: '/assets/img/machines/bianchi-agily-640.webp', url: '/machines/bianchi-agily', d: 'Écran 21 pouces, jusqu\'à 1 100 gobelets en réserve.' },
-    { slug: 'bianchi-intuity', nom: 'Très grande capacité', type: 'Distributeur de boissons chaudes', max: 1e9, img: '/assets/img/machines/bianchi-intuity-640.webp', url: '/machines/bianchi-intuity', d: 'Écran 32 pouces, double chaudière, jusqu\'à 1 560 gobelets.' }
-  ];
-  var FRAIS = { slug: 'sielaff-siline', nom: 'Snacks et frais', type: 'Distributeur de snacks et boissons fraîches', img: '/assets/img/machines/sielaff-siline-640.webp', url: '/machines/sielaff-siline', d: 'Deux zones de température, livraison par ascenseur.' };
-  var FRAIS_GRAND = { slug: 'sielaff-robimat', nom: 'Boissons fraîches grande capacité', type: 'Distributeur de boissons fraîches', img: '/assets/img/machines/sielaff-robimat-640.webp', url: '/machines/sielaff-robimat', d: 'Vitrine panoramique, jusqu\'à 770 bouteilles.' };
-  var $ = function (id) { return document.getElementById(id); };
-  var type = $('c-type'), people = $('c-people'), rooms = $('c-rooms'), drinks = $('c-drinks'), frais = $('c-frais'), multi = $('c-multi'), formule = $('c-formule'), touched = false;
   var FORMULES = { seule: 'la machine seule', entretien: 'la machine avec l\'entretien et le dépannage', produits: 'la machine avec les produits', zen: 'la formule Zen, tout compris' };
+  var $ = function (id) { return document.getElementById(id); };
+  var type = $('c-type'), people = $('c-people'), rooms = $('c-rooms'), drinks = $('c-drinks'), cafe = $('c-cafe'), boissons = $('c-boissons'), snacks = $('c-snacks'), multi = $('c-multi'), formule = $('c-formule'), touched = false;
+  function by(slug) { for (var i = 0; i < GAMME.length; i++) if (GAMME[i].slug === slug) return GAMME[i]; }
+  function prix(m) { return PRIX[m.prixDe || m.slug] || 0; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function eur(n) { return n.toLocaleString('fr-FR') + ' € HT/mois'; }
   function card(m, n) {
-    return '<article class="cfg-card">' + (m.img ? '<img src="' + m.img + '" alt="" width="200" height="300" loading="lazy">' : '<div class="cfg-noimg" aria-hidden="true">?</div>') +
-      '<div><span class="k">' + esc(m.type) + '</span><h3>' + (n > 1 ? n + ' × ' : '') + esc(m.nom) + '</h3><p>' + esc(m.d) + '</p>' +
-      (PRIX[m.slug] ? '<p class="price"><b>' + eur(PRIX[m.slug] * n) + '</b>' + (n > 1 ? ' pour ' + n + ' machines' : '') + ' en location, machine seule</p>' : '') +
-      (m.url.indexOf('/machines/') === 0 ? '<a class="more" href="' + m.url + '">Voir la fiche →</a>' : '') + '</div></article>';
+    var p = prix(m);
+    return '<article class="cfg-card">' + (m.img ? '<img src="' + m.img + '" alt="" width="' + m.w + '" height="' + m.h + '" loading="lazy">' : '<div class="cfg-noimg" aria-hidden="true"><span>Photo à venir</span></div>') +
+      '<div><span class="k">' + esc(m.type) + '</span><h3>' + (n > 1 ? n + ' × ' : '') + esc(m.nom) + '</h3><p>' + esc(m.capacites.join(' · ')) + '</p>' +
+      '<p class="price"><b>' + (p ? 'À partir de ' + eur(p * n) : 'Tarif sur demande') + '</b>' + (p && n > 1 ? ' pour ' + n + ' machines' : '') + (p ? ', machine seule' : '') + '</p>' +
+      (m.fiche ? '<a class="more" href="' + m.fiche + '">Voir la fiche →</a>' : '') + '</div></article>';
+  }
+  // machine à café par point de service : la plus petite dont la capacité couvre le besoin, dans le sous-type demandé
+  function choixCafe(perRoom, t, pref) {
+    var solubles = GAMME.filter(function (m) { return m.sous === 'soluble'; }), grains = GAMME.filter(function (m) { return m.sous === 'grain'; }), chauds = GAMME.filter(function (m) { return m.famille === 'chaud'; });
+    var gros = (t === 'industrie' || t === 'public') && perRoom > 80;
+    if (pref === 'soluble' && perRoom <= solubles[0].maxJour && !gros) return solubles[0];
+    var pool = (gros ? [] : grains).concat(chauds);
+    if (pref === 'indifferent' && !gros) pool = solubles.slice(0, 1).concat(pool);
+    for (var i = 0; i < pool.length; i++) if (perRoom <= pool[i].maxJour) return pool[i];
+    return pool[pool.length - 1];
   }
   function upd() {
     var t = type.value, p = Math.max(5, +people.value || 0), r = Math.max(1, +rooms.value || 1);
     if (!touched) drinks.value = Math.round(p * PAR_PERSONNE[t] / 10) * 10 || 10;
     var d = Math.max(10, +drinks.value || 10), perRoom = Math.ceil(d / r);
     $('c-hyp').textContent = 'Hypothèse : ' + PAR_PERSONNE[t] + ' boisson' + (PAR_PERSONNE[t] > 1 ? 's' : '') + ' chaude' + (PAR_PERSONNE[t] > 1 ? 's' : '') + ' par personne et par jour, réparties sur ' + r + ' point' + (r > 1 ? 's' : '') + ' de service, soit environ ' + perRoom + ' par point.';
-    var m = CAFE[0];
-    for (var i = 0; i < CAFE.length; i++) { if (perRoom <= CAFE[i].max) { m = CAFE[i]; break; } }
-    if ((t === 'industrie' || t === 'public') && (m.slug === 'animo-optime-x' || m.slug === 'animo-optibean-x') && perRoom > 80) m = CAFE[3];
-    var html = card(m, r), total = (PRIX[m.slug] || 0) * r, list = [r + ' × ' + m.nom + ' (' + m.type + ')'];
-    if (frais.checked) { var f = (t === 'industrie' || perRoom > 200) ? FRAIS_GRAND : FRAIS; html += card(f, r); total += (PRIX[f.slug] || 0) * r; list.push(r + ' × ' + f.nom); }
-    $('c-machines' === '' ? '' : 'cfg-machines').innerHTML = html;
+    var m = choixCafe(perRoom, t, cafe.value), html = card(m, r), total = prix(m) * r, list = [r + ' × ' + m.nom + ' (' + m.modele + ')'], note = '';
+    if (cafe.value === 'soluble' && m.sous !== 'soluble') note = '<p>Avec ' + perRoom + ' boissons par jour et par point, une machine à boissons solubles serait trop juste : nous vous proposons la machine ci-dessus, qui sert aussi du chocolat et du lait.</p>';
+    if (boissons.checked || snacks.checked) {
+      var f = by(boissons.checked && snacks.checked ? 'sielaff-siline' : (snacks.checked ? 'sielaff-siline-snack' : ((t === 'industrie' || perRoom > 200) ? 'sielaff-robimat' : 'sielaff-siline')));
+      if (f.slug === 'sielaff-siline' && !snacks.checked) note += '<p>Boissons fraîches seules sur un site de cette taille : le distributeur combiné laisse la place d\'ajouter des snacks plus tard ; la version grande capacité boissons existe aussi.</p>';
+      html += card(f, r); total += prix(f) * r; list.push(r + ' × ' + f.nom + ' (' + f.modele + ')');
+    }
+    $('cfg-machines').innerHTML = html;
     var depot = p >= {{ prix.depot_seuil }};
-    $('cfg-formule').innerHTML = depot
-      ? '<h3>Formule conseillée : le dépôt</h3><p>Avec ' + p + ' personnes sur le site, l\'installation, la mise en service, le réassort et l\'entretien sont offerts : vous ne payez que les consommations. La location de la machine seule reste possible' + (total ? ', à partir de ' + eur(total) : '') + '.</p>'
-      : '<h3>Formule conseillée : la location, ' + FORMULES[formule.value] + '</h3><p>Loyer mensuel fixe' + (total ? ', <b>à partir de ' + eur(total) + '</b> pour la machine seule' : '') + (formule.value !== 'seule' ? ' ; le complément choisi (' + FORMULES[formule.value].replace('la machine avec ', '').replace('la formule Zen, ', '') + ') est chiffré sur devis, avec la visite du site' : '') + '. L\'achat est possible sur devis. Le dépôt s\'étudie au cas par cas en dessous de {{ prix.depot_seuil }} personnes.</p>';
-    if (multi.checked) $('cfg-formule').innerHTML += '<p>Plusieurs sites : un interlocuteur nommé et un reporting consolidé, <a href="/grands-comptes">voir grands comptes</a>.</p>';
-    var resume = 'Configurateur : site ' + type.options[type.selectedIndex].text + ', ' + p + ' personnes, ' + r + ' point(s) de service, ' + d + ' boissons chaudes/jour' + (frais.checked ? ', boissons fraîches et snacks' : '') + (multi.checked ? ', plusieurs sites' : '') + ', formule de location : ' + FORMULES[formule.value] + '. Recommandation : ' + list.join(' + ') + ', formule ' + (depot ? 'dépôt' : 'location') + (total ? ' (à partir de ' + eur(total) + ')' : '') + '.';
-    $('cfg-cta').href = '/contact?interet=' + (frais.checked ? 'plusieurs' : (m.type.indexOf('café') > -1 || m.type.indexOf('solubles') > -1 ? 'cafe' : 'chaud')) + '&config=' + encodeURIComponent(resume) + '#contact-form';
+    $('cfg-formule').innerHTML = (depot
+      ? '<h3>Formule conseillée : le dépôt</h3><p>Avec ' + p + ' personnes sur le site, l\'installation, la mise en service, le réassort et l\'entretien sont offerts : vous ne payez que les consommations. La location reste possible' + (total ? ', à partir de ' + eur(total) + ' pour la machine seule' : '') + '.</p>'
+      : '<h3>Formule conseillée : la location, ' + FORMULES[formule.value] + '</h3><p>Loyer mensuel fixe' + (total ? ', <b>à partir de ' + eur(total) + '</b> pour la machine seule' : '') + (formule.value !== 'seule' ? ' ; le complément choisi est chiffré sur devis, avec la visite du site' : '') + '. L\'achat est possible sur devis. Le dépôt s\'étudie au cas par cas en dessous de {{ prix.depot_seuil }} personnes.</p>')
+      + note + (multi.checked ? '<p>Plusieurs sites : un interlocuteur nommé et un reporting consolidé, <a href="/grands-comptes">voir grands comptes</a>.</p>' : '');
+    var resume = 'Configurateur : site ' + type.options[type.selectedIndex].text + ', ' + p + ' personnes, ' + r + ' point(s) de service, ' + d + ' boissons chaudes/jour, café ' + cafe.options[cafe.selectedIndex].text + (boissons.checked ? ', boissons fraîches' : '') + (snacks.checked ? ', snacks' : '') + (multi.checked ? ', plusieurs sites' : '') + ', formule de location : ' + FORMULES[formule.value] + '. Recommandation : ' + list.join(' + ') + ', formule ' + (depot ? 'dépôt' : 'location') + (total ? ' (à partir de ' + eur(total) + ' machine seule)' : '') + '.';
+    $('cfg-cta').href = '/contact?interet=' + ((boissons.checked || snacks.checked) ? 'plusieurs' : (m.famille === 'chaud' ? 'chaud' : 'cafe')) + '&config=' + encodeURIComponent(resume) + '#contact-form';
   }
-  [type, people, rooms, frais, multi, formule].forEach(function (el) { el.addEventListener('input', upd); el.addEventListener('change', upd); });
+  [type, people, rooms, cafe, boissons, snacks, multi, formule].forEach(function (el) { el.addEventListener('input', upd); el.addEventListener('change', upd); });
   drinks.addEventListener('input', function () { touched = true; upd(); });
   type.addEventListener('change', function () { touched = false; }); people.addEventListener('input', function () { touched = false; });
   upd();
