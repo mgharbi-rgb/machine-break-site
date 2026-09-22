@@ -30,7 +30,7 @@
   {%- if preload %}
   <link rel="preload" as="image" href="{{ preload }}" fetchpriority="high">
   {%- endif %}
-  <link rel="stylesheet" href="/assets/css/mb.css?v={{ site.buildDate }}">
+  <link rel="stylesheet" href="/assets/css/mb.css?v={{ site.buildStamp }}">
   <script type="application/ld+json">{{ ld.organisation | dump | safe }}</script>
   {%- if jsonld %}
   <script type="application/ld+json">{{ jsonld | safe }}</script>

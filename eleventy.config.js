@@ -12,6 +12,8 @@ export default function (eleventyConfig) {
   }
 
   eleventyConfig.addGlobalData("site.buildDate", () => new Date().toISOString().slice(0, 10));
+  // empreinte de construction pour forcer le rechargement du CSS et du JS après chaque mise en ligne
+  eleventyConfig.addGlobalData("site.buildStamp", () => Date.now().toString(36));
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
   eleventyConfig.addFilter("frDate", (d) => new Date(d).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }));
   eleventyConfig.addFilter("url", (u) => (u || "").replace(/\.html$/, "").replace(/\/index$/, "/"));
