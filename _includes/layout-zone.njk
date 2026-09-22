@@ -1,0 +1,36 @@
+---
+layout: layout-base.njk
+---
+<div class="page-hero with-fig"><div class="wrap">
+  <div>
+    {% include "crumbs.html" %}
+    <h1><span class="k">{{ kicker }}</span>{{ h1 }}</h1>
+    <p class="intro">{{ intro }}</p>
+    <div class="acts"><a class="btn cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a><span class="tel"><a class="js-tel" href="tel:+33174810952">01 74 81 09 52</a></span></div>
+  </div>
+  <div class="fig"><img src="{{ heroImage }}" alt="{{ heroAlt }}" width="1024" height="768" fetchpriority="high"></div>
+</div></div>
+
+{%- for s in sections %}
+<section id="z{{ loop.index }}" aria-labelledby="z{{ loop.index }}-t"><div class="wrap">
+  <h2 id="z{{ loop.index }}-t" class="rv">{{ s.h2 }}</h2>
+  {%- if s.badges and s.badges.length %}
+  {%- for p in s.p %}<p class="sub rv">{{ p }}</p>{% endfor %}
+  <ul class="tags rv" style="display:flex;flex-wrap:wrap;gap:8px;max-width:60rem">{% for b in s.badges %}<li style="font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;border:1px solid var(--ink);padding:.3rem .6rem;background:#fff">{{ b }}</li>{% endfor %}</ul>
+  {%- elif s.li and s.li.length %}
+  {%- for p in s.p %}<p class="sub rv">{{ p }}</p>{% endfor %}
+  <ul class="checks rv">{% for l in s.li %}<li>{{ l }}</li>{% endfor %}</ul>
+  {%- elif s.p.length > 3 %}
+  <ol class="eng rv" style="grid-template-columns:1fr;max-width:44rem">{% for p in s.p %}<li><span>{{ p }}</span></li>{% endfor %}</ol>
+  {%- else %}
+  {%- for p in s.p %}<p class="rv" style="max-width:44rem;margin-bottom:1rem">{{ p }}</p>{% endfor %}
+  {%- endif %}
+  {%- if s.zones %}
+  <ul class="zone-list rv" style="max-width:44rem;margin-top:1.4rem">{% for z in s.zones %}<li><a href="{{ z.url }}">{{ z.name }}</a></li>{% endfor %}</ul>
+  {%- endif %}
+</div></section>
+{%- endfor %}
+
+{% include "engagements.html" %}
+{% include "faq.html" %}
+{{ content | safe }}

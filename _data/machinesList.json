@@ -1,0 +1,32 @@
+[
+ {
+  "slug": "animo-optibean-x",
+  "name": "Animo OptiBean X",
+  "type": "Machine à café en grains"
+ },
+ {
+  "slug": "animo-optime-x",
+  "name": "Animo OptiMe X",
+  "type": "Machine à café en grains compacte"
+ },
+ {
+  "slug": "bianchi-agily",
+  "name": "Bianchi Agily",
+  "type": "Distributeur de boissons chaudes"
+ },
+ {
+  "slug": "bianchi-intuity",
+  "name": "Bianchi Intuity",
+  "type": "Distributeur de boissons chaudes grande capacité"
+ },
+ {
+  "slug": "sielaff-robimat",
+  "name": "Sielaff Robimat X",
+  "type": "Distributeur de boissons fraîches"
+ },
+ {
+  "slug": "sielaff-siline",
+  "name": "Sielaff SiLine",
+  "type": "Distributeur de snacks et boissons fraîches"
+ }
+]

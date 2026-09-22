@@ -1,0 +1,49 @@
+---
+layout: layout-base.njk
+---
+<div class="page-hero with-fig"><div class="wrap">
+  <div>
+    {% include "crumbs.html" %}
+    <h1><span class="k">{{ kicker }}</span>{{ h1 }}</h1>
+    <p class="intro">{{ intro }}</p>
+    <div class="acts"><a class="btn cta-diagnostic" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a><span class="tel"><a class="js-tel" href="tel:+33174810952">01 74 81 09 52</a></span></div>
+  </div>
+  <div class="fig contain"><img src="{{ heroImage }}" alt="{{ heroAlt }}" width="{{ heroW }}" height="{{ heroH }}" fetchpriority="high"></div>
+</div></div>
+
+<section id="cles" aria-labelledby="cles-t" style="padding-top:2.5rem"><div class="wrap">
+  <h2 id="cles-t" class="sr">Points clés</h2>
+  <div class="kpis rv">{% for k in kpis %}<div><b>{{ k.v }}</b><span>{{ k.l }}</span></div>{% endfor %}</div>
+</div></section>
+
+<section id="caracteristiques" aria-labelledby="car-t"><div class="wrap two-col">
+  <div>
+    <h2 id="car-t" class="rv">Caractéristiques.</h2>
+    <table class="spec rv"><tbody>{% for s in specs %}<tr><th scope="row">{{ s[0] }}</th><td>{{ s[1] }}</td></tr>{% endfor %}</tbody></table>
+    {%- if note %}<p class="rv" style="margin-top:1rem;font-size:.9rem;color:var(--muted)">{{ note }}</p>{% endif %}
+  </div>
+  <div>
+    <h2 class="rv" style="font-size:clamp(2rem,4vw,3.4rem)">Pour quels sites.</h2>
+    <ol class="eng rv" style="grid-template-columns:1fr">{% for s in sites %}<li><span>{{ s }}</span></li>{% endfor %}</ol>
+  </div>
+</div></section>
+
+<section id="formules" aria-labelledby="form-t"><div class="wrap">
+  <h2 id="form-t" class="rv">Trois façons de l'installer chez vous.</h2>
+  <p class="sub rv">Dans les trois cas, la machine est connectée, entretenue par nos équipes, et chaque intervention est tracée dans votre espace client.</p>
+  <div class="forms rv">
+    <div class="form main"><span class="k">En dépôt</span><h3>Machine mise à disposition, vous ne payez que les consommations.</h3><p>Nous installons, approvisionnons et entretenons. Installation offerte à partir de 100 collaborateurs sur le site.</p></div>
+    <div class="form"><span class="k">En location</span><h3>Un loyer mensuel fixe, entretien et dépannage compris.</h3><p>Les consommations sont réglées par vos collaborateurs à la machine, ou prises en charge par l'entreprise.</p></div>
+    <div class="form"><span class="k">À l'achat</span><h3>La machine vous appartient, nous l'entretenons.</h3><p>Installée et mise en service par nos équipes, avec un contrat de maintenance.</p></div>
+  </div>
+  <div class="act-row rv"><a class="btn btn-mb cta-diagnostic" href="/contact#contact-form">Choisir ma formule en 1 minute</a><a href="/solutions/location-machine-a-cafe-distributeur">Comparer les trois formules en détail</a></div>
+</div></section>
+
+<section id="autres" aria-labelledby="aut-t"><div class="wrap">
+  <h2 id="aut-t" class="rv" style="font-size:clamp(2rem,4vw,3.4rem)">Les autres machines que nous installons.</h2>
+  <ul class="zone-list rv" style="max-width:44rem">
+  {%- for m in machinesList %}{% if m.slug != page.fileSlug %}<li><a href="/machines/{{ m.slug }}"><span>{{ m.name }} <small style="font-weight:400;color:var(--muted)">· {{ m.type }}</small></span></a></li>{% endif %}{% endfor %}
+  </ul>
+  <p class="rv" style="margin-top:1.4rem"><a class="btn" href="/solutions/equipements">Toutes les familles de machines</a></p>
+</div></section>
+{{ content | safe }}

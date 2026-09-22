@@ -196,7 +196,7 @@ section, .sec { padding: clamp(4rem, 9vw, 8rem) 0 0; }
 
 /* ---------- zones ---------- */
 .zone-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; } .zone-list li a { display: flex; justify-content: space-between; gap: 1rem; padding: .85rem 0; border-top: 1px solid var(--ink); font-weight: 600; color: var(--ink); text-decoration: none; }
-.zone-list li a::after { content: "→"; content: "→" / ""; color: var(--mb); } .zone-list li a:hover { color: var(--mb); } .zone-list li:last-child a { border-bottom: 1px solid var(--ink); }
+.zone-list li a > span { flex: 1; min-width: 0; } .zone-list li a::after { content: "→"; content: "→" / ""; color: var(--mb); flex-shrink: 0; } .zone-list li a:hover { color: var(--mb); } .zone-list li:last-child a { border-bottom: 1px solid var(--ink); }
 .zone-card { background: var(--sand); border: 2px solid var(--ink); box-shadow: var(--sh); padding: clamp(1.4rem, 3vw, 2.2rem); }
 .zone-card .deps { font-family: var(--mono); font-size: clamp(1.5rem, 3vw, 2.3rem); line-height: 1.5; color: var(--ink); margin: .8rem 0 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--ink); }
 .two-col { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: start; } @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; gap: 2rem; } }
