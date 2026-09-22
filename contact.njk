@@ -24,6 +24,7 @@ noCta: true
       <div><label for="phone">Téléphone *</label><input type="tel" name="phone" id="phone" placeholder="Votre ligne directe" required autocomplete="tel"></div>
     </div>
     <label for="company">Entreprise ou entité *</label><input type="text" name="company" id="company" placeholder="Raison sociale, site ou filiale" required autocomplete="organization">
+    <div class="addr"><label for="address">Adresse du site <small>(facultatif)</small></label><input type="text" name="address" id="address" placeholder="Commencez à taper : numéro, rue, ville" data-adresse data-cp="postalCode" data-ville="city"><input type="hidden" name="city" id="city"></div>
     <div class="row">
       <div><label for="postalCode">Code postal du site *</label><input type="text" name="postalCode" id="postalCode" placeholder="77700" required pattern="[0-9]{5}" inputmode="numeric" autocomplete="postal-code"></div>
       <div><label for="companySize">Effectif du site *</label><select name="companySize" id="companySize" required><option value="">Choisir…</option><option>Moins de 50 collaborateurs</option><option>50 à 99 collaborateurs</option><option>100 à 499 collaborateurs</option><option>500 collaborateurs et plus</option></select></div>
