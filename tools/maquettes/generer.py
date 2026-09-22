@@ -52,7 +52,7 @@ BY = {m['slug']: m for m in MACH}
 
 MEGA = [
   ('Pour qui', [('Bureaux et PME', '/solutions/bureaux-pme', 'Accueils, salles de pause, open spaces'), ('Résidences et hôtels', '/solutions/residences-hotels', 'Un service à toute heure, sans personnel dédié'), ('Industrie et logistique', '/solutions/industrie-logistique', "Grande capacité, équipes en rotation"), ('Grands comptes multi-sites', '/grands-comptes', 'Un interlocuteur nommé pour tous vos sites'), ('Tous les secteurs', '/solution-par-secteur', '')]),
-  ('Les machines', [('Machines à café en grains', '#machines', 'Animo OptiBean X, OptiMe X'), ('Distributeurs de boissons chaudes', '#machines', 'Bianchi Agily, Intuity'), ('Boissons fraîches et snacks', '#machines', 'Sielaff Robimat X, SiLine'), ('Tous nos distributeurs', '/solutions/equipements', '')]),
+  ('Les machines', [('Machines à café en grains', '#machines', 'Compacte ou grande capacité'), ('Distributeurs de boissons chaudes', '#machines', 'Grand écran, réserve de gobelets'), ('Boissons fraîches et snacks', '#machines', 'Livraison par ascenseur'), ('Tous nos distributeurs', '/solutions/equipements', '')]),
   ('Produits et formules', [('Boissons et snacks', '/boissons-chaudes-snacks', 'Café en grains, boissons fraîches, snacks'), ('Dépôt, location, achat', '/solutions/location-machine-a-cafe-distributeur', "Trois façons de s'équiper"), ('Maintenance et réassort', '/fonctionnement', 'Déclenchés par la télémétrie')]),
   ('Le service', [('Fonctionnement', '/fonctionnement', ''), ("Zones d'intervention", '/zones/ile-de-france', "Paris et toute l'Île-de-France"), ('F.A.Q.', '/faq', ''), ('Conseils', '/blog', ''), ('Contact', '/contact', '')]),
 ]

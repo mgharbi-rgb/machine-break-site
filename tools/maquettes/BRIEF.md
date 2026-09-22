@@ -61,7 +61,7 @@ Règle apprise avec K : **une idée par bloc, une phrase par idée**. La page d'
 - **Pas de style « trop rond, IA vibe codé »** : pas de boutons en pilule, pas de grands rayons, pas de verre dépoli, pas de dégradés ni de halos. Angles droits, filets visibles, ombres franches décalées.
 - **Un « petit truc en plus »** lié au métier : la vitrine à codes, la machine annotée, la mini-machine qui se vide.
 - **Navigation très simple** : le prospect doit retrouver tout ce que fait Machine Break. D'où le bouton « Tout ce qu'on fait » (plan complet en quatre colonnes), repris dans le pied de page.
-- **Les machines sont montrées** avec leurs caractéristiques et les formules disponibles.
+- **Les machines sont présentées par familles** (café en grains, boissons chaudes, boissons fraîches et snacks), **sans nommer les fabricants ni les modèles** sur la page d'accueil : on les décrit par ce qu'elles font (« la compacte », « grand écran »), avec leurs chiffres réels. Dire « six machines » est réducteur. L'utilisateur envisage des noms maison : à décider par lui, jamais inventés par nous.
 - **SEO et GEO soignés** (section 7).
 - **Pas de détourage de la camionnette.**
 - **But affiché** : attirer le visiteur et lui donner envie de parcourir le site, en s'appuyant sur des études (section 6).
@@ -81,7 +81,7 @@ Règle apprise avec K : **une idée par bloc, une phrase par idée**. La page d'
 | H | Sommaire | Éditorial suisse, index latéral permanent, grand sommaire numéroté | Style aimé |
 | I | Planche | Planche technique, machine annotée à cinq repères, onglets de section | Style aimé |
 | J | Enseigne | Le mix : affiche et pochoir de la E, machine annotée et onglets de I, vitrine de G, têtes numérotées de H | Aimée dans l'esprit, jugée trop chargée |
-| **K** | **Épure** | **J allégée : héros, quatre cases « Ce qu'on fait », trois pas, six machines en une ligne chacune, trois formules, quatre secteurs, appel final. Les détails restent sur les pages intérieures.** | **Référence** |
+| **K** | **Épure** | **J allégée : héros, quatre cases « Ce qu'on fait », trois pas, trois familles de machines sans marque, trois formules, quatre secteurs, appel final. Les détails restent sur les pages intérieures.** | **Référence** |
 
 Ce que J ajoute : une mini-machine fixe à l'écran qui se vide case par case quand on défile, atteint son seuil, déclenche le passage puis se re-remplit, trois fois sur la hauteur de la page ; des onglets de section qui restent cochés une fois parcourus ; un bloc « Combien ça coûte » en face de chaque machine.
 

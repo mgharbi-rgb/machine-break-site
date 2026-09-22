@@ -47,15 +47,14 @@ h2 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); margin-bottom: 1.6rem; } .sub { ma
 .steps h3 { font-size: 1.4rem; } .steps p { font-size: .98rem; }
 .contract { margin-top: 1.6rem; padding-left: 1.2rem; border-left: 6px solid var(--mb); font-size: 1.05rem; max-width: 46rem; } .contract b { color: var(--ink); }
 
-/* les machines : une photo, un nom, une ligne */
+/* les familles de machines : deux modèles en exemple, une ligne, un lien */
 .mk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.mk a { display: block; background: #fff; border: 2px solid var(--ink); box-shadow: var(--sh); text-decoration: none; color: var(--text); transition: transform .15s, box-shadow .15s; }
-.mk a:hover { transform: translate(3px, 3px); box-shadow: 4px 4px 0 var(--ink); }
-.mk .pic { display: grid; place-items: center; padding: 1.2rem; border-bottom: 2px solid var(--ink); background: #fff; } .mk .pic img { max-height: 210px; width: auto; }
-.mk div + div { padding: 1.1rem 1.2rem 1.3rem; } .mk .k { display: block; margin-bottom: .3rem; } .mk h3 { font-size: 1.35rem; margin-bottom: .3rem; }
+.mk article { background: #fff; border: 2px solid var(--ink); box-shadow: var(--sh); color: var(--text); }
+.mk .pic { display: grid; grid-template-columns: 1fr 1fr; place-items: end center; gap: .6rem; padding: 1.2rem; border-bottom: 2px solid var(--ink); background: #fff; } .mk .pic img { max-height: 190px; width: auto; }
+.mk .pic + div { padding: 1.1rem 1.2rem 1.3rem; } .mk .k { display: block; margin-bottom: .3rem; } .mk h3 { font-size: 1.45rem; margin-bottom: .3rem; }
+.mk .ex { margin-top: .8rem; padding-top: .6rem; border-top: 1px solid var(--line); font-size: .93rem; } .mk .ex li { padding: .3rem 0; } .mk .ex a { color: var(--ink); font-weight: 600; text-underline-offset: 4px; } .mk .ex span { color: var(--muted); }
 .mk .key { font-family: "Big Shoulders Stencil", Impact, sans-serif; font-weight: 900; text-transform: uppercase; font-size: 1.5rem; line-height: .95; color: var(--mb); margin-bottom: .5rem; }
-.mk .go { font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
-.mk-note { margin-top: 1.6rem; font-size: 1.02rem; } .mk-note b { color: var(--ink); }
+.mk-act { margin-top: 1.8rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; }
 @media (max-width: 960px) { .mk { grid-template-columns: 1fr 1fr; } } @media (max-width: 560px) { .mk { grid-template-columns: 1fr; } }
 
 /* trois formules, un bouton */
@@ -84,7 +83,7 @@ h2 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); margin-bottom: 1.6rem; } .sub { ma
 K_FOUR = [
   ('Café en grains et boissons chaudes', '/boissons-chaudes-snacks', '/assets/img/maquette/grains.webp', 'Grains de café', 'Moulu à la demande, espresso ou café filtre.', ''),
   ('Boissons fraîches et snacks', '/boissons-chaudes-snacks', '/assets/img/shooting/canettes-distributeur-640.webp', 'Canettes dans un distributeur', 'Canettes, bouteilles, snacks, références bio.', ''),
-  ('Six machines connectées', '#machines', '/assets/img/machines/animo-optibean-x-640.webp', 'Machine à café en grains Animo OptiBean X', 'Du plateau de bureaux au site industriel.', 'contain'),
+  ('Des machines connectées', '#machines', '/assets/img/machines/animo-optibean-x-640.webp', 'Machine à café en grains installée par Machine Break', 'Café, boissons chaudes, fraîches et snacks : trois familles.', 'contain'),
   ('Dépôt, location ou achat', '#formules', '/assets/img/shooting/ecran-accueil-distributeur-640.webp', "Écran d'accueil d'un distributeur", 'Trois formules, entretien compris.', ''),
 ]
 K_FORMS = [
@@ -102,7 +101,7 @@ def k_head():
     h = head('K', 'Épure', HERO_CSS + K_CSS, '<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Big Shoulders Stencil Display/BigShouldersStencilDisplay-latin.woff2" crossorigin>\n<link rel="preload" as="image" href="/assets/img/machines/siline-combi-m.webp" fetchpriority="high">\n')
     # la F.A.Q. n'est pas affichée sur cette page : on retire FAQPage des données structurées (le balisage doit refléter le visible)
     g = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', h, re.S).group(1).replace('<\\/', '</'))
-    g['@graph'] = [x for x in g['@graph'] if x['@type'] != 'FAQPage']
+    g['@graph'] = [x for x in g['@graph'] if x['@type'] not in ('FAQPage', 'ItemList')]
     ld = json.dumps(g, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     return re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: '<script type="application/ld+json">' + ld + '</script>', h, flags=re.S)
 
@@ -125,7 +124,7 @@ k_hero = ('<main id="contenu">\n<section class="hero" aria-labelledby="h1"><div 
           '    <p class="intro">Café en grains, boissons et snacks pour vos équipes. La machine est connectée : elle nous prévient, nous passons avant la rupture.</p>\n'
           '    <div class="acts"><a class="btn" href="/contact#contact-form">Mon diagnostic pause en 1 minute</a><span class="tel"><a href="tel:+33174810952">01 74 81 09 52</a> · réponse sous 24 h</span></div>\n'
           '    <p class="cue">↓ En descendant, regardez la petite machine se vider.</p></div>\n'
-          '  <div class="hero-side"><span class="disc"></span><div class="mfig">' + img('/assets/img/machines/siline-combi-m.webp', 'Distributeur combiné snacks et boissons fraîches Sielaff SiLine installé par Machine Break', lazy=False) + '</div></div>\n'
+          '  <div class="hero-side"><span class="disc"></span><div class="mfig">' + img('/assets/img/machines/siline-combi-m.webp', 'Distributeur de snacks et de boissons fraîches installé par Machine Break', lazy=False) + '</div></div>\n'
           '</div></section>\n')
 
 k_four = ('<section id="offre" aria-labelledby="offre-t"><div class="wrap">\n  <h2 id="offre-t" class="rv">Ce qu\'on fait.</h2>\n  <div class="four rv">'
@@ -135,13 +134,24 @@ k_steps = ('<section id="fonctionnement" aria-labelledby="fonc-t"><div class="wr
            + ''.join('<li><h3>%s</h3><p>%s</p></li>' % (e(t), e(p)) for t, p in STEPS) + '</ol>\n'
            '  <p class="contract rv"><b>Écrit au contrat :</b> un délai d\'intervention, chaque passage tracé dans votre espace client, un interlocuteur nommé et joignable directement.</p>\n</div></section>\n')
 
+# Les machines sont décrites par ce qu'elles font, jamais par leur fabricant (chiffres repris des fiches du site).
+K_FAM = [
+  ('Café en grains', 'Espresso et café filtre, moulus à la demande.', 'Bureaux, accueils, salles de pause.',
+   [('animo-optime-x', 'La compacte', "38 cm de large, jusqu'à 125 boissons par jour"), ('animo-optibean-x', 'La grande', "jusqu'à 250 boissons par jour")]),
+  ('Boissons chaudes', 'Grand écran, recettes gourmandes, réserve de gobelets.', 'Halls, sites industriels, grands sites.',
+   [('bianchi-agily', "Grand écran", "21 pouces, jusqu'à 1 100 gobelets"), ('bianchi-intuity', 'Très grande capacité', "32 pouces, double chaudière, jusqu'à 1 560 gobelets")]),
+  ('Boissons fraîches et snacks', 'Canettes, bouteilles et snacks, livrés par ascenseur.', 'Logistique, industrie, résidences.',
+   [('sielaff-robimat', 'Boissons fraîches', "vitrine panoramique, jusqu'à 770 bouteilles"), ('sielaff-siline', 'Snacks et frais', 'deux zones de température, écran tactile')]),
+]
+
 def k_machines():
     cards = []
-    for slug in ORDER:
-        m, (fam, typ, brand, name, key, _) = BY[slug], FAM[slug]
-        cards.append('<a href="%s"><div class="pic">%s</div><div><span class="k">%s</span><h3>%s</h3><p class="key">%s</p><span class="go">Voir la fiche</span></div></a>' % (m['url'], img('/assets/img/machines/%s-640.webp' % slug, '%s %s' % (typ, name)), e(typ), e(name), e(key)))
-    return ('<section id="machines" aria-labelledby="mach-t"><div class="wrap">\n  <h2 id="mach-t" class="rv">Six machines.</h2>\n  <p class="sub rv">Chacune en dépôt, en location ou à l\'achat, connectée et entretenue par nos équipes. Les caractéristiques complètes sont sur chaque fiche.</p>\n  <div class="mk rv">'
-            + ''.join(cards) + '</div>\n</div></section>\n')
+    for i, (fam, key, pour, models) in enumerate(K_FAM):
+        pics = ''.join(img('/assets/img/machines/%s-640.webp' % slug, '%s : %s, %s' % (fam, n.lower(), d)) for slug, n, d in models)
+        ex = ''.join('<li><a href="%s">%s</a> <span>%s</span></li>' % (BY[slug]['url'], e(n), e(d)) for slug, n, d in models)
+        cards.append('<article><div class="pic">%s</div><div><span class="k">Famille %d</span><h3>%s</h3><p class="key">%s</p><p>%s</p><ul class="ex">%s</ul></div></article>' % (pics, i + 1, e(fam), e(key), e(pour), ex))
+    return ('<section id="machines" aria-labelledby="mach-t"><div class="wrap">\n  <h2 id="mach-t" class="rv">Trois familles de machines.</h2>\n  <p class="sub rv">Selon votre site et votre consommation. Chaque machine est connectée, entretenue par nos équipes, et proposée en dépôt, en location ou à l\'achat.</p>\n  <div class="mk rv">'
+            + ''.join(cards) + '</div>\n  <div class="mk-act rv"><a class="btn" href="/solutions/equipements">Voir les machines</a><span>Vous cherchez autre chose ? Demandez-nous.</span></div>\n</div></section>\n')
 
 k_forms = ('<section id="formules" aria-labelledby="form-t"><div class="wrap">\n  <h2 id="form-t" class="rv">Trois façons de s\'équiper.</h2>\n  <div class="forms rv">'
            + ''.join('<div class="form%s"><span class="k">%s</span><h3>%s</h3><p>%s</p></div>' % (' main' if i == 0 else '', e(k), e(t), e(p)) for i, (k, t, p) in enumerate(K_FORMS))
