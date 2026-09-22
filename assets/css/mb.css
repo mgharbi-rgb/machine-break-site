@@ -148,8 +148,8 @@ section, .sec { padding: clamp(4rem, 9vw, 8rem) 0 0; }
 .spec th, .spec td { text-align: left; vertical-align: top; padding: .7rem 1rem; border-top: 1px solid var(--line); }
 .spec th { width: 34%; font-weight: 400; color: var(--muted); } .spec td { color: var(--ink); }
 .spec tr:first-child th, .spec tr:first-child td { border-top: 0; }
-.kpis { display: grid; grid-template-columns: repeat(3, 1fr); border: 2px solid var(--ink); background: #fff; box-shadow: var(--sh); }
-.kpis div { padding: 1.2rem 1.4rem; } .kpis div + div { border-left: 2px solid var(--ink); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border: 2px solid var(--ink); background: #fff; box-shadow: var(--sh); }
+.kpis div { padding: 1.2rem 1.4rem; border-left: 2px solid var(--ink); margin-left: -2px; }
 .kpis b { display: block; font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1; letter-spacing: -.03em; color: var(--mb); margin-bottom: .3rem; }
 .kpis span { font-size: .92rem; }
 @media (max-width: 700px) { .kpis { grid-template-columns: 1fr; } .kpis div + div { border-left: 0; border-top: 2px solid var(--ink); } }
