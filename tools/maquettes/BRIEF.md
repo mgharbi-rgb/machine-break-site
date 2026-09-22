@@ -4,6 +4,17 @@ Rédigé le 21 septembre 2026. Ce document permet de reprendre le travail sur un
 
 ---
 
+## 0. Refonte du site (branche `refonte`, 22 septembre 2026)
+
+Le « dev complet » est fait sur la branche **`refonte`**, issue de `maquettes-uiux`. Les 27 pages HTML écrites à la main ont été migrées en gabarits Eleventy sur la direction K :
+- `_includes/layout-base.njk` (en-tête « Tout ce qu'on fait », pied de page, meta, JSON-LD LocalBusiness depuis `_data/ld.json`, FAQPage et BreadcrumbList générés depuis les données de page), `layout-secteur.njk`, `layout-zone.njk`, `layout-machine.njk`, `layout-article.njk` ; blocs `engagements.html`, `faq.html`, `crumbs.html`, `reseaux.html`.
+- `assets/css/mb.css` (feuille unique, sans Bootstrap) et `assets/js/mb.js`. Bootstrap, jQuery, le thème de 278 Ko, les bibliothèques et l'icône Feather sont supprimés. `mb-consent.js` (cookies, GA4, Ads) et le formulaire Netlify sont intacts ; la bannière cookies est restylée par `mb.css`.
+- Toutes les pages ont un front matter (titre, description, fil d'Ariane, F.A.Q.). Les fiches machines et les zones sont pilotées par les données (`_data/machinesList.json`, tableaux dans chaque `.njk`).
+- Les quatre redirections cassées de `_redirects` sont réparées. Le sitemap (`_data/site.json`) est vérifié.
+- Contrôles faits : `npm run build` propre, 0 lien interne cassé, 0 image manquante, JSON-LD valide, 18 gabarits de page sans débordement à 375 px, rendus vérifiés à 1440 px. Non testé : vrais téléphones, lecteur d'écran, formulaire Netlify en production, Lighthouse.
+- Les fiches machines gardent les noms de fabricants (ce sont leurs pages produit) ; l'accueil, le menu et la page équipements n'en citent aucun.
+- Pour mettre en ligne : fusionner `refonte` dans `main` (ou ouvrir une PR), puis laisser Netlify construire. Les maquettes restent servies sous `/maquettes/` en `noindex`.
+
 ## 1. Où on en est, en cinq lignes
 
 - Onze maquettes de page d'accueil existent, de A à K. **La référence est K « Épure »** : l'esprit de J (le mix E + G/H/I), allégé après le retour « beaucoup trop d'informations, on s'y perd » : 664 mots au lieu de 3 342, aucun tableau, six blocs.

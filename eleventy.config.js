@@ -1,5 +1,4 @@
-// Eleventy ne génère que le blog, le sitemap et copie tout le reste tel quel.
-// Les pages HTML existantes ne sont PAS traitées comme des gabarits (templateFormats).
+// Refonte 2026 : toutes les pages sont des gabarits Nunjucks (layout-base.njk et ses dérivés), les ressources sont copiées telles quelles.
 export default function (eleventyConfig) {
   eleventyConfig.setInputDirectory(".");
   eleventyConfig.setOutputDirectory("_site");
@@ -8,11 +7,9 @@ export default function (eleventyConfig) {
   eleventyConfig.setTemplateFormats(["njk", "md"]);
   eleventyConfig.setLayoutResolution(false);
 
-  // Copie fidèle de tout le site statique
-  for (const p of ["assets", "admin", "zones/*.html", "machines/*.html", "maquettes", "_redirects", "_headers", "robots.txt", "social.json", "favicon.ico"]) {
+  for (const p of ["assets", "admin", "maquettes", "_redirects", "_headers", "robots.txt", "social.json", "favicon.ico"]) {
     eleventyConfig.addPassthroughCopy(p);
   }
-  eleventyConfig.addPassthroughCopy("*.html");
 
   eleventyConfig.addGlobalData("site.buildDate", () => new Date().toISOString().slice(0, 10));
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
