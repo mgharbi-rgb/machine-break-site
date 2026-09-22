@@ -14,7 +14,8 @@ familles:
     text: "Écran tactile, recettes personnalisables (espresso, cappuccino, chocolat, thé), lait frais ou poudre selon le modèle. Pour les bureaux, les accueils et les salles de pause."
     pour: "Bureaux, accueils, salles de pause."
     machines:
-      - { url: "/contact?interet=cafe#contact-form", name: La petite, d: "boissons solubles, pour les petites équipes", img: "", alt: "", w: 0, h: 0 }
+      - { url: "/contact?interet=cafe#contact-form", name: La petite, d: "boissons solubles, 2 bacs, pour les petites équipes", img: "", alt: "", w: 0, h: 0 }
+      - { url: "/contact?interet=cafe#contact-form", name: La petite en 4 bacs, d: "boissons solubles, plus de recettes ; tarif sur demande", img: "", alt: "", w: 0, h: 0 }
       - { url: /machines/animo-optime-x, name: La compacte, d: "38 cm de large, jusqu'à 125 boissons par jour", img: /assets/img/machines/animo-optime-x-640.webp, alt: Machine à café en grains compacte, w: 408, h: 640 }
       - { url: /machines/animo-optibean-x, name: La grande, d: "jusqu'à 250 boissons par jour", img: /assets/img/machines/animo-optibean-x-640.webp, alt: Machine à café en grains grande capacité, w: 427, h: 640 }
   - id: chaud
@@ -55,7 +56,7 @@ familles:
     <p class="rv" style="font-weight:600;color:var(--ink);font-size:1.15rem;margin-bottom:.8rem">{{ f.key }}</p>
     <p class="rv" style="max-width:40rem">{{ f.text }}</p>
     <p class="rv" style="margin-top:.8rem"><b>Pour quels sites :</b> {{ f.pour }}</p>
-    <p class="rv price-line" style="margin-top:.8rem"><b>Location : à partir de {{ prix.familles[f.id] }} {{ prix.unite }}</b>, entretien et dépannage compris, hors consommations. En dépôt, vous ne payez que les consommations (installation offerte à partir de {{ prix.depot_seuil }} collaborateurs sur le site).</p>
+    <p class="rv price-line" style="margin-top:.8rem"><b>Location : à partir de {{ prix.familles[f.id] }} {{ prix.unite }}</b>, pour la machine seule ; ajoutez l'entretien, les produits, ou tout compris avec la formule Zen. En dépôt, vous ne payez que les consommations (installation offerte à partir de {{ prix.depot_seuil }} collaborateurs sur le site). Achat sur devis.</p>
     <ul class="zone-list rv" style="max-width:40rem;margin-top:1.4rem">
     {%- for m in f.machines %}{% set slug = m.url | replace("/machines/", "") %}<li><a href="{{ m.url }}"><span>{{ m.name }} <small style="font-weight:400;color:var(--muted)">· {{ m.d }}{% if prix.location[slug] %} · {{ prix.location[slug] }} {{ prix.unite }}{% elif m.name == "La petite" %} · {{ prix.location["animo-optivend-21s"] }} {{ prix.unite }}{% endif %}</small></span></a></li>{% endfor %}
     </ul>
