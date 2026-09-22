@@ -10,13 +10,13 @@ noCta: true
 ---
 <div class="page-hero light"><div class="wrap">
   {% include "crumbs.html" %}
-  <h1><span class="k">Contact</span>Mon diagnostic pause en 1 minute</h1>
+  <h1><span class="k">Contact</span>Parlons de vos pauses</h1>
   <p class="intro">Cinq champs, une minute : de quoi identifier votre site et préparer votre rappel. Nous vous proposons ensuite une solution adaptée à vos espaces de pause. Réponse sous 24 h.</p>
 </div></div>
 
 <section id="contact-form" aria-labelledby="form-t" style="padding-top:2.5rem"><div class="wrap two-col">
   <form class="fform" name="contact" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field">
-    <h2 id="form-t" class="sr">Formulaire de diagnostic</h2>
+    <h2 id="form-t" style="font-size:1.6rem;margin-bottom:1.2rem">Mon diagnostic pause en 1 minute</h2>
     <input type="hidden" name="form-name" value="contact">
     <p hidden><label>Ne pas remplir si humain : <input name="bot-field"></label></p>
     <div class="row">
@@ -28,6 +28,7 @@ noCta: true
       <div><label for="postalCode">Code postal du site *</label><input type="text" name="postalCode" id="postalCode" placeholder="77700" required pattern="[0-9]{5}" inputmode="numeric" autocomplete="postal-code"></div>
       <div><label for="companySize">Effectif du site *</label><select name="companySize" id="companySize" required><option value="">Choisir…</option><option>Moins de 50 collaborateurs</option><option>50 à 99 collaborateurs</option><option>100 à 499 collaborateurs</option><option>500 collaborateurs et plus</option></select></div>
     </div>
+    <label for="interet">Ce qui vous intéresse <small>(facultatif)</small></label><select name="interet" id="interet"><option value="">Je ne sais pas encore</option><option value="cafe">Une machine à café en grains</option><option value="chaud">Un distributeur de boissons chaudes</option><option value="frais">Boissons fraîches et snacks</option><option value="plusieurs">Plusieurs machines ou plusieurs sites</option></select>
     <details id="contactDetails"><summary>Ajouter votre nom et un message (facultatif)</summary>
       <div class="row">
         <div><label for="lastname">Nom</label><input type="text" name="lastname" id="lastname" autocomplete="family-name"></div>

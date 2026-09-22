@@ -12,12 +12,17 @@
   }
   if (mega && toggles.length) {
     toggles.forEach(function (b) { b.addEventListener('click', function () { last = b; setMega(!root.classList.contains('mega-open'), true); }); });
+    mega.addEventListener('click', function (e) { if (e.target.closest('a')) setMega(false); });
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('mega-open')) setMega(false, true); });
     d.addEventListener('click', function (e) { if (root.classList.contains('mega-open') && !mega.contains(e.target) && !e.target.closest('[data-mega]')) setMega(false); });
     // page courante signalée dans le plan
     var here = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
     [].forEach.call(mega.querySelectorAll('a[href]'), function (a) { var h = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/'; if (h === here) a.setAttribute('aria-current', 'page'); });
   }
+
+  // formulaire : « Ce qui vous intéresse » présélectionné depuis le lien d'arrivée (?interet=cafe|chaud|frais)
+  var sel = d.getElementById('interet'), val = new URLSearchParams(location.search).get('interet');
+  if (sel && val && sel.querySelector('option[value="' + val + '"]')) { sel.value = val; var t = d.getElementById('form-t'); if (t) t.textContent = 'Trouver ma machine en 1 minute'; }
 
   // apparitions au défilement
   var els = [].slice.call(d.querySelectorAll('.rv'));
