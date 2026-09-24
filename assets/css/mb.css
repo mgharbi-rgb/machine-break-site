@@ -92,10 +92,14 @@ section, .sec { padding: clamp(4rem, 9vw, 8rem) 0 0; }
 .hero .btn { background: var(--cream); border-color: var(--ink); color: var(--ink); } .hero .btn:hover { background: #fff; color: var(--ink); }
 .hero .tel { font-family: var(--mono); font-size: .92rem; color: var(--cream); } .hero .tel a { color: #fff; text-decoration: none; font-weight: 600; }
 .cue { margin-top: 1.4rem; font-family: var(--mono); font-size: .76rem; letter-spacing: .04em; color: rgba(250, 245, 241, .75); }
-.hero-side { position: relative; align-self: stretch; min-height: 540px; }
-.disc { position: absolute; width: 118%; aspect-ratio: 1; left: -4%; bottom: -30%; border-radius: 50%; background: var(--sand); }
-.mfig { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 104%; aspect-ratio: 536 / 940; filter: drop-shadow(18px 22px 0 rgba(31, 21, 23, .35)); } .mfig img { width: 100%; height: 100%; }
-@media (max-width: 900px) { .hero .main { grid-template-columns: 1fr; } .hero h1 { font-size: 11.5vw; } .hero .lead { padding-bottom: 1rem; } .hero-side { min-height: 400px; margin: 0 -20px; overflow: hidden; border-bottom: 2px solid var(--ink); } .mfig { height: 100%; } .disc { width: 90%; left: 5%; } }
+.hero-side { position: relative; align-self: stretch; min-height: 560px; }
+.photo { position: absolute; top: calc(-1 * clamp(2rem, 4vw, 3.5rem)); bottom: 0; left: 0; width: calc(100% + 50vw); margin: 0; background: var(--mb); overflow: hidden; border-left: 2px solid var(--ink); }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 40%; filter: grayscale(1) contrast(1.08) brightness(1.06); mix-blend-mode: luminosity; opacity: .92; }
+.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(117, 63, 72, .55), rgba(117, 63, 72, 0) 45%); }
+.notif { position: absolute; left: -2.4rem; bottom: 3.2rem; z-index: 3; width: 280px; padding: .8rem .95rem .9rem; background: var(--cream); color: var(--ink); border: 2px solid var(--ink); box-shadow: var(--sh); font-size: .92rem; line-height: 1.35; }
+.notif .k { display: flex; justify-content: space-between; color: var(--mb); margin-bottom: .45rem; } .notif b { display: block; font-size: 1.08rem; font-weight: 600; letter-spacing: -.01em; } .notif p { margin: .25rem 0 0; color: var(--text); }
+.notif .ok { display: inline-flex; align-items: center; gap: .4rem; margin-top: .55rem; font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ok); } .notif .ok::before { content: ""; width: 8px; height: 8px; background: var(--ok); border-radius: 50%; }
+@media (max-width: 900px) { .hero .main { grid-template-columns: 1fr; } .hero h1 { font-size: 11.5vw; } .hero .lead { padding-bottom: 1rem; } .hero-side { min-height: 380px; margin: 0 -20px; overflow: hidden; border-bottom: 2px solid var(--ink); } .photo { top: 0; width: 100%; border-left: 0; border-top: 2px solid var(--ink); } .photo::after { background: linear-gradient(180deg, rgba(117, 63, 72, .5), rgba(117, 63, 72, 0) 40%); } .notif { left: 20px; right: 20px; bottom: 20px; width: auto; } }
 
 /* ---------- ouverture des pages intérieures ---------- */
 .page-hero { background: var(--mb); color: var(--cream); padding: clamp(2.4rem, 5vw, 4rem) 0 clamp(2.4rem, 5vw, 3.5rem); border-bottom: 2px solid var(--ink); }
