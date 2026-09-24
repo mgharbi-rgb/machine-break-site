@@ -54,6 +54,7 @@
   var j = d.getElementById('jauge');
   if (j && !reduce) {
     var cells = [].slice.call(j.querySelectorAll('.mini i')), num = d.getElementById('jauge-n'), etat = d.getElementById('jauge-e'), tick = false;
+    var vm = d.getElementById('vm'), prods = vm ? [].slice.call(vm.querySelectorAll('.p')) : [], vmN = d.getElementById('vm-n'), vmE = d.getElementById('vm-e'), vmTag = d.getElementById('vm-tag'), hero = d.querySelector('.hero');
     var upd = function () {
       tick = false;
       var h = root.scrollHeight - innerHeight, p = h > 0 ? Math.min(1, scrollY / h) : 0, c = p * 3, t = c - Math.floor(c), lvl, st;
@@ -63,6 +64,9 @@
       var vides = Math.round(cells.length * (1 - lvl / 100));
       cells.forEach(function (x, i) { x.classList.toggle('off', i < vides); });
       num.textContent = Math.round(lvl) + ' %'; etat.textContent = st; j.classList.toggle('seuil', t >= .78 && t < .85);
+      // la machine dessinée du hero suit la même jauge ; la petite prend le relais une fois le hero passé
+      if (prods.length) { var vp = Math.round(prods.length * (1 - lvl / 100)); prods.forEach(function (x, i) { x.classList.toggle('off', i < vp); }); vmN.textContent = Math.round(lvl) + ' %'; vmE.textContent = st; vmTag.classList.toggle('seuil', t >= .78 && t < .85); }
+      j.classList.toggle('vue', !hero || hero.getBoundingClientRect().bottom < 80);
     };
     addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true }); addEventListener('resize', upd); upd();
   } else if (j) { j.hidden = true; }
