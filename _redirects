@@ -3,10 +3,10 @@
 /index.html                                                   /                          301!
 
 # Ancienne génération du site (contenu extrait dans CONTENU-RECUPERE.md)
-/location-distributeurs-automatiques-boissons                 /zones/paris               301
-/location-distributeurs-automatiques-boissons.html            /zones/paris               301!
-/entreprise-location-distributeur-automatique-boisson         /zones/paris              301
-/entreprise-location-distributeur-automatique-boisson.html    /zones/paris              301!
+/location-distributeurs-automatiques-boissons                 /solutions/location-machine-a-cafe-distributeur  301
+/location-distributeurs-automatiques-boissons.html            /solutions/location-machine-a-cafe-distributeur  301!
+/entreprise-location-distributeur-automatique-boisson         /solutions/location-machine-a-cafe-distributeur  301
+/entreprise-location-distributeur-automatique-boisson.html    /solutions/location-machine-a-cafe-distributeur  301!
 
 # Pages supprimées (décision client 2026-09-03)
 /careers                                                      /contact                   301
@@ -38,6 +38,10 @@
 /zones/est-parisien.html                                      /zones/est-parisien        301!
 /blog.html                                                    /blog                      301!
 /zones/paris.html                                             /zones/paris               301!
+/zones/hauts-de-seine.html                                    /zones/hauts-de-seine      301!
+/zones/yvelines.html                                          /zones/yvelines            301!
+/zones/essonne.html                                           /zones/essonne             301!
+/zones/val-de-marne.html                                      /zones/val-de-marne        301!
 /solutions/location-machine-a-cafe-distributeur.html           /solutions/location-machine-a-cafe-distributeur  301!
 /machines/animo-optibean-x.html                               /machines/animo-optibean-x 301!
 /machines/animo-optime-x.html                                 /machines/animo-optime-x   301!
